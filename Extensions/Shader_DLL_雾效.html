@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>雾效</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+
+<!--START-->
+
+<h1>雾效</h1>
+
+<blockquote>
+  <tt><b>
+  <font color="#0000FF">bool </font>
+  d3d_set_fog_state(<font color="#0000FF">bool </font>state)
+  </b></tt><br>
+  启用/禁用雾效，而不修改雾效设置。<p>
+  
+  <tt><b>
+  <font color="#0000FF">bool </font>
+  d3d_set_fog_type(<font color="#0000FF">real </font>type)
+  </b></tt><br>
+  设置雾的类型。使用 <b>fog_type_*</b> 常量。GM 默认使用 <b>fog_type_linear</b>，但 <b>fog_type_exp</b> 通常效果更好。<p>
+  
+  <tt><b>
+  <font color="#0000FF">bool </font>
+  d3d_set_fog_density(<font color="#0000FF">real </font>density)
+  </b></tt><br>
+  指数雾的密度，取值范围 0-1。<p>
+  
+  <tt><b>
+  <font color="#0000FF">bool </font>
+  d3d_set_fog_color(<font color="#0000FF">real </font>col)<br>
+  <font color="#0000FF">bool </font>
+  d3d_set_fog_start(<font color="#0000FF">real </font>dist)<br>
+  <font color="#0000FF">bool </font>
+  d3d_set_fog_end(<font color="#0000FF">real </font>dist)
+  </b></tt><br>
+  用于指数/二次指数雾效，否则 GM 会将雾类型重置为线性。<p>
+</blockquote>
+
+<!--END-->
+
+</body>
+</html>

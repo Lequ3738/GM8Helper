@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>像素着色器</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif"><!--START-->
+
+<h1>像素着色器</h1>
+
+正如你在演示中所看到的，着色器非常快速且灵活。你可以执行色调映射、颜色控制、折射、模糊等许多高级技术。<p>
+
+此扩展支持着色器模型 1.4（ps.1.4）。虽然相较于新版本，它的功能较为有限，但兼容性极高，且仍然比 GM 默认的光栅效果功能强大得多。作为一个2001年的标准，它的优势在于：几乎所有 GPU 都支持它，甚至是你那台笔记本里糟糕的 Intel GMA950 也能运行它。
+
+<h3>可用函数</h3>
+<blockquote>
+  <tt><b><font color="#0000FF">real </font>
+  d3d_ps_create(<font color="#0000FF">string </font>assembly)
+  </b></tt><br>
+  从汇编代码编译像素着色器，返回索引，供其他 shader 函数使用。<p>
+    
+  <tt><b><font color="#0000FF">bool </font>
+  d3d_ps_destroy(<font color="#0000FF">real </font>shader)
+  </b></tt><br>
+  释放着色器使用的内存，并销毁着色器。<p>
+  
+  <tt><b><font color="#0000FF">bool </font>
+  d3d_set_ps(<font color="#0000FF">real </font>shader)
+  </b></tt><br>
+  设置当前像素着色器，或使用 -1 表示不使用任何着色器。<br>着色器的工作方式类似于混合模式：一次只能启用一个，可开启或关闭。着色处理在绘制雾效和 Alpha 测试之前进行。<p>
+  
+  <tt><b><font color="#0000FF">bool </font>
+  d3d_set_ps_const(<font color="#0000FF">real </font>constant, 
+  <font color="#0000FF">real </font>r, 
+  <font color="#0000FF">real </font>g, 
+  <font color="#0000FF">real </font>b, 
+  <font color="#0000FF">real </font>a)
+  </b></tt><br>
+  设置像素着色器常量寄存器。<br>
+  共有 8 个寄存器，索引范围为 0-7，每个寄存器包含 4 个值，取值范围为 -1 到 1。等同于在着色器汇编中使用 "def" 指令。<p>
+  
+  <tt><b><font color="#0000FF">bool </font>
+  d3d_set_ps_const_col(<font color="#0000FF">real </font>shader, 
+  <font color="#0000FF">real </font>col, 
+  <font color="#0000FF">real </font>alpha)
+  </b></tt><br>
+  设置 GM 格式的颜色到像素着色器常量寄存器。是一个便捷的方式。<p>
+</blockquote>
+
+这些函数用于处理一组设置。相比逐个设置参数，同时从一个配置文件中应用所有设置会更快。
+<blockquote>
+  <tt><b><font color="#0000FF">real </font>
+  d3d_conf_ps_create()
+  </b></tt><br>
+  创建新的像素着色器配置，并返回其索引。<p>
+  
+  <tt><b><font color="#0000FF">bool </font>
+  d3d_conf_ps_set(<font color="#0000FF">real </font>conf, 
+  <font color="#0000FF">real </font>constant, 
+  <font color="#0000FF">real </font>r, 
+  <font color="#0000FF">real </font>g, 
+  <font color="#0000FF">real </font>b, 
+  <font color="#0000FF">real </font>a)
+  </b></tt><br>
+  定义像素着色器常量状态。<p>
+  
+  <tt><b><font color="#0000FF">bool </font>
+  d3d_set_ps_conf(<font color="#0000FF">real </font>conf)
+  </b></tt><br>从预定义配置中设置像素着色器常量。未设置的值不会覆盖当前值。相比单独指定设置，此方法速度更快。<p>
+</blockquote>
+
+<h3>编写像素着色器</h3>
+
+着色器是用汇编语言编写的。我不会在这里详细讲解每个指令，但会给你一个整体概述。<p>
+着色器具有用于存储数据的寄存器，以及对其执行各种操作的指令。寄存器类似于变量，而指令类似于函数。每个寄存器包含四个值，这些值可以表示 RGBA 颜色、纹理坐标或任何你想要的数据。<p>
+像素着色器在绘制每个像素时都会执行一次。<p>
+下面是一个简单的着色器，它的输出与普通绘图相同：<br>
+
+<pre>
+ps.1.4           // 声明着色器版本，所有着色器都必须包含此声明。
+
+texld r0, t0     // 读取纹理阶段 0 的 t0 坐标。
+mul   r0, r0,v0  // 纹理颜色乘以绘图颜色，并将结果存储到 r0。
+</pre>
+
+<p>
+这个着色器会将纹理的 Alpha 值减半，不受 <strong>image_blend/image_alpha</strong> 影响：
+
+<pre>
+ps.1.4
+
+def   c0, 1,1,1,0.5  // 定义常量寄存器。
+texld r0, t0 
+mul   r0, r0,c0      // 将常量寄存器乘以纹理颜色。
+</pre>
+
+要查看更多复杂且有用的示例，请参考演示 GMK 文件。多多尝试不同的修改，这样比单纯阅读文档能学到更多东西。
+
+<h3>快速导航</h3>
+阅读以下文章来快速上手像素着色器的编写：<br>
+<blockquote>
+   <A href="Shader_DLL_寄存器.html">寄存器</A><br>
+   <A href="Shader_DLL_指令.html">指令</A><br>
+   <A href="Shader_DLL_掩码.html">掩码</A><br>
+   <A href="Shader_DLL_指令顺序和限制.html">指令顺序和限制</A><br>
+   <A href="Shader_DLL_共发指令.html">共发指令</A><br>
+</blockquote>
+
+</body>
+</html>

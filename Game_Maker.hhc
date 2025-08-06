@@ -1,0 +1,1122 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Precision Helper 2.0.1">
+<!-- Sitemap 1.0 -->
+</HEAD>
+<BODY>
+    <OBJECT type="text/site properties">
+      <param name="FrameName" value="right">
+      <param name="Window Styles" value="0x00000027">
+      <param name="Font" value="微软雅黑,9,134">
+      <param name="comment" value="title:gm8汉化帮助文档beta2">
+      <param name="comment" value="base:files\GMC.html">
+    </OBJECT>
+    <UL>
+        <LI><OBJECT type="text/sitemap">
+          <param name="Name" value="汉化信息">
+          <param name="Local" value="files\GMC.html">
+          <param name="ImageNumber" value="11">
+        </OBJECT>
+        <LI><OBJECT type="text/sitemap">
+          <param name="Name" value="Game Maker 帮助文档">
+          <param name="Local" value="files\index.html">
+          <param name="ImageNumber" value="11">
+        </OBJECT>
+        <LI><OBJECT type="text/sitemap">
+          <param name="Name" value="What is New">
+          <param name="Local" value="files\new.html">
+          <param name="ImageNumber" value="11">
+        </OBJECT>
+        <LI><OBJECT type="text/sitemap">
+          <param name="Name" value="使用Game Maker">
+          <param name="Local" value="files\100_index.html">
+          <param name="ImageNumber" value="2">
+        </OBJECT>
+        <UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="创造游戏的梦想">
+              <param name="Local" value="files\101_00_introduction.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="介绍">
+              <param name="Local" value="files\102_00_installation.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="升级到专业版">
+              <param name="Local" value="files\103_00_pro.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="开始入门">
+              <param name="Local" value="files\104_00_idea.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="全局用户界面">
+              <param name="Local" value="files\106_00_interface.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="定义精灵">
+              <param name="Local" value="files\107_00_sprites.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="音效和音乐">
+              <param name="Local" value="files\108_00_sounds.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="背景">
+              <param name="Local" value="files\109_00_backgrounds.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="定义对象">
+              <param name="Local" value="files\110_00_objects.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="事件">
+              <param name="Local" value="files\111_00_events.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="动作">
+              <param name="Local" value="files\112_00_actions.html">
+              <param name="ImageNumber" value="2">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="移动动作">
+                  <param name="Local" value="files\112_01_move.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="主要动作(1)">
+                  <param name="Local" value="files\112_02_main1.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="主要动作(2)">
+                  <param name="Local" value="files\112_03_main2.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="控制动作">
+                  <param name="Local" value="files\112_04_control.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="分数动作">
+                  <param name="Local" value="files\112_05_score.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="绘制动作">
+                  <param name="Local" value="files\112_06_draw.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="表达式与变量">
+                  <param name="Local" value="files\112_07_variables.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+            </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="创建房间">
+              <param name="Local" value="files\113_00_rooms.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="发布游戏">
+              <param name="Local" value="files\114_00_distributing.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+        </UL>
+        <LI><OBJECT type="text/sitemap">
+          <param name="Name" value="Advanced Use">
+          <param name="Local" value="files\200_index.html">
+          <param name="ImageNumber" value="1">
+        </OBJECT>
+        <UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="Advanced mode">
+              <param name="Local" value="files\201_00_advanced.html">
+              <param name="ImageNumber" value="1">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="Preferences">
+                  <param name="Local" value="files\201_01_preferences.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+            </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="More about sprites">
+              <param name="Local" value="files\202_00_sprites.html">
+              <param name="ImageNumber" value="1">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="Editing your sprites">
+                  <param name="Local" value="files\202_01_editing.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="Strips">
+                  <param name="Local" value="files\202_02_strips.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="Editing individual images">
+                  <param name="Local" value="files\202_03_individual.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+            </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="More about sounds and music">
+              <param name="Local" value="files\203_00_sounds.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="More about backgrounds">
+              <param name="Local" value="files\204_00_backgrounds.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="More about objects">
+              <param name="Local" value="files\205_00_objects.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="More actions">
+              <param name="Local" value="files\206_00_actions.html">
+              <param name="ImageNumber" value="1">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="More move actions">
+                  <param name="Local" value="files\206_01_move.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="More main actions">
+                  <param name="Local" value="files\206_02_main.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="More control actions">
+                  <param name="Local" value="files\206_03_control.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="More draw actions">
+                  <param name="Local" value="files\206_04_draw.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="Particle actions">
+                  <param name="Local" value="files\206_05_particles.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="Extra actions">
+                  <param name="Local" value="files\206_06_extra.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+            </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="Constants">
+              <param name="Local" value="files\207_00_constants.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="Trigger events">
+              <param name="Local" value="files\208_00_triggers.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="Including files in stand-alone games">
+              <param name="Local" value="files\209_00_include.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="More about rooms">
+              <param name="Local" value="files\210_00_rooms.html">
+              <param name="ImageNumber" value="1">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="Advanced settings">
+                  <param name="Local" value="files\210_01_advanced.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="Adding tiles">
+                  <param name="Local" value="files\210_02_tiles.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="Views">
+                  <param name="Local" value="files\210_03_views.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+            </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="Fonts">
+              <param name="Local" value="files\211_00_fonts.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="Paths">
+              <param name="Local" value="files\212_00_paths.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="Time lines">
+              <param name="Local" value="files\213_00_timelines.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="Scripts">
+              <param name="Local" value="files\214_00_scripts.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="Extension Packages">
+              <param name="Local" value="files\215_00_extensions.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="Exporting and importing resources">
+              <param name="Local" value="files\216_00_import.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+        </UL>
+        <LI><OBJECT type="text/sitemap">
+          <param name="Name" value="完善你的游戏">
+          <param name="Local" value="files\300_index.html">
+          <param name="ImageNumber" value="1">
+        </OBJECT>
+        <UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="游戏信息">
+              <param name="Local" value="files\301_00_information.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="全局游戏设置">
+              <param name="Local" value="files\302_00_settings.html">
+              <param name="ImageNumber" value="1">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="图形选项">
+                  <param name="Local" value="files\302_01_graphics.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="分辨率">
+                  <param name="Local" value="files\302_02_resolution.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="各种其他选项">
+                  <param name="Local" value="files\302_03_various.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="加载选项">
+                  <param name="Local" value="files\302_04_loading.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="错误选项">
+                  <param name="Local" value="files\302_05_errors.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="游戏信息">
+                  <param name="Local" value="files\302_06_info.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+            </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="速度优化">
+              <param name="Local" value="files\303_00_speed.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+        </UL>
+        <LI><OBJECT type="text/sitemap">
+          <param name="Name" value="GameMaker语言(GML)">
+          <param name="Local" value="files\400_index.html">
+          <param name="ImageNumber" value="2">
+        </OBJECT>
+        <UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="GML 语言概述">
+              <param name="Local" value="files\401_00_language.html">
+              <param name="ImageNumber" value="1">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="一个程序">
+                  <param name="Local" value="files\401_01_program.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="变量">
+                  <param name="Local" value="files\401_02_variables.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="赋值语句">
+                  <param name="Local" value="files\401_03_assignments.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="表达式">
+                  <param name="Local" value="files\401_04_expressions.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="其他变量">
+                  <param name="Local" value="files\401_05_extra.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="在其他实例中定位变量">
+                  <param name="Local" value="files\401_06_addressing.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="数组">
+                  <param name="Local" value="files\401_07_arrays.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="If 语句">
+                  <param name="Local" value="files\401_08_if.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="Repeat 语句">
+                  <param name="Local" value="files\401_09_repeat.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="While 语句">
+                  <param name="Local" value="files\401_10_while.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="Do 语句">
+                  <param name="Local" value="files\401_11_do.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="For 语句">
+                  <param name="Local" value="files\401_12_for.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="Switch 语句">
+                  <param name="Local" value="files\401_13_switch.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="Break 语句">
+                  <param name="Local" value="files\401_14_break.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="Continue 语句">
+                  <param name="Local" value="files\401_15_continue.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="Exit 语句">
+                  <param name="Local" value="files\401_16_exit.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="函数">
+                  <param name="Local" value="files\401_17_functions.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="脚本">
+                  <param name="Local" value="files\401_18_scripts.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="With 结构">
+                  <param name="Local" value="files\401_19_with.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="注释">
+                  <param name="Local" value="files\401_20_comment.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="GML中的函数和变量">
+                  <param name="Local" value="files\401_21_funcvar.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+            </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="数学运算单元">
+              <param name="Local" value="files\402_00_computing.html">
+              <param name="ImageNumber" value="1">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="常量">
+                  <param name="Local" value="files\402_01_constants.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="实数函数">
+                  <param name="Local" value="files\402_02_real.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="字符串处理函数">
+                  <param name="Local" value="files\402_03_string.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="日期及时间处理">
+                  <param name="Local" value="files\402_04_dates.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+            </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="游戏运行">
+              <param name="Local" value="files\403_00_gameplay.html">
+              <param name="ImageNumber" value="1">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="移动">
+                  <param name="Local" value="files\403_01_moving.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="路径">
+                  <param name="Local" value="files\403_02_paths.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="运动规划">
+                  <param name="Local" value="files\403_03_planning.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="碰撞检测">
+                  <param name="Local" value="files\403_04_collision.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="实例">
+                  <param name="Local" value="files\403_05_instances.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="停用实例">
+                  <param name="Local" value="files\403_06_deactive.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="定时">
+                  <param name="Local" value="files\403_07_timing.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="房间">
+                  <param name="Local" value="files\403_08_rooms.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="分数">
+                  <param name="Local" value="files\403_09_score.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="产生事件">
+                  <param name="Local" value="files\403_10_events.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="杂项变量和函数">
+                  <param name="Local" value="files\403_11_misc.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+            </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="用户交互">
+              <param name="Local" value="files\404_00_interaction.html">
+              <param name="ImageNumber" value="1">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="键盘">
+                  <param name="Local" value="files\404_01_keyboard.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="鼠标">
+                  <param name="Local" value="files\404_02_mouse.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="摇杆">
+                  <param name="Local" value="files\404_03_joystick.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+            </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="游戏绘图控制">
+              <param name="Local" value="files\405_00_graphics.html">
+              <param name="ImageNumber" value="1">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="精灵和子图">
+                  <param name="Local" value="files\405_01_sprites.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="背景">
+                  <param name="Local" value="files\405_02_backgrounds.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="绘制精灵和背景">
+                  <param name="Local" value="files\405_03_drawing.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="绘制形状">
+                  <param name="Local" value="files\405_04_shapes.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="字体和文本">
+                  <param name="Local" value="files\405_05_text.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="高级绘制函数">
+                  <param name="Local" value="files\405_06_advanced.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="绘制表面">
+                  <param name="Local" value="files\405_07_surfaces.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="贴图">
+                  <param name="Local" value="files\405_08_tiles.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="显示">
+                  <param name="Local" value="files\405_09_display.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="窗口">
+                  <param name="Local" value="files\405_10_window.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="视野">
+                  <param name="Local" value="files\405_11_views.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="重绘屏幕">
+                  <param name="Local" value="files\405_12_repaint.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+            </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="音效和音乐">
+              <param name="Local" value="files\406_00_sound.html">
+              <param name="ImageNumber" value="1">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="基本声音函数">
+                  <param name="Local" value="files\406_01_basic.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="音效">
+                  <param name="Local" value="files\406_02_effects.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="3D 音效">
+                  <param name="Local" value="files\406_03_3d.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="CD 音乐">
+                  <param name="Local" value="files\406_04_cd.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+            </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="窗口">
+              <param name="Local" value="files\407_00_splash.html">
+              <param name="ImageNumber" value="1">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="溅射屏幕">
+                  <param name="Local" value="files\407_01_splash.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="弹出式窗口和询问框">
+                  <param name="Local" value="files\407_02_messages.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="高分榜">
+                  <param name="Local" value="files\407_03_highscore.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+            </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="资源">
+              <param name="Local" value="files\408_00_resources.html">
+              <param name="ImageNumber" value="1">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="精灵">
+                  <param name="Local" value="files\408_01_sprites.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="音乐">
+                  <param name="Local" value="files\408_02_sounds.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="背景">
+                  <param name="Local" value="files\408_03_backgrounds.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="字体">
+                  <param name="Local" value="files\408_04_fonts.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="路径">
+                  <param name="Local" value="files\408_05_paths.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="脚本">
+                  <param name="Local" value="files\408_06_scripts.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="时间轴">
+                  <param name="Local" value="files\408_07_timelines.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="对象">
+                  <param name="Local" value="files\408_08_objects.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="房间">
+                  <param name="Local" value="files\408_09_rooms.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+            </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="更改资源">
+              <param name="Local" value="files\409_00_changing.html">
+              <param name="ImageNumber" value="1">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="精灵">
+                  <param name="Local" value="files\409_01_sprites.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="音乐">
+                  <param name="Local" value="files\409_02_sounds.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="背景">
+                  <param name="Local" value="files\409_03_backgrounds.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="字体">
+                  <param name="Local" value="files\409_04_fonts.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="路径">
+                  <param name="Local" value="files\409_05_paths.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="脚本">
+                  <param name="Local" value="files\409_06_scripts.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="时间轴">
+                  <param name="Local" value="files\409_07_timelines.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="对象">
+                  <param name="Local" value="files\409_08_objects.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="房间">
+                  <param name="Local" value="files\409_09_rooms.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+            </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="文件、注册表和执行程序">
+              <param name="Local" value="files\410_00_files.html">
+              <param name="ImageNumber" value="1">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="文件">
+                  <param name="Local" value="files\410_01_files.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="注册表">
+                  <param name="Local" value="files\410_02_registry.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="INI 文件">
+                  <param name="Local" value="files\410_03_ini.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="执行程序">
+                  <param name="Local" value="files\410_04_programs.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+            </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="数据结构">
+              <param name="Local" value="files\411_00_datastructures.html">
+              <param name="ImageNumber" value="1">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="栈">
+                  <param name="Local" value="files\411_01_stacks.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="队列">
+                  <param name="Local" value="files\411_02_queues.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="列表">
+                  <param name="Local" value="files\411_03_lists.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="映射">
+                  <param name="Local" value="files\411_04_maps.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="优先队列">
+                  <param name="Local" value="files\411_05_priority.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="栅格">
+                  <param name="Local" value="files\411_06_grid.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+            </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="创建粒子">
+              <param name="Local" value="files\412_00_particles.html">
+              <param name="ImageNumber" value="1">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="简单效果">
+                  <param name="Local" value="files\412_01_1explosions.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="粒子类型">
+                  <param name="Local" value="files\412_01_types.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="粒子系统">
+                  <param name="Local" value="files\412_02_systems.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="发射器">
+                  <param name="Local" value="files\412_03_emitters.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="吸引器">
+                  <param name="Local" value="files\412_04_attractors.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="破坏器">
+                  <param name="Local" value="files\412_05_destroyers.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="偏转器">
+                  <param name="Local" value="files\412_06_deflectors.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="转换器">
+                  <param name="Local" value="files\412_07_changers.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="烟花例子">
+                  <param name="Local" value="files\412_08_example.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+            </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="多人游戏">
+              <param name="Local" value="files\413_00_multiplayer.html">
+              <param name="ImageNumber" value="1">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="建立连接">
+                  <param name="Local" value="files\413_01_connection.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="创建和加入联机">
+                  <param name="Local" value="files\413_02_sessions.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="玩家">
+                  <param name="Local" value="files\413_03_players.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="共享数据">
+                  <param name="Local" value="files\413_04_shared.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="消息">
+                  <param name="Local" value="files\413_05_messages.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+            </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="使用 DLL">
+              <param name="Local" value="files\414_00_dlls.html">
+              <param name="ImageNumber" value="11">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="3D 绘图">
+              <param name="Local" value="files\415_00_d3d.html">
+              <param name="ImageNumber" value="1">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="进入 3D 模式">
+                  <param name="Local" value="files\415_01_mode.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="简单绘制">
+                  <param name="Local" value="files\415_02_drawing.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="绘制3D多边形">
+                  <param name="Local" value="files\415_03_primitives.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="绘制基本型状">
+                  <param name="Local" value="files\415_04_shapes.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="世界视角">
+                  <param name="Local" value="files\415_05_projection.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="变换">
+                  <param name="Local" value="files\415_06_transform.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="雾">
+                  <param name="Local" value="files\415_07_fog.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="灯光">
+                  <param name="Local" value="files\415_08_light.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="创建模型">
+                  <param name="Local" value="files\415_09_1models.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="结语">
+                  <param name="Local" value="files\415_09_final.html">
+                  <param name="ImageNumber" value="11">
+                </OBJECT>
+            </UL>
+        </UL>
+        <LI><OBJECT type="text/sitemap">
+          <param name="Name" value="GameMaker 8 部分扩展">
+          <param name="Local" value="Extensions\部分有用的扩展.html">
+        </OBJECT>
+        <UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="Shader DLL">
+              <param name="Local" value="Extensions\Shader_DLL_Main.html">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="初始化及释放">
+                  <param name="Local" value="Extensions\Shader_DLL_初始化.html">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="信息查询">
+                  <param name="Local" value="Extensions\Shader_DLL_信息查询.html">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="像素着色器">
+                  <param name="Local" value="Extensions\Shader_DLL_像素着色器.html">
+                </OBJECT>
+                <UL>
+                    <LI><OBJECT type="text/sitemap">
+                      <param name="Name" value="寄存器">
+                      <param name="Local" value="Extensions\Shader_DLL_寄存器.html">
+                    </OBJECT>
+                    <LI><OBJECT type="text/sitemap">
+                      <param name="Name" value="指令">
+                      <param name="Local" value="Extensions\Shader_DLL_指令.html">
+                    </OBJECT>
+                    <LI><OBJECT type="text/sitemap">
+                      <param name="Name" value="掩码">
+                      <param name="Local" value="Extensions\Shader_DLL_掩码.html">
+                    </OBJECT>
+                    <LI><OBJECT type="text/sitemap">
+                      <param name="Name" value="指令顺序和限制">
+                      <param name="Local" value="Extensions\Shader_DLL_指令顺序和限制.html">
+                    </OBJECT>
+                    <LI><OBJECT type="text/sitemap">
+                      <param name="Name" value="共发指令">
+                      <param name="Local" value="Extensions\Shader_DLL_共发指令.html">
+                    </OBJECT>
+                </UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="顶点着色器">
+                  <param name="Local" value="Extensions\Shader_DLL_顶点着色器.html">
+                </OBJECT>
+                <UL>
+                    <LI><OBJECT type="text/sitemap">
+                      <param name="Name" value="寄存器">
+                      <param name="Local" value="Extensions\Shader_DLL_顶点寄存器.html">
+                    </OBJECT>
+                    <LI><OBJECT type="text/sitemap">
+                      <param name="Name" value="指令">
+                      <param name="Local" value="Extensions\Shader_DLL_顶点指令.html">
+                    </OBJECT>
+                </UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="纹理">
+                  <param name="Local" value="Extensions\Shader_DLL_纹理.html">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="雾效">
+                  <param name="Local" value="Extensions\Shader_DLL_雾效.html">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="点图元控制">
+                  <param name="Local" value="Extensions\Shader_DLL_点图元和精灵.html">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="渲染控制">
+                  <param name="Local" value="Extensions\Shader_DLL_渲染控制.html">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="扩展图元">
+                  <param name="Local" value="Extensions\Shader_DLL_扩展图元.html">
+                </OBJECT>
+            </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="数据结构：树">
+              <param name="Local" value="Extensions\ds_tree_Main.html">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="GM Gamepad">
+              <param name="Local" value="Extensions\GMGamepad_Main.html">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="常规">
+                  <param name="Local" value="Extensions\GMGamepad_常规.html">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="信息和配置">
+                  <param name="Local" value="Extensions\GMGamepad_信息和配置.html">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="输入">
+                  <param name="Local" value="Extensions\GMGamepad_输入.html">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="自定义映射">
+                  <param name="Local" value="Extensions\GMGamepad_自定义映射.html">
+                </OBJECT>
+            </UL>
+        </UL>
+    </UL>
+</BODY>
+</HTML>

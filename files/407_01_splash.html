@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>Splash screens</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+<!--START-->
+
+<h3>溅射屏幕</h3>
+
+
+<b><i>这些函数只有 Game Maker 注册版本才能使用. </i></b>
+
+<p>很多游戏都有所谓的溅射屏幕.这个屏幕用来显示视频,图片或者文本.通常被使用在游戏开始(如做介绍),级别开始,或游戏结束时(例如得分表).在<em>Game   Maker</em>的溅射屏幕可以在游戏的任何时刻显示文本,图片,视频.
+<p>默认溅射屏幕是嵌入到窗口中的,但是也可在新的窗口显示它.当显示溅射屏幕时游戏是中断的.玩家可以按Esc退出键返回或者在游戏窗口中点击鼠标(这些设定能够被改变,参看下面)
+<p>
+下面的函数可以用来显示溅射屏幕：
+<blockquote>
+  <tt><b>splash_show_video(fname,loop)</b></tt>
+    在溅射屏幕中显示视频.fname是视频文件名.是否对某种视频支持取决于你的电脑驱动.通常你能使用 .avi, .mpg, and .wmv但是得避免特殊代码.你最好放在你的游戏文件夹下或者其自文件夹下.loop决定是否循环显示.<br>
+  <tt><b>splash_show_text(fname,delay)</b></tt>在溅射屏幕中显示文本.fname是文本文件名.你可以显示.txt文本文件或者.rtf超文本文件.只有一部分超文本文件的功能能够使用，比如，图像和嵌入的对象不会被显示。delay是返回到游戏前的等待时间（毫秒），使用0或负值等待玩家按Esc键，或单击游戏窗口手动返回游戏。（请注意，显示文本时不会有滚动条，也不可能有其他方式来滚动文本，所以文本必须适合窗口大小。）<br>
+  <tt><b>splash_show_image(fname,delay)</b></tt>在溅射屏幕中显示图片,fname是图片文件名,支持大部分图片格式(如 .bmp, .jpg, .tif, 和   .wmf)但是不支持动画图片.delay是返回到游戏前等待的毫秒数<br>
+  <tt><b>splash_show_web(url,delay)</b></tt>;在溅射屏幕中显示网页。URL的网页的URL（从HTTP：/ /）或是本地HTML文件的文件名。然而，请注意，你必须使用完整的路径。所以你最好使用像working_directory +&quot;\index.html&quot;的url。delay是返回游戏前的毫秒数</blockquote>
+
+<p>你能够使用下列函数改变溅射屏幕的显示:
+<blockquote>
+  <tt><b>splash_set_main(main)</b></tt>
+    溅射屏幕是否在主游戏窗口中显示,默认为true,独立窗口为false.
+<br>
+  <tt><b>splash_set_scale(scale)</b></tt>
+     设定溅射屏幕视频或图片显示比例.当为0时则填充整个窗口(默认)
+<br>
+  <tt><b>splash_set_cursor(vis)</b></tt>
+    设置光标是否应该在溅射屏幕可见。默认情况下它是可见的。播放视频时光标无法隐藏。<br>
+  <tt><b>splash_set_color(col)</b></tt>设定非图片与视频显示部分的填充色.<br>
+  <tt><b>splash_set_caption(cap)</b></tt>设定溅射窗口的标题.这仅仅影响在独立窗口显示时.默认为空字符串.<br>
+  <tt><b>splash_set_fullscreen(full)</b></tt>是否全屏显示溅射屏幕.这仅仅影响在独立窗口显示时.默认是窗口化.<br>
+  <tt><b>splash_set_border(border)</b></tt>设定溅射窗口是否有边框.这仅仅影响在独立窗口显示时.默认是使用边框.<br>
+  <tt><b>splash_set_size(w,h)</b></tt>设定溅射窗口的大小.这仅仅影响在独立窗口显示时.默认是640x480.<br>
+  <tt><b>splash_set_position(x,y)</b></tt>设置溅射屏幕窗口的位置，这仅仅影响在独立窗口显示时<br>
+  <tt><b>splash_set_adapt(adapt)</b></tt>窗口大小是否必须适应该尺寸的视频或图像.这仅仅影响在独立窗口显示时. 默认adapt为真. <br>
+  <tt><b>splash_set_top(top)</b></tt>窗口是否处于最前端.这仅仅影响在独立窗口显示时.默认为真.<br>
+  <tt><b>splash_set_interrupt(interrupt)</b></tt>显示溅射窗口时是否中断游戏运行.这仅仅影响在独立窗口显示时.默认为真.<br>
+  <tt><b>splash_set_stop_key(stop)</b></tt>按下Esc键时是否停止显示溅射屏幕.默认为真.<br>
+  <tt><b>splash_set_stop_mouse(stop)</b></tt>在溅射屏幕上按下鼠标是否停止显示溅射屏幕.默认为真.<br>
+  <tt><b>splash_set_close_button(show)</b></tt>
+    是否显示屏幕右上角的关闭按钮。当运行游戏是全屏模式或没有边框时很有用。默认值为真。<br>
+</blockquote>
+
+<p>
+游戏信息是一种特殊类型的溅射的信息，您可以使用下面的函数显示。您也可以加载一个单独的信息文件。这和文本溅射屏幕的显示密切相关，但显示由在定义的游戏信息，而不是由上述设置提供的设置所决定。它也显示在不同的窗口，所以它有可以在同一时刻显示游戏信息和飞溅屏幕。这些函数也可用在精简版里。
+<blockquote>
+  <tt><b>show_info()</b></tt>显示游戏信息.<br>
+  <tt><b>load_info(fname)</b></tt>从文件fname中读取游戏信息。必须是.rtf格式。这个函数用于在不同时刻显示不同的帮助文件. </blockquote>
+
+
+
+<!--END-->
+</body>
+</html>
+
+<!-- KEYWORDS
+videos
+movies
+playing videos
+showing videos
+splash screens
+credits
+information
+
+splash_show_video()
+splash_show_text()
+splash_show_web()
+splash_show_image()
+splash_set_caption()
+splash_set_fullscreen()
+splash_set_border()
+splash_set_size()
+splash_set_position()
+splash_set_adapt()
+splash_set_top()
+splash_set_color()
+splash_set_main()
+splash_set_scale()
+splash_set_cursor()
+splash_set_interrupt()
+splash_set_stop_key()
+splash_set_stop_mouse()
+splash_set_close_button()
+
+show_info()
+load_info()
+
+-->

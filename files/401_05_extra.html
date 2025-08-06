@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>Extra Variables</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+<!--START-->
+
+<h3>拓展变量</h3>
+
+你通过对一个变量赋值来创建新的变量（无需先声明，赋值即是声明）。如果你只使用一个变量名来声明变量，该变量将仅仅被储存在对象实例中。所以不要认为在处理另一个对象时可以直接调用它（或者是同一对象的另一个实例）。你可以在另一个对象中设置和读取变量，通过在变量名前面添加对象名称和一个句点"." 
+
+<p>
+【全局变量】使用&quot;global.变量名&quot;的格式创建一个全局变量，所有对象实例都可以调用它。例如，你可以这样写:
+<blockquote>
+<pre>
+{
+  <b>if</b> (<b>global</b>.doit)
+  {
+    // do something
+    <b>global</b>.doit = false;
+  }
+}</pre></blockquote>
+
+<p>
+你也可以直接将变量声明为全局变量，格式如下
+<blockquote>
+<pre><b>globalvar</b> &lt;varname1&gt;,&lt;varname2&gt;,&lt;varname3&gt;, ... ;</pre></blockquote>
+
+<p>一旦执行这样的声明方式，变量将一直是全局形式，并且不需要再加全局变量前缀&quot;global.&quot;了。它只需要在一段被执行的代码中声明一次。之后在所有的地方都会被被认为是全局变量 
+<p>【临时变量】有些时候你希望变量只在当前的代码块或者脚本中使用。用这种方式可以避免浪费内存或命名冲突，同时这种变量也比全局变量速度更快。要使用这种变量你必须在变量名前加入关键字&quot;var&quot;和一个空格。这种声明看起来应该是这样的.</p>
+<blockquote>
+<pre><b>var</b> &lt;varname1&gt;,&lt;varname2&gt;,&lt;varname3&gt;, ... ;</pre></blockquote>
+
+<p>
+举个例子，你可以这样写：
+<p>
+<blockquote>
+<pre>
+{
+  <b>var</b> xx,yy;
+  xx = x+10;
+  yy = y+10;
+  instance_create(xx,yy,ball);
+}
+</pre>
+</blockquote>
+
+<!--END-->
+</body>
+</html>
+
+<!-- KEYWORDS
+global variables
+local variables
+declaring variables
+var
+globalvar
+-->

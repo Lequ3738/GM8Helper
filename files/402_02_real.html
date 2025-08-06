@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>实数函数 </title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.STYLE1 {font-family: "宋体"}
+-->
+</style>
+</head>
+<body background="images/back.gif">
+<!--START-->
+
+<h3>实数函数 </h3>
+
+以下函数都是处理实数的.
+<p>
+<blockquote>
+  <tt><b>random(x)</b></tt>返回一个随机的实数，范围从 0 到 x 。数值总小于 x 。<br>
+  <tt><b>random_range(x1,x2)</b></tt>返回一个 x1 到 x2 之间的随机数，包含 x1 ，不包含 x2。<br>
+  <tt><b>irandom(x)</b></tt>返回一个 0 到 x 之间的随机整数，如果 x 是整数则包含 x 。<br>
+  <tt><b>irandom_range(x1,x2)</b></tt>返回一个 x1 到 x2 之间的随机整数，包含 x1 和 x2 。<br>
+  <tt><b>random_set_seed(seed)</b></tt>
+    设置种子（整数）用于随机数生成。可以用来重复相同的随即序列（注：也可以是某些动作或者系统自身使用的随机数）<br>
+  <tt><b>random_get_seed()</b></tt>
+    返回当前种子<br>
+  <tt><b>randomize()</b></tt>设置种子到一个随机数.<br>
+  <tt><b>choose(val1,val2,val3,...)</b></tt>随机返回其中一个参数。最多可以有16个参数.<br>
+  <tt><b>abs(x)</b></tt>
+    返回 x 的绝对值.<br>
+  <tt><b>sign(x)</b></tt>
+    返回 x 的符号（-1,0,或1）<br>
+  <tt><b>round(x)</b></tt>
+    返回与 x 最接近的整数（银行家舍入法）.<br>
+  <tt><b>floor(x)</b></tt>返回比 x 小的最大整数.<br>
+  <tt><b>ceil(x)</b></tt>
+    返回比 x 大的最小整数.<br>
+  <tt><b>frac(x)</b></tt>
+    返回 x 的小数点以后的部分.<br>
+  <tt><b>sqrt(x)</b></tt>
+    返回 x 的开方。 x 不能是负数.<br>
+  <tt><b>sqr(x)</b></tt>
+    返回 x 的平方.<br>
+  <tt><b>power(x,n)</b></tt>返回x的n次方.<br>
+  <tt><b>exp(x)</b></tt>
+    返回e的x次方.<br>
+  <tt><b>ln(x)</b></tt>
+    返回 x 的自然对数.<br>
+  <tt><b>log2(x)</b></tt>
+    返回 x 的2的对数.<br>
+  <tt><b>log10(x)</b></tt>
+    返回 x 的10的对数.<br>
+  <tt><b>logn(n,x)</b></tt>
+    返回 x 的 n 的对数.<br>
+  <tt><b>sin(x)</b></tt>
+    返回 x 的正弦（x 单位为弧度）. <br>
+  <tt><b>cos(x)</b></tt>
+    返回 x 的余弦（x 单位为弧度）. <br>
+  <tt><b>tan(x)</b></tt>
+    返回 x 的正切（x 单位为弧度）. <br>
+  <tt><b>arcsin(x)</b></tt>
+    返回 x 的反正弦. <br>
+  <tt><b>arccos(x)</b></tt>
+    返回 x 的反余弦. <br>
+  <tt><b>arctan(x)</b></tt>
+    返回 x 的反正切. <br>
+  <tt><b>arctan2(y,x)</b></tt>
+    计算反正切（y / x），然后返回结果在正确象限内的角度值.<br>
+  <tt><b>degtorad(x)</b></tt>
+    转换角度到弧度. <br>
+  <tt><b>radtodeg(x)</b></tt> 转换弧度到角度. <br>
+  <tt><b>min(val1,val2,val3,...)</b></tt>
+    返回参数中的最小值。最高支持16个参数。必须全部是实数或全部是字符串. <br>
+  <tt><b>max(val1,val2,val3,...)</b></tt> 返回参数中的最大值。最高支持16个参数。必须全部是实数或全 部是字符串. <br>
+  <tt><b>mean(val1,val2,val3,...)</b></tt>
+    返回所有参数的平均值。最高支持16个参数。必须全部是实数 数值.<br>
+  <tt><b>median(val1,val2,val3,...)</b></tt> 返回参数的中间数（如果参数数目为偶数，则两个中间数中最小的那个作为返回值）。最高支持16个参数。必须全部是实数数值 .<br>
+  <tt><b>point_distance(x1,y1,x2,y2)</b></tt>
+    返回位置1(x1,y1)到位置2(x2,y2)的距离.<br>
+  <tt><b>point_direction(x1,y1,x2,y2)</b></tt>
+    返回从位置1(x1,y1)到位置2(x2,y2)的方向角度.<br>
+  <tt><b>lengthdir_x(len,dir)</b></tt>
+    返回指定长度及方向的矢量线在 x 轴上的投影长度.<br>
+  <tt><b>lengthdir_y(len,dir)</b></tt>
+    返回指定长度及方向的矢量线在 y 轴上的投影长度.<br>
+  <tt><b>is_real(x)</b></tt>
+    返回 x 是否为真实数值（否则就是字符串）.<br>
+  <tt><b>is_string(x)</b></tt>返回 x 是否是一个字符串(否则就是一个真实数值).<br>
+</blockquote>
+
+
+<!--END-->
+</body>
+</html>
+
+<!-- KEYWORDS
+mathematical functions
+computing
+calculations
+mathematics
+trigonometric functions
+
+is_real()
+is_string()
+random()
+random_range()
+irandom()
+irandom_range()
+random_set_seed()
+random_get_seed()
+randomize()
+choose()
+abs()
+round()
+floor()
+ceil()
+sign()
+frac()
+sqrt()
+sqr()
+exp()
+ln()
+log2()
+log10()
+sin()
+cos()
+tan()
+arcsin()
+arccos()
+arctan()
+arctan2()
+degtorad()
+radtodeg()
+power()
+logn()
+min()
+max()
+mean()
+median()
+point_distance()
+point_direction()
+lengthdir_x()
+lengthdir_y()
+-->

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>主要动作，分组2</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif"><!--START-->
+<h3>   主要动作，分组2</h3>
+这里有一些更多的主要动作，比如处理计时，信息交互，还有让游戏内容更完整。
+<p>
+<b><IMG src="images/action_alarm.bmp">&nbsp;设置计时器<BR>  </b>使用这个动作你可以为对象设定12个计时器中的任一个，你要指定步数和计时器编号。在经过指定步数之后，实例将接收到相应的计时器事件，你也可以由勾选<STRONG>相对</STRONG>复选框来增减计时器的步数。 如果将计时器步数设置为小于或等于0的值等同于关闭，因此不会发生事件。</p>
+<p>
+<b><IMG src="images/action_sleep.bmp">&nbsp;休眠<BR> </b>          
+使用这个动作使得你可以使场景暂停一段特定时间，通常用在开始或结束一个关卡时，或当你要给玩家某些信息时。你可以指定的数值（以毫秒当单位）来暂停游戏。你也可以指定是否屏幕一开始重绘来显示游戏最后一幕暂停时的场景。</p>
+<p>
+<b><IMG src="images/action_info.bmp">&nbsp;显示消息框<BR>  </b>           
+这个动作可以显示在对话框中的消息。 您只需键入消息。 如果在消息文本中使用#号，它将被解释为一个换行符。（如果你想输出"#"号，则要用"\#"代替）如果消息文本以引号或双引号符号开头，则将其解释为表达式。有关表达式的详细信息，请参阅下文。</p>
+<p>
+<b><IMG src="images/action_help.bmp">&nbsp;显示游戏信息</b><br>
+用此动作你可以弹出游戏信息窗口。</p>
+ <p>
+<b><IMG src="images/action_gamerestart.bmp">  &nbsp;重启游戏</b><br>
+用此动作重新开始游戏。</p>
+<p>
+<b><IMG src="images/action_gameend.bmp">&nbsp;结束游戏<BR>  </b>用此动作结束游戏</p>
+<p>
+<b><IMG src="images/action_gamesave.bmp">&nbsp;保存游戏<BR>  </b>          
+这个动作可以保存当前的游戏状态，您需要指定保存的文件名（该文件在游戏的工作目录中创建）之后可以用下一个动作读取游戏状态。（请注意，这个动作只会保存游戏的基本状态。例如，不会保存当前音乐的播放位置，以及高级内容：粒子，数据结构等）。</p>
+<p>
+<b><IMG src="images/action_gameload.bmp">&nbsp;载入游戏<BR>  </b>从文件中载入游戏，需要指定文件名。要确认要加载的游戏存档是与当前的游戏用相同版本的GameMaker制作的，不然将发生错误。（确切地讲，存档是在当前步骤结束时才加载的，所以在执行这个动作后仍会执行完后面的动作，而不是直接加载游戏！）          
+</p>
+</body>
+</html>
+<!-- KEYWORDS
+sound actions
+game actions
+alarm clocks
+timing
+-->

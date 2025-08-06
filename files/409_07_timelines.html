@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>时间轴</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+<!--START-->
+
+<h3>时间轴</h3>
+
+下列程序用于创建和改变时间线。不要在时间轴使用时改变它!
+<p>
+<blockquote>
+  <tt><b>timeline_add() </b></tt>添加一个新的时间轴。返回时间轴索引。<br>
+  <tt><b>timeline_delete(ind) </b></tt>删除指定索引的时间轴，请确保该时间轴没有在任何房间被使用。 <br>
+  <tt><b>timeline_clear(ind)</b></tt> 
+  	清除指定时间轴的所有时刻，请确保该时间轴没有在任何房间被使用。 <br>
+  <tt><b>timeline_moment_add(ind,step,codestr) </b></tt>添加一段代码到时间轴的某一时刻step上。参数 codestr 包含动作的代码。如果这步不存在它就被创建。所以你可以在同一时刻添加多个代码动作。 <br>
+  <tt><b>timeline_moment_clear(ind,step) </b></tt>可以用这个函数清除指定时间轴的某一时刻step上的所有动作 。<br>
+</blockquote>
+
+<p>
+
+
+<!--END-->
+</body>
+</html>
+
+<!-- KEYWORDS
+timeline_add()
+timeline_delete()
+timeline_clear()
+timeline_moment_clear()
+timeline_moment_add()
+
+-->

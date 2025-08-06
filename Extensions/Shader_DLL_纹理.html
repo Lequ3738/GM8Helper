@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>纹理</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+
+<!--START-->
+
+<h1>纹理</h1>
+
+<blockquote>
+  <tt><b>
+  <font color="#0000FF">bool </font>
+  d3d_set_tex(<font color="#0000FF">real </font>stage,
+  <font color="#0000FF">real </font>tex)
+  </b></tt><br>
+  为指定的纹理阶段设置纹理，或使用 <b>-1</b> 取消绑定。可同时使用的最大纹理数量由 GPU 限制（通常为 8）。<br>
+  <strong>注意：</strong> GM 每次绘制时都会覆盖纹理阶段 0。<br>
+  举个例子，如果在 GML 中使用如下代码：
+  <pre>
+d3d_set_tex(1, myTexture);  // 将指定纹理绑定到纹理阶段 1 中</pre>
+  那么就可以在着色器中通过 <b>texld</b> 或 <b>texcrd</b> 使用绑定的纹理：
+  <pre>
+texld  r0, t0  // 当前正在绘制的纹理
+texld  r1, t0  // 绑定到纹理阶段 1 中的纹理
+
+// 或者使用 texcrd 获取纹理坐标
+texcrd r0, t0
+texcrd r1, t0</pre>
+  以此类推，将数据加载到 <b>r0</b> 会读取纹理阶段 0，<b>r1</b> 读取阶段 1，<b>r2</b> 读取阶段 2。即纹理阶段编号由目标寄存器号（<b>r0</b> 到 <b>r5</b>）确定。<p>
+  
+  <tt><b>
+  <font color="#0000FF">bool </font>
+  d3d_set_tex_all(<font color="#0000FF">real </font>tex)
+  </b></tt><br>
+  为所有纹理阶段绑定相同的纹理，或使用 <b>-1</b> 取消绑定。<p>
+  
+  <tt><b>
+  <font color="#0000FF">bool </font>
+  d3d_set_tex_int(<font color="#0000FF">real </font>stage, 
+  <font color="#0000FF">real </font>mode)
+  </b></tt><br>
+  设置纹理阶段的插值模式。Stage 0 也可使用 <b>texture_set_interpolation()</b> 控制。<br>
+  使用 <b>tex_int_*</b> 常量，默认值为 <b>tex_int_nearest</b>。<br>
+  <figure><table style="border:1px solid #BBBBBB;">
+    <thead><tr>
+      <th style="border:1px solid #BBBBBB;padding:2px 8px;">
+      <strong>模式</strong></th>
+      <th style="border:1px solid #BBBBBB;padding:2px 8px;">
+      <strong>效果</strong></th>
+    </tr></thead>
+    <tbody><tr>
+      <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+      <tt><b>tex_int_nearest</b></tt></td>
+      <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+      无过滤（像素化）</td>
+    </tr><tr>
+      <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+      <tt><b>tex_int_bilinear</b></tt></td>
+      <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+      双线性过滤（平滑）</td>
+    </tr><tr>
+      <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+      <tt><b>tex_int_anisotropic</b></tt></td>
+      <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+      各向异性过滤（暂未完全支持）</td>
+    </tr></tbody>
+  </table></figure><p>
+
+  <tt><b>
+  <font color="#0000FF">real </font>
+  d3d_set_tex_wrap(<font color="#0000FF">real </font>stage, 
+  <font color="#0000FF">real </font>xmode, 
+  <font color="#0000FF">real </font>ymode)
+  </b></tt><br>
+  设置纹理阶段的包裹模式，使用 <b>tex_wrap_*</b> 常量。类似于 <b>texture_set_repeat()</b>，但提供更多选项，并可分别控制 X/Y 方向。<br>
+  <figure><table style="border:1px solid #BBBBBB;">
+    <thead><tr>
+      <th style="border:1px solid #BBBBBB;padding:2px 8px;">
+      <strong>模式</strong></th>
+      <th style="border:1px solid #BBBBBB;padding:2px 8px;">
+      <strong>效果</strong></th>
+    </tr></thead>
+    <tbody><tr>
+      <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+      <tt><b>tex_wrap_normal</b></tt></td>
+      <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+      <strong>重复</strong>纹理</td>
+    </tr><tr>
+      <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+      <tt><b>tex_wrap_mirror</b></tt></td>
+      <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+      <strong>镜像重复</strong>纹理，边界翻转</td>
+    </tr><tr>
+      <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+      <tt><b>tex_wrap_mirroronce</b></tt></td>
+      <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+      <strong>先镜像一次</strong>，然后<strong>钳制（Clamp）</strong></td>
+    </tr><tr>
+      <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+      <tt><b>tex_wrap_border</b></tt></td>
+      <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+      超出 0-1 范围时，填充<strong>固定颜色</strong></td>
+    </tr><tr>
+      <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+      <tt><b>tex_wrap_clamp</b></tt></td>
+      <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+      <strong>不重复</strong>，边界颜色填充</td>
+    </tr></tbody>
+  </table></figure><p>
+  
+  <tt><b>
+  <font color="#0000FF">bool </font>
+  d3d_set_tex_border(<font color="#0000FF">real </font>stage, 
+  <font color="#0000FF">real </font>col, 
+  <font color="#0000FF">real </font>alpha)
+  </b></tt><br>
+  设置 <b>tex_wrap_border</b> 模式的颜色。<p>
+</blockquote>
+
+这些函数用于处理一组设置。相比逐个设置参数，同时从一个配置文件中应用所有设置会更快。 
+
+<blockquote>
+  <tt><b>
+  <font color="#0000FF">real </font>
+  d3d_conf_tex_create()
+  </b></tt><br>
+  创建新的纹理阶段配置。<p>
+  
+  <tt><b>
+  <font color="#0000FF">bool </font>
+  d3d_conf_tex_set(<font color="#0000FF">real </font>conf,
+  <font color="#0000FF">real </font>stage,
+  <font color="#0000FF">real </font>tex,
+  <font color="#0000FF">real </font>interp,
+  <font color="#0000FF">real </font>xmode,
+  <font color="#0000FF">real </font>ymode)
+  </b></tt><br>
+  定义纹理阶段状态。<p>
+  
+  <tt><b>
+  <font color="#0000FF">bool </font>
+  d3d_set_tex_conf(<font color="#0000FF">real </font>conf)
+  </b></tt><br>
+  从预定义的配置设置纹理阶段，仅修改已定义的阶段。<p>
+</blockquote>
+
+<!--END-->
+
+</body>
+</html>

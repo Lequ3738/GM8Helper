@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>鼠标</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+<!--START-->
+
+<h3>鼠标</h3>
+
+在鼠标处理中，存在以下几个变量和函数 :
+<p>
+<blockquote>
+  <tt><b>mouse_x*</b></tt> 鼠标在房间内的横坐标。无法更改。 <br>
+  <tt><b>mouse_y*</b></tt> 
+    鼠标在房间内的纵坐标。无法更改。 <br>
+  <tt><b>mouse_button</b></tt> 当前按下的鼠标键。可以是以下几个值： mb_none（没有任何按键）,mb_any（任意按键）,mb_left（左键）, mb_right（右键）,以及 mb_middle（中键）。 <br>
+  <tt><b>mouse_lastbutton</b></tt> 
+	最后一次按下的鼠标键。 <br>
+</blockquote>
+
+<p>
+
+为了检查指定的鼠标键是否被按下，你可以使用如下几个函数。多个键按下时这些函数非常有用。 
+<p>
+<blockquote>
+  <tt><b>mouse_check_button(numb)</b></tt>返回某个鼠标键是否被按中（numb 为 mb_none, mb_left, mb_middle, 或 mb_right 中的一种）。 <br>
+  <tt><b>mouse_check_button_pressed(numb)</b></tt>返回某个鼠标键在上步后是否被按下（numb 为 mb_none, mb_left, mb_middle, 或 mb_right 中的一种）。 <br>
+  <tt><b>mouse_check_button_released(numb)</b></tt>返回某个鼠标键在上一步后是否被放开（numb 为 mb_none, mb_left, mb_middle, 或 mb_right 中的一种）。 <br>
+  <br>
+</blockquote>
+<p>
+
+以下函数可用于检查鼠标滚轮是否被使用。
+<p>
+<blockquote>
+  <tt><b>mouse_wheel_up()</b></tt>
+    返回在上一步鼠标滚轮是否向上移动<br>
+  <tt><b>mouse_wheel_down()</b></tt>
+    返回在上一步鼠标滚轮是否向下移动<br>
+</blockquote>
+
+<p>这里有一些额外的鼠标处理函数。
+<blockquote>
+  <tt><b>mouse_clear(button)</b></tt> 
+    清除鼠标按钮的状态。这意味着它将不再产生鼠标事件，直到玩家释放，并再次按下它。<br>
+  <tt><b>io_clear()</b></tt> 清除所有键盘及鼠标状态。<br>
+  <tt><b>io_handle()</b></tt> 
+    处理用户输入输出，更新键盘和鼠标状态。<br>
+<tt><b>mouse_wait()</b></tt> 等待，直到用户按下某个鼠标键。</blockquote>
+
+<p><br>
+  使用下面的变量可以改变鼠标指针为任意一个精灵: 
+<p>
+<blockquote>
+  <tt><b>cursor_sprite</b></tt> 
+    使用精灵来代表鼠标指针（默认没有精灵，值为－1）。设定精灵后将会自动在鼠标位置绘制精灵图标（不隐藏鼠标指针，你可以在全局游戏设置里关闭窗口内的鼠标指针）<br>
+</blockquote>
+
+<!--END-->
+</body>
+</html>
+
+<!-- KEYWORDS
+mouse
+mouse position
+mouse buttons
+
+mouse_x
+mouse_y
+mouse_button
+mouse_lastbutton
+mb_any
+mb_none
+mb_left
+mb_right
+mb_middle
+mouse_check_button()
+mouse_check_button_pressed()
+mouse_check_button_released()
+mouse_wheel_up()
+mouse_wheel_down()
+mouse_clear()
+mouse_wait()
+
+cursor_sprite
+-->

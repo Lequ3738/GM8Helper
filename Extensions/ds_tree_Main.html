@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>数据结构：树</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif"><!--START-->
+
+<h1>数据结构：树</h1>
+
+<center><font size="3">
+作者：Lequ<br>
+文档创建时间：2025/5/25<br>
+</font></center>
+
+<p>
+<b>树（tree）</b>是一种用来模拟具有树状结构性质的数据集合。它是由n（n&gt;0）个有限节点组成一个具有层次关系的集合。把它叫做“树”是因为它看起来像一棵倒挂的树，也就是说它是根朝上，而叶朝下的。它具有以下的特点：
+<ul><li>每个节点都只有有限个子节点或无子节点；</li>
+<li>没有父节点的节点称为根节点；</li>
+<li>每一个非根节点有且只有一个父节点；</li>
+<li>除了根节点外，每个子节点可以分为多个不相交的子树；</li>
+<li>树里面没有环路(cycle)</li></ul>
+
+有以下的函数可以操作“树”这种数据结构：<p>
+
+<br><p>
+<h4>添加：</h4>
+<blockquote>
+    <tt><b><font color="#0000FF">real </font>
+    ds_tree_create(<font color="#0000FF">dynamic </font>rootVal)
+    </b></tt><br>
+    创建一个新的 ds_tree，并在它的根节点中设置值。<br>
+    返回它的 ID。<p>
+    
+    <tt><b><font color="#0000FF">real </font>
+    ds_tree_node_create(<font color="#0000FF">real </font>id, 
+    <font color="#0000FF">dynamic </font>value)
+    </b></tt><br>
+    在已定义的 ds_tree 中的指定节点设置子节点，并设置它的值。<br>
+    返回它的 ID。<p>
+    
+    <tt><b><font color="#0000FF">bool </font>
+    ds_tree_node_add(<font color="#0000FF">real </font>id, 
+    <font color="#0000FF">real </font>root)
+    </b></tt><br>
+    添加指定节点的子节点。root 为要添加原节点的根节点 ID。若 root 不是根节点，则会切断 root 与原节点之间的关系。<br>
+    返回是否添加成功。<p>
+    
+    <tt><b><font color="#0000FF">void </font>
+    ds_tree_copy(<font color="#0000FF">real </font>id, 
+    <font color="#0000FF">real </font>source)
+    </b></tt><br>
+    复制指定的 ds_tree 到 source 上。<p>
+    
+    <tt><b><font color="#0000FF">void </font>
+    ds_tree_add_dir(<font color="#0000FF">real </font>id, 
+    <font color="#0000FF">string </font>dir)
+    </b></tt><br>
+    根据指定的分隔符“/”，往指定的 ds_tree 添加子节点。<br>
+    例如：<b>a/b/c</b> 会形成如下的树结构：<br>
+    (id)<br>
+    &nbsp;└ <b>a</b> (string)<br>
+    &nbsp;&nbsp;&nbsp;└ <b>b</b> (string)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ <b>c</b> (string)<p>
+</blockquote>
+
+<br><p>
+<h4>删除：</h4>
+<blockquote>
+    <tt><b><font color="#0000FF">void </font>
+    ds_tree_destroy(<font color="#0000FF">real </font>id, 
+    <font color="#0000FF">bool </font>notme)
+    </b></tt><br>
+    删除指定节点及其子节点。若 notme 的值为真，则删除范围不会包括自己。<p>
+    
+    <tt><b><font color="#0000FF">bool </font>
+    ds_tree_node_remove(<font color="#0000FF">real </font>id, 
+    <font color="#0000FF">real </font>n)
+    </b></tt><br>
+    移除指定节点的子节点。只切断它们之间的关系，不对当前节点和子节点的内容做任何处理。<br>
+    返回是否移除成功。<p>
+    
+    <tt><b><font color="#0000FF">void </font>
+    ds_tree_node_delete(<font color="#0000FF">real </font>id, 
+    <font color="#0000FF">bool </font>isGain)
+    </b></tt><br>
+    删除指定的节点，若 isGain 的值为真，且此节点存在子节点，其子节点会接入此节点的父节点上。<br>
+    若 isGain 的值为假，其子节点不会接入此节点的父节点上。<p>
+</blockquote>
+
+<br><p>
+<h4>改变：</h4>
+<blockquote>
+    <tt><b><font color="#0000FF">void </font>
+    ds_tree_node_set_value(<font color="#0000FF">real </font>id, 
+    <font color="#0000FF">dynamic </font>value)
+    </b></tt><br>
+    改变指定节点的值。<p>
+    
+    <tt><b><font color="#0000FF">bool </font>
+    ds_tree_node_replace(<font color="#0000FF">real </font>id, 
+    <font color="#0000FF">real </font>n, 
+    <font color="#0000FF">real </font>root)
+    </b></tt><br>
+    覆盖指定节点的子节点。root 为要覆盖原节点的根节点 ID。<br>
+    若 root 不是根节点，则会切断 root 与原节点之间的关系。<br>
+    返回是否覆盖成功。<p>
+    
+    <tt><b><font color="#0000FF">bool </font>
+    ds_tree_node_insert(<font color="#0000FF">real </font>id, 
+    <font color="#0000FF">real </font>pos, 
+    <font color="#0000FF">real </font>root)
+    </b></tt><br>
+    在指定节点中的指定位置 pos 插入一个子节点。 root 为要添加原节点的根节点 ID。<br>
+    若 root 不是根节点，则会切断 root 与原节点之间的关系。<br>
+    返回是否插入成功。<p>
+</blockquote>
+
+<br><p>
+<h4>获取：</h4>
+<blockquote>
+    <tt><b><font color="#0000FF">dynamic </font>
+    ds_tree_node_get_value(<font color="#0000FF">real </font>id)
+    </b></tt><br>
+    返回指定节点的值，未找到则返回值 <b>noone</b>。<p>
+    
+    <tt><b><font color="#0000FF">real </font>
+    ds_tree_count(<font color="#0000FF">real </font>id)
+    </b></tt><br>
+    返回指定节点下的节点数量(包括自己)。<p>
+    
+    <tt><b><font color="#0000FF">real </font>
+    ds_tree_node_get_child(<font color="#0000FF">real </font>id, 
+    <font color="#0000FF">real </font>n)
+    </b></tt><br>
+    返回指定节点的子节点，未找到则返回值 <b>noone</b>。<br>
+    因为一个节点可以有多个子节点，所以要写入顺序n。<p>
+    
+    <tt><b><font color="#0000FF">dynamic </font>
+    ds_tree_node_get_child_value(<font color="#0000FF">real </font>id, 
+    <font color="#0000FF">real </font>n)
+    </b></tt><br>
+    返回指定节点的子节点的值，未找到则返回值 <b>noone</b>。<p>
+    
+    <tt><b><font color="#0000FF">real </font>
+    ds_tree_node_get_child_count(<font color="#0000FF">real </font>id)
+    </b></tt><br>
+    返回指定节点的子节点数量。<p>
+    
+    <tt><b><font color="#0000FF">real </font>
+    ds_tree_node_get_child_number(<font color="#0000FF">real </font>id)
+    </b></tt><br>
+    返回指定节点在父节点下的顺序位置。<p>
+    
+    <tt><b><font color="#0000FF">real </font>
+    ds_tree_node_get_parent(<font color="#0000FF">real </font>id)
+    </b></tt><br>
+    返回指定节点的父节点。<p>
+    
+    <tt><b><font color="#0000FF">dynamic </font>
+    ds_tree_node_get_parent_value(<font color="#0000FF">real </font>id)
+    </b></tt><br>
+    返回指定节点的父节点的值。<p>
+    
+    <tt><b><font color="#0000FF">real </font>
+    ds_tree_node_get_root(<font color="#0000FF">real </font>id)
+    </b></tt><br>
+    返回指定节点所在 ds_tree 的根节点。<p>
+    
+    <tt><b><font color="#0000FF">bool </font>
+    ds_tree_node_isleaf(<font color="#0000FF">real </font>id)
+    </b></tt><br>
+    返回指定节点是否为 ds_tree 的终端节点。<p>
+    
+    <tt><b><font color="#0000FF">bool </font>
+    ds_tree_node_isroot(<font color="#0000FF">real </font>id)
+    </b></tt><br>
+    返回指定节点是否为 ds_tree 的根节点。<p>
+    
+    <tt><b><font color="#0000FF">real </font>
+    ds_tree_find_node(<font color="#0000FF">real </font>id, 
+    <font color="#0000FF">dynamic </font>value)
+    </b></tt><br>
+    搜寻指定数据在 ds_tree 中的位置，如果数据不在 ds_tree 中，返回 <b>noone</b>。<p>
+    
+    <tt><b><font color="#0000FF">bool </font>
+    ds_tree_node_exists(<font color="#0000FF">real </font>id, 
+    <font color="#0000FF">real </font>root)
+    </b></tt><br>
+    返回指定节点 id 是否是指定节点 root 的子节点。<p>
+    
+    <tt><b><font color="#0000FF">real </font>
+    ds_tree_node_get_depth(<font color="#0000FF">real </font>id)
+    </b></tt><br>
+    返回指定节点在整个 ds_tree 中的层级深度。<p>
+    
+    <tt><b><font color="#0000FF">real </font>
+    ds_tree_node_get_height(<font color="#0000FF">real </font>id)
+    </b></tt><br>
+    返回指定节点所在层在整个 ds_tree 中的宽度。<p>
+    
+    <tt><b><font color="#0000FF">real </font>
+    ds_tree_traversal(<font color="#0000FF">real </font>id, 
+    <font color="#0000FF">real </font>order, 
+    <font color="#0000FF">bool </font>notme)
+    </b></tt><br>
+    遍历指定的 ds_tree，并将其中的节点 ID 按照指定规则进行排序，返回排序后的 ds_list 的 ID。<br>
+    若 notme 的值为真，则排序后的 ds_list 不会包括自己的ID。<br>
+    以下为 order 所使用的值：
+    <ul>
+        <li><b>tr_levelorder</b>：按照层序遍历的规则来遍历指定的 ds_tree。</li>
+        <li><b>tr_preorder</b>：以前序遍历的规则来遍历指定的 ds_tree。</li>
+        <li><b>tr_postorder</b>：以后序遍历的规则来遍历指定的 ds_tree。</li>
+        <li><b>tr_inorder</b>：以中序遍历的规则来遍历指定的 ds_tree。</li>
+    </ul><p>
+</blockquote>
+
+<br><p>
+<h4>字符串：</h4>
+<blockquote>
+    <tt><b><font color="#0000FF">void </font>
+    ds_tree_write(<font color="#0000FF">real </font>id, 
+    <font color="#0000FF">string </font>path)
+    </b></tt><br>
+    将指定的节点及其子节点写入一个文件里。<p>
+    
+    <tt><b><font color="#0000FF">real </font>
+    ds_tree_read(<font color="#0000FF">string </font>path)
+    </b></tt><br>
+    将函数 ds_tree_write() 所创建的文件重新编译为一个 ds_tree，并返回其 id。<p>
+    
+    <tt><b><font color="#0000FF">void </font>
+    ds_tree_debug_write(<font color="#0000FF">string </font>id, 
+    <font color="#0000FF">string </font>path)
+    </b></tt><br>
+    将指定的节点及其子节点写入一个文件里。此文件人类是可读的。<p>
+</blockquote>
+
+</body>
+</html>

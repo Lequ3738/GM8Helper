@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+
+  <title>列表</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+
+
+<body background="images/back.gif"><!--START-->
+<h3 class="style1">列表 </h3>
+<span class="style1"> 
+ 
+ 列表是一个以特定顺序储存数据的集合，你可以将数据加入到列表末端，或者插入到列表的任何位置。你可以使用索引来操作数据，也可以按升序或降序对数据进行排序。列表可用在很多地方，例如储存一些会变化的数据。列表是用简单的数组实现的，不过它是已编译的代码，比直接使用数组的效率要高得多。以下是列表相关的函数 : </span>
+<p class="style1">
+</p>
+<blockquote><tt><b>ds_list_create()</b></tt> 
+ 建立一个新的列表。这个函数返回一个整数值作为id，其他函数使用这个列表时一定会用到这个id。可以建立多个列表。 
+  <br>
+  <tt><b>ds_list_destroy(id)</b></tt>  
+销毁指定id的列表，释放内存。当你不再需要这个列表的时候，不要忘记调用这个函数。 <br>
+  <tt><b>ds_list_clear(id)</b></tt> 
+  清空指定id的列表，删除所有的数据，但不销毁它。<br><!-- GM70 added -->
+  <tt><b>ds_list_copy(id,source)</b></tt>&nbsp;<FONT face="Courier New">将源列表复制到指定id的列表。</FONT><br><!-- GM70 end added --><tt><b>ds_list_size(id)</b></tt> 返回指定id的列表储存了多少个数据。 
+  <br>
+  <tt><b>ds_list_empty(id)</b></tt> 
+  返回指定id的列表是否为空，这与检查列表的数据总数是否为0作用相同。<br>
+  <tt><b>ds_list_add(id,val)</b></tt> 加入数值到指定id列表的末端。 
+  <br>
+  <tt><b>ds_list_insert(id,pos,val)</b></tt> 
+  在列表中的指定位置POS插入值。第一个位置是0，最后一个位置是列表的数据总数减去1。 <br>
+  <tt><b>ds_list_replace(id,pos,val)</b></tt> 用新值取代指定位置POS的数值。 
+  <br>
+  <tt><b>ds_list_delete(id,pos)</b></tt> 删除列表中指定位置POS的数值（位置0为第一个数据）。 
+  <br>
+  <tt><b>ds_list_find_index(id,val)</b></tt> 搜寻指定数据的位置，如果数据不在列表中，返回-1。 
+  <br>
+  <tt><b>ds_list_find_value(id,pos)</b></tt> 返回列表中指定位置的数值。 
+  <br>
+  <tt><b>ds_list_sort(id,ascend)</b></tt> 
+  将列表中的数据按照规则排序，当ascend为真时按升序排列，为假时按递降序排列。<br><!-- GM70 added -->
+  <tt><b>ds_list_shuffle(id)</b></tt>&nbsp;打乱列表中的数据，使列表中的数据顺序随机。<br>
+ 
+  <tt><b>ds_list_write(id)</b></tt>将列表转换为一个字符串，并返回这个字符串。字符串可以被保存到一个文件中，这为保存数据结构提供了一个简单的机制。<br>
+
+  <tt><b>ds_list_read(id,str)</b></tt>&nbsp;读取指定字符串的列表（调用上一个函数所返回的字符串） 
+</blockquote>
+</body>
+</html>

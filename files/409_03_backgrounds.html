@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>Backgrounds</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+<!--START-->
+
+<h3>背景</h3>
+
+下列程序用于创建新的背景并移除他们。
+<blockquote>
+  <tt><b>background_duplicate(ind)</b></tt> 
+  	创建背景ind的副本，返回新背景的索引，出错时返回-1<br>
+  <tt><b>background_assign(ind,back)</b></tt>指定背景分配为背景 ind 。这个函数制造了一个背景的拷贝。<br> 
+  <tt><b>background_add(fname,removeback,smooth)</b></tt> 将文件 fname 的图片添加到背景资源，可以使用许多不同类型的图像。图像的alpha通道用于透明度。 <tt>removeback</tt> 表示是否将图像左下角的颜色当作背景色处理，
+	<tt>smooth</tt>表示是否平滑图像边缘。函数返回新背景的索引，你可以将索引分配给background_index[0]或直接绘制出来，出错时返回-1。<br>
+   <tt><b>background_replace(ind,fname,removeback,smooth)</b></tt> 同上但是是替换背景索引。函数返回是否成功。即使背景在房间中可见时也会被替换。<br>
+  <tt><b>background_add_background(fname)</b></tt>添加文件fname到背景资源。文件必须是一个用GameMaker导出的.gmbck，这个函数没有多余的参数。函数返回新背景的索引，你可以将索引分配给background_index[0]或直接绘制出来，出错时返回-1。<br>
+   <tt><b>background_replace_background(ind,fname)</b></tt>同上但是是替换背景索引。函数返回是否成功。即使背景在房间中可见时也会被替换。<br>
+  <tt><b>background_create_color(w,h,col)</b></tt> 
+  	使用制定颜色创建指定大小的背景，返回新背景的索引，出错时返回-1<br>
+  <tt><b>background_create_gradient(w,h,col1,col2,kind) </b></tt>创建一个渐变背景. 
+	col1 和 col2 表示两个渐变色. kind是0-5的数字，用来表示渐变类型: 0=水平渐变，1=垂直渐变， 2= 矩形渐变，3=椭圆形渐变,
+	4=双水平渐变l, 5=双垂直渐变，返回新背景的索引，出错时返回-1<br>
+  <tt><b>background_create_from_screen(x,y,w,h,removeback,smooth)</b></tt>?通过复制给定屏幕区域，创建一个背景。这个函数可以用来创建任何你想用的背景。在屏幕上使用绘制函数绘制图像接着从中创建一个背景。（如果你不在绘制事件中使用，你恰好可以这样做，它不会刷新屏幕所以在屏幕上不可见）其他参数和上面一样。函数返回新背景的索引。这儿必须要有一个操作警告。即使我们谈论屏幕,它实际上是绘图区域的问题。屏幕上有一个窗口,在这个窗口中的图像可以缩放的事实并不重要。<br>
+  <tt><b>background_create_from_surface(id,x,y,w,h,removeback,smooth)</b></tt>通过从给定id的表面复制给定区域，创建一个背景。这个函数可以用来创建任何你想用的背景。在表面上使用绘制函数绘制图像接着从中创建一个背景。函数返回新背景的索引。注意，背景的透明度值维持不变。<br>
+  <tt><b>background_delete(ind)</b></tt> 将背景从内存中删除，释放内存空间。<BR>
+</blockquote>
+
+<p>下列程序用于改变背景的外观。
+<blockquote>
+  <tt><b>background_set_alpha_from_background(ind,back)</b></tt>使用背景back的灰度值来改变背景ind的alpha通道（透明度）。这个操作不能撤销。<br>
+</blockquote>
+
+<p>
+
+
+<!--END-->
+</body>
+</html>
+
+<!-- KEYWORDS
+background_duplicate()
+background_assign()
+background_add()
+background_replace()
+background_add_background()
+background_replace_background()
+background_create_color()
+background_create_gradient()
+background_create_from_screen()
+background_create_from_surface()
+background_delete()
+background_set_alpha_from_background()
+
+-->

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>常规</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+
+<!--START-->
+
+<h1>常规</h1>
+
+<blockquote>
+    <tt id = "gamepad_dll_init"><b>
+    <font color="#0000FF">bool </font>
+    gamepad_dll_init(<font color="#0000FF">string </font>path,
+    [<font color="#0000FF">string </font>databasePath])
+    </b></tt><br>
+    <strong>仅适用于 DLL 版本</strong>。在使用DLL前，调用此函数进行初始化。<br>
+    参数 <b><tt>path</tt></b> 是 DLL 的文件路径。可选参数 <b><tt>databasePath</tt></b> 是映射数据库文件 <b>GamepadDatabase.txt</b> 的路径。<br>
+    返回是否初始化成功。<p>
+
+    <tt id = "gamepad_dll_free"><b>
+    <font color="#0000FF">void </font>
+    gamepad_dll_free()
+    </b></tt><br>
+    <strong>仅适用于 DLL 版本</strong>。游戏结束时，调用此函数释放DLL。<p>
+    
+    <tt id = "gamepad_update"><b>
+    <font color="#0000FF">bool </font>
+    gamepad_update()
+    </b></tt><br>
+    此扩展需要在游戏的主控对象中每步调用此函数来更新手柄状态。推荐在“步开始（Begin Step）”事件中调用此函数。<br>
+    当游戏手柄插入设备（或将其移除）时，此函数返回 <b><tt>true</tt></b>，否则返回 <b><tt>false</tt></b>。<p>
+</blockquote>
+
+<!--END-->
+
+</body>
+</html>

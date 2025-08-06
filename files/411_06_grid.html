@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+
+  <title>栅格</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+
+
+<body background="images/back.gif"><!--START--><!-- GM61 new section-->
+<h3 class="style1">栅格</h3>
+<span class="style1"> 
+ 
+ 栅格类似一个二维数组，宽度与高度均为整数。栅格允许根据索引（x与y方向都以0开始的坐标轴坐标）去设定并检索单元中的数据，也可以在指定范围设定数值、增加数值、存取总和、最大值、最小值和平均值。栅格用来代表一个以格子来分割的场景很有用。虽然所有的功能也可以用二维数组来实现，但是使用栅格会让区域性操作事半功倍。以下是栅格的函数 : </span>
+<p class="style1">
+</p>
+<blockquote><tt><b>ds_grid_create(w,h)</b></tt> 
+ 用指定的宽度和高度建立一个新的栅格，这个函数返回一个整数值作为id，其他函数使用这个栅格时一定会用到这个id。 
+  <br>
+  <tt><b>ds_grid_destroy(id)</b></tt> 
+  销毁指定id的栅格，释放内存。当你不再需要这个栅格的时候，不要忘记调用这个函数。 
+<br >
+  <tt><b>ds_grid_copy(id,source)</b></tt>&nbsp;<FONT face="Courier New">将源映射复制到指定id的映射。</FONT>
+<br><!-- GM70 end added --><tt><b>ds_grid_resize(id,w,h)</b></tt> 重设栅格的宽度和高度，存在的单位会保留原有的值。 
+  <br>
+  <tt><b>ds_grid_width(id)</b></tt> 返回栅格的宽度。 
+  <br>
+  <tt><b>ds_grid_height(id)</b></tt> 返回栅格的高度。 
+  <br>
+  <tt><b>ds_grid_clear(id,val)</b></tt> 清除栅格的指定数值（可以是数字或字符串）。 
+  <br>
+  <tt><b>ds_grid_set(id,x,y,val)</b></tt> 设定栅格中指定的单位为指定的数值。 
+  <br>
+  <tt><b>ds_grid_add(id,x,y,val)</b></tt> 加入数值到栅格中指定的单位，如果是字符串会串联起来。 
+  <br>
+  <tt><b>ds_grid_multiply(id,x,y,val)</b></tt> 将栅格中指定的单位与数值相乘，只对数字有效。 
+  <br>
+  <tt><b>ds_grid_set_region(id,x1,y1,x2,y2,val)</b></tt> 
+  将指定区域中的所有单元格设置为指定的值（可以是数字或字符串）。 
+  <br>
+  <tt><b>ds_grid_add_region(id,x1,y1,x2,y2,val)</b></tt> 
+  给指定区域中的所有单元格加上一个指定的值，如果是字符串会串联起来。 <br>
+  <tt><b>ds_grid_multiply_region(id,x1,y1,x2,y2,val)</b></tt> 
+ 将栅格中指定范围的单位与数值相乘，只对数字有效。 <br>
+  <tt><b>ds_grid_set_disk(id,xm,ym,r,val)</b></tt> 
+ 设定以(xm,ym)为中心、r为半径的圆盘的所有单位为指定数值。 
+  <br>
+  <tt><b>ds_grid_add_disk(id,xm,ym,r,val)</b></tt>  
+加入数值到以(xm,ym)为中心、r为半径的圆盘的所有单位中。 <br>
+  <tt><b>ds_grid_multiply_disk(id,xm,ym,r,val)</b></tt> 
+ 将以(xm,ym)为中心、r为半径的圆盘的所有单位与数值相乘。 <br>
+  <tt><b>ds_grid_get(id,x,y)</b></tt> 
+返回栅格中指定单位的数值。 <br>
+  <tt><b>ds_grid_get_sum(id,x1,y1,x2,y2)</b></tt> 
+返回指定范围的所有单位的总和，数字才有效。 <br>
+  <tt><b>ds_grid_get_max(id,x1,y1,x2,y2)</b></tt> 
+返回指定范围中最大的单位，数字才有效。 <br>
+  <tt><b>ds_grid_get_min(id,x1,y1,x2,y2)</b></tt> 
+返回指定范围中最小的单位，数字才有效。 <br>
+  <tt><b>ds_grid_get_mean(id,x1,y1,x2,y2)</b></tt> 
+返回指定范围的所有单位的平均值，数字才有效。 <br>
+  <tt><b>ds_grid_get_disk_sum(id,xm,ym,r)</b></tt> 
+返回以(xm,ym)为中心、r为半径的圆盘的所有单位 的总和。 
+  <br>
+  <tt><b>ds_grid_get_disk_min(id,xm,ym,r)</b></tt> 返回以(xm,ym)为中心、r为半径的圆盘中最小的单 
+位。 <br>
+  <tt><b>ds_grid_get_disk_max(id,xm,ym,r)</b></tt> 
+返回以(xm,ym)为中心、r为半径的圆盘中最大的单 位。 
+  <br>
+  <tt><b>ds_grid_get_disk_mean(id,xm,ym,r)</b></tt> 返回以(xm,ym)为中心、r为半径的圆盘的所有单位 
+的平均值。 <br>
+  <tt><b>ds_grid_value_exists(id,x1,y1,x2,y2,val)</b></tt> 
+返回指定的数值是否存在于指定的范围。 <br>
+  <tt><b>ds_grid_value_x(id,x1,y1,x2,y2,val)</b></tt> 
+返回指定范围中有指定数值的单位的x座标。 <br>
+  <tt><b>ds_grid_value_y(id,x1,y1,x2,y2,val)</b></tt> 
+返回指定范围中有指定数值的单位的y座标。 
+  <br>
+  <tt><b>ds_grid_value_disk_exists(id,xm,ym,r,val)</b></tt> 
+返回指定的数值是否存在于以(xm,ym) 为中心、r为半径的圆盘中。 
+  <br>
+  <tt><b>ds_grid_value_disk_x(id,xm,ym,r,val)</b></tt> 返回以(xm,ym)为中心、r为半径的圆盘中有 
+指定数值的单位的x座标。 <br>
+  <tt><b>ds_grid_value_disk_y(id,xm,ym,r,val)</b></tt> 
+返回以(xm,ym)为中心、r为半径的圆盘中有 指定数值的单位的y座标。<br><!-- GM70 added -->
+  <tt><b>ds_grid_shuffle(id)</b></tt>打乱id栅格值,让他们得到一个随机秩序.<br>
+
+  <tt><b>ds_grid_write(id)</b></tt>将栅格转换为一个字符串，并返回这个字符串。字符串可以被保存到一个文件中，这为保存数据结构提供了一个简单的机制。
+
+  <tt><b>ds_grid_read(id,str)</b></tt>读取指定字符串的映射（调用上一个函数所返回的字符串）
+</blockquote>
+</body>
+</html>

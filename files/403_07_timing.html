@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>定时</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif"><!--START-->
+
+<h3>定时</h3>
+
+一个好的游戏要求精确的时间控制。幸运的是 Game Maker 有许多时间方面的函数。使事物恒速（   rate ）发生。这个速度（ rate ）在定义房间的时候设置。你可以用全局变量 room_speed 来改变它。举例来说，通过每一步对 room_speed   增加一个很小的量（比如 0.001 ），你可以缓慢增加游戏的速度，使它难度更高。如果你的电脑很慢，游戏速度可能不能达到。可以使用变量 fps   来不断监测实际每秒的帧数。最后，一些高级定时使用时可以用变量 current_time ，电脑开始时的毫秒数。这儿是所有可用的变量（只有第一个可以改变） :
+<p>
+<blockquote>
+  <tt><b>room_speed</b></tt> 当前房间的游戏速度（单位为步每秒） <br>
+  <tt><b>fps*</b></tt> 实际每秒的帧数。<br>
+  <tt><b>current_time* </b></tt>系统开始时经过的毫秒数。<br>
+  <tt><b>current_year*</b></tt> 当前年。<br>
+  <tt><b>current_month*</b></tt> 当前月。<br>
+  <tt><b>current_day* </b></tt>当前日。<br>
+  <tt><b>current_weekday*</b></tt>
+    当前周。(1=周日, ..., 7=周六).<br>
+  <tt><b>current_hour*</b></tt> 当前小时。<br>
+  <tt><b>current_minute*</b></tt> 当前分。<br>
+  <tt><b>current_second*</b></tt> 当前秒。<br>
+</blockquote>
+
+<p>有时候你需要将游戏停止一小会儿。使用 sleep 函数 。
+<blockquote>
+  <tt><b>sleep(numb)</b></tt> 休眠numb毫秒</blockquote>
+
+<p>如你所知，每个实例有 12 个不同的计时器可以设置。使用下面的变量改变（或获取）不同计时器的值 :
+<blockquote>
+  <tt><b>alarm[0..11] </b></tt>指定计时器的值。（注意只有在对象的计时器事件包含动作时，计时器才会更新！） 
+<!-- GM61 end changed -->
+</blockquote>
+
+<p>复杂的时间问题可以使用时间轴资源。每个实例都有一个时间轴资源关联。下面的函数是处理时间轴的 :
+<blockquote>
+  <P>
+  <tt><b>timeline_index</b></tt> 与实例关联的时间线的索引。可以设定为一个特定的时间轴然后使用它，设为 -1 时不使用时间轴。 注意，设定后不会使时间轴运行，启动时间轴请用timeline_running<br>
+  <tt><b>timeline_position</b></tt> 当前时间轴位置。可以改变它的值来跳过部分内容或是重复部分内容<br>
+  <tt><b>timeline_speed</b></tt>一般来说，时间轴上的位置每步都增加1。可以改变为不同的值。你可以用一个实数比如0.5。如果值比1大，同样的时间步内会发生更多的事件。他们会根据正确的命令允许，所以不会跳过任何动作<BR><FONT face="Courier New"><STRONG>timeline_running</STRONG>设定时间轴是否运行（true），暂停或停止（false），你可以通过更改这个变量来运行或停止时间轴</FONT><br>
+  <tt><STRONG>timeline_looping</STRONG></tt> 
+  表示是否时间轴是否循环。你可以选择开启或关闭</P> </blockquote>
+</body>
+</html>
+
+<!-- KEYWORDS
+timing
+frames per second
+speed
+
+room_speed
+fps
+current_time
+current_year
+current_month
+current_day
+current_weekday
+current_hour
+current_minute
+current_second
+sleep()
+alarm[0..11]
+timeline_index
+timeline_position
+timeline_speed
+
+-->

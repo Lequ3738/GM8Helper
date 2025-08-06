@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>渲染控制</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+
+<!--START-->
+
+<h1>渲染控制</h1>
+
+<blockquote>
+    <tt><b>
+    <font color="#0000FF">bool </font>
+    d3d_set_mask(<font color="#0000FF">bool </font>r, 
+    <font color="#0000FF">bool </font>g, 
+    <font color="#0000FF">bool </font>b, 
+    <font color="#0000FF">bool </font>a)
+    </b></tt><br>
+    独立启用/禁用各个颜色通道的写入。例如，在表面绘制时不影响 Alpha 通道。<p>
+    
+    <tt><b>
+    <font color="#0000FF">bool </font>
+    d3d_set_zwrite(<font color="#0000FF">bool </font>state)
+    </b></tt><br>
+    启用/禁用深度缓冲区写入，类似于上个函数但用于深度。<p>
+    
+    <tt><b>
+    <font color="#0000FF">bool </font>
+    d3d_set_zbias(<font color="#0000FF">real </font>bias)
+    </b></tt><br>
+    偏移绘制深度，防止同位置多边形的深度冲突导致闪烁问题，适用于阴影、贴花等。<br>
+    值越高，物体越靠前。传入整数 <b>0-16</b>，默认 <b>0</b>（禁用）。<p>
+    
+    <tt><b>
+    <font color="#0000FF">bool </font>
+    d3d_set_alphatest(<font color="#0000FF">real </font>value, 
+    <font color="#0000FF">real </font>mode)
+    </b></tt><br>
+    通过 Alpha 测试过滤像素，可以提高性能。<b>value</b> 范围为 0-255，<b>mode</b> 使用 <b>cmp_*</b> 常量。传入 <b>-1</b> 以禁用 Alpha 测试，正值启用。<br>
+    例如：<br>
+    <pre>d3d_set_alphatest(128, cmp_greaterequal);</pre>
+    仅绘制不透明度至少为 50% 的像素，提高性能。<p>
+    
+    <tt><b>
+    <font color="#0000FF">bool </font>
+    d3d_set_ztest(<font color="#0000FF">real </font>mode)
+    </b></tt><br>
+    仅绘制符合深度测试条件的像素，与当前深度缓冲区值比较。使用 <b>cmp_*</b> 常量，默认 <b>cmp_lessequal</b>。<p>
+    
+    <tt><b>
+    <font color="#0000FF">bool </font>
+    d3d_set_fillmode(<font color="#0000FF">real </font>mode)
+    </b></tt><br>
+    选择渲染模式（点、线框、填充）。使用 <b>fillmode_*</b> 常量，默认 <b>fillmode_solid</b>。<p>
+    
+    <tt><b>
+    <font color="#0000FF">bool </font>
+    d3d_set_normal_auto(<font color="#0000FF">bool </font>state)
+    </b></tt><br>
+    启用/禁用自动法线归一化，解决缩放后模型光照异常问题。<p>
+</blockquote>
+
+<!--END-->
+
+</body>
+</html>

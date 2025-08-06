@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+
+  <title>栈</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+
+
+<body background="images/back.gif"><!--START-->
+<h3 class="style1">栈</h3>
+<span class="style1"> 
+ 栈这种数据结构又叫LIFO(Last-In 
+First-Out)(后进先出)结构，您可以将数据压入栈中或将已有的数据从栈中弹出（删除），弹出时会弹出最后一个被压入栈的数据。栈通常用于中断处理或递归函数。栈有这些函数可以用 : </span>
+<p class="style1">
+</p>
+<blockquote><tt><b>ds_stack_create()</b></tt> 
+ 建立一个新的栈。这个函数返回一个整数值作为id，其他函数使用这个栈时一定会用到这个id。可以建立多个栈 
+.<br>
+  <tt><b>ds_stack_destroy(id)</b></tt>  
+销毁指定id的栈，释放内存。当你不再需要这个栈的时候，不要忘记调用这个函数。 <br>
+  <tt><b>ds_stack_clear(id)</b></tt> 清空指定id的栈，删除所有的数据，但不销毁它。<br><!-- GM70 added -->
+  <tt><STRONG>ds_stack_copy(id,source) 
+  </STRONG>将源栈复制到指定id的栈</tt> <br><!-- GM70 end added --><tt><b>ds_stack_size(id)</b></tt> 返回指定id的栈储存了多少个数据。 
+  <br>
+  <tt><b>ds_stack_empty(id)</b></tt> 
+  返回指定id的栈是否为空，这与检查栈的数据总数是否为0作用相同。 
+  <br>
+  <tt><b>ds_stack_push(id,val)</b></tt> 将一个数值压入栈。 
+  <br>
+  <tt><b>ds_stack_pop(id)</b></tt> 返回栈顶的值并将其弹出。 
+  <br>
+  <tt><b>ds_stack_top(id)</b></tt> 返回栈顶的值，但不将其从栈中弹出。<br><!-- GM70 added -->
+  <tt><b>ds_stack_write(id)</b></tt>&nbsp;将栈转换为一个字符串，并返回这个字符串。字符串可以被保存到一个文件中，这为保存数据结构提供了一个简单的机制。<br>
+
+  <tt><b>ds_stack_read(id,str)</b></tt>&nbsp;读取指定字符串的栈（调用上一个函数所返回的字符串）
+</blockquote>
+</body>
+</html>

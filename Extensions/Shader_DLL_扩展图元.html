@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>扩展图元</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+
+<!--START-->
+
+<h1>扩展图元</h1>
+
+由于 GM 自带的 <b>draw_*</b> 函数在每次调用时都会使用默认的顶点着色器，于是在使用自定义顶点着色器的时候，必须使用以下的扩展图元函数来绘制图像。<p>
+使用像素着色器的时候也可以用扩展图元，相对 GM 自带的 <b>draw_primitive_*</b> 和 <b>draw_vertex_*</b> 函数，新增了对<b>法线，镜面颜色/透明度，不同纹理阶段的独立坐标</b>的支持。
+
+<blockquote>
+    <tt><b>
+    <font color="#0000FF">bool </font>
+    d3d_primitive_begin_ext(<font color="#0000FF">real </font>primitive, 
+    <font color="#0000FF">bool </font>textured)
+    </b></tt><br>
+    开始绘制扩展图元，最大 8192 个顶点。<b>textured</b> 来定义是否使用纹理，使用 <b>d3d_set_tex()</b> 控制纹理。若无纹理，设为 <b>false</b> 并调用 <b>d3d_set_tex_all(-1)</b>。</p>
+    <p><strong>注意</strong>：绘制时使用纹理坐标与普通方法不同，需为每个顶点单独指定坐标：</p>
+    <p><strong>无纹理示例</strong>：</p>
+    <pre>
+d3d_primitive_begin_ext(pr_trianglestrip, false);
+  d3d_vertex_ext(...);
+  d3d_vertex_ext(...);
+  d3d_vertex_ext(...);
+d3d_primitive_end_ext();</pre>
+    <p><strong>带纹理示例</strong>：</p>
+    <pre>
+d3d_primitive_begin_ext(pr_trianglestrip, true);
+  d3d_vertex_ext(...);
+  d3d_vertex_ext_tex(...); // 定义每个阶段最多 8 组纹理坐标
+  d3d_vertex_ext_next();   // 结束当前顶点定义
+  d3d_vertex_ext(...);
+  d3d_vertex_ext_tex(...);
+d3d_primitive_end_ext();   // 绘制</pre>
+    <p>这些函数不会直接影响纹理阶段，因此即使 <b>textured</b> 设为 <b>true</b>，仍可绘制无坐标的纹理图元。这样设计的目的是允许在<strong>顶点着色器</strong>中定义坐标。<p>
+    
+    <tt><b>
+    <font color="#0000FF">bool </font>
+    d3d_vertex_ext(<font color="#0000FF">real </font>x, 
+    <font color="#0000FF">real </font>y, 
+    <font color="#0000FF">real </font>z, 
+    <font color="#0000FF">real </font>normalX, 
+    <font color="#0000FF">real </font>normalY, 
+    <font color="#0000FF">real </font>normalZ, 
+    <font color="#0000FF">real </font>color, 
+    <font color="#0000FF">real </font>alpha, 
+    <font color="#0000FF">real </font>speccol, 
+    <font color="#0000FF">real </font>specalpha)
+    </b></tt><br>
+    设置<b>顶点位置</b>、<b>法线</b>、<b>颜色/透明度</b>和<b>镜面颜色/透明度</b>。<b>镜面颜色/透明度</b>仅在着色器使用时生效。<p>
+    
+    <tt><b>
+    <font color="#0000FF">bool </font>
+    d3d_vertex_ext_tex(<font color="#0000FF">real </font>stage, 
+    <font color="#0000FF">real </font>xtex, 
+    <font color="#0000FF">real </font>ytex)
+    </b></tt><br>
+    设置顶点的纹理坐标。每个纹理阶段（共 8 个，索引 0-7）各有一组坐标。<br>
+    <b>注：</b>准确来说此函数的 <b>stage</b> 是纹理坐标集编号，通过不同的 <b>stage</b> 值，分别在着色器中设置 <b>t0 - t5</b>（像素着色器）或 <b>v7 - v14</b>（顶点着色器）。由于此扩展将相同的纹理坐标集编号映射到相同的纹理阶段，为了简化概念，统一用纹理阶段来称呼。<p>
+    
+    <tt><b>
+    <font color="#0000FF">bool </font>
+    d3d_vertex_ext_next()
+    </b></tt><br>
+    结束当前顶点定义，开始下一个顶点。<br>
+    <b>注意：</b>此函数只有在绘制时使用纹理才能使用，若绘制时无纹理，则不需要调用此函数。<p>
+    
+    <tt><b>
+    <font color="#0000FF">bool </font>
+    d3d_primitive_end_ext()
+    </b></tt><br>
+    结束图元绘制。<p>
+    
+    <tt><b>
+    <font color="#0000FF">bool </font>
+    draw_primitive_begin_ext(<font color="#0000FF">real </font>primitive, 
+    <font color="#0000FF">bool </font>textured)<br>
+    <font color="#0000FF">bool </font>
+    draw_vertex_ext(<font color="#0000FF">real </font>x, 
+    <font color="#0000FF">real </font>y, 
+    <font color="#0000FF">real </font>col, 
+    <font color="#0000FF">real </font>alpha, 
+    <font color="#0000FF">real </font>speccol, 
+    <font color="#0000FF">real </font>specalpha)<br>
+    <font color="#0000FF">bool </font>
+    draw_vertex_ext_tex(<font color="#0000FF">real </font>stage, 
+    <font color="#0000FF">real </font>xtex, 
+    <font color="#0000FF">real </font>ytex)<br>
+    <font color="#0000FF">bool </font>
+    draw_vertex_ext_next()<br>
+    <font color="#0000FF">bool </font>
+    draw_primitive_end_ext()
+    </b></tt><br>
+    功能相同，仅适用于 2D 处理。<p>
+</blockquote>
+
+<!--END-->
+
+</body>
+</html>

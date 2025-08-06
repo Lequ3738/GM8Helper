@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+
+  <title>优先队列</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+
+
+<body background="images/back.gif"><!--START-->
+<h3 class="style1">优先队列 </h3>
+<span class="style1"> 
+每一个优先队列中的数据都具有优先值，您可以快速找到最低和最高优先级的值，使用这种数据结构你可以很方便地根据优先级处理数据。以下是优先队列用到的函数 : </span>
+<p class="style1">
+</p>
+<blockquote><tt><b>ds_priority_create()</b></tt> 
+  建立一个新的优先队列。这个函数返回一个整数值作为id，其他函数使用这个优先队列时一定会用到这个id。可以建立多个优先队列。 <br 
+  >
+  <tt><b>ds_priority_destroy(id)</b></tt> 
+  销毁指定id的优先队列，释放内存。当你不再需要这个优先队列的时候，不要忘记调用这个函数。 
+<br >
+  <tt><b>ds_priority_clear(id)</b></tt> 清空叫作这个标识符的优先队列的内容，但不销毁它。<br><!-- GM70 added -->
+  <tt><b>ds_priority_copy(id,source)</b></tt>&nbsp;<FONT face="Courier New">将源优先队列复制到指定id的优先队列。</FONT>
+<br><!-- GM70 end added --><tt><b>ds_priority_size(id)</b></tt> 
+  返回指定id的优先队列储存了多少个数据。 <br 
+  >
+  <tt><b>ds_priority_empty(id)</b></tt> 
+  返回指定id的优先队列是否为空，这与检查优先队列的数据总数是否为0作用相同。<br>
+  <tt><b>ds_priority_add(id,val,prio)</b></tt> 
+以指定优先级加入数据到指定id的优先队列。 
+  <br>
+  <tt><b>ds_priority_change_priority(id,val,prio)</b></tt> 改变指定数值的优先级。 
+  <br>
+  <tt><b>ds_priority_find_priority(id,val)</b></tt> 返回指定数值的优先优先级。 
+  <br>
+  <tt><b>ds_priority_delete_value(id,val)</b></tt> 删除指定的数值。 
+  <br>
+  <tt><b>ds_priority_delete_min(id)</b></tt> 返回最小优先级的数值并移除它。 
+  <br>
+  <tt><b>ds_priority_find_min(id)</b></tt> 返回最小优先级的数值但不移除它。 
+  <br>
+  <tt><b>ds_priority_delete_max(id)</b></tt> 返回最大优先级的数值并移除它。 
+  <br>
+  <tt><b>ds_priority_find_max(id)</b></tt> 返回最大优先权的数级但不移除它。<br><!-- GM70 added -->
+  <tt><b>ds_priority_write(id)</b></tt>&nbsp;将优先队列转换为一个字符串，并返回这个字符串。字符串可以被保存到一个文件中，这为保存数据结构提供了一个简单的机制。
+  <br>
+
+  <tt><b>ds_priority_read(id,str)</b></tt>&nbsp;读取指定字符串的映射（调用上一个函数所返回的字符串） 
+</blockquote>
+</body>
+</html>

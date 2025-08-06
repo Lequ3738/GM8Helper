@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>自定义映射</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+
+<!--START-->
+
+<h1>自定义映射</h1>
+
+<blockquote>
+    <tt id = "gamepad_get_mapping"><b>
+    <font color="#0000FF">string </font>
+    gamepad_get_mapping(<font color="#0000FF">real </font>device)
+    </b></tt><br>
+    此函数可用于获取指定插槽手柄的映射字符串。返回的字符串有如下可能：
+    <ul>
+        <li>游戏手柄的当前映射字符串，例如：<br>
+        <div class = "auto-warp">
+        <pre>"050000005e040000fd020000ffff3f00,Xbox Wireless Controller,a:b0,b:b1,start:b4,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b6,leftshoulder:b9,leftstick:b7,lefttrigger:a4,leftx:a0,lefty:a1,rightshoulder:b10,rightstick:b8,righttrigger:a5,rightx:a2,righty:a3,x:b2,y:b3,platform:windows"</pre></li>
+        <li>如果没有可用的映射，则为“no mapping”字符串。</li>
+        <li>如果插槽索引不是有效的游戏手柄索引，则为“device index out of range”字符串。</li>
+    </ul><p>
+
+    <tt id = "gamepad_test_mapping"><b>
+    <font color="#0000FF">bool </font>
+    gamepad_test_mapping(<font color="#0000FF">real </font>device,
+    <font color="#0000FF">string </font>mapping)
+    </b></tt><br>
+    此函数用于设置游戏手柄映射。您提供要设置的游戏手柄的插槽索引，然后提供映射字符串，该字符串应使用 SDL 格式创建，其中包含以下字段：<br>
+    <pre>&lt;guid&gt;,&lt;description&gt;,platform:&lt;platform-name&gt;,&lt;bindings&gt;</pre>
+    每个字段中应包含的详细信息包括：
+    <ul>
+        <li><b><tt>guid</tt></b> - 唯一标识设备类型的数字和字母字符串（可以使用 <A href="GMGamepad_信息和配置.html#gamepad_get_guid"><b><tt>gamepad_get_guid()</tt></b></A> 函数获得）</li>
+        <li><b><tt>description</tt></b> - 设备的 ASCII 描述（可以使用 <A href="GMGamepad_信息和配置.html#gamepad_get_description"><b><tt>gamepad_get_description()</tt></b></A> 函数获得）</li>
+        <li><b><tt>platform-name</tt></b> - 为“platform:windows”</li>
+        <li><b><tt>bindings</tt></b> - 一组以 ',' 分隔的条目，用于将实际输入绑定到特定的<A href="GMGamepad_Main.html#input">输入常量</A></li>
+    </ul>
+    以逗号分隔的条目列表遵循每个条目的特定格式：
+    <pre>&lt;abstract-gp-name&gt;:&lt;value-binding&gt;</pre>
+    此处 &lt;value-binding&gt;（即：直接游戏手柄输入）可以是以下任何一项：
+    <ul>
+        <li><b><tt>a&lt;N&gt;</tt></b> - 这表示手柄的一个从索引 0 到 <A href="GMGamepad_信息和配置.html#gamepad_axis_count"><b><tt>gamepad_axis_count()</tt></b></A> - 1 的摇杆</li>
+        <li><b><tt>b&lt;N&gt;</tt></b> - 这表示手柄的一个从索引 0 到 <A href="GMGamepad_信息和配置.html#gamepad_button_count"><b><tt>gamepad_button_count()</tt></b></A> - 1 的按钮</tt></b></li>
+        <li><b><tt>h&lt;N&gt;.&lt;mask&gt;</tt></b> - 这表示手柄的一个从索引 0 到 <A href="GMGamepad_信息和配置.html#gamepad_hat_count"><b><tt>gamepad_hat_count()</tt></b></A> - 1 的十字键，&lt;mask&gt; 为 1、2、4 或 8</tt></b></li>
+    </ul>
+    每个输入值都应绑定到一个 SDL 名称，该名称表示为 &lt;abstract-gp-name&gt;，而该名称又绑定到一个<A href="GMGamepad_Main.html#input">输入常量</A>。下表显示了 SDL 名称和输入常量之间的等效性：
+    <figure><table style="border:1px solid #BBBBBB;">
+    <tr>
+        <th style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <strong>SDL 名称</strong></th>
+        <th style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <strong>输入常量</strong></th>
+    </tr>
+    <tbody>
+    <tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>a</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>gp_face1</b></tt></td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>b</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>gp_face2</b></tt></td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>x</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>gp_face3</b></tt></td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>y</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>gp_face4</b></tt></td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>leftshoulder</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>gp_shoulderl</b></tt></td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>lefttrigger</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>gp_shoulderlb</b></tt></td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>rightshoulder</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>gp_shoulderr</b></tt></td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>righttrigger</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>gp_shoulderrb</b></tt></td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>guide</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>gp_select</b></tt></td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>start</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>gp_start</b></tt></td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>leftstick</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>gp_stickl</b></tt></td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>rightstick</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>gp_stickr</b></tt></td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>dpup</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>gp_padu</b></tt></td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>dpdown</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>gp_padd</b></tt></td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>dpleft</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>gp_padl</b></tt></td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>dpright</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>gp_padr</b></tt></td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>leftx</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>gp_axislh</b></tt></td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>lefty</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>gp_axislv</b></tt></td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>rightx</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>gp_axisrh</b></tt></td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>righty</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>gp_axisrv</b></tt></td>
+    </tr>
+    </tbody>
+    </table></figure>
+    构建映射字符串后，它应该类似于如下字符串：
+    <div class = "auto-warp">
+    <pre>"050000005e040000fd020000ffff3f00,Xbox Wireless Controller,a:b0,b:b1,start:b4,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b6,leftshoulder:b9,leftstick:b7,lefttrigger:a4,leftx:a0,lefty:a1,rightshoulder:b10,rightstick:b8,righttrigger:a5,rightx:a2,righty:a3,x:b2,y:b3,platform:windows"</pre>
+    如果成功执行操作，则返回 <b><tt>true</tt></b>，否则返回 <b><tt>false</tt></b>。<p>
+    
+    <tt id = "gamepad_remove_mapping"><b>
+    <font color="#0000FF">bool </font>
+    gamepad_remove_mapping(<font color="#0000FF">real </font>device)
+    </b></tt><br>
+    此函数可用于从给定的游戏手柄插槽索引中删除当前设备映射。<br>
+    调用后，如果您希望能够使用游戏手柄常量正确检测输入，则需要使用 <A href="GMGamepad_自定义映射.html#gamepad_test_mapping"><b><tt>gamepad_test_mapping()</tt></b></A> 函数重新映射插槽索引。<br>
+    如果成功执行操作，则返回 <b><tt>true</tt></b>，否则返回 <b><tt>false</tt></b>。<p>
+</blockquote>
+
+<!--END-->
+
+</body>
+</html>

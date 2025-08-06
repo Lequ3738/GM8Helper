@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+
+
+  
+  
+  <title>队列</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<body background="images/back.gif"><!--START-->
+<h3 class="style1">队列 </h3>
+
+<span class="style1"> 
+  
+队列有点类似于栈，但它以FIFO(First-In First-Out)(先进先出)来运作。最先加入队列的数据会最先被移除。这就像去商店排队买东西，最先排队的人最先被服务。队列通常用于储存一些需要用多次的数据。以下是队列用到的函数： </span>
+<p class="style1">
+</p>
+
+<blockquote><tt><b>ds_queue_create()</b></tt> 
+ 建立一个新的队列。这个函数返回一个整数值作为id，其他函数使用这个队列时一定会用到这个id。可以建立多个队列。 
+  <br>
+
+  <tt><b>ds_queue_destroy(id)</b></tt>  
+销毁指定id的队列，释放内存。当你不再需要这个队列的时候，不要忘记调用这个函数。 <br>
+
+  <tt><b>ds_queue_clear(id)</b></tt> 
+  清空指定id的队列，删除所有的数据，但不销毁它。
+
+
+<br ><!-- GM70 added -->
+  <tt><b>ds_queue_copy(id,source)</b></tt> 
+  <FONT face="Courier New">将源队列复制到指定id的队列。</FONT> <br><!-- GM70 end added --><tt><b>ds_queue_size(id)</b></tt> 返回指定id的队列储存了多少个数据。 
+  <br>
+
+  <tt><b>ds_queue_empty(id)</b></tt>  返回指定id的队列是否为空，这与检查队列的数据总数是否为0作用相同。 
+  <br>
+
+  <tt><b>ds_queue_enqueue(id,val)</b></tt> 加入数值到指定id队列的队尾。 
+  <br>
+
+  <tt><b>ds_queue_dequeue(id)</b></tt> 返回指定id的队列队首的数据，并移除这个数据。 
+  <br>
+
+  <tt><b>ds_queue_head(id)</b></tt> 返回指定id的队列队首的数据，但不移除它。 
+  <br>
+
+  <tt><b>ds_queue_tail(id)</b></tt>  返回指定id的队列队首的数据，也就是最新加入的数据，但不移除它。<br><!-- GM70 added -->
+  <tt><b>ds_queue_write(id)</b></tt>   
+&nbsp;将队列转换为一个字符串，并返回这个字符串。字符串可以被保存到一个文件中，这为保存数据结构提供了一个简单的机制。 <br>
+
+
+  <tt><b>ds_queue_read(id,str)</b></tt>&nbsp;读取指定字符串的队列（调用上一个函数所返回的字符串）
+</blockquote>
+</body>
+</html>

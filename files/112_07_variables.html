@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>表达式与变量</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif"><!--START-->
+
+<h3>   使用表达式和变量</h3>
+ 在许多动作里你都需要提供参数值。您不仅可以输入数字，还可以输入公式，例如 32 * 12。但你实际上可以键入更复杂的表达式。比如，如果你想让实例的水平速度增加一倍，你可以将其设置为2 * hspeed，这里hspeed是表示实例的当前水平速度的变量。这里列出了一些比较重要的变量：
+<p>
+<blockquote>
+<P>
+<b>x</b>实例的横坐标值<BR>
+<b>y</b>实例的纵坐标值<BR>
+<b>hspeed</b>实例的水平速度（单位为像素每步）<br>
+<b>vspeed</b>实例的竖直速度（单位为像素每步）<br>
+<b>direction</b>当前运动的方向，以度数（0-360）表示<BR>
+<b>speed</b> 当前在方向上的速度<BR>
+<b>visible</b> 物体是否可见，可见visible=1，不可见visible=0<BR>
+<b>image_index</b> 此变量指定当前精灵中当前显示的子图像。如果你改变它并速度设置为0（见下文），可以固定显示一张子图.<br>
+<b>image_speed</b> 此变量指定播放子图像的速度，默认值为1。如果将此值设置为大于1，播放速度会变快，可能会跳过某些子图像。如果你使它小于1，播放速度会变慢，可能会重复某些子图像。<BR><STRONG>score</STRONG> 当前分数<BR>
+<b>lives</b> 当前生命数<BR>
+<b>health</b> 当前健康值（0-100）<BR>
+<b>mouse_x</b> 鼠标的横坐标<BR>
+<b>mouse_y</b> 鼠标的纵坐标</P>
+</blockquote>
+<P>您可以使用动作“设定变量”更改这些变量值，也设定一个变量名和值来定义自己的变量（定义变量时不要勾选<STRONG>相对</STRONG> ，因为变量被定义前是不存在的，没有可相对的东西。），然后就可以在表达式中使用这些变量。你创建的变量是独立存在于每一个实例的，这就是说，实例是对象的复制品，每个实例中的变量只有这个实例才能够调用。要创建一全局变量，需要在变量名前加上global.前缀。 </P>
+<P> 您还可以通过"对象名.变量名"的格式引用其他对象的变量，例如，你想将ball的位置移动到coin的位置，可以将ball的位置设置为（<tt>coin.x</tt> , <tt>coin.y）。</tt>在碰撞事件中你可以用<FONT face="Courier New">other.x</FONT> 得到被碰撞物体的x坐标。在条件表达式中您还可以使用“&lt;”（小于），、“&gt;”（大于）等等。 </P>
+<P> 在表达式中也可以使用函数。例如，函数random（10）会给出一个小于10的随机实数，用这个函数你可以将运动的速度或方向设定为随机值。还有更多的一些函数，我们之后会在文档的<A href="400_index.html"> 第四部分</A> 中讲到。 </P>
+</body>
+</html>
+<!-- KEYWORDS
+expressions
+variables
+mouse position
+-->

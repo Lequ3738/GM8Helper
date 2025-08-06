@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>指令顺序和限制</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif"><!--START-->
+
+<h1>指令顺序和限制</h1>
+
+<p>指令必须按以下顺序排列：</p>
+<ol start='' >
+<li><strong>版本声明</strong>（Version）</li>
+<li><strong>常量定义</strong>（Constant）（可选）</li>
+<li><strong>纹理指令</strong>（Texture）</li>
+<li><strong>算术指令</strong>（Arithmetic）</li>
+<li><strong>阶段切换</strong>（Phase）（可选）</li>
+<li><strong>纹理指令</strong>（Texture）</li>
+<li><strong>算术指令</strong>（Arithmetic）</li>
+
+</ol>
+<p><strong>每个阶段最多可以执行：</strong></p>
+<ul>
+<li><strong>6 条</strong> 纹理指令</li>
+<li><strong>8 条</strong> 算术指令</li>
+
+</ul>
+<p>常量定义（Constants）是可选的，阶段指令（Phase）也是可选的。</p>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>顶点着色器</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif"><!--START-->
+
+<h1>顶点着色器</h1>
+
+此扩展支持顶点着色器版本 1.1（vs.1.1），它可以对顶点进行一系列操作，包括矩阵变换，光照和法线计算等。<p>
+顶点着色器只能作用于<a href = "Shader_DLL_扩展图元.html">扩展图元</a>相关的函数，对 GM 中的绘制函数不起作用（比如，你不能将 vs 着色器作用于 <tt><b>draw_sprite()</b></tt> 等类似的函数上）。
+
+<h3>可用函数</h3>
+<blockquote>
+  <tt><b><font color="#0000FF">real </font>
+  d3d_vs_create(<font color="#0000FF">string </font>assembly)
+  </b></tt><br>
+  从汇编源代码编译顶点着色器，返回索引以用于其他函数。<p>
+    
+  <tt><b><font color="#0000FF">bool </font>
+  d3d_vs_destroy(<font color="#0000FF">real </font>shader)
+  </b></tt><br>
+  释放着色器使用的内存，并销毁着色器。<p>
+  
+  <tt><b><font color="#0000FF">bool </font>
+  d3d_set_vs(<font color="#0000FF">real </font>shader)
+  </b></tt><br>
+  设置当前顶点着色器，或使用 -1 表示不使用任何着色器。<br>
+  <b>GM 的默认渲染功能不会受影响</b>，但对于<b>扩展图元函数</b>，此着色器将<b>完全取代</b>变换、光照、颜色和纹理计算。<p>
+  
+  <tt><b><font color="#0000FF">bool </font>
+  d3d_set_vs_const(<font color="#0000FF">real </font>constant, 
+  <font color="#0000FF">real </font>x, 
+  <font color="#0000FF">real </font>y, 
+  <font color="#0000FF">real </font>z, 
+  <font color="#0000FF">real </font>w)
+  </b></tt><br>
+  设置顶点着色器常量寄存器，可用<b>96 个 4 分量寄存器</b>。<p>
+  
+  <tt><b><font color="#0000FF">bool </font>
+  d3d_set_vs_const_col(<font color="#0000FF">real </font>shader, 
+  <font color="#0000FF">real </font>col, 
+  <font color="#0000FF">real </font>alpha)
+  </b></tt><br>
+  设置 GM 格式的颜色到顶点着色器常量寄存器。是一个便捷的方式。<p>
+  
+  <tt><b><font color="#0000FF">bool </font>
+  d3d_set_vs_const_matrix(<font color="#0000FF">real </font>constant)
+  </b></tt><br>
+  将转置的 <strong>世界 × 视图 × 投影矩阵（world × view × projection matrix）</strong> 赋值到 4 个常量寄存器。<br>
+  然后你可以在着色器中使用 <b>m4x4 oPos, v0, cn</b> 来转换顶点，使其符合 GM 的默认行为。例如：
+  <ul>
+  <li><b>0</b> 会设置 <b>c0, c1, c2, c3</b></li>
+  <li><b>4</b> 会设置 <b>c4, c5, c6, c7</b></li>
+  </ul>
+  <strong>注意：</strong> 如果你使用 <b>d3d_transform</b> 相关函数，请<strong>确保在这些函数之后调用本函数</strong>，否则变换结果会出错。
+</blockquote>
+
+这些函数用于处理一组设置。相比逐个设置参数，同时从一个配置文件中应用所有设置会更快。
+<blockquote>
+  <tt><b><font color="#0000FF">real </font>
+  d3d_conf_vs_create()</b></tt><br>创建新的顶点着色器配置，并返回其索引。<p>
+  
+  <tt><b><font color="#0000FF">bool </font>
+  d3d_conf_vs_set(<font color="#0000FF">real </font>conf, 
+  <font color="#0000FF">real </font>constant, 
+  <font color="#0000FF">real </font>x, 
+  <font color="#0000FF">real </font>y, 
+  <font color="#0000FF">real </font>z, 
+  <font color="#0000FF">real </font>w)
+  </b></tt><br>
+  定义顶点着色器常量状态。<p>
+  
+  <tt><b><font color="#0000FF">bool </font>
+  d3d_set_ps_conf(<font color="#0000FF">real </font>conf)
+  </b></tt><br>从预定义配置中设置顶点着色器常量。未设置的值不会覆盖当前值。相比单独指定设置，此方法速度更快。<p>
+</blockquote>
+<!--<IMG src="images/公式.png" width = "550">-->
+
+<h3>编写顶点着色器</h3>
+<p>在着色器模型 1.4 (Shader Model 1.4) 中，顶点着色器同样是用汇编语言编写。不过它的指令数限制没有像素着色器那么严格，最多可以执行128条指令。</p>
+<p>顶点着色器针对每个顶点都会执行一次。</p>
+<p>下面的顶点着色器模拟正常的变换/颜色/纹理设置：</p>
+<pre>
+vs.1.1             // 声明着色器版本，所有着色器都必须包含此声明。
+
+m4x4 oPos,  v0,c0  // 位置，由 c0-c3 中的矩阵变换
+
+mov  oD0,   v5     // 漫反射颜色，是PS着色器中的 v0
+mov  oD1,   v6     // 镜面颜色，是PS着色器中的 v1
+
+mov  oT0,   v7     // 纹理坐标，是PS着色器中的 t0-t5，oT6和oT7在PS着色器中不可用
+mov  oT1,   v8
+mov  oT2,   v9
+mov  oT3,   v10
+mov  oT4,   v11
+mov  oT5,   v12
+mov  oT6,   v13
+mov  oT7,   v14
+</pre>
+
+<h3>快速导航</h3>
+阅读以下文章来快速上手顶点着色器的编写：
+<blockquote>
+   <A href="Shader_DLL_顶点寄存器.html">寄存器</A><br>
+   <A href="Shader_DLL_顶点指令.html">指令</A><br>
+</blockquote>
+
+</body>
+</html>

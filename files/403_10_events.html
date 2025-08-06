@@ -1,0 +1,326 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+
+  <title>Generating events</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+
+
+<body background="images/back.gif">
+
+<!--START-->
+<h3 class="style1"><strong>&#20135;&#29983;&#20107;&#20214; </strong></h3>
+<span class="style1">&#22914;&#20320;&#25152;&#30693;&#65292; <em>Game 
+Maker 
+</em>&#26159;&#23436;&#20840;&#20107;&#20214;&#39537;&#21160;&#30340;&#12290;&#25152;&#26377;&#30340;&#21160;&#20316;&#37117;&#22312;&#20107;&#20214;&#20013;&#21457;&#29983;&#12290;&#26377;&#22823;&#37327;&#19981;&#21516;&#30340;&#20107;&#20214;&#12290;&#21019;&#24314;&#21644;&#38144;&#27585;&#20107;&#20214;&#21457;&#29983;&#22312;&#23454;&#20363;&#21019;&#24314;&#25110;&#26159;&#38144;&#27585;&#26102;&#12290;&#27599;&#19968;&#27493;&#20013;&#65292;&#31995;&#32479;&#39318;&#20808;&#36816;&#34892;&#38393;&#38047;&#20107;&#20214;&#12290;
+&#25509;&#19979;&#26469;&#36816;&#34892;&#38190;&#30424;&#21644;&#40736;&#26631;&#20107;&#20214;&#65292;&#28982;&#21518;&#36816;&#34892;&#24182;&#34892;&#20107;&#20214;&#12290;&#20877;&#28982;&#21518;&#26159;&#30896;&#25758;&#20107;&#20214;&#65292;&#23454;&#20363;&#30896;&#25758;&#21518;&#35774;&#32622;&#21040;&#26032;&#30340;&#20301;&#32622;&#12290;&#26368;&#21518;&#32472;&#21046;&#20107;&#20214;&#29992;&#26469;&#32472;&#21046;&#23454;&#20363;&#65288;&#27880;&#24847;&#26377;&#22810;&#37325;&#35270;&#37326;&#26102;&#32472;&#21046;&#20107;&#20214;&#22312;&#27599;&#27493;
+&#20013;&#35843;&#29992;&#22810;&#27425;&#65289;&#12290;&#20320;&#20063;&#21487;&#20197;&#36890;&#36807;&#20195;&#30721;&#23545;&#24403;&#21069;&#23454;&#20363;&#20351;&#29992;&#20107;&#20214;&#12290;&#19979;&#38754;&#26159;&#21487;&#29992;&#30340;&#20989;&#25968; : </span>
+<p class="style1">
+</p>
+<blockquote class="style1"><tt><b>event_perform(type,numb)</b></tt> &#24403;&#21069;&#23454;&#20363;&#25191;&#34892;&#25351;&#23450;&#31867;&#22411;&#20107;&#20214;&#30340; 
+numb &#21495;&#30721;&#12290;&#26377;&#20197;&#19979;&#20107;&#20214;&#31867;&#22411;&#21487;&#20197;&#25351;&#23450; : 
+  <p>
+  </p>
+  <blockquote><tt><b>ev_create</b></tt> <strong>&#21019;&#24314;&#20107;&#20214; 
+    </strong><br>
+    <tt><b>ev_destroy</b></tt> <strong>&#38144;&#27585;&#20107;&#20214; 
+    </strong><br>
+    <tt><b>ev_step</b></tt> <strong>&#24182;&#34892;&#20107;&#20214; 
+    </strong><br>
+    <tt><b>ev_alarm</b></tt> <strong>&#38393;&#38047;&#20107;&#20214; 
+    </strong><br>
+    <tt><b>ev_keyboard</b></tt> <strong>&#38190;&#30424;&#20107;&#20214; 
+    </strong><br>
+    <tt><b>ev_mouse</b></tt> <strong>&#40736;&#26631;&#20107;&#20214; 
+    </strong><br>
+    <tt><b>ev_collision</b></tt> <strong>&#30896;&#25758;&#20107;&#20214; 
+    </strong><br>
+    <tt><b>ev_other</b></tt> <strong>&#20854;&#20182;&#20107;&#20214; 
+    </strong><br>
+    <tt><b>ev_draw</b></tt> <strong>&#32472;&#21046;&#20107;&#20214; 
+    </strong><br>
+    <tt><b>ev_keypress</b></tt> <strong>&#38190;&#30424;&#25353;&#19979;&#20107;&#20214; 
+    </strong><br>
+    <tt><b>ev_keyrelease</b></tt> <strong>&#38190;&#30424;&#26494;&#24320;&#20107;&#20214;</strong></blockquote>
+</blockquote>
+<blockquote><!-- GM61 changed -->&nbsp;&#26377;&#22810;&#20010;&#20107;&#20214;&#31867;&#22411;&#26102;&#65292;&#21442;&#25968; numb &#21487;&#20197;&#29992;&#26469;&#25351;&#23450;&#31934;&#30830;&#30340;&#20107;&#20214;&#12290;&#27604;&#22914;&#38393;&#38047;&#20107;&#20214; numb &#21487;&#20197;&#35774;&#33539;&#22260; 0 &#21040; 11 &#12290;&#38190;&#30424;&#20107;&#20214;&#21487;&#20197;&#20351;&#29992;&#21442;&#25968; keycode 
+&#12290;&#40736;&#26631;&#20107;&#20214;&#21487;&#20197;&#20351;&#29992;&#19979;&#38754;&#30340;&#24120;&#37327;:
+<!-- GM61 end changed -->
+	
+  <p>
+	</p>
+  <blockquote>
+	    <strong>ev_left_button &#24038;&#38190; </strong><br>
+    <strong>ev_right_button &#21491;&#38190; 
+    </strong><br>
+    <strong>ev_middle_button &#20013;&#38190; </strong><br>
+    <strong>ev_no_button &#27809;&#26377;&#25353;&#38190; 
+    </strong><br>
+    <strong>ev_left_press &#25353;&#19979;&#24038;&#38190; </strong><br>
+    <strong>ev_right_press &#25353;&#19979;&#21491;&#38190; 
+    </strong><br>
+    <strong>ev_middle_press &#25353;&#19979;&#20013;&#38190; </strong><br>
+    <strong>ev_left_release 
+&#25918;&#24320;&#24038;&#38190; </strong><br>
+    <strong>ev_right_release &#25918;&#24320;&#21491;&#38190; 
+    </strong><br>
+    <strong>ev_middle_release &#25918;&#24320;&#20013;&#38190; </strong><br>
+    <strong>ev_mouse_enter 
+&#31227;&#20837;&#40736;&#26631; </strong><br>
+    <strong>ev_mouse_leave &#31227;&#24320;&#40736;&#26631;</strong><tt><b></b></tt><br>
+		
+<!-- GM61 added -->&nbsp;<strong>ev_mouse_wheel_up &#28378;&#36718;&#21521;&#19978; </strong><br>
+    <strong>ev_mouse_wheel_down &#28378;&#36718;&#21521;&#19979; 
+    </strong><br>
+    <strong>ev_global_left_button &#20840;&#23616;&#24038;&#38190; 
+    </strong><br>
+    <strong>ev_global_right_button &#20840;&#23616;&#21491;&#38190; 
+    </strong><br>
+    <strong>ev_global_middle_button &#20840;&#23616;&#20013;&#38190; 
+    </strong><br>
+    <strong>ev_global_left_press &#20840;&#23616;&#25353;&#19979;&#24038;&#38190; 
+    </strong><br>
+    <strong>ev_global_right_press &#20840;&#23616;&#25353;&#19979;&#21491;&#38190; 
+    </strong><br>
+    <strong>ev_global_middle_press &#20840;&#23616;&#25353;&#19979;&#20013;&#38190; 
+    </strong><br>
+    <strong>ev_global_left_release &#20840;&#23616;&#25918;&#24320;&#24038;&#38190; 
+    </strong><br>
+    <strong>ev_global_right_release &#20840;&#23616;&#25918;&#24320;&#21491;&#38190; 
+    </strong><br>
+    <strong>ev_global_middle_release &#20840;&#23616;&#25918;&#24320;&#20013;&#38190;</strong><tt><b></b></tt><br>
+
+<!-- GM61 end added -->&nbsp;<strong>ev_joystick1_left &#19968;&#21495;&#25163;&#26564;&#24038; </strong><br>
+    <strong>ev_joystick1_right &#19968;&#21495;&#25163;&#26564;&#21491; 
+    </strong><br>
+    <strong>ev_joystick1_up &#19968;&#21495;&#25163;&#26564;&#19978; 
+    </strong><br>
+    <strong>ev_joystick1_down &#19968;&#21495;&#25163;&#26564;&#19979; 
+    </strong><br>
+    <strong>ev_joystick1_button1 &#19968;&#21495;&#25163;&#26564;&#25353;&#38062; 1 
+    </strong><br>
+    <strong>ev_joystick1_button2 &#19968;&#21495;&#25163;&#26564;&#25353;&#38062; 2 
+    </strong><br>
+    <strong>ev_joystick1_button3 &#19968;&#21495;&#25163;&#26564;&#25353;&#38062; 3 
+    </strong><br>
+    <strong>ev_joystick1_button4 &#19968;&#21495;&#25163;&#26564;&#25353;&#38062; 4 
+    </strong><br>
+    <strong>ev_joystick1_button5 &#19968;&#21495;&#25163;&#26564;&#25353;&#38062; 5 
+    </strong><br>
+    <strong>ev_joystick1_button6 &#19968;&#21495;&#25163;&#26564;&#25353;&#38062; 6 
+    </strong><br>
+    <strong>ev_joystick1_button7 &#19968;&#21495;&#25163;&#26564;&#25353;&#38062; 7 
+    </strong><br>
+    <strong>ev_joystick1_button8 &#19968;&#21495;&#25163;&#26564;&#25353;&#38062; 8 
+    </strong><br>
+    <strong>ev_joystick2_left &#19968;&#21495;&#25163;&#26564;&#24038; 
+    </strong><br>
+    <strong>ev_joystick2_right &#19968;&#21495;&#25163;&#26564;&#21491; 
+    </strong><br>
+    <strong>ev_joystick2_up &#19968;&#21495;&#25163;&#26564;&#19978; 
+    </strong><br>
+    <strong>ev_joystick2_down &#19968;&#21495;&#25163;&#26564;&#19979; 
+    </strong><br>
+    <strong>ev_joystick2_button1 &#19968;&#21495;&#25163;&#26564;&#25353;&#38062; 1 
+    </strong><br>
+    <strong>ev_joystick2_button2 &#19968;&#21495;&#25163;&#26564;&#25353;&#38062; 2 
+    </strong><br>
+    <strong>ev_joystick2_button3 &#19968;&#21495;&#25163;&#26564;&#25353;&#38062; 3 
+    </strong><br>
+    <strong>ev_joystick2_button4 &#19968;&#21495;&#25163;&#26564;&#25353;&#38062; 4 
+    </strong><br>
+    <strong>ev_joystick2_button5 &#19968;&#21495;&#25163;&#26564;&#25353;&#38062; 5 
+    </strong><br>
+    <strong>ev_joystick2_button6 &#19968;&#21495;&#25163;&#26564;&#25353;&#38062; 6 
+    </strong><br>
+    <strong>ev_joystick2_button7 &#19968;&#21495;&#25163;&#26564;&#25353;&#38062; 7 
+    </strong><br>
+    <strong>ev_joystick2_button8 &#19968;&#21495;&#25163;&#26564;&#25353;&#38062; 8</strong><tt><b></b></tt>  
+    </blockquote>
+&#30896;&#25758;&#20107;&#20214;&#20013;&#35201;&#32473;&#20986;&#21478;&#19968;&#23545;&#35937;&#30340;&#32034;&#24341;&#12290;&#26368;&#21518;&#65292;&#20854;&#20182;&#20107;&#20214;&#20013;&#20351;&#29992;&#20197;&#19979;&#24120;&#37327; : 
+  <p>
+  </p>
+  <blockquote><strong>ev_outside &#20986;&#25151;&#38388; </strong><br>
+    <strong>ev_boundary &#36793;&#30028; 
+    </strong><br>
+    <strong>ev_game_start &#28216;&#25103;&#24320;&#22987; </strong><br>
+    <strong>ev_game_end &#28216;&#25103;&#32467;&#26463; 
+    </strong><br>
+    <strong>ev_room_start &#25151;&#38388;&#24320;&#22987; </strong><br>
+    <strong>ev_room_end &#25151;&#38388;&#32467;&#26463; 
+    </strong><br>
+    <strong>ev_no_more_lives &#27809;&#26377;&#29983;&#21629; 
+    </strong><br>
+    <strong>ev_no_more_health &#27809;&#26377;&#29983;&#21629;&#20540; 
+    </strong><br>
+    <strong>ev_animation_end &#32467;&#26463;&#21160;&#30011; </strong><br>
+    <strong>ev_end_of_path 
+&#32467;&#26463;&#36335;&#24452;</strong><tt><b></b></tt><br>
+
+<!-- GM70 added -->
+	    <tt><b>ev_close_button &#32467;&#26463;&#25353;&#38062;</b></tt><br>
+
+<!-- GM70 end added -->&nbsp;<strong>ev_user0 &#33258;&#23450;&#20041; 0 </strong><br>
+    <strong>ev_user1 &#33258;&#23450;&#20041; 1 
+    </strong><br>
+    <strong>ev_user2 &#33258;&#23450;&#20041; 2 </strong><br>
+    <strong>ev_user3 &#33258;&#23450;&#20041; 3 
+    </strong><br>
+    <strong>ev_user4 &#33258;&#23450;&#20041; 4 </strong><br>
+    <strong>ev_user5 &#33258;&#23450;&#20041; 5 
+    </strong><br>
+    <strong>ev_user6 &#33258;&#23450;&#20041; 6 </strong><br>
+    <strong>ev_user7 &#33258;&#23450;&#20041; 7</strong><tt><b></b></tt><br>
+
+<!-- GM61 added -->&nbsp;<strong>ev_user8 &#33258;&#23450;&#20041; 8 </strong><br>
+    <strong>ev_user9 &#33258;&#23450;&#20041; 9 
+    </strong><br>
+    <strong>ev_user10 &#33258;&#23450;&#20041; 10 </strong><br>
+    <strong>ev_user11 &#33258;&#23450;&#20041; 11 
+    </strong><br>
+    <strong>ev_user12 &#33258;&#23450;&#20041; 12 </strong><br>
+    <strong>ev_user13 &#33258;&#23450;&#20041; 13 
+    </strong><br>
+    <strong>ev_user14 &#33258;&#23450;&#20041; 14 </strong><br>
+    <strong>ev_user15 &#33258;&#23450;&#20041; 15 
+    </strong><tt><b></b></tt><br>
+
+<!-- GM61 end added -->
+    </blockquote>
+&#24182;&#34892;&#20107;&#20214;&#20013;&#20351;&#29992;&#20197;&#19979;&#24120;&#37327; : 
+  <p>
+  </p>
+  <blockquote><tt><b>ev_step_normal</b></tt> <strong>&#27491;&#24120;&#27493; 
+    </strong><br>
+    <tt><b>ev_step_begin</b></tt> <strong>&#27493;&#24320;&#22987; 
+    </strong><br>
+    <tt><b>ev_step_end</b></tt> <strong>&#27493;&#32467;&#26463;</strong></blockquote>
+  <tt><b>event_perform_object(obj,type,numb)</b></tt> 
+&#36825;&#20010;&#20989;&#25968;&#21644;&#19978;&#38754;&#30340;&#20989;&#25968;&#30456;&#21516;&#38500;&#20102;&#36825;&#27425;&#21487;&#20197;&#25351;&#23450;&#20107;&#20214;&#32473;&#21478;&#19968;&#20010;&#23545;&#35937;&#12290;&#27880;&#24847;&#65292;&#22312;&#36825;&#20123;&#20107;&#20214;&#37324;&#30340;&#21160;&#20316;&#26159;&#24403;&#21069;&#23454;&#20363;&#30340;&#65292;&#19981;&#26159;&#32473;&#23545;&#35937;&#23454;&#20363;&#30340;&#12290;<br>
+
+  <tt><b>event_user(numb)</b></tt>
+<!-- GM61 changed -->&nbsp;&#22312;&#20854;&#20182;&#20107;&#20214;&#65288; other events &#65289;&#20013;&#21487;&#20197;&#23450;&#20041; 16 &#20010;&#29992;&#25143;&#20107;&#20214;&#12290;&#21482;&#26377;&#24403;&#20320;&#35843;&#29992;&#36825;&#20010;&#20989;&#25968;&#26159;&#36816;&#34892;&#12290;&#21442;&#25968; numb &#24517;&#39035;&#22312; 0 &#21040; 15 &#30340;&#33539;&#22260;&#20869;&#12290;<br>
+
+<!-- GM61 end changed -->
+  <tt><b>event_inherited()</b></tt>&nbsp;&#25191;&#34892;&#32487;&#25215;&#20107;&#20214;&#12290;&#21482;&#26377;&#23454;&#20363;&#25317;&#26377;&#29238;&#23545;&#35937;&#26159;&#25165;&#26377;&#25928;&#12290;
+</blockquote>
+<p class="style1">&#20351;&#29992;&#19979;&#38754;&#30340;&#21482;&#35835;&#21464;&#37327;&#21487;&#20197;&#33719;&#21462;&#24403;&#21069;&#20107;&#20214;&#25191;&#34892;&#30340;&#20449;&#24687; : 
+</p>
+<p class="style1">
+</p>
+<blockquote class="style1"><tt><b>event_type*</b></tt> &#24403;&#21069;&#24320;&#22987;&#25191;&#34892;&#30340;&#20107;&#20214;&#31867;&#22411;&#12290; 
+  <br>
+  <tt><b>event_number*</b></tt> &#24403;&#21069;&#24320;&#22987;&#25191;&#34892;&#30340;&#20107;&#20214;&#21495;&#30721;&#12290; <br>
+  <tt><b>event_object*</b></tt> 
+&#24403;&#21069;&#25191;&#34892;&#30340;&#20107;&#20214;&#30340;&#23545;&#35937;&#32034;&#24341;&#12290; <br>
+  <tt><b>event_action* </b></tt>&#24403;&#21069;&#25191;&#34892;&#30340;&#20107;&#20214;&#30340;&#21160;&#20316;&#32034;&#24341;&#12290;&#65288; 0 
+&#20026;&#20107;&#20214;&#20013;&#31532;&#19968;&#20010;&#25191;&#34892;&#30340;&#65292;&#20381;&#27425;&#31867;&#25512;&#65289;&#12290;</blockquote>
+<!--END-->
+<!-- KEYWORDS
+events
+generating events
+user-defined events
+
+event_perform()
+event_user()
+event_perform_object()
+event_inherited()
+event_type
+event_number
+event_object
+event_action
+ev_create
+ev_destroy
+ev_step
+ev_alarm
+ev_keyboard
+ev_mouse
+ev_collision
+ev_other
+ev_draw
+ev_keypress
+ev_keyrelease
+ev_left_button
+ev_right_button
+ev_middle_button
+ev_no_button
+ev_left_press
+ev_right_press
+ev_middle_press
+ev_left_release
+ev_right_release
+ev_middle_release
+ev_mouse_enter
+ev_mouse_leave
+ev_mouse_wheel_up
+ev_mouse_wheel_down
+ev_global_left_button
+ev_global_right_button
+ev_global_middle_button
+ev_global_left_press
+ev_global_right_press
+ev_global_middle_press
+ev_global_left_release
+ev_global_right_release
+ev_global_middle_release
+ev_joystick1_left
+ev_joystick1_right
+ev_joystick1_up
+ev_joystick1_down
+ev_joystick1_button1
+ev_joystick1_button2
+ev_joystick1_button3
+ev_joystick1_button4
+ev_joystick1_button5
+ev_joystick1_button6
+ev_joystick1_button7
+ev_joystick1_button8
+ev_joystick2_left
+ev_joystick2_right
+ev_joystick2_up
+ev_joystick2_down
+ev_joystick2_button1
+ev_joystick2_button2
+ev_joystick2_button3
+ev_joystick2_button4
+ev_joystick2_button5
+ev_joystick2_button6
+ev_joystick2_button7
+ev_joystick2_button8
+ev_outside
+ev_boundary
+ev_game_start
+ev_game_end
+ev_room_start
+ev_room_end
+ev_no_more_lives
+ev_animation_end
+ev_end_of_path
+ev_no_more_health
+ev_user0
+ev_user1
+ev_user2
+ev_user3
+ev_user4
+ev_user5
+ev_user6
+ev_user7
+ev_user8
+ev_user9
+ev_user10
+ev_user11
+ev_user12
+ev_user13
+ev_user14
+ev_user15
+ev_step_normal
+ev_step_begin
+ev_step_end
+
+-->
+</body>
+</html>

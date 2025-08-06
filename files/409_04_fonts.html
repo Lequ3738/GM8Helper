@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+
+  <title>字体</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+
+
+<body background="images/back.gif"><!--START-->
+<h3 class="style1"><strong>字体 </strong></h3>
+<span class="style1">游戏中可以使用下列函数创建，替换，并删除字体。（设置的当前字体不能替换或至少在后面再次设置。） </span>
+<p class="style1">
+</p>
+<blockquote class="style1"><tt><b>font_add(name,size,bold,italic,first,last)</b></tt> 
+添加一个新字体并返回它的索引，设置 name 名字， size 大小，是否为 bold 粗体或 italic 斜体，以及 first 第一个和 last 
+最后一个必须创建的字符。 <br>
+  <tt><b>font_add_sprite(spr,first,prop,sep)</b></tt> 
+   
+ 添加一个新字体并返回它的索引。这个字体是通过精灵创建的，所以这个精灵的每个子图像和字体的每个字符是一一对应的关系。参数 first 是精灵中第一张子图所代表的字符。例如，如果您想用精灵表示0-9九个字符（这个字体只包含数字），那么这个参数就应该填ord('0')以代表数字0对应精灵的第一张子图 。参数 
+prop 设定字体是否为比例字体，比例字体中每个字符的宽度和精灵碰撞盒相同。最后，参数 sep 是字符的水平间距。通常设定为2到8之间，具体取决于字体的大小 。 
+  <br>
+  <tt><b>font_replace(ind,name,size,bold,italic,first,last)</b></tt> 用新字体替换字体 
+ind ，设置 name 名字， size 大小，是否为 bold 粗体或 italic 斜体，以及 first 第一个和 last 最后一个必须创建的字符。 
+  <br>
+  <tt><b>font_replace_sprite(ind,spr,first,prop,sep)</b></tt> 用新的精灵做的字体替换字体 
+ind 。 <br>
+  <tt><b>font_delete(ind)</b></tt> 删除指定索引的字体，释放它占用的内存空间。</blockquote>
+<p><!--END--><!-- KEYWORDS
+font_add()
+font_add_sprite()
+font_replace()
+font_replace_sprite()
+font_delete()
+
+--></p>
+</body>
+</html>

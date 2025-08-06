@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<title>实例</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+</head>
+<body background="images/back.gif">
+<!--START-->
+
+<h3>实例</h3>
+
+游戏中，最基本的单位就是各种对象的实例。你可以在游戏进行时更改实例的属性，也可以创建或摧毁实例。我们在之前讨论了许多实例的移动相关变量，后面还要认识一些实例的绘制相关变量，不过每一个实例不仅有移动变量和绘制变量，还有如下的变量：
+<p>
+<blockquote>
+  <tt><b>object_index*</b></tt>对象的索引。这个变量不可以改变。<br>
+  <tt><b>id*</b></tt>实例的唯一标识（&gt;= 100000）。（注意，在房间编辑器中，鼠标指向的实例会显示id。）<br>
+  <tt><b>mask_index</b></tt>用作碰撞遮罩的精灵的索引。值为 -1 时默认使用 sprite_index 。<br>
+  <tt><b>solid</b></tt>实例是否为固体。可以在游戏进行中改变。<br>
+  <tt><b>persistent</b></tt>实例是否持续显示并且移动到另一房间时再现。有些时候你可能想要切换持续性。（比如你想要返回上一个房间时）</blockquote>
+
+<p>处理实例时有个问题。分辨单个的实例不是很容易，因为他们没有名字。某些特殊对象仅有1个实例，你可以使用对象名来代替id。如果一个对象有多个实例则需要获得实例的 id 。对于实例来说，这是一个唯一的标识符，可以在<strong>with</strong>语句中当做对象标识符使用。幸运的是这里有大量的变量及程序帮助你定位实例 id。
+<blockquote>
+  <tt><b>instance_count*</b></tt>房间中现存实例的数量。<br>
+  <tt><b>instance_id[0..n-1]*</b></tt>特定实例的 id。这里的 n 是实例的数量 。</blockquote>
+
+<p>注意，实例对instance_id的分配每一步都改变，所以你不能使用上一步的值。举个例子，你的游戏中的每个单位都拥有力量值，但是你想找到力量值最高的那个:
+<p>
+<blockquote>
+<pre>
+{
+  maxid = -1;
+  maxpower = 0;
+  <b>for</b> (i=0; i&lt;instance_count; i+=1)
+  {
+    iii = instance_id[i];
+    <b>if</b> (instance_exists(iii))
+      <b>if</b> (iii.object_index == unit)
+      {
+        <b>if</b> (iii.power &gt; maxpower)
+          {maxid = iii; maxpower = iii.power;}
+      }
+  }
+}
+</pre>
+</blockquote>
+
+<p>做完循环后， maxid 就是那个最强的单位了。（循环时不要销毁实例，因为会从数组instance_id中移除已销毁实例而导致出错） 当然，对于这种特殊情况，用以下的代码会更好：
+<p>
+<blockquote>
+<pre>
+{
+  maxid = -1;
+  maxpower = 0;
+  <b>with</b> (unit) <b>do</b>
+  {
+    <b>if</b> (power &gt; maxpower)
+      {maxid = self; maxpower = power;}
+  }
+}
+</pre>
+</blockquote>
+
+
+<p>
+<blockquote>
+  <tt><b>instance_find(obj,n)</b></tt>返回值为参数 obj 的第 (n+1) 个实例 id 。参数 obj 可以是某对象或是关键字<strong>all</strong>。如果不存在，返回特殊对象<strong>noone</strong>。注意，instance_id对实例id的分配每一步都会改变，所以你不能使用上一步的值。<br>
+  <tt><b>instance_exists(obj)</b></tt>返回值为 obj 的实例是否存在。参数 obj 可以是某对象，实例id或是关键字<strong>all</strong>。<br>
+  <tt><b>instance_number(obj)</b></tt>返回 obj 的实例的总数。参数 obj 可以是某对象或是关键字<strong>all</strong>。<br>
+  <tt><b>instance_position(x,y,obj)</b></tt>返回值为 obj 在（ x ， y ）位置上实例的 id 。同一位置有多个实例时，返回第一个实例。参数 obj 可以是某对象或是关键字<strong>all</strong>。如果不存在，返回特殊对象 <strong>noone</strong> 。<br>
+  <tt><b>instance_nearest(x,y,obj)</b></tt>返回值为最接近（ x ， y ）位置的 obj 的实例 id 。参数 obj 可以是某对象或是关键字<strong>all</strong>。<br>
+  <tt><b>instance_furthest(x,y,obj)</b></tt>返回值为离（ x ， y ）位置最远的 obj 的实例 id 。参数 obj 可以是某对象或是关键字<strong>all</strong>。<br>
+  <tt><b>instance_place(x,y,obj)</b></tt>返回值为当前实例被放置在位置（x，y）后遇到的obj的id 。参数 obj 可以是某对象或是关键字<strong>all</strong>。如果不存在，返回特殊对象 noone <br>
+</blockquote>
+
+<p>下面的函数用于创建销毁实例。
+<p>
+<blockquote>
+  <tt><b>instance_create(x,y,obj)</b></tt>在（ x ， y ）位置创建 obj 的实例。函数返回新实例的id。<br>
+  <tt><b>instance_copy(performevent)</b></tt>创建当前实例的复制品。参数 performevent 为复制品的创建事件是否必须执行。函数返回新复制品的 id。<br>
+  <tt><b>instance_destroy()</b></tt>销毁当前实例。<br>
+  <tt><b>instance_change(obj,perf)</b></tt>将当前实例改变为obj的实例。参数 perf 为是否执行销毁和创建事件。<br>
+  <tt><b>position_destroy(x,y)</b></tt>销毁所有与点（ x ， y ）发生碰撞的实例。<br>
+  <tt><b>position_change(x,y,obj,perf)</b></tt>将与点（ x ， y ）发生碰撞的实例改变为 obj 的实例。参数perf为是否执行销毁和创建事件。<br>
+</blockquote>
+
+
+<!--END-->
+</body>
+</html>
+
+<!-- KEYWORDS
+instances
+finding instances
+creating instances
+destroying instances
+instance id
+
+object_index
+id
+solid
+persistent
+mask_index
+instance_count
+instance_id
+instance_find()
+instance_exists()
+instance_number()
+instance_position()
+instance_nearest()
+instance_furthest()
+instance_place()
+instance_create()
+instance_copy()
+instance_change()
+instance_destroy()
+position_destroy()
+position_change()
+
+-->

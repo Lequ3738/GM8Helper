@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>Shader DLL</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+
+<!--START-->
+
+<h1>Shader DLL</h1>
+
+<center><font size="3">
+作者：LSnK<br>
+最新版本：1.4<br>
+最后更新：2010年12月22日<br>
+文档翻译：Lequ
+</font></center>
+<p>
+<p><strong>当前版本不适用于 GM 8.1 及以后的 GM 版本。</strong></p>
+
+
+<h3>关于</h3>
+<p>像素着色器（Pixel Shaders）非常强大：<strong>高效、快速且兼容性广</strong>，现在你可以直接在 GM 中使用它们！</p>
+但这还不是全部，你还可以获得：<br>
+<ul>
+<li><strong>Alpha/Z 测试：</strong>
+自定义比较方式，防止像素被绘制。Alpha 测试通常用于商业游戏中渲染树叶和围栏。</li>
+
+<li><strong>可配置的指数雾效：</strong>
+适用于户外场景的 <strong>更真实的雾效</strong>。</li>
+
+<li><strong>点图元缩放与纹理映射：</strong>
+可控制点的大小，并为其应用任何纹理。</li>
+
+<li><strong>写入遮罩（Write Masking）：</strong>
+可独立控制 <strong>红、绿、蓝、Alpha 和深度（Z）</strong> 写入。</li>
+
+<li><strong>多重纹理（Multitexturing）：</strong>
+像素着色器允许你<strong>同时绘制最多 6 张纹理</strong>，适用于细节纹理等效果。</li>
+
+<li><strong>线框模式和点模式渲染：</strong>
+适用于调试，点渲染会遵循点图元设置。</li>
+
+<li><strong>Z-bias：</strong>
+可防止具有相同坐标的几何体之间的 <strong>Z-fighting</strong>，例如可以无闪烁地叠加线框。</li>
+
+<li><strong>自动法线矢量归一化：</strong>
+修复模型缩放时的光照问题。</li>
+
+<li><strong>信息查询功能：</strong>
+获取 <strong>最大点尺寸、最大纹理尺寸、GPU 名称、着色器支持情况、可用纹理内存</strong> 等信息，避免盲目尝试。</li>
+
+<li><strong>扩展图元：</strong>
+最高可绘制 <strong>8192 个顶点</strong>，每个顶点可包含 <strong>位置、法线、漫反射和镜面反射颜色/透明度，以及最多 8 个纹理坐标</strong>。</li>
+
+<li><strong>顶点着色器（Vertex Shaders）：</strong>
+可以对扩展图元进行逐顶点计算，就像像素着色器一样。</li>
+</ul>
+
+<h3>如何使用</h3>
+<p>所有函数在适用的情况下 <strong>均可在 2D 和 3D 模式下运行</strong>。<br>
+函数返回值：<strong>成功返回 true，失败返回 false，输入错误返回 -1</strong>。</p>
+
+<h3>快速导航</h3>
+阅读以下文章来快速了解此扩展能实现什么功能：
+<blockquote>
+   <A href="Shader_DLL_初始化.html">初始化及释放</A><br>
+   <A href="Shader_DLL_信息查询.html">信息查询</A><br>
+   <A href="Shader_DLL_像素着色器.html">像素着色器</A><br>
+   <A href="Shader_DLL_顶点着色器.html">顶点着色器</A><br>
+   <A href="Shader_DLL_纹理.html">纹理</A><br>
+   <A href="Shader_DLL_雾效.html">雾效</A><br>
+   <A href="Shader_DLL_点图元和精灵.html">点图元和精灵</A><br>
+   <A href="Shader_DLL_渲染控制.html">渲染控制</A><br>
+   <A href="Shader_DLL_扩展图元.html">扩展图元</A><br>
+</blockquote><!--ENDHELPONLY--><!--END-->
+</body>
+</html>

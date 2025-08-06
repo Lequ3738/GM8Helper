@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>输入</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+
+<!--START-->
+
+<h1>输入</h1>
+
+<blockquote>
+    <tt id = "gamepad_button_check"><b>
+    <font color="#0000FF">bool </font>
+    gamepad_button_check(<font color="#0000FF">real </font>device,
+    <font color="#0000FF">real </font>button)
+    </b></tt><br>
+    此函数检测给定的游戏手柄按钮是否被按住。<br>
+    此函数不仅可以检测按钮，还可以检测摇杆是否不在原点上。<br>
+    既可以使用<A href="GMGamepad_Main.html#button">游戏手柄按钮常量</A>和<A href="GMGamepad_Main.html#axis">游戏手柄摇杆常量</A>，又可以使用原始索引和<A href="GMGamepad_Main.html#original">原始索引偏移常量</A>。<br>
+    注：若在使用原始索引和十字键索引偏移常量时，原始索引为 4 个一组，对同一个十字键进行描述。这 4 个索引从低到高分别描述十字键上键、十字键下键、十字键左键和十字键右键。<p>
+    
+    <tt id = "gamepad_button_check_pressed"><b>
+    <font color="#0000FF">bool </font>
+    gamepad_button_check_pressed(<font color="#0000FF">real </font>device,
+    <font color="#0000FF">real </font>button)
+    </b></tt><br>
+    此函数检测给定的游戏手柄按钮是否已被按下。请注意，此函数只会在第一次按下按钮时触发一次 。要再次触发它，必须先松开按钮，然后重新按下。如果您需要检查按钮的连续按下，则应使用函数 <b><tt><A href="GMGamepad_输入.html#gamepad_button_check">gamepad_button_check()</A></tt></b>。<br>
+    此函数不仅可以检测按钮，还可以检测摇杆是否不在原点上。<br>
+    既可以使用<A href="GMGamepad_Main.html#button">游戏手柄按钮常量</A>和<A href="GMGamepad_Main.html#axis">游戏手柄摇杆常量</A>，又可以使用原始索引和<A href="GMGamepad_Main.html#original">原始索引偏移常量</A>。<p>
+    
+    <tt id = "gamepad_button_check_released"><b>
+    <font color="#0000FF">bool </font>
+    gamepad_button_check_released(<font color="#0000FF">real </font>device,
+    <font color="#0000FF">real </font>button)
+    </b></tt><br>
+    此函数检测给定的游戏手柄按钮是否已释放。请注意，此函数只会在释放按钮时触发一次 。要再次触发它，必须先按下按钮，然后再次松开。<br>
+    此函数不仅可以检测按钮，还可以检测摇杆是否不在原点上。<br>
+    既可以使用<A href="GMGamepad_Main.html#button">游戏手柄按钮常量</A>和<A href="GMGamepad_Main.html#axis">游戏手柄摇杆常量</A>，又可以使用原始索引和<A href="GMGamepad_Main.html#original">原始索引偏移常量</A>。<p>
+    
+    <tt id = "gamepad_button_check_direct"><b>
+    <font color="#0000FF">bool </font>
+    gamepad_button_check_direct(<font color="#0000FF">real </font>device,
+    <font color="#0000FF">real </font>button)
+    </b></tt><br>
+    此函数直接通过硬件检测给定的游戏手柄按钮是否被按住。<br>
+    此函数不仅可以检测按钮，还可以检测摇杆是否不在原点上。<br>
+    既可以使用<A href="GMGamepad_Main.html#button">游戏手柄按钮常量</A>和<A href="GMGamepad_Main.html#axis">游戏手柄摇杆常量</A>，又可以使用原始索引和<A href="GMGamepad_Main.html#original">原始索引偏移常量</A>。<p>
+    
+    <tt id = "gamepad_axis_value"><b>
+    <font color="#0000FF">real </font>
+    gamepad_axis_value(<font color="#0000FF">real </font>device,
+    <font color="#0000FF">real </font>axis)
+    </b></tt><br>
+    您可以使用此函数从给定的游戏手柄插槽中获取不同摇杆的值。<br>
+    您提供要检查的游戏手柄插槽索引，使用<A href="GMGamepad_Main.html#axis">游戏手柄摇杆常量</A>，或使用原始索引和<A href="GMGamepad_Main.html#original">原始索引偏移常量</A>。对于每个可用的水平和垂直摇杆轴，返回值会在 -1 和 1 之间；对于每个可用的扳机键，返回值会在 0 和 1 之间。<br>
+    请注意，返回值经过归一化处理，以考虑轴死区设置的值（使用函数 <b><tt><A href="GMGamepad_信息和配置.html#gamepad_set_axis_deadzone">gamepad_set_axis_deadzone()</A></tt></b> 来设置）。此函数将始终返回一个介于 -1 和 0 之间或 0 和 1 之间的归一化值。例如，将死区设置为 0.2 意味着，当原始轴值超过 0.2 时，向右推动摇杆才会开始返回 0 到 1 之间的值——因此，当原始值为 0.2 时，返回值将为 0；当原始值为 0.5 时，返回值将为 0.375；或者，如果原始值为 0.9，则返回值将为 0.875。<p>
+    
+    <tt id = "gamepad_button_press"><b>
+    <font color="#0000FF">bool </font>
+    gamepad_button_press(<font color="#0000FF">real </font>device,
+    <font color="#0000FF">real </font>button)
+    </b></tt><br>
+    您可以使用此函数从给定的游戏手柄插槽中模拟指定按钮的一次按下操作。按钮不会自动松开，如要松开，请使用 <b><tt><A href="GMGamepad_输入.html#gamepad_button_release">gamepad_button_release()</A></tt></b> 函数。<br>
+    此函数不仅可以模拟指定按钮的一次按下操作，还可以模拟指定摇杆的一次偏离原点的操作。<br>
+    既可以使用<A href="GMGamepad_Main.html#button">游戏手柄按钮常量</A>和<A href="GMGamepad_Main.html#axis">游戏手柄摇杆常量</A>，又可以使用原始索引和<A href="GMGamepad_Main.html#original">原始索引偏移常量</A>。<br>
+    如果成功执行操作，则返回 <b><tt>true</tt></b>，否则返回 <b><tt>false</tt></b>。<p>
+    
+    <tt id = "gamepad_button_release"><b>
+    <font color="#0000FF">bool </font>
+    gamepad_button_release(<font color="#0000FF">real </font>device,
+    <font color="#0000FF">real </font>button)
+    </b></tt><br>
+    您可以使用此函数从给定的游戏手柄插槽中模拟指定按钮的一次松开操作。即使按钮未按下，也能执行此函数。<br>
+    此函数不仅可以模拟指定按钮的一次松开操作，还可以模拟指定摇杆的一次回归原点的操作。<br>
+    既可以使用<A href="GMGamepad_Main.html#button">游戏手柄按钮常量</A>和<A href="GMGamepad_Main.html#axis">游戏手柄摇杆常量</A>，又可以使用原始索引和<A href="GMGamepad_Main.html#original">原始索引偏移常量</A>。<br>
+    如果成功执行操作，则返回 <b><tt>true</tt></b>，否则返回 <b><tt>false</tt></b>。<p>
+</blockquote>
+
+<!--END-->
+
+</body>
+</html>

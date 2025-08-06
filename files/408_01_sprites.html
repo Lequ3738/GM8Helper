@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>精灵</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.STYLE1 {font-weight: bold}
+-->
+</style>
+</head>
+<body background="images/back.gif">
+<!--START-->
+
+<h3>精灵</h3>
+
+下列函数介绍精灵 :
+<p>
+<blockquote>
+  <tt><b>sprite_exists(ind)</b></tt>返回值为指定索引号的精灵是否存在。<br>
+  <tt><b>sprite_get_name(ind)</b></tt>
+	  返回值为指定索引号的精灵名字。 <br>
+  <tt><b>sprite_get_number(ind)</b></tt>
+	  返回值为指定索引号精灵的子图像的数量。 <br>
+  <tt><b>sprite_get_width(ind)</b></tt>
+	  返回值为指定索引号精灵的宽度。 <br>
+  <tt><b>sprite_get_height(ind)</b></tt>
+	  返回值为指定索引号精灵的高度。 <br>
+  <tt><b>sprite_get_xoffset(ind)</b></tt>
+	  返回值为指定索引号精灵的 x 轴偏移量。<br>
+  <tt><b>sprite_get_yoffset(ind)</b></tt>
+	  返回值为指定索引号精灵的 y 轴偏移量。<br>
+  <tt><b>sprite_get_bbox_left(ind)</b></tt>
+	  返回值为指定索引号精灵的碰撞盒左边界。<br>
+  <tt><b>sprite_get_bbox_right(ind)</b></tt>
+	  返回值为指定索引号精灵的碰撞盒右边界。<br>
+  <tt><b>sprite_get_bbox_top(ind) </b></tt>返回值为指定索引号精灵的碰撞盒上边界。<br>
+  <tt><b>sprite_get_bbox_bottom(ind)</b></tt>返回值为指定索引号精灵的碰撞盒下边界。<br>
+  <br>
+</blockquote>
+
+某些时候你可能想保存精灵的某个子图,有下列函数可以使用:
+<blockquote>
+  <tt><b>sprite_save(ind,subimg,fname)</b></tt>保存精灵子图到文件名为fname的文件.一定是.png文件.<em><strong>这个函数仅在注册版里可被使用.
+  </strong></em><br>
+  <tt><b>sprite_save_strip(ind,fname)</b></tt>将精灵ind以长带图形式保存到文件名为fname的文件这个<em><strong>这个函数仅在注册版里可被使用.</strong></em><br>
+</blockquote>
+
+<!--END-->
+</body>
+</html>
+
+<!-- KEYWORDS
+sprite_exists()
+sprite_get_name()
+sprite_get_number()
+sprite_get_width()
+sprite_get_height()
+sprite_get_transparent()
+sprite_get_smooth()
+sprite_get_preload()
+sprite_get_xoffset()
+sprite_get_yoffset()
+sprite_get_bbox_mode()
+sprite_get_bbox_left()
+sprite_get_bbox_right()
+sprite_get_bbox_top()
+sprite_get_bbox_bottom()
+sprite_get_precise()
+sprite_save()
+sprite_save_strip()
+-->

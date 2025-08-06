@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>顶点寄存器</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif"><!--START-->
+
+<h1>寄存器</h1>
+
+本节包含 vs.1.1 实现的输入和输出寄存器的参考信息。
+
+<h3>输入寄存器</h3>
+
+<h4>地址寄存器：</h4>
+
+<blockquote>
+    <tt><b>a0.x</b></tt>（可读/可写）<br>
+    用于访问常量寄存器，仅能使用其x分量作为索引值，其他分量无效。通过 <b>c[a0.x + n]</b> 格式访问常量寄存器, 其中 <b>n</b> 为基地址偏移量。<br>
+    例如，<b>c[a0.x + 2]</b> 表示从常量寄存器的第3个位置开始读取数据。<br>
+    <b>注意</b>：使用前必须通过 <b>mov</b> 指令初始化，且仅能通过 <b>mov</b> 指令修改其值。其他指令无法操作地址寄存器。<p>
+</blockquote>
+
+<br><p>
+<h4>常量寄存器：</h4>
+
+<blockquote>
+    <tt><b>c0 - c95</b></tt>（只读）<br>
+    共96个，用于存储 <b>-1</b> 到 <b>1</b> 之间的用户定义的值。可以通过 <b>def</b> 指令设置，或使用 <b>d3d_set_vs_const()</b> 在着色器外部设置。<br>
+    此寄存器可以直接使用（如 <b>c3</b>），也可以结合地址寄存器 <b>a0</b> 间接索引（如 <b>c[a0.x + 5]</b>），实现动态数据选择。<p>
+</blockquote>
+
+<br><p>
+<h4>输入寄存器：</h4>
+
+<blockquote>
+    <tt><b>v0 - v15</b></tt>（只读）<br>
+    共16个，在运行顶点着色器之前，来自每个顶点的数据将加载到输入寄存器中。<br>
+    输入寄存器的分配如下：<p>
+    
+    <figure><table style="border:1px solid #BBBBBB;">
+    <thead><tr>
+        <th style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <strong>寄存器</strong></th>
+        <th style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <strong>数据类型</strong></th>
+        <th style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <strong>格式</strong></th>
+    </tr></thead>
+    <tbody>
+    <tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>v0</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        位置（Position）</td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        XYZ</td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>v3</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        法线（Normal）</td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        XYZ</td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>v5</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        漫反射颜色（Diffuse Color）</td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        RGBA</td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>v6</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        镜面反射颜色（Specular Color）</td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        RGBA</td>
+    </tr><tr>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        <tt><b>v7 - v14</b></tt></td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        纹理坐标（Texture Coords）</td>
+        <td style="border:1px solid #BBBBBB;padding:2px 8px;">
+        XY</td>
+    </tr>
+    </tbody>
+    </table></figure>
+</blockquote>
+
+<br><p>
+<h4>临时寄存器：</h4>
+
+<blockquote>
+    <tt><b>r0 - r11</b></tt>（可读/可写）<br>
+    共12个，用于存储指令执行的结果。<p>
+</blockquote>
+
+<h3>输出寄存器</h3>
+
+<h4>位置寄存器：</h4>
+
+<blockquote>
+    <tt><b>oPos</b></tt><br>
+    存储顶点在齐次裁剪空间中的最终坐标（x, y, z, w），必须显式写入所有四个分量。<br>
+    所有顶点着色器必须输出oPos，否则渲染会失败。<p>
+</blockquote>
+
+<br><p>
+<h4>雾寄存器：</h4>
+
+<blockquote>
+    <tt><b>oFog</b></tt><br>
+    存储顶点的雾效系数（仅使用x分量），用于控制顶点与相机的距离衰减效果，
+    其中0表示完全被雾覆盖，1表示无雾。<p>
+</blockquote>
+
+<br><p>
+<h4>点大小寄存器：</h4>
+
+<blockquote>
+    <tt><b>oPts</b></tt><br>
+    控制点精灵（Point Sprite）的显示尺寸（仅使用x分量）。<p>
+</blockquote>
+
+<br><p>
+<h4>颜色寄存器：</h4>
+
+<blockquote>
+    <tt><b>oD0, oD1</b></tt><br>
+    <b>oD0</b>：输出顶点的漫反射颜色（RGBA），通常用于光照计算后的基础颜色。 是PS着色器中的 <b>v0</b>。<br>
+    <b>oD1</b>：输出镜面反射颜色（RGBA），用于高光效果（使用较少）。是PS着色器中的 <b>v1</b>。<p>
+</blockquote>
+
+<br><p>
+<h4>纹理坐标寄存器：</h4>
+
+<blockquote>
+    <tt><b>oT0, oT1, oT2, oT3, oT4, oT5, oT6, oT7</b></tt><br>
+    用于传递顶点对应的UV或投影坐标。是PS着色器中的 <b>t0-t5</b>，<b>oT6</b> 和 <b>oT7</b> 在PS着色器中不可用。<p>
+</blockquote>
+
+</body>
+</html>

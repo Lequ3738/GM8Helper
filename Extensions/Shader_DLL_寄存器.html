@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>寄存器</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif"><!--START-->
+
+<h1>寄存器</h1>
+
+<br><p>
+<h4>临时寄存器：</h4>
+
+<blockquote>
+  <tt><b>r0, r1, r2, r3, r4, r5</b></tt>（可读/可写）<br>
+  用于存储指令执行的结果。它们的范围至少保证在 <b>-8</b> 到 <b>+8</b> 之间，现代硬件上通常更大。<br>
+<b>r0</b> 还作为<b>输出寄存器</b>，当着色器执行完毕后，<b>r0</b> 的值将绘制到屏幕上。<p>
+</blockquote>
+
+<br><p>
+<h4>常量寄存器：</h4>
+
+<blockquote>
+  <tt><b>c0, c1, c2, c3, c4, c5, c6, c7</b></tt>（只读）<br>
+  用于存储 <b>-1</b> 到 <b>1</b> 之间的用户定义的值。可以通过 <b>def</b> 指令设置，或使用 <b>d3d_set_ps_const()</b> 在着色器外部设置。<p>
+</blockquote>
+
+<br><p>
+<h4>纹理地址寄存器：</h4>
+
+<blockquote>
+  <tt><b>t0, t1, t2, t3, t4, t5</b></tt>（只读）<br>
+  用于存储当前像素的纹理坐标。在 GM 中，若不使用<a href = "Shader_DLL_扩展图元.html">扩展图元</a>，就只有 <b>t0</b> 有效，它包含当前绘制的纹理坐标。<br>
+  只能用于纹理指令。<p>
+</blockquote>
+
+<br><p>
+<h4>颜色寄存器：</h4>
+
+<blockquote>
+  <tt><b>v0, v1</b></tt>（只读）<br>
+  存储当前像素的顶点颜色。例如，在绘制精灵时，<b>v0</b> 包含 <b>image_blend</b>（RGB）和 <b>image_alpha</b>（A）。<b>v1</b> 存储镜面反射颜色，仅用于<a href = "Shader_DLL_扩展图元.html">扩展图元</a>。<p>
+</blockquote>
+
+</body>
+</html>

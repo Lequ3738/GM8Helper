@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>顶点指令</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+
+<!--START-->
+
+<h1>指令</h1>
+
+<h4>算术运算指令：</h4>
+<blockquote>
+    <tt><b><font color="#0000FF">mov </font>rn, src</b></tt><br>
+    最基本的指令，将 <b>src</b> 复制到 <b>rn。</b><p>
+    
+    <tt><b><font color="#0000FF">add </font>rn, src1, src2</b></tt><br>
+    将 <b>src1</b> 和 <b>src2</b> 相加，并存储到 <b>rn</b>。<p>
+    
+    <tt><b><font color="#0000FF">sub </font>rn, src1, src2</b></tt><br>
+    计算 <b>src1 - src2</b>，并存储到 <b>rn</b>。<p>
+    
+    <tt><b><font color="#0000FF">mul </font>rn, src1, src2</b></tt><br>
+    计算 <b>src1 × src2</b>，并存储到 <b>rn</b>。</p>
+    
+    <tt><b><font color="#0000FF">mad </font>rn, src1, src2, src3</b></tt><br>
+    先计算 <b>src1 × src2</b>，再加上 <b>src3</b>。<p>
+    
+    <tt><b><font color="#0000FF">lrp </font>rn, src1, src2, src3</b></tt><br>
+    线性插值计算 <b>(src2 + ((src3 - src2) × src1))</b>。<p>
+    
+    <tt><b><font color="#0000FF">dp3 </font>rn, src1, src2</b></tt><br>
+    计算 RGB 颜色的点积 <b>(src1.r × src2.r) + (src1.g × src2.g) + (src1.b × src2.b)</b>，并将结果存储到 <b>rn</b> 的所有分量。<p>
+    
+    <tt><b><font color="#0000FF">dp4 </font>rn, src1, src2</b></tt><br>
+    与 <b>dp3</b> 类似，但计算四个分量的点积。<p>
+    
+    <tt><b><font color="#0000FF">m3x2 </font>rn, src1, src2</b></tt><br>
+    将 3 分量向量乘以 3x2 矩阵。此指令占用 2 个指令槽。<br>
+    <b>rn</b> 是目标寄存器。结果是一个 2 分量向量。<br>
+    <b>src1</b> 是表示 3 分量向量的源寄存器。<br>
+    <b>src2</b> 是表示 3x2 矩阵的源寄存器，对应于 2 个连续寄存器中的第一个。
+    <pre>
+m3x2   r0.xy, r1, c0   它相当于:
+
+dp3   r0.x, r1, c0
+dp3   r0.y, r1, c1</pre>
+    
+    <tt><b><font color="#0000FF">m3x3 </font>rn, src1, src2</b></tt><br>
+    将 3 分量向量乘以 3x3 矩阵。此指令占用 3 个指令槽。<br>
+    <b>rn</b> 是目标寄存器。结果是一个 3 分量向量。<br>
+    <b>src1</b> 是表示 3 分量向量的源寄存器。<br>
+    <b>src2</b> 是表示 3x3 矩阵的源寄存器，对应于 3 个连续寄存器中的第一个。
+    <pre>
+m3x2   r0.xyz, r1, c0   它相当于:
+
+dp3   r0.x, r1, c0
+dp3   r0.y, r1, c1
+dp3   r0.z, r1, c2</pre>
+    
+    <tt><b><font color="#0000FF">m3x4 </font>rn, src1, src2</b></tt><br>
+    将 3 分量向量乘以 3x4 矩阵。此指令占用 4 个指令槽。<p>
+    
+    <tt><b><font color="#0000FF">m4x3 </font>rn, src1, src2</b></tt><br>
+    将 4 分量向量乘以 4x3 矩阵。此指令占用 3 个指令槽。<p>
+    
+    <tt><b><font color="#0000FF">m4x4 </font>rn, src1, src2</b></tt><br>
+    将 4 分量向量乘以 4x4 矩阵。此指令占用 4 个指令槽。<p>
+    
+    <tt><b><font color="#0000FF">dst </font>rn, src1, src2</b></tt><br>
+    计算距离向量。以下代码片段显示了执行的作用：
+    <pre>
+rn.x = 1;
+rn.y = src1.y * src2.y;
+rn.z = src1.z;
+rn.w = src2.w;</pre>
+    
+    <tt><b><font color="#0000FF">exp </font>rn, src</b></tt><br>
+    计算全精度指数。此指令占用 10 个指令槽。<br>
+    <b>src</b> 必须显式指定一个分量（如.x, .y, .z, .w或其等效的.r, .g, .b, .a）。<br>
+    以下代码片段显示了执行的作用：
+    <pre>
+rn = power(2, src.x)</pre>
+    
+    <tt><b><font color="#0000FF">expp </font>rn, src</b></tt><br>
+    计算部分精度指数。<p>
+    
+    <tt><b><font color="#0000FF">frc </font>rn, src</b></tt><br>
+    返回 <b>src</b> 的小数部分。此指令占用 3 个指令槽。<p>
+    
+    <tt><b><font color="#0000FF">lit </font>rn, src</b></tt><br>
+    通过计算两个点积和一个指数的照明系数，提供对照明的部分支持。<br>
+    假定源向量包含以下伪代码中显示的值：
+    <pre>
+src.x = N*L        // 法线与光照方向的点积
+src.y = N*H        // 法线与半向量的点积
+src.z = ignored    // 该值将被忽略
+src.w = exponent   // 该值必须在 -128.0 和 128.0 之间</pre>
+    以下代码片段显示了执行的作用：
+    <pre>
+rn.x = 1;
+rn.y = 0;
+rn.z = 0;
+rn.w = 1;
+
+float power = src.w;
+const float MAXPOWER = 127.9961f;
+if (power &lt; -MAXPOWER)
+    power = -MAXPOWER;         // 符合 8.8 固定点格式
+else if (power &gt; MAXPOWER)
+    power = MAXPOWER;          // 符合 8.8 固定点格式
+
+if (src.x &gt; 0)
+{
+    rn.y = src.x;
+    if (src.y &gt; 0)
+    {
+        // 允许的近似值为 EXP(power * LOG(src.y))
+        rn.z = (float)(pow(src.y, power));
+    }
+}</pre>
+    
+    <tt><b><font color="#0000FF">log </font>rn, src</b></tt><br>
+    全精度对数 <b>log2(x)</b>。此指令占用 10 个指令槽。<p>
+    
+    <tt><b><font color="#0000FF">logp </font>rn, src</b></tt><br>
+    部分精度对数 <b>log2(x)</b>。<p>
+    
+    <tt><b><font color="#0000FF">max </font>rn, src1, src2</b></tt><br>
+    将 <b>src1</b> 和 <b>src2</b> 每个分量中，较大的输出到 <b>rn</b> 中。<p>
+    
+    <tt><b><font color="#0000FF">min </font>rn, src1, src2</b></tt><br>
+    将 <b>src1</b> 和 <b>src2</b> 每个分量中，较小的输出到 <b>rn</b> 中。<p>
+    
+    <tt><b><font color="#0000FF">rcp </font>rn, src</b></tt><br>
+    计算 <b>src</b> 的倒数。<p>
+    
+    <tt><b><font color="#0000FF">rsq </font>rn, src</b></tt><br>
+    计算 <b>src</b> 的倒数平方根。<p>
+    
+    <tt><b><font color="#0000FF">sge </font>rn, src1, src2</b></tt><br>
+    将 <b>src1</b> 的每个分量与 <b>src2</b> 比较，若在此分量中 <b>src1</b> &gt;= <b>src2</b>，输出 1，否则输出 0。<p>
+    
+    <tt><b><font color="#0000FF">slt </font>rn, src1, src2</b></tt><br>
+    将 <b>src1</b> 的每个分量与 <b>src2</b> 比较，若在此分量中 <b>src1</b> &lt; <b>src2</b>，输出 1，否则输出 0。<p>
+</blockquote>
+
+<br><p>
+<h4>指令修饰符：</h4>
+注：在 vs.1.1 中，不支持指令修饰符。<p>
+
+<br><p>
+<h4>临时寄存器修饰符：</h4>
+<blockquote>
+    <tt><b>-rn</b></tt><br>
+    取负输入值。<p>
+</blockquote>
+<!--END-->
+
+</body>
+</html>

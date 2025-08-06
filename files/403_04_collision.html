@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+
+  <title>碰撞检测</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+
+
+<body background="images/back.gif"><!--START-->
+<h3 class="style1"><strong>碰撞检测 </strong></h3>
+<span class="style1">计划运动或是要决定具体行动时，察看实例是否与其它对象在确定的地点碰撞是一件十分重要的事。为此需要用到下面的程序。所有的这些函数有三个共有参数：参数 
+obj 是某对象，关键字 <strong>all </strong>，或是某实例的 id 名。参数 prec 
+是是否启用精确检测或是仅仅使用实例的碰撞盒。精确检测只有当实例的精灵设定了精确碰撞检测时才有效。参数 notme 可以设为 true （ 1 
+），使调用这个函数的实例不会被检测。所有的这些函数返回值为被碰撞实例的 id 名，如果没有碰撞就返回一个负值 。 </span>
+<p class="style1">
+</p>
+<blockquote class="style1"><tt><b>collision_point(x,y,obj,prec,notme)</b></tt> 
+这个函数测试在（ x ， y ）位置是否和实体对象 obj 有碰撞。 
+  <br>
+  <tt><b>collision_rectangle(x1,y1,x2,y2,obj,prec,notme)</b></tt> 
+这个函数测试指定对角的矩形（已填充）是否和实体对象 obj 有碰撞。举例来说，你可以使用这个函数测试某个区域里是否没有障碍物。 
+  <br>
+  <tt><b>collision_circle(xc,yc,radius,obj,prec,notme)</b></tt> 这个函数测试指定圆心（ xc 
+， yc ）的圆（已填充）是否和实体对象 obj 有碰撞。举例来说，你可以使用这个函数测试某对象是否靠近某特点位置。 
+  <br>
+  <tt><b>collision_ellipse(x1,y1,x2,y2,obj,prec,notme)</b></tt> 
+这个函数测试指定对角的椭圆（已填充）是否和实体对象 obj 有碰撞。 
+  <br>
+  <tt><b>collision_line(x1,y1,x2,y2,obj,prec,notme)</b></tt> 这个函数测试线段（ x1 ， y1 
+）到 (x2,y2) 是否和实体对象 obj 
+有碰撞。这是个强大的函数。你可以这样使用这个函数，通过检测线段是否与他们之间的墙相交来测试某实例是否可以看到另一实例。</blockquote><!--END--><!-- KEYWORDS
+collision checking
+
+collision_point()
+collision_rectangle()
+collision_circle()
+collision_ellipse()
+collision_line()
+
+-->
+</body>
+</html>

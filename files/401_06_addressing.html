@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>在其他实例中定位变量</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+<!--START-->
+
+<h3>在其他实例中定位变量 </h3>
+
+如前面所述，您可以在当前实例中设置变量，如：
+
+<p>
+<blockquote><pre>x = 3;</pre></blockquote>
+
+<p>
+但是在一些情况下，你想在另一个实例中处理变量。例如，你可能想要阻止所有球的运动，或者你可能想将主角移动到某个特定位置，又或者，在发生碰撞的情况下，你可能想要更改其他实例的精灵，这些都可以通过"对象名.变量名"的格式进行声明。例如，你可以这样写
+<p>
+<blockquote><pre><tt>ball</tt>.speed = 0;</pre></blockquote>
+
+<p>
+这条语句将改变ball对象的全部实例的移动速度。这里有几个比较【特殊的&quot;对象&quot;】。
+<ul>
+  <li>self: 当前正在执行动作的实例（本身）。 </li>
+  <li>other:参与碰撞事件的另一个实例。 </li>
+  <li>all: 所有实例。 </li>
+  <li>noone: 不属于任何实例（听起来很诡异，但在后面迟早会用到它）。 </li>
+  <li>global: 不属于某个实例，而是整个程序的全局变量。 </li>
+  </ul>
+
+因此，您可以使用以下类型的语句：
+<blockquote>
+<pre>
+other.sprite_index = sprite5;
+all.speed = 0;
+global.message = 'A good result';
+global.x = ball.x;
+</pre>
+</blockquote>
+
+<p>你会注意到最后一条语句是在有许多ball的情况下使用的。这样第一个ball.x的值就被新定 义的全局变量global.x取代了。 
+<p>但如果你希望单独设置一个指定皮球的速度，而不是所有皮球呢？这稍微有点难度。每个例 程有一个独立的ID。当你在编辑器里把例程放入一个房间后，这个例程的ID就会在鼠标置于 例程之上的时候显示出来。这些ID都是从100000开始增加的数字，同样可以用到句点的左边。 但要注意，句点可能会被辨认成小数点，为了避免这种事情发生，需要给ID数字加上括号以 示区别。举个例子，假设这个皮球的ID是100032，你就可以这么写 : </p>
+<p>
+<blockquote><pre>(100032).speed = 0;</pre></blockquote>
+
+<p><span class="style1">当你在程序中创建了一个实例时，会返回该实例的id，所以一个完整的程序段应该是这样的</span>
+<p>
+<blockquote>
+<pre>
+{
+  nnn = instance_create(100,100,ball);
+  nnn.speed = 8;
+}
+</pre>
+</blockquote>
+
+<p>
+这会创建一个皮球并设定好它的速度，要注意我们把实例的ID赋值给了一个变量，并使用这个变量加在句点前面构成定位符。这样的用法是完全正确的。让我们用更准确的说法，一个 句点就是一个分隔符。它的左边是一个数值，右面是一个变量（或者说变量的地址），然后 返回特定对象或者例程中的特定变量的具体地址。所有对象的名称，以及特殊对象都会有一 个简单的数字编号，可以和其他数值一样被处理。举个例子，以下的几个语句都是正确的 :
+<p>
+<blockquote>
+<pre>
+{
+  obj[0] = ball;
+  obj[1] = flag;
+  obj[0].alarm[4] = 12;
+  obj[1].id.x = 12;
+}
+</pre>
+</blockquote>
+最后一个语句比较特殊。我们使用id作为第一标签。这样在那个ID的例程中的x就被赋值为 12了。 
+<p>
+对象名称，特殊对象，以及实例的ID都可以在一些函数中使用。他们实际上在程序中被当作常量使用. 
+
+<p>
+<!--END-->
+</body>
+</html>
+
+<!-- KEYWORDS
+variables, in other instances
+self
+other
+all
+global
+noone
+instance id
+-->

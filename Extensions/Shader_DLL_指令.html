@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>指令</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif"><!--START-->
+
+<h1>指令</h1>
+
+
+<h4>算术运算指令：</h4>
+<blockquote>
+    可以使用临时寄存器、常量寄存器或颜色寄存器作为参数。<p>
+
+    <tt><b><font color="#0000FF">mov </font>rn, src</b></tt><br>
+    最基本的指令，将 <b>src</b> 复制到 <b>rn。</b><p>
+    
+    <tt><b><font color="#0000FF">add </font>rn, src1, src2</b></tt><br>
+    将 <b>src1</b> 和 <b>src2</b> 相加，并存储到 <b>rn</b>。<p>
+    
+    <tt><b><font color="#0000FF">sub </font>rn, src1, src2</b></tt><br>
+    计算 <b>src1 - src2</b>，并存储到 <b>rn</b>。<p>
+    
+    <tt><b><font color="#0000FF">mul </font>rn, src1, src2</b></tt><br>
+    计算 <b>src1 × src2</b>，并存储到 <b>rn</b>。</p>
+    
+    <tt><b><font color="#0000FF">mad </font>rn, src1, src2, src3</b></tt><br>
+    先计算 <b>src1 × src2</b>，再加上 <b>src3</b>。<p>
+    
+    <tt><b><font color="#0000FF">lrp </font>rn, src1, src2, src3</b></tt><br>
+    线性插值计算 <b>(src2 + ((src3 - src2) × src1))</b>。<p>
+    
+    <tt><b><font color="#0000FF">cnd </font>rn, src1, src2, src3</b></tt><br>
+    如果 <b>src1 &gt; 0.5</b>，则 <b>rn = src2</b>，否则 <b>rn = src3</b>。<p>
+    
+    <tt><b><font color="#0000FF">cmp </font>rn, src1, src2, src3</b></tt><br>
+    如果 <b>src1 &gt;= 0</b>，则 <b>rn = src2</b>，否则 <b>rn = src3</b>。<p>
+    
+    <tt><b><font color="#0000FF">dp3 </font>rn, src1, src2</b></tt><br>
+    计算 RGB 颜色的点积 <b>(src1.r × src2.r) + (src1.g × src2.g) + (src1.b × src2.b)</b>，并将结果存储到 <b>rn</b> 的所有分量。<p>
+    
+    <tt><b><font color="#0000FF">dp4 </font>rn, src1, src2</b></tt><br>
+    与 <b>dp3</b> 类似，但计算四个分量的点积。<p>
+    
+    <tt><b><font color="#0000FF">bem </font>rn.rg, src1, src2</b></tt><br>
+    应用假凹凸环境贴图转换。此指令占用2个指令槽。<br>
+    此指令执行以下计算：
+    <pre>
+(Given n == dest register #)
+rn.r = src1.r + D3DTSS_BUMPENVMAT00(stage n) * src2.r 
+                + D3DTSS_BUMPENVMAT10(stage n) * src2.g
+
+rn.g = src1.g + D3DTSS_BUMPENVMAT01(stage n) * src2.r
+                + D3DTSS_BUMPENVMAT11(stage n) * src2.g</pre><p>
+    使用此指令的规则与限制：
+    <ul>
+        <li>此指令必须出现在着色器的第一阶段（即相位标记之前）。</li>
+        <li>每个着色器只允许使用此指令一次。</li>
+        <li>除了目标寄存器写入掩码为 <b>.rg</b> 的限制外，源 <b>src1</b>, <b>src2</b> 和指令上的修饰符不受约束。</li>
+        <li>此指令不可共发。</li>
+    </ul>
+</blockquote>
+
+<br><p>
+<h4>纹理指令：</h4>
+<blockquote>
+    <tt><b><font color="#0000FF">texld </font>rn, tn</b></tt><br>
+    从 <b>tn</b> 坐标读取当前纹理阶段的颜色数据，并将结果存储到 <b>rn</b>。<br>
+    将数据加载到 <b>r0</b> 会读取纹理阶段 0，<b>r1</b> 读取阶段 1，<b>r2</b> 读取阶段 2，依此类推。即纹理阶段编号由目标寄存器号（<b>r0</b> 到 <b>r5</b>）确定。<br>
+    <b>r0, t0</b> 是 GM 当前正在绘制的纹理，可以是表面（surface）、精灵（sprite）、背景（background）等。<br>
+    在 <b>阶段 2</b>（phase 2）中，你可以使用 <b>rn</b> 作为坐标。<p>
+    
+    <tt><b><font color="#0000FF">texcrd </font>rn, tn</b></tt><br>
+    与 <b>texld</b> 类似，但它<b>复制</b>纹理坐标，而不是读取纹理颜色。<br>
+    使用此指令时，你必须添加 <b>.rgb</b> 目标写掩码（destination writemask）（见下文）。<p>
+    
+    <tt><b><font color="#0000FF">texkill </font>tn</b></tt><br>
+    如果 <b>tn</b> 的任何 <strong>RGB 分量</strong> 小于 <b>0</b>，则<strong>阻止该像素被绘制</strong>。<br>
+    在 <strong>阶段 2</strong> 中，你可以使用 <b>rn</b> 作为坐标。<p>
+    
+    <tt><b><font color="#0000FF">texdepth </font>r5</b></tt><br>
+    计算该像素 <strong>深度缓冲区（z-buffer）</strong> 对比测试中使用的深度值。<br>
+    该指令在该像素的深度缓冲区比较测试中使用 <b>r5.r / r5.g</b>。 <b>r5.b</b> 和 <b>r5.a</b> 中的数据将被忽略。 如果 <b>r5.g = 0</b>，则 <b>r5.r / r5.g = 1.0</b>。<br>
+    临时寄存器 r5 是此指令<strong>唯一</strong>可以使用的寄存器。执行此指令后，临时寄存器 r5 在着色器中<strong>不可用</strong>。<p>
+</blockquote>
+
+<br><p>
+<h4>阶段指令：</h4>
+<blockquote>
+    <tt><b><font color="#0000FF">phase</font></b></tt><br>
+    此指令标志着<strong>阶段 1</strong> 和<strong>阶段 2</strong> 之间的过渡。如果不存在阶段指令，则整个着色器将像阶段 2 着色器一样运行。<br>
+    <strong>在阶段 2 中，你只能访问 <b>vn</b> 寄存器，并且 <b>rn</b> 只能用作纹理坐标。</strong><br>
+    执行 <b>phase</b> 指令后，所有 <b>rn</b> 寄存器的 Alpha 通道都会被清空。<p>
+</blockquote>
+
+<br><p>
+<h4>指令修饰符：</h4>
+<blockquote>
+    可以通过添加修饰符来修改算术指令的结果。<p>
+    
+    <tt><b>_x2, _x4, _x8</b></tt><br>
+    将结果乘以 2、4 或 8。<p>
+    
+    <tt><b>_d2, _d4, _d8</b></tt><br>
+    将结果除以 2、4 或 8。<p>
+    
+    <tt><b>_sat</b></tt><br>
+    将结果限制在 <b>[0,1]</b> 之间。<br>
+    例如，<b>add_x2_sat</b> 先加法计算，再乘以 2，并将结果限制在 <b>[0,1]</b>。<p>
+</blockquote>
+
+<br><p>
+<h4>临时寄存器修饰符：</h4>
+<blockquote>
+    如果<strong>输入</strong>来自临时寄存器，你可以使用以下修饰符来修改输入值。<br>
+    （这些修饰符<strong>不会改变原寄存器的值</strong>，只影响计算结果。）<p>
+    
+    <tt><b>rn_bias</b></tt><br>
+    从输入值中减去 <b>0.5</b>。<p>
+    
+    <tt><b>1-rn</b></tt><br>
+    取反输入值（<b>1 - rn</b>）。<p>
+    
+    <tt><b>-rn</b></tt><br>
+    取负输入值。<p>
+    
+    <tt><b>rn_x2</b></tt><br>
+    将输入值乘以 <b>2</b>。<p>
+    
+    <tt><b>rn_bx2</b></tt><br>
+    先<strong>减去 0.5</strong>，然后<strong>乘以 2</strong>。<br>
+    （此修饰符可用于将 <b>[0, 1]</b> 范围的数据转换为 <b>[-1, 1]</b>。）<p>
+</blockquote>
+
+</body>
+</html>

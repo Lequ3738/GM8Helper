@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+<html>
+<head>
+<title>表达式</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+<!--START-->
+
+<h3>表达式</h3>
+
+表达式可以是实数（比如：4，3，3.4等等），以 $ 标签打头的十六进制数字（比如$00FFAA），单引号或双引号括起来的字符串（比如&quot;Hello&quot;或'hello'）或者其他更复杂的表达式（请注意，字符串可以是多行的！）。有下列二元运算符存在（按优先顺序排列）：
+<!-- GM61 end changed -->
+<ul>
+  <LI>&amp;&amp; || ^^: 组合是否值 (&amp;&amp; = 和, || = 或, ^^ = 异或) </LI>
+  <LI>&lt; &lt;= == != &gt; &gt;=: 比较,结果为 true (1) 或 false (0) </LI>
+  <LI>| &amp; ^: 位运算符 (| = 按位与, &amp; = 按位或, ^ = 按位异或)   
+  <LI>&lt;&lt; &gt;&gt;: 位运算符(&lt;&lt; = 左移, &gt; &gt; = 右移)   
+  <LI>+ -: 加减   
+  <LI>* / div mod: 乘，除，整除，取模 </LI>
+</ul>
+
+<!-- GM61 added -->
+<p>要注意，x div y 的值是 x/y 后的结果中跟0最接近的整数值。 mod 操作符返回其两个操作数相除的余数。也就是说，x mod y = x - (x div y) * y。同时还有以下几个一元运算符：</p>
+  <!-- GM61 end added -->
+<ul>
+  <LI>!: 否, true 转换为 false 和 false 转换为 true   
+  <LI>-: 取相反数 
+  <LI>~: 按位取反（1变0，0变1） </LI>
+  </ul>
+
+数值中你可以使用数字、变量、或者是一个函数的返回值。   子程序可以在括号内书写。所有运算符都是为实数工作的。比较运算符同样可以对字符串进行操作， +   可以连接字符串（在这里要注意，和其他语言不同的是，GameMaker没有短路求值，布尔运算的两个参数都会被计算，即使第一个参数已经决定了结果）。
+<p><strong>举例 </strong>
+<p>一个使用子程序的例子. </p>
+<p>
+<blockquote>
+<pre>
+{
+  x = 23;
+  color = $FFAA00;
+  str = 'hello world';
+  y += 5;
+  x *= y;
+  x = y &lt;&lt; 2;
+  x = 23*((2+4) / sin(y));
+  str = 'hello' + &quot; world&quot;;
+  b = (x &lt; 5) &amp;&amp; !(x==2 || x==4);
+}
+</pre>
+</blockquote>
+
+<!--END-->
+</body>
+</html>
+
+<!-- KEYWORDS
+hexadecimal numbers
+expressions
+operators
+binary operators
+unary operators
+bitwise operators
+boolean operators
+logical operators
+-->
