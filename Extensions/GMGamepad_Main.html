@@ -263,7 +263,7 @@
 
 还有一些与 GM8 自带的 <tt><b>vk_anykey</b></tt> 类似的常量：<p>
 
-<figure><table style="border:1px solid #BBBBBB;">
+<figure><table style="border:1px solid #BBBBBB;" id = "any">
 <tr>
     <th colspan="2" style="border:1px solid #BBBBBB;padding:2px 8px;">
     <strong>任意键常量</strong></th>
@@ -293,6 +293,8 @@
 </tbody>
 </table></figure><p>
 
+注：在受支持的手柄中，任意键常量均可按照预期使用；在不受支持的手柄中，任意键常量只能用于手柄的按钮（包括十字键，但不包括摇杆和扳机键，即 <b><tt>gp_anyaxis</tt></b> 失效，<b><tt>gp_any</tt></b> 只能用于按钮）。<p>
+
 若要更好地了解每个常量代表控制器的哪个部分，可以参考标准 XInput 游戏手柄的下图：<br>
 <img src = "images/GamePad.png"><br>
 
@@ -321,6 +323,7 @@
     <A href="GMGamepad_信息和配置.html#gamepad_get_guid">gamepad_get_guid</A><br>
     <A href="GMGamepad_信息和配置.html#gamepad_get_id">gamepad_get_id</A><br>
     <A href="GMGamepad_信息和配置.html#gamepad_get_axis_deadzone">gamepad_get_axis_deadzone</A><br>
+    <A href="GMGamepad_信息和配置.html#gamepad_get_inputs_index">gamepad_get_inputs_index</A><br>
     <A href="GMGamepad_信息和配置.html#gamepad_set_vibration">gamepad_set_vibration</A><br>
     <A href="GMGamepad_信息和配置.html#gamepad_set_color">gamepad_set_color</A><br>
     <A href="GMGamepad_信息和配置.html#gamepad_set_axis_deadzone">gamepad_set_axis_deadzone</A><br>

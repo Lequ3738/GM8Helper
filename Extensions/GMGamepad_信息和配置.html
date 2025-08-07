@@ -130,8 +130,17 @@
     <tt id = "gamepad_get_axis_deadzone"><b>
     <font color="#0000FF">real </font>
     gamepad_get_axis_deadzone(<font color="#0000FF">real </font>device)
-    </b></tt><br>此函数可用于获取操纵杆轴的“死区”值。您指定要获取的设备插槽，该函数将返回一个介于 0 到 1 之间的值，该值反映了操纵杆轴被视为处于 0 位置的阈值。<br>
+    </b></tt><br>
+    此函数可用于获取操纵杆轴的“死区”值。您指定要获取的设备插槽，该函数将返回一个介于 0 到 1 之间的值，该值反映了操纵杆轴被视为处于 0 位置的阈值。<br>
     默认死区为 0.05。<p>
+    
+    <tt id = "gamepad_get_inputs_index"><b>
+    <font color="#0000FF">real </font>
+    gamepad_get_inputs_index(<font color="#0000FF">real </font>device,
+    <font color="#0000FF">real </font>constant)
+    </b></tt><br>
+    此函数可用于获取受支持手柄的输入常量所绑定的原始按钮/轴值。<br>
+    如果获取的是不受支持的手柄，或是手柄不存在，则输出 -1。<p>
     
     <tt id = "gamepad_set_vibration"><b>
     <font color="#0000FF">bool </font>
