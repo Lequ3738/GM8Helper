@@ -74,6 +74,14 @@
     您可以使用此函数从给定的游戏手柄插槽中模拟指定按钮的一次松开操作。即使按钮未按下，也能执行此函数。<br>
     此函数不仅可以模拟指定按钮的一次松开操作，还可以模拟指定摇杆的一次回归原点的操作。<br>
     如果成功执行操作，则返回 <b><tt>true</tt></b>，否则返回 <b><tt>false</tt></b>。<p>
+    
+    <tt id = "gamepad_clear"><b>
+    <font color="#0000FF">bool </font>
+    gamepad_clear(<font color="#0000FF">real </font>device)
+    </b></tt><br>
+    此函数清除指定手柄插槽手柄的所有按键状态。<br>
+    调用此函数后，函数 <b><tt><A href="GMGamepad_输入.html#gamepad_button_check">gamepad_button_check()</A></tt></b>、<b><tt><A href="GMGamepad_输入.html#gamepad_button_check_pressed">gamepad_button_check_pressed()</A></tt></b> 和 <b><tt><A href="GMGamepad_输入.html#gamepad_button_check_released">gamepad_button_check_released()</A></tt></b> 会受到影响，函数 <b><tt><A href="GMGamepad_输入.html#gamepad_button_check_direct">gamepad_button_check_direct()</A></tt></b> 不会受到影响。<br>
+    如果成功执行操作，则返回 <b><tt>true</tt></b>，否则返回 <b><tt>false</tt></b>。<p>
 </blockquote>
 
 <!--END-->

@@ -1,0 +1,37 @@
+[OPTIONS]
+Auto index=Yes
+Compiled file=GM_Gamepad.chm
+Default window=main
+Default topic=Extensions\GMGamepad_Main.html
+Full-text search=Yes
+Index file=GM_Gamepad.hhk
+Language=0x0804 简体中文(中国大陆)
+Title=GMGamepad帮助文档
+Contents file=GM_Gamepad.hhc
+Error log file=
+Full text search stop list file=
+Binary TOC=No
+Binary Index=Yes
+Create CHI file=No
+Display compile progress=No
+Display compile notes=Yes
+Enhanced decompilation=No
+Flat=No
+Compatibility=1.1 or later
+Default Font=微软雅黑,8,0
+
+[WINDOWS]
+main="GMGamepad帮助文档","GM_Gamepad.hhc","GM_Gamepad.hhk","Extensions\GMGamepad_Main.html","Extensions\GMGamepad_Main.html","Extensions\GMGamepad_Main.html",,,,0x00002520,256,0x0000106E,[50,50,916,638],0x000B0000,,,0,0,0,0
+
+[FILES]
+Extensions\images\back.gif
+Game_Maker.hhc
+Game_Maker.hhk
+Extensions\images\GamePad.png
+Extensions\GMGamepad_Main.html
+Extensions\GMGamepad_常规.html
+Extensions\GMGamepad_输入.html
+Extensions\GMGamepad_信息和配置.html
+Extensions\GMGamepad_自定义映射.html
+Extensions\style.css
+

@@ -19,7 +19,8 @@
     </b></tt><br>
     返回此扩展是否支持指定的手柄。<br>
     参数 <b><tt>device</tt></b> 是手柄被分配的指定插槽索引。<br>
-    若此函数返回 <b><tt>false</tt></b>，则不支持此插槽的手柄。意味着在使用 <A href="GMGamepad_输入.html#gamepad_button_check"><b><tt>gamepad_button_check()</tt></b></A> 之类的输入函数时，不能使用 <b><tt>gp_face1</tt></b>、<b><tt>gp_axisrh</tt></b> 之类的<A href="GMGamepad_Main.html#input">输入常量</A>。只能使用原始索引和<A href="GMGamepad_Main.html#original">原始索引偏移常量</A>来进行使用。<p>
+    若此函数返回 <b><tt>false</tt></b>，则意味着插件不支持此插槽的手柄。即在使用 <A href="GMGamepad_输入.html#gamepad_button_check"><b><tt>gamepad_button_check()</tt></b></A> 之类的<A href="GMGamepad_Main.html#func_input">输入函数</A>时，不能使用 <b><tt>gp_face1</tt></b>、<b><tt>gp_axisrh</tt></b> 之类的<A href="GMGamepad_Main.html#input">输入常量</A>。只能使用原始索引和<A href="GMGamepad_Main.html#original">原始索引偏移常量</A>来进行使用。<br>
+    可以通过<A href="GMGamepad_Main.html#func_mapping">自定义映射</A>相关的函数来让插件支持其所不支持的手柄。<p>
 
     <tt id = "gamepad_get_device_count"><b>
     <font color="#0000FF">real </font>
@@ -125,13 +126,13 @@
     gamepad_get_id(<font color="#0000FF">real </font>device)
     </b></tt><br>
     返回指定插槽索引的游戏手柄的实例 ID。<br>此函数专为多手柄连接而设计。当有多个手柄连接时，直接记录插槽索引并不可靠。当发生游戏手柄插入设备（或将其移除）的情况时，插槽索引对应的手柄设备可能会改变。<br>
-    此函数返回的实例 ID 在游戏运行期间，该手柄设备自插入到拔出时都不会改变。<p>
+    此函数返回的实例 ID 在游戏运行期间，该手柄设备从插入到拔出时都不会改变。<p>
     
     <tt id = "gamepad_get_axis_deadzone"><b>
     <font color="#0000FF">real </font>
     gamepad_get_axis_deadzone(<font color="#0000FF">real </font>device)
     </b></tt><br>
-    此函数可用于获取操纵杆轴的“死区”值。您指定要获取的设备插槽，该函数将返回一个介于 0 到 1 之间的值，该值反映了操纵杆轴被视为处于 0 位置的阈值。<br>
+    此函数可用于获取指定设备插槽手柄上摇杆轴的“死区”值。该值介于 0 到 1 之间，反映了摇杆轴被视为处于 0 位置的阈值。<br>
     默认死区为 0.05。<p>
     
     <tt id = "gamepad_get_inputs_index"><b>
@@ -149,7 +150,7 @@
     <font color="#0000FF">real </font>right_motor,
     <font color="#0000FF">real </font>time)
     </b></tt><br>
-    使用此函数，您可以设置游戏手柄电机的振动，任一电机使用从 0（无振动）到 1（完全振动）的值。<br>
+    此函数可用于设置游戏手柄电机的振动，任一电机使用从 0（无振动）到 1（完全振动）的值。<br>
     参数 <b><tt>left_motor</tt></b> 是设置左电机（通常是低频电机）的振动量。<br>
     参数 <b><tt>right_motor</tt></b> 是设置右电机（通常是高频电机）的振动量。<br>
     参数 <b><tt>time</tt></b> 是设置电机的振动时间，单位为秒。<br>
@@ -168,7 +169,7 @@
     gamepad_set_axis_deadzone(<font color="#0000FF">real </font>device,
     <font color="#0000FF">real </font>deadzone)
     </b></tt><br>
-    此功能可用于设置操纵杆轴的“死区”。您指定要设置的设备插槽，然后设置一个 0 到 1 之间的值，如果输入量低于给定值，则认为操纵杆轴处于 0 位置。请注意，这是一个全局设置，将影响指定设备插槽上连接的所有操纵杆的所有轴。<br>
+    此函数可用于设置指定设备插槽手柄上摇杆轴的“死区”，该死区可以设置一个从 0 到 1 之间的值。如果手柄摇杆的输入量低于给定死区值，则认为摇杆轴处于 0 位置。请注意，这是一个全局设置，将影响指定设备插槽上连接的所有摇杆的所有轴。<br>
     使用此函数并不意味着轴值将从死区值开始，因为 <A href="GMGamepad_输入.html#gamepad_axis_value"><tt><b>gamepad_axis_value()</tt></b></A> 函数将始终返回一个介于 -1 和 0 之间或 0 和 1 之间的归一化值。例如，将死区设置为 0.2 意味着，当原始轴值超过 0.2 时，向右推动摇杆才会开始返回 0 到 1 之间的值——因此，当原始值为 0.2 时，返回值将为 0；当原始值为 0.5 时，返回值将为 0.375；或者，如果原始值为 0.9，则返回值将为 0.875。<br>
     如果成功执行操作，则返回 <b><tt>true</tt></b>，否则返回 <b><tt>false</tt></b>。<p>
     
@@ -176,19 +177,21 @@
     <font color="#0000FF">real </font>
     gamepad_axis_count(<font color="#0000FF">real </font>device)
     </b></tt><br>
-    此功能将返回被检查设备上的“摇杆”控件的数量。<p>
+    此函数可用于获取指定设备插槽手柄上的“摇杆轴”控件的数量。<br>
+    注意：一个摇杆实际上是对应着两个轴（X 轴和 Y 轴），所以用此函数获取一个标准手柄的摇杆轴控件的数量应为 6（两个摇杆共 4 个轴，两个扳机键共 2 个轴）。<p>
     
     <tt id = "gamepad_button_count"><b>
     <font color="#0000FF">real </font>
     gamepad_button_count(<font color="#0000FF">real </font>device)
     </b></tt><br>
-    此功能将返回被检查设备上的“按钮”控件的数量。<p>
+    此函数可用于获取指定设备插槽手柄上的“按钮”控件的数量。<p>
     
     <tt id = "gamepad_hat_count"><b>
     <font color="#0000FF">real </font>
     gamepad_hat_count(<font color="#0000FF">real </font>device)
     </b></tt><br>
-    此功能将返回被检查设备上的“十字键”控件的数量。<p>
+    此函数可用于获取指定设备插槽手柄上的“十字键”控件的数量。<br>
+    注意：此函数将十字键看作一个整体。所以用此函数获取一个标准手柄的十字键控件的数量应为 1，而不是 4。<p>
 </blockquote>
 
 <!--END-->

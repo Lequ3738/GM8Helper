@@ -26,6 +26,21 @@
 拥有以上特性，使得 GM8 中自带的手柄支持功能几乎无法使用。此扩展就是为了解决以上痛点，并为了更加方便地使用手柄功能而生。<br>
 此扩展的 API 尽量贴合现代 GameMaker API（即前 GameMaker Studio 2 的 API），减少学习成本。
 
+<h3>初始化</h3>
+此扩展下载下来后，应该可以看到如下文件：<br>
+<img src = "images/文件.png"><br>
+<dl>
+<dt><b><tt>Constants.gex</tt></b></dt><dd>插件所需的常量扩展包，需要加载到工程内。</dd><br>
+<dt><b><tt>Constants.txt</tt></b></dt><dd>要编译成 <b><tt>Constants.gex</tt></b> 的源文件，使用插件的时候可不用管它。</dd>
+<dt><b><tt>GamepadDatabase.txt</tt></b></dt><dd>可包含在工程内，也可不包含。用途见<A href="GMGamepad_Main.html#title_mapping">手柄映射</A>章节。</dd><br>
+<dt><b><tt>GMGamepad.dll、SDL3.dll</tt></b></dt><dd>插件本体及其依赖项，需要包含在工程内。</dd><br>
+<dt><b><tt>GMGamepad.gmk、GMGamepad.gb1</tt></b></dt><dd>插件的演示工程。</dd><br>
+<dt><b><tt>GMGamepad.gml</tt></b></dt><dd>插件配套的函数，需要包含在工程内。</dd><br>
+<dt><b><tt>GM_Gamepad.chm</tt></b></dt><dd>此帮助文件。</dd><br>
+</dl>
+按照说明来配置工程即可。<br>
+配置完成后，在主控对象的创建事件或是指定加载插件的地方调用 <A href="GMGamepad_常规.html#gamepad_dll_init"><b><tt>gamepad_dll_init()</tt></b></A> 即可完成初始化操作。
+
 <h3>检测游戏手柄</h3>
 此扩展需要在主控对象中每步调用 <A href="GMGamepad_常规.html#gamepad_update"><b><tt>gamepad_update()</tt></b></A> 来更新手柄状态。当游戏手柄插入设备（或将其移除）时，<A href="GMGamepad_常规.html#gamepad_update"><b><tt>gamepad_update()</tt></b></A> 会返回 <b><tt>true</tt></b>，从而允许您使用适当的函数来处理这种情况。<br>
 当游戏手柄连接时，它会被分配一个插槽索引。在插入的游戏手柄数量发生改变时，其分配的插槽索引可能会改变。如果游戏要使用多个手柄时，推荐使用 <A href="GMGamepad_信息和配置.html#gamepad_get_id"><b><tt>gamepad_get_id()</tt></b></A> 来获取手柄的唯一实例 ID。<br>
@@ -300,7 +315,7 @@
 
 值得注意的是，上述常量可能与实际按下按钮时对应的按钮不完全一致，这是因为手柄制造商在实现 API 时存在碎片化和非标准化问题。因此，建议在游戏中提供某种手柄设置界面，允许玩家根据连接设备的输入重新定义手柄按钮。可以通过代码自行实现，也可以使用接下来要讲的“手柄映射”来实现。
 
-<h3>手柄映射</h3>
+<h3 id = "title_mapping">手柄映射</h3>
 此扩展附带了许多基于 SDL 游戏手柄控制器数据库的不同游戏手柄的映射，您应该能在此扩展的文件夹里面找到 <b>GamepadDatabase.txt</b> 文件。<br>
 这些映射用于将内置常量重新映射到给定游戏手柄的直接物理输入。如果您想支持其他游戏手柄，可以通过修改 <b>GamepadDatabase.txt</b> 并使用 <A href="GMGamepad_常规.html#gamepad_dll_init"><b><tt>gamepad_dll_init()</tt></b></A> 函数加载此文件来做到这一点。<p>
 
@@ -341,6 +356,7 @@
     <A href="GMGamepad_输入.html#gamepad_axis_value">gamepad_axis_value</A><br>
     <A href="GMGamepad_输入.html#gamepad_button_press">gamepad_button_press</A><br>
     <A href="GMGamepad_输入.html#gamepad_button_release">gamepad_button_release</A><br>
+    <A href="GMGamepad_输入.html#gamepad_clear">gamepad_clear</A><br>
 </blockquote><br><p>
 
 <h4 id = "func_mapping">自定义映射</h4>

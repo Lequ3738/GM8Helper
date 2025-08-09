@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Precision Helper 2.0.1">
+<!-- Sitemap 1.0 -->
+</HEAD>
+<BODY>
+    <OBJECT type="text/site properties">
+      <param name="FrameName" value="right">
+      <param name="Window Styles" value="0x00000027">
+      <param name="Font" value="微软雅黑,9,134">
+      <param name="comment" value="title:GMGamepad帮助文档">
+      <param name="comment" value="base:Extensions\GMGamepad_Main.html">
+    </OBJECT>
+    <UL>
+        <LI><OBJECT type="text/sitemap">
+          <param name="Name" value="GM Gamepad">
+          <param name="Local" value="Extensions\GMGamepad_Main.html">
+        </OBJECT>
+        <UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="常规">
+              <param name="Local" value="Extensions\GMGamepad_常规.html">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="信息和配置">
+              <param name="Local" value="Extensions\GMGamepad_信息和配置.html">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="输入">
+              <param name="Local" value="Extensions\GMGamepad_输入.html">
+            </OBJECT>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="自定义映射">
+              <param name="Local" value="Extensions\GMGamepad_自定义映射.html">
+            </OBJECT>
+        </UL>
+    </UL>
+</BODY>
+</HTML>
