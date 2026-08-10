@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>GMGraphic</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+
+<!--START-->
+
+<h1>GMGraphic</h1>
+
+<center><font size="3">
+作者：Lequ<br>
+文档创建时间：2026/8/10<br>
+</font></center><p>
+
+<p><strong>当前版本仅适用于 GameMaker 8.0，不适用于 GM 8.1 及以后的 GM 版本，也不适用于 GM 7 及以下的版本。</strong></p>
+
+
+<h3>关于</h3>
+<p>GMGraphic 是一个功能全面的图形扩展，它大幅增强了 GameMaker 8.0 的图形绘制能力，为你提供：
+<ul>
+<li><strong>像素着色器和顶点着色器：</strong>
+同时支持汇编着色器（D3D8/9 通用）与 HLSL 着色器（D3D9），可在游戏中自由创建、切换和销毁着色器，并为着色器设置 uniform 参数。</li>
+
+<li><strong>丰富的渲染控制：</strong>
+雾效（线性/指数）、Z 测试与写入、Alpha 测试、颜色写掩码、深度偏移（防止 Z-fighting）、线框/点模式填充、自动法线归一化等，均为逐项开关式 API，风格与 GMS2 的 <b><tt>gpu_*</tt></b> 系列一致。</li>
+
+<li><strong>多重纹理与采样器控制：</strong>
+最多支持 8 个纹理坐标，可为每个纹理阶段独立设置过滤方式、寻址方式、各向异性等级与 Mip 过滤。</li>
+
+<li><strong>点图元与点精灵：</strong>
+可控制点的大小（含大小缩放与距离衰减），并可为点精灵应用纹理。</li>
+
+<li><strong>扩展图元：</strong>
+单个图元最多可包含 <strong>8192 个顶点</strong>，每个顶点可包含<strong>位置、法线、漫反射和镜面反射颜色/透明度，以及最多 8 个纹理坐标</strong>，配合顶点着色器可进行逐顶点计算。</li>
+
+<li><strong>纹理图集：</strong>
+将多张图片打包进一张大纹理，大幅减少绘制调用（DrawCall）开销。支持图片自动裁剪、边缘像素重复、图集的保存与读取，并提供自动打包模式。</li>
+
+<li><strong>SDF 字体：</strong>
+支持任意缩放字形和改变字形的粗细度（可精确到小数），字体加载快且纹理占用显存少（是普通纹理的 1/4），并支持描边、内/外发光、空心字体、柔和边缘的文字阴影等效果。</li>
+
+<li><strong>富文本标签：</strong>
+使用类似 HTML 的标签为文字添加颜色、大小、字体、加粗、斜体、缩进等效果。</li>
+</ul>
+
+<h3>如何使用</h3>
+<p>所有函数在适用的情况下 <strong>均可在 2D 和 3D 模式下运行</strong>。<br>
+函数返回值：<strong>成功返回 true，失败返回 false，输入错误返回 -1</strong>。<br>
+在使用任何功能之前，需要先调用 <A href="GMGraphic_初始化.html#graphic_dll_init"><b><tt>graphic_dll_init()</tt></b></A> 初始化扩展。</p>
+
+<h3>快速导航</h3>
+阅读以下文章来快速了解此扩展能实现什么功能：
+<blockquote>
+   <A href="GMGraphic_初始化.html">初始化与信息查询</A><br>
+   <A href="GMGraphic_着色器.html">着色器</A><br>
+   <A href="GMGraphic_渲染控制.html">渲染控制</A><br>
+   <A href="GMGraphic_纹理图集.html">纹理图集</A><br>
+   <A href="GMGraphic_图集绘制.html">图集绘制</A><br>
+   <A href="GMGraphic_字体.html">字体</A><br>
+   <A href="GMGraphic_富文本.html">富文本</A><br>
+</blockquote><!--ENDHELPONLY--><!--END-->
+</body>
+</html>

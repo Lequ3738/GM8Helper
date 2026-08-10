@@ -1116,6 +1116,40 @@
                   <param name="Local" value="Extensions\GMGamepad_自定义映射.html">
                 </OBJECT>
             </UL>
+            <LI><OBJECT type="text/sitemap">
+              <param name="Name" value="GMGraphic">
+              <param name="Local" value="Extensions\GMGraphic_Main.html">
+            </OBJECT>
+            <UL>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="初始化与信息查询">
+                  <param name="Local" value="Extensions\GMGraphic_初始化.html">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="着色器">
+                  <param name="Local" value="Extensions\GMGraphic_着色器.html">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="渲染控制">
+                  <param name="Local" value="Extensions\GMGraphic_渲染控制.html">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="纹理图集">
+                  <param name="Local" value="Extensions\GMGraphic_纹理图集.html">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="图集绘制">
+                  <param name="Local" value="Extensions\GMGraphic_图集绘制.html">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="字体">
+                  <param name="Local" value="Extensions\GMGraphic_字体.html">
+                </OBJECT>
+                <LI><OBJECT type="text/sitemap">
+                  <param name="Name" value="富文本">
+                  <param name="Local" value="Extensions\GMGraphic_富文本.html">
+                </OBJECT>
+            </UL>
         </UL>
     </UL>
 </BODY>

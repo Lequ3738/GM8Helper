@@ -1,0 +1,369 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>字体</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+
+<!--START-->
+
+<h1>字体</h1>
+
+<p>本扩展的字体功能基于 <strong>SDF（Signed Distance Field，有向距离场）</strong> 算法，常用于 TextMeshPro 等现代游戏引擎的字体渲染系统。其特点有：
+<ul>
+<li>支持任意缩放字形和改变字形的粗细度（可精确到小数）。</li>
+<li>字体加载快，且纹理占用显存少（是普通纹理的 1/4）。</li>
+<li>支持描边、内/外发光、空心字体、柔和边缘的文字阴影等丰富的文字效果。</li>
+</ul>
+使用字体需要两个文件：<strong>字形的 SDF 纹理图片</strong>（通常是 png）和<strong>记录字形信息的 csv 文件</strong>。两者需由字体生成工具（如 tiny-sdf）预先制作。</p>
+
+<h3>字体的加载与释放</h3>
+
+<blockquote>
+    <tt id = "sdf_add_font"><b>
+    <font color="#0000FF">real </font>
+    sdf_add_font(<font color="#0000FF">string </font>image_path,
+    <font color="#0000FF">string </font>csv_path)
+    </b></tt><br>
+    加载一个 SDF 字体。参数 <b><tt>image_path</tt></b> 是字形纹理图片的路径，<b><tt>csv_path</tt></b> 是字形信息文件的路径。<br>
+    返回新字体的 ID，失败时返回 -1。<p>
+
+    <tt id = "sdf_delete_font"><b>
+    <font color="#0000FF">bool </font>
+    sdf_delete_font(<font color="#0000FF">real </font>id)
+    </b></tt><br>
+    删除给定的字体并释放其资源。<br>
+    如果成功执行操作，则返回 <b><tt>true</tt></b>，否则返回 <b><tt>false</tt></b>。<p>
+
+    <tt id = "sdf_release_cache"><b>
+    <font color="#0000FF">bool </font>
+    sdf_release_cache()
+    </b></tt><br>
+    释放扩展内部缓存的排版结果。当字体或文字绘制参数经常变化时，调用此函数可以避免缓存占用过多内存。<p>
+</blockquote>
+
+<h3>当前字体与绘制参数</h3>
+<p>以下函数设置并查询“当前绘制字体”的各种参数，对之后的所有 SDF 文字绘制生效。</p>
+
+<blockquote>
+    <tt id = "sdf_draw_set_font"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_set_font(<font color="#0000FF">real </font>font_id)
+    </b></tt><br>
+    设置当前绘制使用的字体。<p>
+
+    <tt id = "sdf_draw_get_font"><b>
+    <font color="#0000FF">real </font>
+    sdf_draw_get_font()
+    </b></tt><br>
+    返回当前绘制使用的字体 ID。<p>
+
+    <tt id = "sdf_draw_set_font_size"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_set_font_size(<font color="#0000FF">real </font>size)
+    </b></tt><br>
+    设置文字的缩放大小。该值最好与字形纹理的制作尺寸一致。<p>
+
+    <tt id = "sdf_draw_get_font_size"><b>
+    <font color="#0000FF">real </font>
+    sdf_draw_get_font_size()
+    </b></tt><br>
+    返回当前的文字缩放大小。<p>
+
+    <tt id = "sdf_draw_set_line_spacing"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_set_line_spacing(<font color="#0000FF">real </font>spacing)
+    </b></tt><br>
+    设置文字的行距（单位：像素）。默认值为 1。<p>
+
+    <tt id = "sdf_draw_get_line_spacing"><b>
+    <font color="#0000FF">real </font>
+    sdf_draw_get_line_spacing()
+    </b></tt><br>
+    返回当前的行距。<p>
+
+    <tt id = "sdf_draw_set_align_by_line"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_set_align_by_line(<font color="#0000FF">real </font>by_line)
+    </b></tt><br>
+    设置是否逐行对齐。默认值为 <b><tt>false</tt></b>，即整段文本作为一个整体进行水平对齐。<br>
+    启用后，每一行都单独按其长度进行水平对齐。<p>
+
+    <tt id = "sdf_draw_get_align_by_line"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_get_align_by_line()
+    </b></tt><br>
+    返回当前是否启用了逐行对齐。<p>
+
+    <tt id = "sdf_draw_set_use_shader"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_set_use_shader(<font color="#0000FF">real </font>use)
+    </b></tt><br>
+    设置是否使用扩展内置的着色器绘制 SDF 文字。默认值为 <b><tt>true</tt></b>。<br>
+    关闭后文字将直接使用顶点颜色绘制，可配合自定义着色器使用。<p>
+
+    <tt id = "sdf_draw_get_use_shader"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_get_use_shader()
+    </b></tt><br>
+    返回当前是否使用扩展内置的着色器。<p>
+
+    <tt id = "sdf_draw_set_premul"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_set_premul(<font color="#0000FF">real </font>premul)
+    </b></tt><br>
+    设置是否使用预乘 Alpha 的绘制方式。启用后可以改善半透明文字的边缘效果。<p>
+
+    <tt id = "sdf_draw_get_premul"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_get_premul()
+    </b></tt><br>
+    返回当前是否使用了预乘 Alpha 绘制。<p>
+
+    <tt id = "sdf_draw_set_font_sharpness"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_set_font_sharpness(<font color="#0000FF">real </font>sharpness)
+    </b></tt><br>
+    设置字体的锐度，即字形边缘的过渡宽度。该值最好与字形纹理的大小相同。<p>
+
+    <tt id = "sdf_draw_get_font_sharpness"><b>
+    <font color="#0000FF">real </font>
+    sdf_draw_get_font_sharpness()
+    </b></tt><br>
+    返回当前的字体锐度。<p>
+
+    <tt id = "sdf_draw_set_font_thickness"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_set_font_thickness(<font color="#0000FF">real </font>thickness)
+    </b></tt><br>
+    设置字体的粗细度，取值范围为 100 至 900，默认值为 500。<br>
+    小于 500 使字形变细，大于 500 使字形变粗，可精确到小数。<p>
+
+    <tt id = "sdf_draw_get_font_thickness"><b>
+    <font color="#0000FF">real </font>
+    sdf_draw_get_font_thickness()
+    </b></tt><br>
+    返回当前的字体粗细度。<p>
+
+    <tt id = "sdf_draw_set_text_gap"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_set_text_gap(<font color="#0000FF">real </font>gap)
+    </b></tt><br>
+    设置字与字之间的间隔。<p>
+
+    <tt id = "sdf_draw_get_text_gap"><b>
+    <font color="#0000FF">real </font>
+    sdf_draw_get_text_gap()
+    </b></tt><br>
+    返回当前的文字间隔。<p>
+
+    <tt id = "draw_get_halign"><b>
+    <font color="#0000FF">real </font>
+    draw_get_halign()
+    </b></tt><br>
+    返回当前的水平对齐方式。此函数读取 GM8 中由 <b><tt>draw_set_halign()</tt></b> 设置的对齐值，SDF 文字绘制时同样遵循该设置。<p>
+
+    <tt id = "draw_get_valign"><b>
+    <font color="#0000FF">real </font>
+    draw_get_valign()
+    </b></tt><br>
+    返回当前的垂直对齐方式。此函数读取 GM8 中由 <b><tt>draw_set_valign()</tt></b> 设置的对齐值。<p>
+
+    <tt id = "sdf_set_font_offset"><b>
+    <font color="#0000FF">bool </font>
+    sdf_set_font_offset(<font color="#0000FF">real </font>id,
+    <font color="#0000FF">real </font>xoffset,
+    <font color="#0000FF">real </font>yoffset)
+    </b></tt><br>
+    为给定的字体设置绘制偏移量（单位：像素）。可用于修正字体的对齐位置。<p>
+</blockquote>
+
+<h3>字体配置（conf）</h3>
+<p>使用 <b><tt>sdf_draw_set_conf()</tt></b> 可以将一组字体参数保存为一个配置，之后用 <b><tt>sdf_apply_conf()</tt></b> 一键应用，方便在不同字体风格之间切换。</p>
+
+<blockquote>
+    <tt id = "sdf_draw_set_conf"><b>
+    <font color="#0000FF">real </font>
+    sdf_draw_set_conf(<font color="#0000FF">real </font>font,
+    <font color="#0000FF">real </font>size,
+    <font color="#0000FF">real </font>line_spacing,
+    <font color="#0000FF">real </font>sharpness,
+    <font color="#0000FF">real </font>thickness)
+    </b></tt><br>
+    将给定的字体、缩放大小、行距、锐度和粗细度保存为一个字体配置。参数含义与对应的 <b><tt>sdf_draw_set_*</tt></b> 函数相同。<br>
+    返回新配置的 ID，失败时返回 -1。<p>
+
+    <tt id = "sdf_apply_conf"><b>
+    <font color="#0000FF">bool </font>
+    sdf_apply_conf(<font color="#0000FF">real </font>conf_id)
+    </b></tt><br>
+    应用给定的字体配置，将其中的字体和各项参数设为当前值。<br>
+    如果成功执行操作，则返回 <b><tt>true</tt></b>，否则返回 <b><tt>false</tt></b>。<p>
+
+    <tt id = "sdf_delete_conf"><b>
+    <font color="#0000FF">bool </font>
+    sdf_delete_conf(<font color="#0000FF">real </font>conf_id)
+    </b></tt><br>
+    删除给定的字体配置。<p>
+
+    <tt id = "sdf_delete_all_conf"><b>
+    <font color="#0000FF">bool </font>
+    sdf_delete_all_conf()
+    </b></tt><br>
+    删除所有字体配置。<p>
+</blockquote>
+
+<h3>文字测量</h3>
+
+<blockquote>
+    <tt id = "sdf_string_width"><b>
+    <font color="#0000FF">real </font>
+    sdf_string_width(<font color="#0000FF">string </font>str)
+    </b></tt><br>
+    返回给定字符串在当前字体下的宽度（单位：像素）。<p>
+
+    <tt id = "sdf_string_height"><b>
+    <font color="#0000FF">real </font>
+    sdf_string_height(<font color="#0000FF">string </font>str)
+    </b></tt><br>
+    返回给定字符串在当前字体下的高度（单位：像素）。<p>
+
+    <tt id = "sdf_string_width_ext"><b>
+    <font color="#0000FF">real </font>
+    sdf_string_width_ext(<font color="#0000FF">string </font>str,
+    <font color="#0000FF">real </font>w)
+    </b></tt><br>
+    返回给定字符串在限定宽度 <b><tt>w</tt></b> 内自动换行后的宽度。<p>
+
+    <tt id = "sdf_string_height_ext"><b>
+    <font color="#0000FF">real </font>
+    sdf_string_height_ext(<font color="#0000FF">string </font>str,
+    <font color="#0000FF">real </font>w)
+    </b></tt><br>
+    返回给定字符串在限定宽度 <b><tt>w</tt></b> 内自动换行后的高度。<p>
+</blockquote>
+
+<h3>绘制文字</h3>
+<p>以下绘制函数默认使用当前的绘制字体和参数，颜色默认使用 GM 当前设置的绘制颜色（可通过 <b><tt>draw_set_color()</tt></b> / <b><tt>draw_set_alpha()</tt></b> 修改）。<br>
+所有函数都返回 <b><tt>true</tt></b> 表示成功。</p>
+
+<blockquote>
+    <tt id = "sdf_draw_text"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_text(<font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y,
+    <font color="#0000FF">string </font>str)
+    </b></tt><br>
+    在坐标（x, y）处绘制文字。<p>
+
+    <tt id = "sdf_draw_text_ext"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_text_ext(<font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y,
+    <font color="#0000FF">string </font>str,
+    <font color="#0000FF">real </font>w)
+    </b></tt><br>
+    在坐标（x, y）处绘制文字，并在限定宽度 <b><tt>w</tt></b> 内自动换行。<p>
+
+    <tt id = "sdf_draw_text_transformed"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_text_transformed(<font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y,
+    <font color="#0000FF">string </font>str,
+    <font color="#0000FF">real </font>xscale,
+    <font color="#0000FF">real </font>yscale,
+    <font color="#0000FF">real </font>angle)
+    </b></tt><br>
+    以指定的水平和垂直缩放、旋转角度（度）绘制文字。<p>
+
+    <tt id = "sdf_draw_text_ext_transformed"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_text_ext_transformed(<font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y,
+    <font color="#0000FF">string </font>str,
+    <font color="#0000FF">real </font>w,
+    <font color="#0000FF">real </font>xscale,
+    <font color="#0000FF">real </font>yscale,
+    <font color="#0000FF">real </font>angle)
+    </b></tt><br>
+    在限定宽度内换行，并同时应用缩放和旋转。<p>
+
+    <tt id = "sdf_draw_text_color"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_text_color(<font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y,
+    <font color="#0000FF">string </font>str,
+    <font color="#0000FF">real </font>c1,
+    <font color="#0000FF">real </font>c2,
+    <font color="#0000FF">real </font>c3,
+    <font color="#0000FF">real </font>c4,
+    <font color="#0000FF">real </font>alpha)
+    </b></tt><br>
+    绘制文字并为文字的四个角分别指定颜色（GM 颜色）和整体透明度（0 至 1）。<br>
+    参数 <b><tt>c1</tt></b> 至 <b><tt>c4</tt></b> 分别对应左上、右上、右下、左下。<p>
+
+    <tt id = "sdf_draw_text_ext_color"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_text_ext_color(<font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y,
+    <font color="#0000FF">string </font>str,
+    <font color="#0000FF">real </font>w,
+    <font color="#0000FF">real </font>c1,
+    <font color="#0000FF">real </font>c2,
+    <font color="#0000FF">real </font>c3,
+    <font color="#0000FF">real </font>c4,
+    <font color="#0000FF">real </font>alpha)
+    </b></tt><br>
+    在限定宽度内换行，并为文字四角分别指定颜色和透明度。<p>
+
+    <tt id = "sdf_draw_text_transformed_color"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_text_transformed_color(<font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y,
+    <font color="#0000FF">string </font>str,
+    <font color="#0000FF">real </font>xscale,
+    <font color="#0000FF">real </font>yscale,
+    <font color="#0000FF">real </font>angle,
+    <font color="#0000FF">real </font>c1,
+    <font color="#0000FF">real </font>c2,
+    <font color="#0000FF">real </font>c3,
+    <font color="#0000FF">real </font>c4,
+    <font color="#0000FF">real </font>alpha)
+    </b></tt><br>
+    应用缩放和旋转，并为文字四角分别指定颜色和透明度。<p>
+
+    <tt id = "sdf_draw_text_ext_transformed_color"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_text_ext_transformed_color(<font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y,
+    <font color="#0000FF">string </font>str,
+    <font color="#0000FF">real </font>w,
+    <font color="#0000FF">real </font>xscale,
+    <font color="#0000FF">real </font>yscale,
+    <font color="#0000FF">real </font>angle,
+    <font color="#0000FF">real </font>c1,
+    <font color="#0000FF">real </font>c2,
+    <font color="#0000FF">real </font>c3,
+    <font color="#0000FF">real </font>c4,
+    <font color="#0000FF">real </font>alpha)
+    </b></tt><br>
+    同时应用换行、缩放、旋转和四角颜色，功能最完整的文字绘制函数。<p>
+
+    <tt id = "sdf_draw_text_rich"><b>
+    <font color="#0000FF">bool </font>
+    sdf_draw_text_rich(<font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y,
+    <font color="#0000FF">string </font>str,
+    <font color="#0000FF">real </font>xscale,
+    <font color="#0000FF">real </font>yscale)
+    </b></tt><br>
+    在坐标（x, y）处绘制富文本，并以 <b><tt>xscale</tt></b> 和 <b><tt>yscale</tt></b> 缩放。字符串中可使用富文本标签，详细语法见 <A href="GMGraphic_富文本.html"><b><tt>富文本</tt></b></A> 一节。<p>
+</blockquote>
+
+<!--END-->
+
+</body>
+</html>

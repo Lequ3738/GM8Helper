@@ -1,0 +1,277 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>图集绘制</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+
+<!--START-->
+
+<h1>图集绘制</h1>
+
+<p>本扩展的图集绘制功能<b><tt>覆盖了 GM8 内置的 draw_sprite* 与 draw_background* 系列函数</tt></b>：调用这些函数时，若传入的是图集内的 Image ID（从 100,000 起），则自动从图集绘制；若传入的是普通 GM 资源 ID，则照常委托给 GM 内置绘制。因此你无需区分资源来源，可以始终使用这套函数。<br>
+这些函数会批量提交顶点，同一图集内的多次绘制会自动合并为一次绘制调用（DrawCall），大幅提升性能。<br>
+参数 <b><tt>rot</tt></b> 为旋转角度，单位为度。<br>
+颜色参数使用 GM 颜色常量，Alpha 参数范围为 0 至 1。</p>
+
+<h3>图集 Sprite 绘制</h3>
+
+<blockquote>
+    <tt id = "draw_sprite"><b>
+    <font color="#0000FF">bool </font>
+    draw_sprite(<font color="#0000FF">real </font>spr,
+    <font color="#0000FF">real </font>subimg,
+    <font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y)
+    </b></tt><br>
+    在坐标（x, y）处绘制精灵的一帧。<p>
+
+    <tt id = "draw_sprite_stretched"><b>
+    <font color="#0000FF">bool </font>
+    draw_sprite_stretched(<font color="#0000FF">real </font>sprite,
+    <font color="#0000FF">real </font>subimg,
+    <font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y,
+    <font color="#0000FF">real </font>width,
+    <font color="#0000FF">real </font>height)
+    </b></tt><br>
+    将精灵的一帧拉伸到给定的宽度和高度后绘制。<p>
+
+    <tt id = "draw_sprite_part"><b>
+    <font color="#0000FF">bool </font>
+    draw_sprite_part(<font color="#0000FF">real </font>sprite,
+    <font color="#0000FF">real </font>subimg,
+    <font color="#0000FF">real </font>left,
+    <font color="#0000FF">real </font>top,
+    <font color="#0000FF">real </font>width,
+    <font color="#0000FF">real </font>height,
+    <font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y)
+    </b></tt><br>
+    绘制精灵一帧的某一部分。参数 <b><tt>left</tt></b>、<b><tt>top</tt></b>、<b><tt>width</tt></b>、<b><tt>height</tt></b> 是源区域在原图像中的位置和大小，绘制到坐标（x, y）处。<p>
+
+    <tt id = "draw_sprite_ext"><b>
+    <font color="#0000FF">bool </font>
+    draw_sprite_ext(<font color="#0000FF">real </font>spr,
+    <font color="#0000FF">real </font>subimg,
+    <font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y,
+    <font color="#0000FF">real </font>xscale,
+    <font color="#0000FF">real </font>yscale,
+    <font color="#0000FF">real </font>rot,
+    <font color="#0000FF">real </font>color,
+    <font color="#0000FF">real </font>alpha)
+    </b></tt><br>
+    以指定的缩放、旋转和颜色绘制精灵的一帧。<br>
+    参数 <b><tt>xscale</tt></b> 和 <b><tt>yscale</tt></b> 是水平和垂直缩放比例，<b><tt>rot</tt></b> 是旋转角度（度）。<p>
+
+    <tt id = "draw_sprite_stretched_ext"><b>
+    <font color="#0000FF">bool </font>
+    draw_sprite_stretched_ext(<font color="#0000FF">real </font>sprite,
+    <font color="#0000FF">real </font>subimg,
+    <font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y,
+    <font color="#0000FF">real </font>width,
+    <font color="#0000FF">real </font>height,
+    <font color="#0000FF">real </font>color,
+    <font color="#0000FF">real </font>alpha)
+    </b></tt><br>
+    将精灵的一帧拉伸到给定尺寸，并以指定的颜色和透明度绘制。<p>
+
+    <tt id = "draw_sprite_part_ext"><b>
+    <font color="#0000FF">bool </font>
+    draw_sprite_part_ext(<font color="#0000FF">real </font>sprite,
+    <font color="#0000FF">real </font>subimg,
+    <font color="#0000FF">real </font>left,
+    <font color="#0000FF">real </font>top,
+    <font color="#0000FF">real </font>width,
+    <font color="#0000FF">real </font>height,
+    <font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y,
+    <font color="#0000FF">real </font>xscale,
+    <font color="#0000FF">real </font>yscale,
+    <font color="#0000FF">real </font>color,
+    <font color="#0000FF">real </font>alpha)
+    </b></tt><br>
+    绘制精灵一帧的某一部分，并应用缩放和颜色。<p>
+
+    <tt id = "draw_sprite_general"><b>
+    <font color="#0000FF">bool </font>
+    draw_sprite_general(<font color="#0000FF">real </font>sprite,
+    <font color="#0000FF">real </font>subimg,
+    <font color="#0000FF">real </font>left,
+    <font color="#0000FF">real </font>top,
+    <font color="#0000FF">real </font>width,
+    <font color="#0000FF">real </font>height,
+    <font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y,
+    <font color="#0000FF">real </font>xscale,
+    <font color="#0000FF">real </font>yscale,
+    <font color="#0000FF">real </font>rot,
+    <font color="#0000FF">real </font>c1,
+    <font color="#0000FF">real </font>c2,
+    <font color="#0000FF">real </font>c3,
+    <font color="#0000FF">real </font>c4,
+    <font color="#0000FF">real </font>alpha)
+    </b></tt><br>
+    最通用的精灵绘制函数。绘制精灵一帧的某一部分，应用缩放、旋转，并为四角分别指定颜色。<br>
+    参数 <b><tt>c1</tt></b> 至 <b><tt>c4</tt></b> 是左上、右上、右下、左下四个角的颜色，<b><tt>alpha</tt></b> 是整体透明度。<p>
+</blockquote>
+
+<h3>图集 Background 绘制</h3>
+<p>Background 是单帧图像，因此以下函数没有 <b><tt>subimg</tt></b> 参数，其余与 Sprite 版本一一对应。</p>
+
+<blockquote>
+    <tt id = "draw_background"><b>
+    <font color="#0000FF">bool </font>
+    draw_background(<font color="#0000FF">real </font>back,
+    <font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y)
+    </b></tt><br>
+    在坐标（x, y）处绘制指定背景。<p>
+
+    <tt id = "draw_background_stretched"><b>
+    <font color="#0000FF">bool </font>
+    draw_background_stretched(<font color="#0000FF">real </font>back,
+    <font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y,
+    <font color="#0000FF">real </font>width,
+    <font color="#0000FF">real </font>height)
+    </b></tt><br>
+    将指定背景拉伸到给定的宽度和高度后绘制。<p>
+
+    <tt id = "draw_background_part"><b>
+    <font color="#0000FF">bool </font>
+    draw_background_part(<font color="#0000FF">real </font>back,
+    <font color="#0000FF">real </font>left,
+    <font color="#0000FF">real </font>top,
+    <font color="#0000FF">real </font>width,
+    <font color="#0000FF">real </font>height,
+    <font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y)
+    </b></tt><br>
+    绘制指定背景的某一部分。参数含义与 <b><tt>draw_sprite_part()</tt></b> 相同。<p>
+
+    <tt id = "draw_background_ext"><b>
+    <font color="#0000FF">bool </font>
+    draw_background_ext(<font color="#0000FF">real </font>back,
+    <font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y,
+    <font color="#0000FF">real </font>xscale,
+    <font color="#0000FF">real </font>yscale,
+    <font color="#0000FF">real </font>rot,
+    <font color="#0000FF">real </font>color,
+    <font color="#0000FF">real </font>alpha)
+    </b></tt><br>
+    以指定的缩放、旋转和颜色绘制指定背景。<p>
+
+    <tt id = "draw_background_stretched_ext"><b>
+    <font color="#0000FF">bool </font>
+    draw_background_stretched_ext(<font color="#0000FF">real </font>back,
+    <font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y,
+    <font color="#0000FF">real </font>width,
+    <font color="#0000FF">real </font>height,
+    <font color="#0000FF">real </font>color,
+    <font color="#0000FF">real </font>alpha)
+    </b></tt><br>
+    将指定背景拉伸到给定尺寸，并以指定的颜色和透明度绘制。<p>
+
+    <tt id = "draw_background_part_ext"><b>
+    <font color="#0000FF">bool </font>
+    draw_background_part_ext(<font color="#0000FF">real </font>back,
+    <font color="#0000FF">real </font>left,
+    <font color="#0000FF">real </font>top,
+    <font color="#0000FF">real </font>width,
+    <font color="#0000FF">real </font>height,
+    <font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y,
+    <font color="#0000FF">real </font>xscale,
+    <font color="#0000FF">real </font>yscale,
+    <font color="#0000FF">real </font>color,
+    <font color="#0000FF">real </font>alpha)
+    </b></tt><br>
+    绘制指定背景的某一部分，并应用缩放和颜色。<p>
+
+    <tt id = "draw_background_general"><b>
+    <font color="#0000FF">bool </font>
+    draw_background_general(<font color="#0000FF">real </font>back,
+    <font color="#0000FF">real </font>left,
+    <font color="#0000FF">real </font>top,
+    <font color="#0000FF">real </font>width,
+    <font color="#0000FF">real </font>height,
+    <font color="#0000FF">real </font>x,
+    <font color="#0000FF">real </font>y,
+    <font color="#0000FF">real </font>xscale,
+    <font color="#0000FF">real </font>yscale,
+    <font color="#0000FF">real </font>rot,
+    <font color="#0000FF">real </font>c1,
+    <font color="#0000FF">real </font>c2,
+    <font color="#0000FF">real </font>c3,
+    <font color="#0000FF">real </font>c4,
+    <font color="#0000FF">real </font>alpha)
+    </b></tt><br>
+    最通用的背景绘制函数。参数含义与 <b><tt>draw_sprite_general()</tt></b> 相同。<p>
+
+    <tt id = "force_draw_to_screen"><b>
+    <font color="#0000FF">bool </font>
+    force_draw_to_screen()
+    </b></tt><br>
+    强制刷新当前的图集绘制批次，立即将已累积的绘制提交到屏幕。<br>
+    通常在切换图集或需要保证绘制顺序时调用。<p>
+</blockquote>
+
+<h3>图集资源查询</h3>
+<p>以下函数<b><tt>覆盖了 GM8 内置的同名资源查询函数</tt></b>：传入图集内的 Image ID（从 100,000 起）时返回图集资源的信息，传入普通 GM 资源 ID 时返回 GM 内置查询结果。</p>
+
+<blockquote>
+    <tt id = "sprite_exists"><b>
+    <font color="#0000FF">bool </font>
+    sprite_exists(<font color="#0000FF">real </font>id)
+    </b></tt><br>
+    检测给定的 ID 是否为有效的图集 Sprite（也接受普通的 GM Sprite ID）。<p>
+
+    <tt id = "background_exists"><b>
+    <font color="#0000FF">bool </font>
+    background_exists(<font color="#0000FF">real </font>id)
+    </b></tt><br>
+    检测给定的 ID 是否为有效的图集 Background（也接受普通的 GM Background ID）。<p>
+
+    <tt id = "sprite_get_number"><b>
+    <font color="#0000FF">real </font>
+    sprite_get_number(<font color="#0000FF">real </font>id)
+    </b></tt><br>
+    返回图集 Sprite 的子图像数量。<p>
+
+    <tt id = "sprite_get_name"><b>
+    <font color="#0000FF">string </font>
+    sprite_get_name(<font color="#0000FF">real </font>id)
+    </b></tt><br>
+    返回图集 Sprite 的名称。<p>
+
+    <tt id = "background_get_name"><b>
+    <font color="#0000FF">string </font>
+    background_get_name(<font color="#0000FF">real </font>id)
+    </b></tt><br>
+    返回图集 Background 的名称。<p>
+
+    <tt id = "sprite_get_xoffset"><b>
+    <font color="#0000FF">real </font>
+    sprite_get_xoffset(<font color="#0000FF">real </font>id)
+    </b></tt><br>
+    返回图集 Sprite 的 X 偏移量。<p>
+
+    <tt id = "sprite_get_yoffset"><b>
+    <font color="#0000FF">real </font>
+    sprite_get_yoffset(<font color="#0000FF">real </font>id)
+    </b></tt><br>
+    返回图集 Sprite 的 Y 偏移量。<p>
+</blockquote>
+
+<!--END-->
+
+</body>
+</html>

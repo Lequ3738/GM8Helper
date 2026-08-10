@@ -416,6 +416,14 @@ files\new.html
 files\style.css
 Game_Maker.hhc
 Game_Maker.hhk
+Extensions\GMGraphic_Main.html
+Extensions\GMGraphic_初始化.html
+Extensions\GMGraphic_着色器.html
+Extensions\GMGraphic_渲染控制.html
+Extensions\GMGraphic_纹理图集.html
+Extensions\GMGraphic_图集绘制.html
+Extensions\GMGraphic_字体.html
+Extensions\GMGraphic_富文本.html
 
 [ALIAS]
 #include alias.ali

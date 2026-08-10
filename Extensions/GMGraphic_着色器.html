@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>着色器</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+
+<!--START-->
+
+<h1>着色器</h1>
+
+<h3>创建与销毁着色器</h3>
+
+<blockquote>
+    <tt id = "shader_create_asm"><b>
+    <font color="#0000FF">real </font>
+    shader_create_asm(<font color="#0000FF">string </font>vs,
+    <font color="#0000FF">string </font>ps)
+    </b></tt><br>
+    根据给定的着色器源代码创建着色器（返回着色器 ID）。此函数同时适用于 D3D8 和 D3D9 后端。<br>
+    参数 <b><tt>vs</tt></b> 和 <b><tt>ps</tt></b> 分别是顶点着色器和像素着色器的汇编源码字符串。将某个参数设为空字符串表示不使用该阶段（即该阶段为透传）。<br>
+    如果两个参数都为空字符串，则返回 -1。<br>
+    着色器创建的详细要求请参考汇编着色器部分的说明。<p>
+
+    <tt id = "shader_create"><b>
+    <font color="#0000FF">real </font>
+    shader_create(<font color="#0000FF">string </font>src,
+    [<font color="#0000FF">string </font>vs_entry],
+    [<font color="#0000FF">string </font>ps_entry])
+    </b></tt><br>
+    从一个 HLSL 源码文件创建着色器。<strong>仅适用于 D3D9 后端</strong>（在 D3D8 下返回 -1）。<br>
+    参数 <b><tt>src</tt></b> 是 HLSL 源码字符串，源码中同时包含顶点着色器和像素着色器的入口函数。<br>
+    可选参数 <b><tt>vs_entry</tt></b> 和 <b><tt>ps_entry</tt></b> 分别是顶点着色器和像素着色器的入口函数名，设为空字符串时使用默认入口名 <b><tt>mainVS</tt></b> 和 <b><tt>mainPS</tt></b>。<br>
+    如果源码中没有对应的入口函数，则该阶段为透传。<p>
+
+    <tt id = "shader_destroy"><b>
+    <font color="#0000FF">bool </font>
+    shader_destroy(<font color="#0000FF">real </font>sh)
+    </b></tt><br>
+    销毁给定的着色器并释放其资源（包括顶点/像素着色器对象、常量表和该着色器的 uniform 条目）。<br>
+    如果成功执行操作，则返回 <b><tt>true</tt></b>，否则返回 <b><tt>false</tt></b>。<p>
+</blockquote>
+
+<h3>绑定与切换着色器</h3>
+
+<blockquote>
+    <tt id = "shader_set"><b>
+    <font color="#0000FF">bool </font>
+    shader_set(<font color="#0000FF">real </font>sh)
+    </b></tt><br>
+    绑定给定的着色器，之后绘制的图形都会应用此着色器。绑定时会自动应用着色器的默认常量（仅限 HLSL 常量表）。<br>
+    如果成功执行操作，则返回 <b><tt>true</tt></b>，否则返回 <b><tt>false</tt></b>。<p>
+
+    <tt id = "shader_reset"><b>
+    <font color="#0000FF">bool </font>
+    shader_reset()
+    </b></tt><br>
+    解除当前绑定的着色器，恢复默认的固定管线绘制。此函数等价于 <b><tt>shader_set(-1)</tt></b>。<br>
+    在每一帧的绘制结束时，通常需要调用此函数来复位着色器。<p>
+
+    <tt id = "shader_current"><b>
+    <font color="#0000FF">real </font>
+    shader_current()
+    </b></tt><br>
+    返回当前绑定的着色器 ID，如果没有绑定任何着色器则返回 -1。<p>
+</blockquote>
+
+<h3>Uniform 参数</h3>
+<p>uniform 是着色器中的可调参数。首先使用 <b><tt>shader_get_uniform()</tt></b> 获取参数句柄，再使用 <b><tt>shader_set_uniform_*</tt></b> 系列函数写入数值。<br>
+对于汇编着色器，uniform 通过寄存器数字串指定（例如 <b><tt>"0"</tt></b>、<b><tt>"ps.0"</tt></b>、<b><tt>"vs.3"</tt></b>）；对于 HLSL 着色器，通过常量名指定（例如 <b><tt>"uColor"</tt></b>、<b><tt>"ps.uColor"</tt></b>、<b><tt>"vs.uWVP"</tt></b>）。前缀 <b><tt>ps.</tt></b> / <b><tt>vs.</tt></b> 用于指定阶段，不区分大小写。</p>
+
+<blockquote>
+    <tt id = "shader_get_uniform"><b>
+    <font color="#0000FF">real </font>
+    shader_get_uniform(<font color="#0000FF">real </font>sh,
+    <font color="#0000FF">string </font>uni)
+    </b></tt><br>
+    获取给定着色器中指定 uniform 的句柄。找不到该参数时返回 -1。<p>
+
+    <tt id = "shader_has_uniform"><b>
+    <font color="#0000FF">bool </font>
+    shader_has_uniform(<font color="#0000FF">real </font>sh,
+    <font color="#0000FF">string </font>uni)
+    </b></tt><br>
+    检测给定的着色器是否含有指定名称的 uniform。<strong>仅适用于 D3D9 后端</strong>（依赖 HLSL 常量表，D3D8 下始终返回 <b><tt>false</tt></b>）。<p>
+
+    <tt id = "shader_get_sampler_index"><b>
+    <font color="#0000FF">real </font>
+    shader_get_sampler_index(<font color="#0000FF">real </font>sh,
+    <font color="#0000FF">string </font>uni)
+    </b></tt><br>
+    获取给定着色器中指定采样器的索引（纹理阶段编号）。需配合 <A href="GMGraphic_着色器.html#texture_set_stage"><b><tt>texture_set_stage()</tt></b></A> 将纹理绑定到该阶段。找不到时返回 -1。<p>
+
+    <tt id = "shader_set_uniform_f"><b>
+    <font color="#0000FF">bool </font>
+    shader_set_uniform_f(<font color="#0000FF">real </font>h,
+    <font color="#0000FF">real </font>x,
+    [<font color="#0000FF">real </font>y],
+    [<font color="#0000FF">real </font>z],
+    [<font color="#0000FF">real </font>w])
+    </b></tt><br>
+    为指定的 uniform 句柄写入 1 至 4 个浮点数。少传的参数会自动补 0。<br>
+    例如要写入一个 <b><tt>float4</tt></b> 类型的参数，需要提供 4 个值；只写一个 <b><tt>float</tt></b> 类型的参数时传 1 个值即可。<br>
+    如果成功执行操作，则返回 <b><tt>true</tt></b>，否则返回 -1。<p>
+
+    <tt id = "shader_set_uniform_i"><b>
+    <font color="#0000FF">bool </font>
+    shader_set_uniform_i(<font color="#0000FF">real </font>h,
+    <font color="#0000FF">real </font>x,
+    [<font color="#0000FF">real </font>y],
+    [<font color="#0000FF">real </font>z],
+    [<font color="#0000FF">real </font>w])
+    </b></tt><br>
+    为指定的 uniform 句柄写入整数（int）参数。用法与 <b><tt>shader_set_uniform_f()</tt></b> 相同。<br>
+    如果成功执行操作，则返回 <b><tt>true</tt></b>，否则返回 -1。<p>
+
+    <tt id = "shader_set_uniform_b"><b>
+    <font color="#0000FF">bool </font>
+    shader_set_uniform_b(<font color="#0000FF">real </font>h,
+    <font color="#0000FF">real </font>x,
+    [<font color="#0000FF">real </font>y],
+    [<font color="#0000FF">real </font>z],
+    [<font color="#0000FF">real </font>w])
+    </b></tt><br>
+    为指定的 uniform 句柄写入布尔（bool）参数。传入的值非 0 会被转换为 1，为 0 则转换为 0。<br>
+    用法与 <b><tt>shader_set_uniform_f()</tt></b> 相同。<p>
+
+    <tt id = "shader_set_uniform_color"><b>
+    <font color="#0000FF">bool </font>
+    shader_set_uniform_color(<font color="#0000FF">real </font>h,
+    <font color="#0000FF">real </font>col,
+    <font color="#0000FF">real </font>alpha)
+    </b></tt><br>
+    为指定的 uniform 句柄写入一个颜色参数。参数 <b><tt>col</tt></b> 使用 GM 的颜色常量，函数会自动将其拆分为红、绿、蓝分量，并和 <b><tt>alpha</tt></b> 一起写入。<br>
+    如果成功执行操作，则返回 <b><tt>true</tt></b>，否则返回 -1。<p>
+
+    <tt id = "shader_set_uniform_matrix"><b>
+    <font color="#0000FF">bool </font>
+    shader_set_uniform_matrix(<font color="#0000FF">real </font>h,
+    <font color="#0000FF">real </font>mtx_type,
+    <font color="#0000FF">real </font>size)
+    </b></tt><br>
+    为指定的 uniform 句柄写入一个矩阵参数。参数 <b><tt>mtx_type</tt></b> 指定要写入哪个矩阵：<b><tt>1</tt></b> = 世界矩阵，<b><tt>2</tt></b> = 视图矩阵，<b><tt>4</tt></b> = 投影矩阵，<b><tt>7</tt></b> = 世界-视图-投影（WVP）组合矩阵。<br>
+    参数 <b><tt>size</tt></b> 指定要写入的寄存器数量，通常为 4（完整的 4x4 矩阵）；传入 0 或小于 1 的值时按 4 处理。<br>
+    如果成功执行操作，则返回 <b><tt>true</tt></b>，否则返回 -1。<p>
+</blockquote>
+
+<h3>采样器</h3>
+<p>使用 <b><tt>texture_set_stage()</tt></b> 将纹理绑定到着色器的采样器阶段，再使用 <b><tt>gpu_set_tex*_ext</tt></b> 系列函数控制该阶段的纹理参数。</p>
+
+<blockquote>
+    <tt id = "texture_set_stage"><b>
+    <font color="#0000FF">bool </font>
+    texture_set_stage(<font color="#0000FF">real </font>sampler,
+    <font color="#0000FF">real </font>tex)
+    </b></tt><br>
+    将纹理绑定到指定的采样器阶段。参数 <b><tt>sampler</tt></b> 是采样器索引，参数 <b><tt>tex</tt></b> 是纹理 ID。传入负数 <b><tt>tex</tt></b> 可清空该阶段的纹理。<br>
+    如果成功执行操作，则返回 <b><tt>true</tt></b>，否则返回 <b><tt>false</tt></b>。<p>
+
+    <tt id = "gpu_set_texfilter_ext"><b>
+    <font color="#0000FF">bool </font>
+    gpu_set_texfilter_ext(<font color="#0000FF">real </font>sampler,
+    <font color="#0000FF">real </font>filter)
+    </b></tt><br>
+    设置指定采样器阶段的纹理过滤方式。参数 <b><tt>filter</tt></b>：<b><tt>0</tt></b> = 最近邻（point），<b><tt>1</tt></b> = 线性（linear），<b><tt>2</tt></b> = 各向异性（anisotropic），<b><tt>3</tt></b> = 不采样。<p>
+
+    <tt id = "gpu_set_texrepeat_ext"><b>
+    <font color="#0000FF">bool </font>
+    gpu_set_texrepeat_ext(<font color="#0000FF">real </font>sampler,
+    <font color="#0000FF">real </font>h,
+    <font color="#0000FF">real </font>v,
+    [<font color="#0000FF">real </font>bcol])
+    </b></tt><br>
+    设置指定采样器阶段的纹理寻址方式。参数 <b><tt>h</tt></b> 和 <b><tt>v</tt></b> 分别控制水平和垂直方向，传 <b><tt>0</tt></b> 表示夹取（clamp），传其他值则作为 D3D 寻址常量传入。<br>
+    可选参数 <b><tt>bcol</tt></b> 是边框寻址模式使用的颜色（GM 颜色）。<p>
+
+    <tt id = "gpu_set_tex_max_aniso_ext"><b>
+    <font color="#0000FF">bool </font>
+    gpu_set_tex_max_aniso_ext(<font color="#0000FF">real </font>sampler,
+    <font color="#0000FF">real </font>aniso)
+    </b></tt><br>
+    设置指定采样器阶段的最大各向异性等级。参数 <b><tt>aniso</tt></b> 取值为 <b><tt>1</tt></b>、<b><tt>2</tt></b>、<b><tt>4</tt></b>、<b><tt>8</tt></b> 或 <b><tt>16</tt></b>，其中 1 表示关闭各向异性过滤。<p>
+
+    <tt id = "gpu_set_tex_mip_filter_ext"><b>
+    <font color="#0000FF">bool </font>
+    gpu_set_tex_mip_filter_ext(<font color="#0000FF">real </font>sampler,
+    <font color="#0000FF">real </font>filter)
+    </b></tt><br>
+    设置指定采样器阶段的 Mip 过滤方式。参数 <b><tt>filter</tt></b>：<b><tt>0</tt></b> = 无 Mip 过滤，<b><tt>1</tt></b> = 最近邻（point），<b><tt>3</tt></b> = 线性（linear）。<p>
+
+    <tt id = "gpu_set_tex_border_ext"><b>
+    <font color="#0000FF">bool </font>
+    gpu_set_tex_border_ext(<font color="#0000FF">real </font>sampler,
+    <font color="#0000FF">real </font>col,
+    <font color="#0000FF">real </font>alpha)
+    </b></tt><br>
+    设置指定采样器阶段在边框寻址模式下使用的边框颜色。参数 <b><tt>col</tt></b> 是 GM 颜色，<b><tt>alpha</tt></b> 是透明度（0 至 1）。<p>
+</blockquote>
+
+<!--END-->
+
+</body>
+</html>

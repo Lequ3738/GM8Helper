@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>初始化与信息查询</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+
+<!--START-->
+
+<h1>初始化与信息查询</h1>
+
+<blockquote>
+    <tt id = "graphic_dll_init"><b>
+    <font color="#0000FF">bool </font>
+    graphic_dll_init(<font color="#0000FF">string </font>dll_path)
+    </b></tt><br>
+    在使用本扩展的任何功能之前，需要先调用此函数进行初始化。<br>
+    参数 <b><tt>dll_path</tt></b> 是图形扩展 DLL（GMGraphic.dll）的文件路径。<br>
+    此函数会注册扩展的全部外部函数，检测当前游戏的图形后端（D3D8 或 D3D9），并根据设备能力创建扩展内部使用的着色器。<br>
+    如果 DLL 文件不存在，则返回 <b><tt>false</tt></b>，否则返回 <b><tt>true</tt></b>。<p>
+
+    <tt id = "graphic_dll_free"><b>
+    <font color="#0000FF">void </font>
+    graphic_dll_free()
+    </b></tt><br>
+    游戏结束时，调用此函数释放扩展 DLL。<p>
+
+    <tt id = "d3d_dev_get_name"><b>
+    <font color="#0000FF">string </font>
+    d3d_dev_get_name()
+    </b></tt><br>
+    返回当前图形设备的名称（GPU 名称），例如显卡的型号字符串。<p>
+
+    <tt id = "d3d_dev_get_ps_version"><b>
+    <font color="#0000FF">real </font>
+    d3d_dev_get_ps_version()
+    </b></tt><br>
+    返回当前图形设备支持的像素着色器版本，结果为版本号乘以 10 的值。<br>
+    例如支持 Shader Model 1.1 时返回 11，支持 Shader Model 2.0 时返回 20，支持 Shader Model 3.0 时返回 30。<br>
+    注意：大多数现代 GPU 实际支持的版本更高，但此函数可能不会如实上报。<p>
+
+    <tt id = "d3d_dev_get_point_max_size"><b>
+    <font color="#0000FF">real </font>
+    d3d_dev_get_point_max_size()
+    </b></tt><br>
+    返回当前图形设备支持的最大点图元尺寸。可用于避免盲目设置过大的点尺寸。<p>
+
+    <tt id = "d3d_dev_get_tex_max_width"><b>
+    <font color="#0000FF">real </font>
+    d3d_dev_get_tex_max_width()
+    </b></tt><br>
+    返回当前图形设备支持的最大纹理宽度。适用于所有图形资源。<p>
+
+    <tt id = "d3d_dev_get_tex_max_height"><b>
+    <font color="#0000FF">real </font>
+    d3d_dev_get_tex_max_height()
+    </b></tt><br>
+    返回当前图形设备支持的最大纹理高度。<p>
+
+    <tt id = "d3d_dev_get_tex_max_stages"><b>
+    <font color="#0000FF">real </font>
+    d3d_dev_get_tex_max_stages()
+    </b></tt><br>
+    返回当前图形设备可同时使用的最大纹理阶段（纹理单元）数量。此值限制了你能同时绑定的纹理数量。<p>
+
+    <tt id = "d3d_dev_get_tex_mem"><b>
+    <font color="#0000FF">real </font>
+    d3d_dev_get_tex_mem()
+    </b></tt><br>
+    返回当前可用的纹理内存大小（单位：字节）。此值只是一个近似值，并不是显存的总容量。<p>
+</blockquote>
+
+<!--END-->
+
+</body>
+</html>
