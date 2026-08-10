@@ -2,149 +2,149 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Files</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body background="images/back.gif">
 <!--START-->
 
-<h3>�ļ�</h3>
+<h3>文件</h3>
 
-����Ϸʹ���ⲿ�ļ��Ǻ����õģ����磬�����ʹ��һ���ļ������������ض�ʱ�̷������ض����£�Ҳ���Խ���Ϣ���������������´ζ�ȡ�����磺��ǰ�ķ��䣩)�����µĺ��������ڴ��ı��� ����ȡ��д������ :
+在游戏使用外部文件是很有用的，例如，你可以使用一个文件，用来描述特定时刻发生的特定的事，也可以将信息保存起来，用以下次读取（例如：当前的房间）)。以下的函数可以在纯文本文 件读取和写入数据 :
 <p>
 <blockquote>
-  <tt><b>file_text_open_read(fname)</b></tt>����ָ���ļ����Ƶ��ļ����ж�ȡ������������������� ����һ��Ҫ�õ��ļ�id������ͬʱ��������ļ������32������������ɲ���ʱ��Ҫ���ǹر� �ļ��� <br>
-  <tt><b>file_text_open_write(fname)</b></tt>����ָ���ļ����Ƶ��ļ�����д�룬����ļ������ھͻ� ����һ���ļ������������������������һ��Ҫ�õ��ļ�id�� <br>
-  <tt><b>file_text_open_append(fname)</b></tt>����ָ���ļ����Ƶ��ļ����ļ�ĩ�˼������ݣ������ �������ھͻὨ��һ���ļ������������������������һ��Ҫ�õ��ļ�id�� <br>
-  <tt><b>file_text_close(fileid)</b></tt>�ر�ָ���ļ�id���ļ��� <br>
-  <tt><b>file_text_write_string(fileid,str)</b></tt>д���ִ���ָ���ļ�id���ļ���<br>
-  <tt><b>file_text_write_real(fileid,x)</b></tt>д��ʵ����ָ���ļ�id���ļ��� ��������С��ʹ��һ�������ָ��� <br>
-  <tt><b>file_text_writeln(fileid)</b></tt>д�뻻�з���ָ���ļ�id���ļ��� <br>
+  <tt><b>file_text_open_read(fname)</b></tt>开启指定文件名称的文件进行读取。这个函数返回在其他 函数一定要用的文件id，可以同时开启多个文件（最多32个），当你完成操作时不要忘记关闭 文件。 <br>
+  <tt><b>file_text_open_write(fname)</b></tt>开启指定文件名称的文件进行写入，如果文件不存在就会 建立一个文件，这个函数返回在其他函数一定要用的文件id。 <br>
+  <tt><b>file_text_open_append(fname)</b></tt>开启指定文件名称的文件在文件末端加入数据，如果文 件不存在就会建立一个文件，这个函数返回在其他函数一定要用的文件id。 <br>
+  <tt><b>file_text_close(fileid)</b></tt>关闭指定文件id的文件。 <br>
+  <tt><b>file_text_write_string(fileid,str)</b></tt>写入字串到指定文件id的文件。<br>
+  <tt><b>file_text_write_real(fileid,x)</b></tt>写入实数到指定文件id的文件。 （整数和小数使用一个点来分隔） <br>
+  <tt><b>file_text_writeln(fileid)</b></tt>写入换行符到指定文件id的文件。 <br>
   <tt><b>file_text_read_string(fileid)</b></tt> 
-    ��ָ���ļ�id���ļ���ȡһ���ַ�������������ַ�����һ����һ���ַ����� <br>
-  <tt><b>file_text_read_real(fileid)</b></tt>��ָ���ļ�id���ļ���ȡһ��ʵ�����������ʵ���� <br>
-  <tt><b>file_text_readln(fileid)</b></tt>�����ļ���һ�е����ಿ�֣�����һ�е���ͷ��ʼ��ȡ�� <br>
+    从指定文件id的文件读取一个字符串并返回这个字符串。一行是一个字符串。 <br>
+  <tt><b>file_text_read_real(fileid)</b></tt>从指定文件id的文件读取一个实数并返回这个实数。 <br>
+  <tt><b>file_text_readln(fileid)</b></tt>跳过文件中一行的其余部分，从下一行的行头开始读取。 <br>
   <tt><b>file_text_eof(fileid)</b></tt> 
-    �����Ƿ񵽴��ļ���ĩβ�� <br>
+    返回是否到达文件的末尾。 <br>
   <tt><b>file_text_eoln(fileid)</b></tt> 
-    �����Ƿ񵽴���һ�е�ĩβ�� <br>
+    返回是否到达这一行的末尾。 <br>
 </blockquote>
 
-<p>���ļ�ϵͳ�����ļ����������µĺ��� : <br>
+<p>在文件系统操作文件可以用以下的函数 : <br>
 <p>
 <blockquote>
   <tt><b>file_exists(fname)</b></tt> 
-    ����ָ���ļ����Ƶ��ļ��Ƿ���ڡ�<br>
-  <tt><b>file_delete(fname) </b></tt>ɾ��ָ���ļ����Ƶ��ļ��� <br>
+    返回指定文件名称的文件是否存在。<br>
+  <tt><b>file_delete(fname) </b></tt>删除指定文件名称的文件。 <br>
   <tt><b>file_rename(oldname,newname)</b></tt> 
-    �������ļ����Ѿ����Ƹ�Ϊ�����ơ� <br>
-  <tt><b>file_copy(fname,newname)</b></tt>����ָ���ļ����Ƶ��ļ������ļ���<br>
-  <tt><b>directory_exists(dname)</b></tt>����ָ����Ŀ¼�Ƿ���ڡ�����������·��,���������·��.<br>
-  <tt><b>directory_create(dname)</b></tt>���Ŀ¼�����ڣ���ָ�������ƴ���һ����Ŀ¼������ָ������·����������������·��,���������·��.<br>
-  <tt><b>file_find_first(mask,attr)</b></tt>���ص�һ���������ֺ����Ե��ļ����ƣ�����ļ������ڣ��᷵�ؿ��ִ������ֿ��԰���·�����ַ�������C:\temp\*.doc�����������鿴������ļ��� ������������ʱ�ᾭ�����������ļ������ơ��������ʹ�����µĳ���ȥ�鿴��Ҫ���ļ���<br>
+    重命名文件，把旧名称改为新名称。 <br>
+  <tt><b>file_copy(fname,newname)</b></tt>复制指定文件名称的文件到新文件。<br>
+  <tt><b>directory_exists(dname)</b></tt>返回指定的目录是否存在。必须是完整路径,不能是相对路径.<br>
+  <tt><b>directory_create(dname)</b></tt>如果目录不存在，用指定的名称创建一个新目录（包括指向它的路径）。必须是完整路径,不能是相对路径.<br>
+  <tt><b>file_find_first(mask,attr)</b></tt>返回第一个满足遮罩和属性的文件名称，如果文件不存在，会返回空字串。遮罩可以包含路径和字符，例如C:\temp\*.doc。属性允许查看更多的文件。 （当满足遮罩时会经常返回正常文件的名称。）你可以使用以下的常数去查看需要的文件：<br>
 
       <blockquote>
-	    <tt><b>fa_readonly</b> ֻ���ļ�</tt><br>
-	    <tt><b>fa_hidden</b> �����ļ�</tt><br>
-	    <tt><b>fa_sysfile</b> ϵͳ�ļ�</tt><br>
-	    <tt><b>fa_volumeid</b> �����ļ�</tt><br>
-	    <tt><b>fa_directory</b> Ŀ¼</tt><br>
-	    <tt><b>fa_archive</b> �鵵�ļ�</tt><br>
+	    <tt><b>fa_readonly</b> 只读文件</tt><br>
+	    <tt><b>fa_hidden</b> 隐藏文件</tt><br>
+	    <tt><b>fa_sysfile</b> 系统文件</tt><br>
+	    <tt><b>fa_volumeid</b> 卷标文件</tt><br>
+	    <tt><b>fa_directory</b> 目录</tt><br>
+	    <tt><b>fa_archive</b> 归档文件</tt><br>
       </blockquote>
-  <tt><b>file_find_next()</b></tt>������һ������֮ǰ�����ֺ����Ե��ļ����ƣ�����ļ������ڣ��᷵�� ���ִ��� <br>
+  <tt><b>file_find_next()</b></tt>返回下一个满足之前的遮罩和属性的文件名称，如果文件不存在，会返回 空字串。 <br>
   <tt><b>file_find_close()</b></tt> 
-    �������ļ�һ��Ҫ�����������ȥ�ͷ��ڴ档 <br>
-  <tt><b>file_attributes(fname,attr)</b></tt>����ָ�����Ƶ��ļ��Ƿ����ָ�������ԣ�ʹ�����ϵĳ�����Ϊ��ϡ� <br>
+    处理完文件一定要调用这个函数去释放内存。 <br>
+  <tt><b>file_attributes(fname,attr)</b></tt>返回指定名称的文件是否符合指定的属性，使用以上的常数作为组合。 <br>
   <br>
 </blockquote>
 
 <p>
-���µĺ������������ı��ļ����ƣ���ע����Щ��������������ʵ�ڵ��ļ���ֻ�ᴦ���ִ��� 
+以下的函数可以用来改变文件名称，须注意这些函数不会作用于实在的文件，只会处理字串。 
 <p>
 <blockquote>
   <tt><b>filename_name(fname)</b></tt> 
-    ����ָ���ļ������Ʋ��֣�������չ����������·����<br>
+    返回指定文件的名称部分，包含拓展名但不包含路径。<br>
   <tt><b>filename_path(fname)</b></tt> 
-    ����ָ���ļ���·�����֣���������&quot;\&quot;��<br>
+    返回指定文件的路径部分，包含最后的&quot;\&quot;。<br>
   <tt><b>filename_dir(fname)</b></tt> 
-    ����ָ���ļ���Ŀ¼���֣�ͨ����·��һ��������������&quot;\&quot;�� <br>
-  <tt><b>filename_drive(fname)</b></tt> ����ָ���ļ��ľ��ꡣ<br>
+    返回指定文件的目录部分，通常跟路径一样但不包括最后的&quot;\&quot;。 <br>
+  <tt><b>filename_drive(fname)</b></tt> 返回指定文件的卷标。<br>
   <tt><b>filename_ext(fname)</b></tt> 
-    ����ָ���ļ�����չ��������ǰ��ĵ㡣<br>
+    返回指定文件的拓展名，包含前面的点。<br>
   <tt><b>filename_change_ext(fname,newext)</b></tt> 
-    ���ؽ�ָ���ļ�����չ������Ϊ�µ���չ������ļ���(������ǰ�ĵ�)��ʹ�ÿ��ִ���Ϊ����չ�������Ƴ���չ���� <br>
+    返回将指定文件的拓展名更改为新的拓展名后的文件名(包括最前的点)，使用空字串作为新扩展名可以移除扩展名。 <br>
 </blockquote>
 
 <p>
-�ڼ�������¿�����Ҫ�Ӷ������ļ���ȡ���ݣ����µĵͽ׳���Ϊ�˴���:
+在极少情况下可能需要从二进制文件读取数据，以下的低阶程序为此存在:
 <blockquote>
-  <tt><b>file_bin_open(fname,mod)</b></tt>)��ָ���ļ����Ƶ��ļ���ģʽָ���ļ��ɽ���ʲô������ 0 = ��ȡ��1 = д�룬2 = ��ȡ��д�롣�⺯��������������Ҫ�õ����ļ�id������ͬʱ�� ������ļ�(���32��)��������ɲ���ʱ��Ҫ���ǹر��ļ���<br>
+  <tt><b>file_bin_open(fname,mod)</b></tt>)打开指定文件名称的文件，模式指定文件可进行什么操作： 0 = 读取，1 = 写入，2 = 读取和写入。这函数返回其他函数要用到的文件id，可以同时开 启多个文件(最多32个)，当你完成操作时不要忘记关闭文件。<br>
   <tt><b>file_bin_rewrite(fileid)</b></tt> 
-    ��дָ���ļ�id���ļ�����ղ���ͷ��ʼд��<br>
+    重写指定文件id的文件，清空并从头开始写。<br>
   <tt><b>file_bin_close(fileid)</b></tt> 
-    �ر�ָ���ļ�id���ļ���<br>
+    关闭指定文件id的文件。<br>
   <tt><b>file_bin_size(fileid)</b></tt> 
-    ����ָ���ļ�id���ļ���С(�ֽ�)�� <br>
+    返回指定文件id的文件大小(字节)。 <br>
   <tt><b>file_bin_position(fileid)</b></tt> 
-    ����ָ���ļ�id���ļ���Ŀǰλ��(���ֽڼ��㣬0�ǵ�һ��λ ��)��<br>
+    返回指定文件id的文件的目前位置(以字节计算，0是第一个位 置)。<br>
   <tt><b>file_bin_seek(fileid,pos)</b></tt> 
-    �ƶ�ָ���ļ�id���ļ���Ŀǰλ�õ�ָ��λ�ã�Ҫ�������ݵ� �ļ�����д��ǰ���ƶ����ļ���С��λ�á�<br>
+    移动指定文件id的文件的目前位置到指定位置，要加入数据到 文件，在写入前先移动到文件大小的位置。<br>
   <tt><b>file_bin_write_byte(fileid,byte)</b></tt> 
-    д��һ���ֽڵ�ָ���ļ�id���ļ��� <br>
-  <tt><b>file_bin_read_byte(fileid)</b></tt> ��ָ���ļ�id���ļ�����һ���ֽڲ�������ֵ��<br>
+    写入一个字节到指定文件id的文件。 <br>
+  <tt><b>file_bin_read_byte(fileid)</b></tt> 从指定文件id的文件读物一个字节并返回数值。<br>
 </blockquote>
 
 <p>
-��������ƫ���趨�����˰�ȫģʽ��һЩ��������ȥָ��һ��·����ֻ���ڳ����ļ��е��ļ��ſ��Խ���д��Ȳ�����
+如果玩家在偏好设定设置了安全模式，一些程序不允许去指定一个路径，只有在程序文件夹的文件才可以进行写入等操作。
 <p>
-����㽫�ļ���������Ϸ�еĿ�ִ���ļ��У�������Ϸ��ʼʱû���Զ�������ǣ������ʹ�����º�����
+如果你将文件包含在游戏中的可执行文件中，但在游戏开始时没有自动输出它们，你可以使用以下函数：
 <p>
 <blockquote>
   <tt><b>export_include_file(fname)</b></tt> 
-    ��������ļ�fname��fname������һ���ַ��������Բ�Ҫ�������š�<br>
+    输出包含文件fname，fname必须是一个字符串，所以不要忘记引号。<br>
   <tt><b>export_include_file_location(fname,location)</b></tt> 
-    ��������ļ�fname��ָ��·��location��location���뺬�ļ�·�����ļ�����<br>
+    输出包含文件fname到指定路径location，location必须含文件路径和文件名。<br>
   <tt><b>discard_include_file(fname)</b></tt> 
-    �ͷŰ����ļ�fname��ռ�õ��ڴ棬fname������һ���ַ��������Բ�Ҫ�������š�<br>
+    释放包含文件fname所占用的内存，fname必须是一个字符串，所以不要忘记引号。<br>
 </blockquote>
 
 <p>
-�����ĸ�ֻ���������ܶ�������ã�
+下面四个只读变量可能对你很有用：
 <p>
 <blockquote>
-  <p><tt><b>game_id* </b></tt>��Ϸ��Ψһ��ʶ���������Ҫһ��Ψһ���ļ����ƿ��������� <br>
-    <tt><b>working_directory* </b></tt>��Ϸ�Ĺ���Ŀ¼������������&quot;\&quot;����<BR>
+  <p><tt><b>game_id* </b></tt>游戏的唯一标识符，如果需要一个唯一的文件名称可以用它。 <br>
+    <tt><b>working_directory* </b></tt>游戏的工作目录（不包括最后的&quot;\&quot;）。<BR>
     <!-- GM70 added -->
-    <tt><b>program_directory*</b></tt> ��Ϸ�Ŀ�ִ���ļ��Ĵ洢Ŀ¼��������������&quot;\&quot;��
-  �������е���Ϸ�ǵ�����exeʱ��program_directory��working_directoryһ���� ������Ϸʹ���ļ�ѡ������һ���ļ��� ��ע�⣬����������Ϸʱ��program_directory��working_directory�ǲ�һ���ģ���������£�working_directory������Ϸ����&quot;.gmk&quot;�����λ�ã�program_directory��һ��������exe��������ʱĿ¼<br>
-  ��ע���˴�ԭ�ģ�Directory in which the game executable is stored. (Not including the final backslash.) When you run a standalone game this is normally the same as the working directory unless the game e.g. opens a file using the file selector. Note that when testing a game you are creating the program and working directory will be different. In that case the working directory is the place where the editable version is stored while the program directory is a temporary directory for testing.
-  ��<br>
-  <tt><b>temp_directory* </b></tt>��Ϸ����ʱĿ¼������������&quot;\&quot;����������ڴ˴�����ʱ�ļ�����Щ�ļ�����Ϸ����ʱ�ᱻ�Ƴ��� </p>
+    <tt><b>program_directory*</b></tt> 游戏的可执行文件的存储目录。（不包括最后的&quot;\&quot;）
+  当你运行的游戏是导出的exe时，program_directory和working_directory一样， 除非游戏使用文件选择器打开一个文件。 请注意，当您测试游戏时，program_directory和working_directory是不一样的，这种情况下，working_directory就是游戏工程&quot;.gmk&quot;储存的位置，program_directory是一个供测试exe导出的临时目录<br>
+  （注，此处原文：Directory in which the game executable is stored. (Not including the final backslash.) When you run a standalone game this is normally the same as the working directory unless the game e.g. opens a file using the file selector. Note that when testing a game you are creating the program and working directory will be different. In that case the working directory is the place where the editable version is stored while the program directory is a temporary directory for testing.
+  ）<br>
+  <tt><b>temp_directory* </b></tt>游戏的临时目录（不包括最后的&quot;\&quot;），你可以在此储存临时文件，这些文件在游戏结束时会被移除。 </p>
 </blockquote>
 
 <p>
-I��һЩ����£��������Ҫ������ṩ�����в����������е���Ϸ�Ŀ�����(����������׻�����ģʽ)�����������µĳ���ȥȡ����Щ������
+I在一些情况下，你可能需要给玩家提供命令行参数到运行中的游戏的可能性(例如进行作弊或特殊模式)，可以用以下的程序去取得这些参数。
 <blockquote>
   <tt><b>parameter_count()</b></tt> 
-    ���������в�������Ŀ�� ʵ�ʵĲ�������ʹ������ĺ�����顣<br>
+    返回命令行参数的数目。 实际的参数可以使用下面的函数检查。<br>
   <tt><b>parameter_string(n)</b></tt> 
-    ���ص�n������. ��һ��������������1�����һ��������������parameter_count()������0�������һ��������Ϸexe���ļ���������·����<br>
+    返回第n个参数. 第一个参数的索引是1。最后一个参数的索引是parameter_count()。索引0是特殊的一个，是游戏exe的文件名（包含路径）<br>
 </blockquote>
 
-<p>����������º�����ȡ������������ֵ :
+<p>你可以用以下函数读取环境变量的数值 :
 
 <blockquote>
   <tt><b>environment_get_variable(name)</b></tt> 
-  ����ָ�����ƵĻ�����������ֵ���ַ�����ʽ����</blockquote>
+  返回指定名称的环境变量的数值（字符串形式）。</blockquote>
 
 <p>
-����������֪�����̵Ĵ�С�Ϳ��ÿռ䣬����ʹ�����º�����</p>
+最后，如果你像知道磁盘的大小和可用空间，可以使用以下函数：</p>
 
 <blockquote>
   <tt><b>disk_size(drive)</b></tt> 
-  ����ָ������drive���ܴ�С���ֽڣ���drive<tt>������һ����д��ĸ</tt>������'C'������㲻ָ�����̣���Ĭ��Ϊ��ǰworking_directoryĿ¼�����Ĵ��̡�<br>
-  <tt><b>disk_free(drive)</b></tt> ����ָ������drive�Ŀ��ÿռ��С���ֽڣ���drive<tt>������һ����д��ĸ</tt>������'C'������㲻ָ�����̣���Ĭ��Ϊ��ǰworking_directoryĿ¼�����Ĵ��̡� </blockquote>
+  返回指定磁盘drive的总大小（字节），drive<tt>必须是一个大写字母</tt>，比如'C'，如果你不指定磁盘，则默认为当前working_directory目录所处的磁盘。<br>
+  <tt><b>disk_free(drive)</b></tt> 返回指定磁盘drive的可用空间大小（字节），drive<tt>必须是一个大写字母</tt>，比如'C'，如果你不指定磁盘，则默认为当前working_directory目录所处的磁盘。 </blockquote>
 
 
 <!--END-->

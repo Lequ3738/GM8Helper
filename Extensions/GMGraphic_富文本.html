@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>富文本</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body background="images/back.gif">
+
+<!--START-->
+
+<h1>富文本</h1>
+
+<p>使用 <A href="GMGraphic_字体.html#sdf_draw_text_rich"><b><tt>sdf_draw_text_rich()</tt></b></A> 绘制富文本时，可以在字符串中插入类似 HTML 的标签来控制文字的样式与排版。<br>
+标签分为两类：<strong>成对标签</strong>（如 <b><tt>&lt;b&gt;文字&lt;/b&gt;</tt></b>）作用于其包裹的文字，<strong>单标签</strong>（如 <b><tt>&lt;br&gt;</tt></b>）在当前位置生效。<br>
+部分标签支持属性，格式为 <b><tt>&lt;标签名 属性值&gt;</tt></b>，例如 <b><tt>&lt;size 30&gt;文字&lt;/size&gt;</tt></b>。颜色属性支持 <b><tt>#RRGGBB</tt></b> 或 <b><tt>$RRGGBB</tt></b> 形式的十六进制值，或直接使用 GM 颜色常量。</p>
+
+<h3>文字样式标签</h3>
+
+<blockquote>
+    <tt><b>&lt;b&gt;</b></tt><br>
+    加粗文字。可选属性指定粗细度，例如 <b><tt>&lt;b 600&gt;</tt></b>；不指定时在当前的粗细度上加 70。<p>
+
+    <tt><b>&lt;i&gt;</b></tt><br>
+    斜体文字。可选属性指定倾斜程度，例如 <b><tt>&lt;i 0.5&gt;</tt></b>；不指定时默认倾斜 0.3。<p>
+
+    <tt><b>&lt;size&gt;</b></tt><br>
+    设置文字大小，例如 <b><tt>&lt;size 30&gt;文字&lt;/size&gt;</tt></b>。<p>
+
+    <tt><b>&lt;color&gt;</b></tt><br>
+    设置文字颜色，例如 <b><tt>&lt;color #FF0000&gt;红色文字&lt;/color&gt;</tt></b>。<p>
+
+    <tt><b>&lt;font&gt;</b></tt><br>
+    切换字体（使用 <b><tt>sdf_add_font()</tt></b> 返回的字体 ID），例如 <b><tt>&lt;font 3&gt;</tt></b>。<p>
+
+    <tt><b>&lt;cgap&gt;</b></tt><br>
+    设置文字间隔，例如 <b><tt>&lt;cgap 5&gt;</tt></b>。<p>
+
+    <tt><b>&lt;yoffset&gt;</b></tt><br>
+    设置文字的垂直偏移（单位：像素），可用于制作上标、下标，例如 <b><tt>&lt;yoffset -10&gt;</tt></b>。<p>
+
+    <tt><b>&lt;lowercase&gt;</b> / <b>&lt;uppercase&gt;</tt></b><br>
+    将包裹的英文字母转换为小写 / 大写。<p>
+
+    <tt><b>&lt;indent&gt;</b></tt><br>
+    设置缩进，例如 <b><tt>&lt;indent 20&gt;</tt></b>。<p>
+
+    <tt><b>&lt;nobr&gt;</b></tt><br>
+    使被包裹的文本避免因换行而被分割开来（当作一个整体）。<p>
+</blockquote>
+
+<h3>排版标签</h3>
+
+<blockquote>
+    <tt><b>&lt;br&gt;</b></tt><br>
+    强制换行。<p>
+
+    <tt><b>&lt;gap 间隔&gt;</b></tt><br>
+    在当前文字之后插入一段水平间隔。<p>
+
+    <tt><b>&lt;padding 内边距&gt;</b></tt><br>
+    为段落设置内边距。<p>
+
+    <tt><b>&lt;width 宽度&gt;</b></tt><br>
+    约束当前段落的宽度，超出部分自动换行。<p>
+
+    <tt><b>&lt;align 对齐方式&gt;</b></tt><br>
+    设置当前段落的水平对齐方式。取值：<b><tt>left</tt></b>（左对齐，默认）、<b><tt>center</tt></b>（居中，也接受 <b><tt>middle</tt></b>）、<b><tt>right</tt></b>（右对齐）、<b><tt>justified</tt></b>（两端对齐）、<b><tt>flush</tt></b>（强制撑满行宽）。<p>
+
+    <tt><b>&lt;noparse&gt;文字&lt;/noparse&gt;</b></tt><br>
+    不对包裹的文本解析任何标签，其中的内容按普通文字原样输出。用于显示 "<b>&lt;</b>" 等特殊字符时避免被误判为标签。<p>
+</blockquote>
+
+<h3>示例</h3>
+<pre>&lt;size 30&gt;&lt;color #FF0000&gt;红色大字&lt;/color&gt;&lt;/size&gt; 普通文字&lt;br&gt;
+&lt;b 600&gt;加粗文字&lt;/b&gt; 与 &lt;i&gt;斜体文字&lt;/i&gt;
+</pre>
+
+<p>上面的富文本绘制效果为：第一行是红色大字与普通文字混排，第二行是加粗与斜体文字。<br>
+注意：标签必须正确配对，未闭合或拼写错误的标签会按普通字符处理。</p>
+
+<!--END-->
+
+</body>
+</html>

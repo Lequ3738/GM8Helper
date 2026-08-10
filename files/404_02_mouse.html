@@ -2,62 +2,62 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>���</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>鼠标</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body background="images/back.gif">
 <!--START-->
 
-<h3>���</h3>
+<h3>鼠标</h3>
 
-����괦���У��������¼��������ͺ��� :
+在鼠标处理中，存在以下几个变量和函数 :
 <p>
 <blockquote>
-  <tt><b>mouse_x*</b></tt> ����ڷ����ڵĺ����ꡣ�޷����ġ� <br>
+  <tt><b>mouse_x*</b></tt> 鼠标在房间内的横坐标。无法更改。 <br>
   <tt><b>mouse_y*</b></tt> 
-    ����ڷ����ڵ������ꡣ�޷����ġ� <br>
-  <tt><b>mouse_button</b></tt> ��ǰ���µ����������������¼���ֵ�� mb_none��û���κΰ�����,mb_any�����ⰴ����,mb_left�������, mb_right���Ҽ���,�Լ� mb_middle���м����� <br>
+    鼠标在房间内的纵坐标。无法更改。 <br>
+  <tt><b>mouse_button</b></tt> 当前按下的鼠标键。可以是以下几个值： mb_none（没有任何按键）,mb_any（任意按键）,mb_left（左键）, mb_right（右键）,以及 mb_middle（中键）。 <br>
   <tt><b>mouse_lastbutton</b></tt> 
-	���һ�ΰ��µ������� <br>
+	最后一次按下的鼠标键。 <br>
 </blockquote>
 
 <p>
 
-Ϊ�˼��ָ���������Ƿ񱻰��£������ʹ�����¼������������������ʱ��Щ�����ǳ����á� 
+为了检查指定的鼠标键是否被按下，你可以使用如下几个函数。多个键按下时这些函数非常有用。 
 <p>
 <blockquote>
-  <tt><b>mouse_check_button(numb)</b></tt>����ĳ�������Ƿ񱻰��У�numb Ϊ mb_none, mb_left, mb_middle, �� mb_right �е�һ�֣��� <br>
-  <tt><b>mouse_check_button_pressed(numb)</b></tt>����ĳ���������ϲ����Ƿ񱻰��£�numb Ϊ mb_none, mb_left, mb_middle, �� mb_right �е�һ�֣��� <br>
-  <tt><b>mouse_check_button_released(numb)</b></tt>����ĳ����������һ�����Ƿ񱻷ſ���numb Ϊ mb_none, mb_left, mb_middle, �� mb_right �е�һ�֣��� <br>
+  <tt><b>mouse_check_button(numb)</b></tt>返回某个鼠标键是否被按中（numb 为 mb_none, mb_left, mb_middle, 或 mb_right 中的一种）。 <br>
+  <tt><b>mouse_check_button_pressed(numb)</b></tt>返回某个鼠标键在上步后是否被按下（numb 为 mb_none, mb_left, mb_middle, 或 mb_right 中的一种）。 <br>
+  <tt><b>mouse_check_button_released(numb)</b></tt>返回某个鼠标键在上一步后是否被放开（numb 为 mb_none, mb_left, mb_middle, 或 mb_right 中的一种）。 <br>
   <br>
 </blockquote>
 <p>
 
-���º��������ڼ���������Ƿ�ʹ�á�
+以下函数可用于检查鼠标滚轮是否被使用。
 <p>
 <blockquote>
   <tt><b>mouse_wheel_up()</b></tt>
-    ��������һ���������Ƿ������ƶ�<br>
+    返回在上一步鼠标滚轮是否向上移动<br>
   <tt><b>mouse_wheel_down()</b></tt>
-    ��������һ���������Ƿ������ƶ�<br>
+    返回在上一步鼠标滚轮是否向下移动<br>
 </blockquote>
 
-<p>������һЩ�������괦��������
+<p>这里有一些额外的鼠标处理函数。
 <blockquote>
   <tt><b>mouse_clear(button)</b></tt> 
-    �����갴ť��״̬������ζ���������ٲ�������¼���ֱ������ͷţ����ٴΰ�������<br>
-  <tt><b>io_clear()</b></tt> ������м��̼����״̬��<br>
+    清除鼠标按钮的状态。这意味着它将不再产生鼠标事件，直到玩家释放，并再次按下它。<br>
+  <tt><b>io_clear()</b></tt> 清除所有键盘及鼠标状态。<br>
   <tt><b>io_handle()</b></tt> 
-    �����û�������������¼��̺����״̬��<br>
-<tt><b>mouse_wait()</b></tt> �ȴ���ֱ���û�����ĳ��������</blockquote>
+    处理用户输入输出，更新键盘和鼠标状态。<br>
+<tt><b>mouse_wait()</b></tt> 等待，直到用户按下某个鼠标键。</blockquote>
 
 <p><br>
-  ʹ������ı������Ըı����ָ��Ϊ����һ������: 
+  使用下面的变量可以改变鼠标指针为任意一个精灵: 
 <p>
 <blockquote>
   <tt><b>cursor_sprite</b></tt> 
-    ʹ�þ������������ָ�루Ĭ��û�о��飬ֵΪ��1�����趨����󽫻��Զ������λ�û��ƾ���ͼ�꣨���������ָ�룬�������ȫ����Ϸ������رմ����ڵ����ָ�룩<br>
+    使用精灵来代表鼠标指针（默认没有精灵，值为－1）。设定精灵后将会自动在鼠标位置绘制精灵图标（不隐藏鼠标指针，你可以在全局游戏设置里关闭窗口内的鼠标指针）<br>
 </blockquote>
 
 <!--END-->

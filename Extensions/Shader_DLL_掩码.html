@@ -2,23 +2,23 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>����</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>掩码</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body background="images/back.gif"><!--START-->
 
-<h1>����</h1>
+<h1>掩码</h1>
 
-�����ѡ��<strong>Ŀ��Ĵ�������Щͨ��</strong>�ᱻд�룬����<strong>Դ�Ĵ�������Щͨ��</strong>�ᱻ��ȡ��<br>
-�﷨��<b>rn.rgba</b><p>
+你可以选择<strong>目标寄存器的哪些通道</strong>会被写入，或者<strong>源寄存器的哪些通道</strong>会被读取。<br>
+语法：<b>rn.rgba</b><p>
 
-����ʹ���κ���ϣ���ͨ�����밴��˳�����С����磺<p>
-<strong>�Ϸ�</strong>��<b>rn.a</b>��<b>rn.rg</b>��<b>rn.ra</b>��<b>rn.gba</b><br>
-<strong>���Ϸ�</strong>��<b>rn.gr</b>��<b>rn.br</b>��˳�����<p>
+可以使用任何组合，但通道必须按照顺序排列。例如：<p>
+<strong>合法</strong>：<b>rn.a</b>、<b>rn.rg</b>、<b>rn.ra</b>、<b>rn.gba</b><br>
+<strong>不合法</strong>：<b>rn.gr</b>、<b>rn.br</b>（顺序错误）<p>
 
-�����ʹ�� <b>rn.rgba</b> ���룬Ч����ͬ��<strong>��ָ������</strong>��Ĭ��д������ͨ������<p>
-���뻹����ʹ�� <b>rn.xyzw</b>���� <b>rn.rgba</b> Ч����ͬ��<p>
+如果你使用 <b>rn.rgba</b> 掩码，效果等同于<strong>不指定掩码</strong>（默认写入所有通道）。<p>
+掩码还可以使用 <b>rn.xyzw</b>，与 <b>rn.rgba</b> 效果相同。<p>
 
 </body>
 </html>

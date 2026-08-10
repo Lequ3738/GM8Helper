@@ -1,6 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <HTML>
 <HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 <meta name="GENERATOR" content="Precision Helper 2.0.1">
 <!-- Sitemap 1.0 -->
 </HEAD>
@@ -8,8 +10,8 @@
     <OBJECT type="text/site properties">
       <param name="FrameName" value="right">
       <param name="Window Styles" value="0x00000027">
-      <param name="Font" value="Î¢ÈíÑÅºÚ,9,134">
-      <param name="comment" value="title:GMGamepad°ïÖúÎÄµµ">
+      <param name="Font" value="å¾®è½¯é›…é»‘,9,134">
+      <param name="comment" value="title:GMGamepadå¸®åŠ©æ–‡æ¡£">
       <param name="comment" value="base:Extensions\GMGamepad_Main.html">
     </OBJECT>
     <UL>
@@ -19,20 +21,20 @@
         </OBJECT>
         <UL>
             <LI><OBJECT type="text/sitemap">
-              <param name="Name" value="³£¹æ">
-              <param name="Local" value="Extensions\GMGamepad_³£¹æ.html">
+              <param name="Name" value="å¸¸è§„">
+              <param name="Local" value="Extensions\GMGamepad_å¸¸è§„.html">
             </OBJECT>
             <LI><OBJECT type="text/sitemap">
-              <param name="Name" value="ÐÅÏ¢ºÍÅäÖÃ">
-              <param name="Local" value="Extensions\GMGamepad_ÐÅÏ¢ºÍÅäÖÃ.html">
+              <param name="Name" value="ä¿¡æ¯å’Œé…ç½®">
+              <param name="Local" value="Extensions\GMGamepad_ä¿¡æ¯å’Œé…ç½®.html">
             </OBJECT>
             <LI><OBJECT type="text/sitemap">
-              <param name="Name" value="ÊäÈë">
-              <param name="Local" value="Extensions\GMGamepad_ÊäÈë.html">
+              <param name="Name" value="è¾“å…¥">
+              <param name="Local" value="Extensions\GMGamepad_è¾“å…¥.html">
             </OBJECT>
             <LI><OBJECT type="text/sitemap">
-              <param name="Name" value="×Ô¶¨ÒåÓ³Éä">
-              <param name="Local" value="Extensions\GMGamepad_×Ô¶¨ÒåÓ³Éä.html">
+              <param name="Name" value="è‡ªå®šä¹‰æ˜ å°„">
+              <param name="Local" value="Extensions\GMGamepad_è‡ªå®šä¹‰æ˜ å°„.html">
             </OBJECT>
         </UL>
     </UL>

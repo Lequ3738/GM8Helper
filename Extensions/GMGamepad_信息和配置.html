@@ -2,146 +2,146 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>��Ϣ������</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>信息和配置</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body background="images/back.gif">
 
 <!--START-->
 
-<h1>��Ϣ������</h1>
+<h1>信息和配置</h1>
 
 <blockquote>
     <tt id = "gamepad_is_supported"><b>
     <font color="#0000FF">bool </font>
     gamepad_is_supported(<font color="#0000FF">real </font>device)
     </b></tt><br>
-    ���ش���չ�Ƿ�֧��ָ�����ֱ���<br>
-    ���� <b><tt>device</tt></b> ���ֱ��������ָ�����������<br>
-    ���˺������� <b><tt>false</tt></b>������ζ�Ų����֧�ִ˲�۵��ֱ�������ʹ�� <A href="GMGamepad_����.html#gamepad_button_check"><b><tt>gamepad_button_check()</tt></b></A> ֮���<A href="GMGamepad_Main.html#func_input">���뺯��</A>ʱ������ʹ�� <b><tt>gp_face1</tt></b>��<b><tt>gp_axisrh</tt></b> ֮���<A href="GMGamepad_Main.html#input">���볣��</A>��ֻ��ʹ��ԭʼ������<A href="GMGamepad_Main.html#original">ԭʼ����ƫ�Ƴ���</A>������ʹ�á�<br>
-    ����ͨ��<A href="GMGamepad_Main.html#func_mapping">�Զ���ӳ��</A>��صĺ������ò��֧��������֧�ֵ��ֱ���<p>
+    返回此扩展是否支持指定的手柄。<br>
+    参数 <b><tt>device</tt></b> 是手柄被分配的指定插槽索引。<br>
+    若此函数返回 <b><tt>false</tt></b>，则意味着插件不支持此插槽的手柄。即在使用 <A href="GMGamepad_输入.html#gamepad_button_check"><b><tt>gamepad_button_check()</tt></b></A> 之类的<A href="GMGamepad_Main.html#func_input">输入函数</A>时，不能使用 <b><tt>gp_face1</tt></b>、<b><tt>gp_axisrh</tt></b> 之类的<A href="GMGamepad_Main.html#input">输入常量</A>。只能使用原始索引和<A href="GMGamepad_Main.html#original">原始索引偏移常量</A>来进行使用。<br>
+    可以通过<A href="GMGamepad_Main.html#func_mapping">自定义映射</A>相关的函数来让插件支持其所不支持的手柄。<p>
 
     <tt id = "gamepad_get_device_count"><b>
     <font color="#0000FF">real </font>
     gamepad_get_device_count()
     </b></tt><br>
-    �����Ѿ����ӵ��豸���ֱ�������<p>
+    返回已经连接到设备的手柄数量。<p>
     
     <tt id = "gamepad_get_description"><b>
     <font color="#0000FF">string </font>
     gamepad_get_description(<font color="#0000FF">real </font>device)
     </b></tt><br>
-    ����һ������������Ϸ�ֱ��������ַ�����<br>
-    ���磬PS3 �ֱ����ܻ᷵�������ڡ�PLAYSTATION(R)3 Controller�����ַ������� Xbox 360 �ֱ����ܻ᷵�ء�Xbox 360 Controller (XInput STANDARD GAMEPAD)�����ַ��������ַ�����Ӳ����أ����ص�ֵ��ȡ����ָ�������������Ϸ�ֱ���<br>
-    ���������������ڣ��򷵻ء�no gamepad���ַ�����<p>
+    返回一个包含给定游戏手柄描述的字符串。<br>
+    例如，PS3 手柄可能会返回类似于“PLAYSTATION(R)3 Controller”的字符串，而 Xbox 360 手柄可能会返回“Xbox 360 Controller (XInput STANDARD GAMEPAD)”的字符串。该字符串与硬件相关，返回的值将取决于指定插槽索引的游戏手柄。<br>
+    如果插槽索引不存在，则返回“no gamepad”字符串。<p>
     
     <tt id = "gamepad_get_type"><b>
     <font color="#0000FF">real </font>
     gamepad_get_type(<font color="#0000FF">real </font>device)
     </b></tt><br>
-    ��ȡָ����������ֱ������͡��˺����᷵�����³�����
+    获取指定插槽索引手柄的类型。此函数会返回如下常量：
     <figure><table style="border:1px solid #BBBBBB;">
     <tr>
         <th style="border:1px solid #BBBBBB;padding:2px 8px;">
-        <strong>����</strong></th>
+        <strong>常量</strong></th>
         <th style="border:1px solid #BBBBBB;padding:2px 8px;">
-        <strong>����</strong></th>
+        <strong>描述</strong></th>
     </tr>
     <tbody>
     <tr>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
         <tt><b>gp_type_unknown</b></tt></td>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-        δ֪�ֱ�</td>
+        未知手柄</td>
     </tr><tr>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
         <tt><b>gp_type_standard</b></tt></td>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-        ��׼�ֱ�</td>
+        标准手柄</td>
     </tr><tr>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
         <tt><b>gp_type_xbox360</b></tt></td>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-        Xbox 360 �ֱ�</td>
+        Xbox 360 手柄</td>
     </tr><tr>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
         <tt><b>gp_type_xboxone</b></tt></td>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-        Xbox One �ֱ�</td>
+        Xbox One 手柄</td>
     </tr><tr>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
         <tt><b>gp_type_ps3</b></tt></td>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-        PlayStation 3 �ֱ�</td>
+        PlayStation 3 手柄</td>
     </tr><tr>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
         <tt><b>gp_type_ps4</b></tt></td>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-        PlayStation 4 �ֱ�</td>
+        PlayStation 4 手柄</td>
     </tr><tr>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
         <tt><b>gp_type_ps5</b></tt></td>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-        PlayStation 5 �ֱ�</td>
+        PlayStation 5 手柄</td>
     </tr><tr>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
         <tt><b>gp_type_switch_pro</b></tt></td>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-        Nintendo Switch Pro �ֱ�</td>
+        Nintendo Switch Pro 手柄</td>
     </tr><tr>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
         <tt><b>gp_type_switch_joycon_left</b></tt></td>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-        Nintendo Switch Joycon �ֱ����е����ֱ�</td>
+        Nintendo Switch Joycon 手柄其中的左手柄</td>
     </tr><tr>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
         <tt><b>gp_type_switch_joycon_right</b></tt></td>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-        Nintendo Switch Joycon �ֱ����е����ֱ�</td>
+        Nintendo Switch Joycon 手柄其中的右手柄</td>
     </tr><tr>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
         <tt><b>gp_type_switch_joycon_pair</b></tt></td>
         <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-        һ�� Nintendo Switch Joycon �ֱ�</td>
+        一对 Nintendo Switch Joycon 手柄</td>
     </tr>
     </tbody>
     </table></figure>
-    ͨ���˺��������Է����Ϊ��ͬ���͵��ֱ�ʵ�ֲ�ͬ�Ĺ��ܣ����ǻ��Ʋ�ͬ��ͼ�ꡣ<p>
+    通过此函数，可以方便地为不同类型的手柄实现不同的功能，或是绘制不同的图标。<p>
     
     <tt id = "gamepad_get_guid"><b>
     <font color="#0000FF">string </font>
     gamepad_get_guid(<font color="#0000FF">real </font>device)
     </b></tt><br>
-    ����ָ�������������Ϸ�ֱ��� GUID���ú������������ַ���֮һ��
+    返回指定插槽索引的游戏手柄的 GUID。该函数返回以下字符串之一：
     <ul>
-        <li>���û�п��õ� GUID���򷵻ء�none��</li>
-        <li>�����Ϸ�ֱ��������������Χ���򷵻ء�device index out of range��</li>
-        <li>�����۷�������Ϸ�ֱ����ҿ��Ի�ȡ���� GUID���򷵻� GUID �ַ����������ڡ�050000005e040000fd020000ffff3f00��</li>
+        <li>如果没有可用的 GUID，则返回“none”</li>
+        <li>如果游戏手柄插槽索引超出范围，则返回“device index out of range”</li>
+        <li>如果插槽分配了游戏手柄并且可以获取它的 GUID，则返回 GUID 字符串，类似于“050000005e040000fd020000ffff3f00”</li>
     </ul>
-    �˺���ͨ���� <A href="GMGamepad_��Ϣ������.html#gamepad_get_description"><tt><b>gamepad_get_description()</b></tt></A> ���ʹ�ã�����������ӳ�����������Ĳ��� SDL �ַ�����<p>
+    此函数通常与 <A href="GMGamepad_信息和配置.html#gamepad_get_description"><tt><b>gamepad_get_description()</b></tt></A> 结合使用，以生成重新映射控制器所需的部分 SDL 字符串。<p>
     
     <tt id = "gamepad_get_id"><b>
     <font color="#0000FF">real </font>
     gamepad_get_id(<font color="#0000FF">real </font>device)
     </b></tt><br>
-    ����ָ�������������Ϸ�ֱ���ʵ�� ID��<br>�˺���רΪ���ֱ����Ӷ���ơ����ж���ֱ�����ʱ��ֱ�Ӽ�¼������������ɿ�����������Ϸ�ֱ������豸�������Ƴ��������ʱ�����������Ӧ���ֱ��豸���ܻ�ı䡣<br>
-    �˺������ص�ʵ�� ID ����Ϸ�����ڼ䣬���ֱ��豸�Ӳ��뵽�γ�ʱ������ı䡣<p>
+    返回指定插槽索引的游戏手柄的实例 ID。<br>此函数专为多手柄连接而设计。当有多个手柄连接时，直接记录插槽索引并不可靠。当发生游戏手柄插入设备（或将其移除）的情况时，插槽索引对应的手柄设备可能会改变。<br>
+    此函数返回的实例 ID 在游戏运行期间，该手柄设备从插入到拔出时都不会改变。<p>
     
     <tt id = "gamepad_get_axis_deadzone"><b>
     <font color="#0000FF">real </font>
     gamepad_get_axis_deadzone(<font color="#0000FF">real </font>device)
     </b></tt><br>
-    �˺��������ڻ�ȡָ���豸����ֱ���ҡ����ġ�������ֵ����ֵ���� 0 �� 1 ֮�䣬��ӳ��ҡ���ᱻ��Ϊ���� 0 λ�õ���ֵ��<br>
-    Ĭ������Ϊ 0.05��<p>
+    此函数可用于获取指定设备插槽手柄上摇杆轴的“死区”值。该值介于 0 到 1 之间，反映了摇杆轴被视为处于 0 位置的阈值。<br>
+    默认死区为 0.05。<p>
     
     <tt id = "gamepad_get_inputs_index"><b>
     <font color="#0000FF">real </font>
     gamepad_get_inputs_index(<font color="#0000FF">real </font>device,
     <font color="#0000FF">real </font>constant)
     </b></tt><br>
-    �˺��������ڻ�ȡ��֧���ֱ������볣�����󶨵�ԭʼ��ť/��ֵ��<br>
-    �����ȡ���ǲ���֧�ֵ��ֱ��������ֱ������ڣ������ -1��<p>
+    此函数可用于获取受支持手柄的输入常量所绑定的原始按钮/轴值。<br>
+    如果获取的是不受支持的手柄，或是手柄不存在，则输出 -1。<p>
     
     <tt id = "gamepad_set_vibration"><b>
     <font color="#0000FF">bool </font>
@@ -150,48 +150,48 @@
     <font color="#0000FF">real </font>right_motor,
     <font color="#0000FF">real </font>time)
     </b></tt><br>
-    �˺���������������Ϸ�ֱ�������񶯣���һ���ʹ�ô� 0�����񶯣��� 1����ȫ�񶯣���ֵ��<br>
-    ���� <b><tt>left_motor</tt></b> ������������ͨ���ǵ�Ƶ�������������<br>
-    ���� <b><tt>right_motor</tt></b> �������ҵ����ͨ���Ǹ�Ƶ�������������<br>
-    ���� <b><tt>time</tt></b> �����õ������ʱ�䣬��λΪ�롣<br>
-    �˺���ͨ������ <b><tt>true</tt></b>�������� <b><tt>false</tt></b>����˵���ֱ���֧�ֵ���񶯡�<p>
+    此函数可用于设置游戏手柄电机的振动，任一电机使用从 0（无振动）到 1（完全振动）的值。<br>
+    参数 <b><tt>left_motor</tt></b> 是设置左电机（通常是低频电机）的振动量。<br>
+    参数 <b><tt>right_motor</tt></b> 是设置右电机（通常是高频电机）的振动量。<br>
+    参数 <b><tt>time</tt></b> 是设置电机的振动时间，单位为秒。<br>
+    此函数通常返回 <b><tt>true</tt></b>，若返回 <b><tt>false</tt></b>，则说明手柄不支持电机振动。<p>
     
     <tt id = "gamepad_set_color"><b>
     <font color="#0000FF">bool </font>
     gamepad_set_color(<font color="#0000FF">real </font>device,
     <font color="#0000FF">real </font>color)
     </b></tt><br>
-    �˺������������� PlayStation �������� LED �Ƶ���ɫ������Ҫָ��Ҫ���õ��豸��ۣ�Ȼ��ָ��һ����ɫ������ɫ�������κ���ɫ����������ʹ���ض���ɫ������������ɫֵ������ʮ������ֵ����$FFFFFF����<br>
-    ����ɹ�ִ�в������򷵻� <b><tt>true</tt></b>�����򷵻� <b><tt>false</tt></b>��<p>
+    此函数可用于设置 PlayStation 控制器内 LED 灯的颜色。您需要指定要设置的设备插槽，然后指定一个颜色，该颜色可以是任何颜色常量，或是使用特定颜色函数创建的颜色值，或是十六进制值（如$FFFFFF）。<br>
+    如果成功执行操作，则返回 <b><tt>true</tt></b>，否则返回 <b><tt>false</tt></b>。<p>
     
     <tt id = "gamepad_set_axis_deadzone"><b>
     <font color="#0000FF">bool </font>
     gamepad_set_axis_deadzone(<font color="#0000FF">real </font>device,
     <font color="#0000FF">real </font>deadzone)
     </b></tt><br>
-    �˺�������������ָ���豸����ֱ���ҡ����ġ�����������������������һ���� 0 �� 1 ֮���ֵ������ֱ�ҡ�˵����������ڸ�������ֵ������Ϊҡ���ᴦ�� 0 λ�á���ע�⣬����һ��ȫ�����ã���Ӱ��ָ���豸��������ӵ�����ҡ�˵������ᡣ<br>
-    ʹ�ô˺���������ζ����ֵ��������ֵ��ʼ����Ϊ <A href="GMGamepad_����.html#gamepad_axis_value"><tt><b>gamepad_axis_value()</tt></b></A> ������ʼ�շ���һ������ -1 �� 0 ֮��� 0 �� 1 ֮��Ĺ�һ��ֵ�����磬����������Ϊ 0.2 ��ζ�ţ���ԭʼ��ֵ���� 0.2 ʱ�������ƶ�ҡ�˲ŻῪʼ���� 0 �� 1 ֮���ֵ������ˣ���ԭʼֵΪ 0.2 ʱ������ֵ��Ϊ 0����ԭʼֵΪ 0.5 ʱ������ֵ��Ϊ 0.375�����ߣ����ԭʼֵΪ 0.9���򷵻�ֵ��Ϊ 0.875��<br>
-    ����ɹ�ִ�в������򷵻� <b><tt>true</tt></b>�����򷵻� <b><tt>false</tt></b>��<p>
+    此函数可用于设置指定设备插槽手柄上摇杆轴的“死区”，该死区可以设置一个从 0 到 1 之间的值。如果手柄摇杆的输入量低于给定死区值，则认为摇杆轴处于 0 位置。请注意，这是一个全局设置，将影响指定设备插槽上连接的所有摇杆的所有轴。<br>
+    使用此函数并不意味着轴值将从死区值开始，因为 <A href="GMGamepad_输入.html#gamepad_axis_value"><tt><b>gamepad_axis_value()</tt></b></A> 函数将始终返回一个介于 -1 和 0 之间或 0 和 1 之间的归一化值。例如，将死区设置为 0.2 意味着，当原始轴值超过 0.2 时，向右推动摇杆才会开始返回 0 到 1 之间的值――因此，当原始值为 0.2 时，返回值将为 0；当原始值为 0.5 时，返回值将为 0.375；或者，如果原始值为 0.9，则返回值将为 0.875。<br>
+    如果成功执行操作，则返回 <b><tt>true</tt></b>，否则返回 <b><tt>false</tt></b>。<p>
     
     <tt id = "gamepad_axis_count"><b>
     <font color="#0000FF">real </font>
     gamepad_axis_count(<font color="#0000FF">real </font>device)
     </b></tt><br>
-    �˺��������ڻ�ȡָ���豸����ֱ��ϵġ�ҡ���ᡱ�ؼ���������<br>
-    ע�⣺һ��ҡ��ʵ�����Ƕ�Ӧ�������ᣨX ��� Y �ᣩ�������ô˺�����ȡһ����׼�ֱ���ҡ����ؼ�������ӦΪ 6������ҡ�˹� 4 ���ᣬ����������� 2 ���ᣩ��<p>
+    此函数可用于获取指定设备插槽手柄上的“摇杆轴”控件的数量。<br>
+    注意：一个摇杆实际上是对应着两个轴（X 轴和 Y 轴），所以用此函数获取一个标准手柄的摇杆轴控件的数量应为 6（两个摇杆共 4 个轴，两个扳机键共 2 个轴）。<p>
     
     <tt id = "gamepad_button_count"><b>
     <font color="#0000FF">real </font>
     gamepad_button_count(<font color="#0000FF">real </font>device)
     </b></tt><br>
-    �˺��������ڻ�ȡָ���豸����ֱ��ϵġ���ť���ؼ���������<p>
+    此函数可用于获取指定设备插槽手柄上的“按钮”控件的数量。<p>
     
     <tt id = "gamepad_hat_count"><b>
     <font color="#0000FF">real </font>
     gamepad_hat_count(<font color="#0000FF">real </font>device)
     </b></tt><br>
-    �˺��������ڻ�ȡָ���豸����ֱ��ϵġ�ʮ�ּ����ؼ���������<br>
-    ע�⣺�˺�����ʮ�ּ�����һ�����塣�����ô˺�����ȡһ����׼�ֱ���ʮ�ּ��ؼ�������ӦΪ 1�������� 4��<p>
+    此函数可用于获取指定设备插槽手柄上的“十字键”控件的数量。<br>
+    注意：此函数将十字键看作一个整体。所以用此函数获取一个标准手柄的十字键控件的数量应为 1，而不是 4。<p>
 </blockquote>
 
 <!--END-->

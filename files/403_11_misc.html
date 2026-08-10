@@ -2,62 +2,62 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Miscellaneous variables and functions</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body background="images/back.gif">
 <!--START-->
 
-<h3>������ͱ���</h3>
+<h3>杂项函数和变量</h3>
 
-������һЩ���������ı����ͺ�����
+这里有一些处理出错的变量和函数。
 <blockquote>
-  <tt><b>error_occurred</b></tt> ��ʾ�Ƿ��д������� <br>
-  <tt><b>error_last</b></tt> ���ַ�����ʾ����������Ϣ<br>
-  <tt><b>show_debug_message(str)</b></tt> ��Debugģʽ����ʾһ���ַ��� <br>
+  <tt><b>error_occurred</b></tt> 表示是否有错误发生。 <br>
+  <tt><b>error_last</b></tt> 用字符串显示最后出错的信息<br>
+  <tt><b>show_debug_message(str)</b></tt> 在Debug模式中显示一条字符串 <br>
   <tt><b>debug_mode</b></tt>
-    ���ֻ��������ʾ��Ϸ�Ƿ���debugģʽ<br>
+    这个只读变量表示游戏是否处于debug模式<br>
 </blockquote>
 
-����ı�������ȷ�������Ϸ�������ʵ��İ汾��
+下面的变量可以确保你的游戏运行在适当的版本上
 <blockquote>
   <tt><b>gamemaker_pro</b></tt>
-    ��Ϸ�Ƿ�����רҵ�洴���ġ�<br>
+    游戏是否是用专业版创建的。<br>
   <tt><b>gamemaker_registered</b></tt>
-    ͬgamemaker_pro<tt></tt><br>
+    同gamemaker_pro<tt></tt><br>
   <tt><b>gamemaker_version</b></tt>
-    GameMaker�İ汾�ţ���һ�������������8.0�İ汾���������800��809�е����֣������8.1������810��819���ȵ�. ���������������һ����Χ������һ���ض��İ汾.
-	���������8.0�汾��ǰ������<br>
+    GameMaker的版本号，是一个整数。如果是8.0的版本，则可能是800到809中的数字，如果是8.1将会是810到819，等等. 所以它是用来检查一个范围而不是一个特定的版本.
+	这个变量在8.0版本以前不可用<br>
 </blockquote>
 
-<p>����ĺ�����������Ƿ�ȷ�������Ĵ����Լ��������ñ�������ȡ���ǵ�ֵ��������Щ�����ı������������ַ������ݡ�
+<p>下面的函数用来监测是否确定变量的存在以及怎样设置变量及获取他们的值。所有这些函数的变量名都是用字符串传递。
 <blockquote>
-  <tt><b>variable_global_exists(name)</b></tt> ����ȫ�ֱ���name�Ƿ���ڣ�����nameΪ�ַ�����<br>
-  <tt><b>variable_local_exists(name)</b></tt>���ؾֲ�����name�Ƿ���ڣ�����nameΪ�ַ�����<br>
-  <tt><b>variable_global_get(name)</b></tt>����ȫ�ֱ���name��ֵ������nameΪ�ַ�����<br>
+  <tt><b>variable_global_exists(name)</b></tt> 返回全局变量name是否存在（参数name为字符串）<br>
+  <tt><b>variable_local_exists(name)</b></tt>返回局部变量name是否存在（参数name为字符串）<br>
+  <tt><b>variable_global_get(name)</b></tt>返回全局变量name的值（参数name为字符串）<br>
   <tt><b>variable_global_array_get(name,ind)</b></tt>
-    ����ȫ��һά����name[ind]��ֵ������nameΪ�ַ�����<br>
+    返回全局一维数组name[ind]的值（参数name为字符串）<br>
   <tt><b>variable_global_array2_get(name,ind1,ind2)</b></tt>
-    ����ȫ������name[ind1,ind2]��ֵ������nameΪ�ַ�����<br>
+    返回全局数组name[ind1,ind2]的值（参数name为字符串）<br>
   <tt><b>variable_local_get(name)</b></tt>
-    ���ؾֲ�����name��ֵ������nameΪ�ַ�����<br>
+    返回局部变量name的值（参数name为字符串）<br>
   <tt><b>variable_local_array_get(name,ind)</b></tt>
-    ���ؾֲ�һά����name[ind]��ֵ������nameΪ�ַ�����<br>
+    返回局部一维数组name[ind]的值（参数name为字符串）<br>
   <tt><b>variable_local_array2_get(name,ind1,ind2)</b></tt>
-    ���ؾֲ���ά����name[ind1,ind2]��ֵ������nameΪ�ַ�����<br>
+    返回局部二维数组name[ind1,ind2]的值（参数name为字符串）<br>
   <tt><b>variable_global_set(name,value)</b></tt>
-    ����ȫ�ֱ���name��ֵΪvalue������nameΪ�ַ�����<br>
+    设置全局变量name的值为value（参数name为字符串）<br>
   <tt><b>variable_global_array_set(name,ind,value)</b></tt>
-    ����ȫ��һά����name[ind]��ֵΪvalue������nameΪ�ַ�����<br>
-  <tt><b>variable_global_array2_set(name,ind1,ind2,value)</b></tt> ����ȫ�ֶ�ά����name[ind1,ind2]��ֵΪvalue������nameΪ�ַ�����<br>
-  <tt><b>variable_local_set(name,value)</b></tt> ���þֲ�����name��ֵΪvalue������nameΪ�ַ�����<br>
-  <tt><b>variable_local_array_set(name,ind,value)</b></tt> ���þֲ�һά����name[ind]��ֵΪvalue������nameΪ�ַ�����<br>
-  <tt><b>variable_local_array2_set(name,ind1,ind2,value)</b></tt> ���þֲ���ά����name[ind1,ind2]��ֵΪvalue������nameΪ�ַ�����<br>
+    设置全局一维数组name[ind]的值为value（参数name为字符串）<br>
+  <tt><b>variable_global_array2_set(name,ind1,ind2,value)</b></tt> 设置全局二维数组name[ind1,ind2]的值为value（参数name为字符串）<br>
+  <tt><b>variable_local_set(name,value)</b></tt> 设置局部变量name的值为value（参数name为字符串）<br>
+  <tt><b>variable_local_array_set(name,ind,value)</b></tt> 设置局部一维数组name[ind]的值为value（参数name为字符串）<br>
+  <tt><b>variable_local_array2_set(name,ind1,ind2,value)</b></tt> 设置局部二维数组name[ind1,ind2]的值为value（参数name为字符串）<br>
 </blockquote>
 
 <p>
-�ٸ����ӣ����������д��
+举个例子，你可以这样写：
 <p>
 <blockquote>
 <pre>
@@ -70,21 +70,21 @@
 </pre>
 </blockquote>
 
-<p>�����ʹ����Щ����ͨ��һ�ֲ������ݵķ������ű����ݱ�����ͨ���������ǵ��ַ�����ʹ�ú������ı����� 
-<p>�����ʹ������ĺ����ı��������ȼ� : 
+<p>你可以使用这些函数通过一种参数传递的方法给脚本传递变量，通过传递它们的字符名以使用函数来改变它们 
+<p>你可以使用下面的函数改变程序的优先级 : 
 <p>
 <blockquote>
-  <tt><b>set_program_priority(priority)</b></tt>���ó�������ȼ�������ָ�� -3 �� +3 ֮���ֵ��ֵΪ -3 ʱ��ζ�ų���ֻ��������������У�����û����������Ҫ����ʱ���������������ĳ��򶼿���ʱ��ֵΪ   -2 �� -1 ʱ���������£����������������Ȩ��ֵΪ 0 ʱ��������ֵ��ֵΪ +1 �� +2   Ϊ�ϸߵ����ȼ������ܻᵼ�½ϸߵ��ٶȺͽ�ƽ������Ϸ���̡������������õ����ٵĴ���ʱ�䡣ֵΪ +3   ʱΪʵʱģʽ����ʵʱģʽ�л��������е�ʱ�䶼���䵽��Ϸ����ȥ�ˡ������ᵼ�µ����������е�����Ӧ�ó��������ص����⡣��Ȼ�����¼����ٱ����Լ�¼����������ֻ�е�����Ҫ���еĴ���ʱ��ʱ��ʹ�����������ͬ��Ҫע�����ʹ��ǰ��ϸ�ļ��һ�²�������ǰ������Ϸ��<!--END-->
+  <tt><b>set_program_priority(priority)</b></tt>设置程序的优先级。可以指定 -3 到 +3 之间的值。值为 -3 时意味着程序只会在如下情况运行，电脑没有其他程序要处理时，或是所有其他的程序都空闲时。值为   -2 或 -1 时在正常线下，其他程序会有优先权。值为 0 时是正常的值。值为 +1 或 +2   为较高的优先级，可能会导致较高的速度和较平滑的游戏流程。但其他程序会得到很少的处理时间。值为 +3   时为实时模式。在实时模式中基本上所有的时间都分配到游戏当中去了。这样会导致电脑正在运行的其他应用程序发生严重的问题。当然键盘事件不再被电脑记录下来。所以只有当你想要所有的处理时间时才使用这个函数。同样要注意最好使用前仔细的检查一下并且运行前保存游戏。<!--END-->
   <!-- KEYWORDS  program priority  priority    error_occurred  error_last  show_debug_message()  variable_global_exists()  variable_global_get()  variable_global_array_get()   variable_global_array2_get()  variable_global_set()  variable_global_array_set()  variable_global_array2_set()  variable_local_exists()  variable_local_get()  variable_local_array_get()   variable_local_array2_get()  variable_local_set()  variable_local_array_set()  variable_local_array2_set()  set_program_priority()      -->
   <br>
 </blockquote>
 
 <p>
-��������ʹ������ĺ���������Ӧ�ó���ı��⣺</p>
+最后，你可以使用下面的函数来设置应用程序的标题：</p>
 
 <blockquote>
   <tt><b>set_application_title(title)</b></tt>
-    ��Ӧ�ó���ı�������Ϊ�������ַ�����title�Ǵ�������������ʾ������<br>
+    将应用程序的标题设置为给定的字符串。title是窗口在任务栏显示的名称<br>
 </blockquote>
 
 

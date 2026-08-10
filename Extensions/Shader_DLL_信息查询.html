@@ -2,29 +2,29 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>��Ϣ��ѯ</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>信息查询</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body background="images/back.gif"><!--START-->
 
-<h1>��Ϣ��ѯ</h1>
+<h1>信息查询</h1>
 
 <blockquote>
   <tt><b><font color="#0000FF">string </font>
   d3d_dev_get_name()
   </b></tt><br>
-  ��ȡ GPU ���ơ�<p>
+  获取 GPU 名称。<p>
     
   <tt><b><font color="#0000FF">real </font>
   d3d_dev_get_point_max_size()
   </b></tt><br>
-  ��ȡ��ͼԪ�����ߴ硣<p>
+  获取点图元的最大尺寸。<p>
   
   <tt><b><font color="#0000FF">real </font>
   d3d_dev_get_ps_version()
   </b></tt><br>
-  ��ȡ֧�ֵ����������ɫ���汾��10-14����� &lt;10�����ʾ GPU ��֧��������ɫ������<p>
+  获取支持的最大像素着色器版本（10-14，如果 &lt;10，则表示 GPU 不支持像素着色器）。<p>
   
   <tt><b><font color="#0000FF">real </font>
   d3d_dev_get_tex_max_width()
@@ -32,17 +32,17 @@
   <tt><b><font color="#0000FF">real </font>
   d3d_dev_get_tex_max_height()
   </b></tt><br>
-  ��ȡ��������ߴ硣����������ͼ����Դ��<p>
+  获取最大纹理尺寸。适用于所有图形资源。<p>
   
   <tt><b><font color="#0000FF">real </font>
   d3d_dev_get_tex_max_stages()
   </b></tt><br>
-  ��ȡ��ͬʱʹ�õ��������������ͨ��Ϊ 8�������Ǽ����Կ�����<p>
+  获取可同时使用的最大纹理数量（通常为 8，即便是集成显卡）。<p>
   
   <tt><b><font color="#0000FF">real </font>
   d3d_dev_get_tex_mem()
   </b></tt><br>
-  ��ȡ���õ������ڴ棨��λ���ֽڣ�����ֵ����<p>
+  获取可用的纹理内存（单位：字节，近似值）。<p>
 </blockquote>
 
 </body>

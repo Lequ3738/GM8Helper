@@ -2,15 +2,15 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>��Ⱦ����</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>渲染控制</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body background="images/back.gif">
 
 <!--START-->
 
-<h1>��Ⱦ����</h1>
+<h1>渲染控制</h1>
 
 <blockquote>
     <tt><b>
@@ -20,48 +20,48 @@
     <font color="#0000FF">bool </font>b, 
     <font color="#0000FF">bool </font>a)
     </b></tt><br>
-    ��������/���ø�����ɫͨ����д�롣���磬�ڱ������ʱ��Ӱ�� Alpha ͨ����<p>
+    独立启用/禁用各个颜色通道的写入。例如，在表面绘制时不影响 Alpha 通道。<p>
     
     <tt><b>
     <font color="#0000FF">bool </font>
     d3d_set_zwrite(<font color="#0000FF">bool </font>state)
     </b></tt><br>
-    ����/������Ȼ�����д�룬�������ϸ�������������ȡ�<p>
+    启用/禁用深度缓冲区写入，类似于上个函数但用于深度。<p>
     
     <tt><b>
     <font color="#0000FF">bool </font>
     d3d_set_zbias(<font color="#0000FF">real </font>bias)
     </b></tt><br>
-    ƫ�ƻ�����ȣ���ֹͬλ�ö���ε���ȳ�ͻ������˸���⣬��������Ӱ�������ȡ�<br>
-    ֵԽ�ߣ�����Խ��ǰ���������� <b>0-16</b>��Ĭ�� <b>0</b>�����ã���<p>
+    偏移绘制深度，防止同位置多边形的深度冲突导致闪烁问题，适用于阴影、贴花等。<br>
+    值越高，物体越靠前。传入整数 <b>0-16</b>，默认 <b>0</b>（禁用）。<p>
     
     <tt><b>
     <font color="#0000FF">bool </font>
     d3d_set_alphatest(<font color="#0000FF">real </font>value, 
     <font color="#0000FF">real </font>mode)
     </b></tt><br>
-    ͨ�� Alpha ���Թ������أ�����������ܡ�<b>value</b> ��ΧΪ 0-255��<b>mode</b> ʹ�� <b>cmp_*</b> ���������� <b>-1</b> �Խ��� Alpha ���ԣ���ֵ���á�<br>
-    ���磺<br>
+    通过 Alpha 测试过滤像素，可以提高性能。<b>value</b> 范围为 0-255，<b>mode</b> 使用 <b>cmp_*</b> 常量。传入 <b>-1</b> 以禁用 Alpha 测试，正值启用。<br>
+    例如：<br>
     <pre>d3d_set_alphatest(128, cmp_greaterequal);</pre>
-    �����Ʋ�͸��������Ϊ 50% �����أ�������ܡ�<p>
+    仅绘制不透明度至少为 50% 的像素，提高性能。<p>
     
     <tt><b>
     <font color="#0000FF">bool </font>
     d3d_set_ztest(<font color="#0000FF">real </font>mode)
     </b></tt><br>
-    �����Ʒ�����Ȳ������������أ��뵱ǰ��Ȼ�����ֵ�Ƚϡ�ʹ�� <b>cmp_*</b> ������Ĭ�� <b>cmp_lessequal</b>��<p>
+    仅绘制符合深度测试条件的像素，与当前深度缓冲区值比较。使用 <b>cmp_*</b> 常量，默认 <b>cmp_lessequal</b>。<p>
     
     <tt><b>
     <font color="#0000FF">bool </font>
     d3d_set_fillmode(<font color="#0000FF">real </font>mode)
     </b></tt><br>
-    ѡ����Ⱦģʽ���㡢�߿���䣩��ʹ�� <b>fillmode_*</b> ������Ĭ�� <b>fillmode_solid</b>��<p>
+    选择渲染模式（点、线框、填充）。使用 <b>fillmode_*</b> 常量，默认 <b>fillmode_solid</b>。<p>
     
     <tt><b>
     <font color="#0000FF">bool </font>
     d3d_set_normal_auto(<font color="#0000FF">bool </font>state)
     </b></tt><br>
-    ����/�����Զ����߹�һ����������ź�ģ�͹����쳣���⡣<p>
+    启用/禁用自动法线归一化，解决缩放后模型光照异常问题。<p>
 </blockquote>
 
 <!--END-->

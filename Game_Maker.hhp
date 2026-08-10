@@ -1,12 +1,12 @@
-[OPTIONS]
+ï»¿[OPTIONS]
 Auto index=Yes
 Compiled file=Game_Maker.chm
 Default window=main
 Default topic=files\GMC.html
 Full-text search=Yes
 Index file=Game_Maker.hhk
-Language=0x0804 ¼òÌåÖĞÎÄ(ÖĞ¹ú´óÂ½)
-Title=gm8ºº»¯°ïÖúÎÄµµbeta2
+Language=0x0804 ç®€ä½“ä¸­æ–‡(ä¸­å›½å¤§é™†)
+Title=gm8æ±‰åŒ–å¸®åŠ©æ–‡æ¡£beta2
 Contents file=Game_Maker.hhc
 Error log file=
 Full text search stop list file=
@@ -18,10 +18,10 @@ Display compile notes=Yes
 Enhanced decompilation=No
 Flat=No
 Compatibility=1.1 or later
-Default Font=Î¢ÈíÑÅºÚ,8,0
+Default Font=å¾®è½¯é›…é»‘,8,0
 
 [WINDOWS]
-main="GameMaker 8.0 °ïÖúÎÄµµ","Game_Maker.hhc","Game_Maker.hhk","files\GMC.html","files\GMC.html","files\GMC.html",,,,0x00002520,256,0x0000106E,[50,50,916,638],0x000B0000,,,0,0,0,0
+main="GameMaker 8.0 å¸®åŠ©æ–‡æ¡£","Game_Maker.hhc","Game_Maker.hhk","files\GMC.html","files\GMC.html","files\GMC.html",,,,0x00002520,256,0x0000106E,[50,50,916,638],0x000B0000,,,0,0,0,0
 
 [FILES]
 files\100_index.html
@@ -416,6 +416,14 @@ files\new.html
 files\style.css
 Game_Maker.hhc
 Game_Maker.hhk
+Extensions\GMGraphic_Main.html
+Extensions\GMGraphic_åˆå§‹åŒ–.html
+Extensions\GMGraphic_ç€è‰²å™¨.html
+Extensions\GMGraphic_æ¸²æŸ“æ§åˆ¶.html
+Extensions\GMGraphic_çº¹ç†å›¾é›†.html
+Extensions\GMGraphic_å›¾é›†ç»˜åˆ¶.html
+Extensions\GMGraphic_å­—ä½“.html
+Extensions\GMGraphic_å¯Œæ–‡æœ¬.html
 
 [ALIAS]
 #include alias.ali

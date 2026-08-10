@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>GM Gamepad</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
@@ -13,188 +13,188 @@
 <h1>GM Gamepad</h1>
 
 <center><font size="3">
-���ߣ�Lequ<br>
-�ĵ�����ʱ�䣺2025/8/1<br>
+作者：Lequ<br>
+文档创建时间：2025/8/1<br>
 </font></center><p>
 
-�� GameMaker 8.0 �У����ֱ���֧�ֺ���⣺<br>
+在 GameMaker 8.0 中，对手柄的支持很糟糕：<br>
 <ul>
-<li>���ֱ��Ŀ��Ʒǳ��ײ㣬�������ֱ�����һ�Ѱ�ť��ҡ�˵ļ��ϡ�</li>
-<li>�������ֱ���δ����ʱ�ᵼ����Ϸ������CPU ��Դռ�ü��󣩡�</li>
-<li>���ʹ���� gm8x_fix ������ᵼ�� GM8 ���Դ����ֱ�֧�ֹ���ʧЧ��</li>
+<li>对手柄的控制非常底层，基本把手柄视作一堆按钮与摇杆的集合。</li>
+<li>插入了手柄且未启用时会导致游戏变慢（CPU 资源占用极大）。</li>
+<li>如果使用了 gm8x_fix 补丁则会导致 GM8 中自带的手柄支持功能失效。</li>
 </ul>
-ӵ���������ԣ�ʹ�� GM8 ���Դ����ֱ�֧�ֹ��ܼ����޷�ʹ�á�����չ����Ϊ�˽������ʹ�㣬��Ϊ�˸��ӷ����ʹ���ֱ����ܶ�����<br>
-����չ�� API ���������ִ� GameMaker API����ǰ GameMaker Studio 2 �� API��������ѧϰ�ɱ���
+拥有以上特性，使得 GM8 中自带的手柄支持功能几乎无法使用。此扩展就是为了解决以上痛点，并为了更加方便地使用手柄功能而生。<br>
+此扩展的 API 尽量贴合现代 GameMaker API（即前 GameMaker Studio 2 的 API），减少学习成本。
 
-<h3>��ʼ��</h3>
-����չ����������Ӧ�ÿ��Կ��������ļ���<br>
-<img src = "images/�ļ�.png"><br>
+<h3>初始化</h3>
+此扩展下载下来后，应该可以看到如下文件：<br>
+<img src = "images/文件.png"><br>
 <dl>
-<dt><b><tt>Constants.gex</tt></b></dt><dd>�������ĳ�����չ������Ҫ���ص������ڡ�</dd><br>
-<dt><b><tt>Constants.txt</tt></b></dt><dd>Ҫ����� <b><tt>Constants.gex</tt></b> ��Դ�ļ���ʹ�ò����ʱ��ɲ��ù�����</dd>
-<dt><b><tt>GamepadDatabase.txt</tt></b></dt><dd>�ɰ����ڹ����ڣ�Ҳ�ɲ���������;��<A href="GMGamepad_Main.html#title_mapping">�ֱ�ӳ��</A>�½ڡ�</dd><br>
-<dt><b><tt>GMGamepad.dll��SDL3.dll</tt></b></dt><dd>������弰���������Ҫ�����ڹ����ڡ�</dd><br>
-<dt><b><tt>GMGamepad.gmk��GMGamepad.gb1</tt></b></dt><dd>�������ʾ���̡�</dd><br>
-<dt><b><tt>GMGamepad.gml</tt></b></dt><dd>������׵ĺ�������Ҫ�����ڹ����ڡ�</dd><br>
-<dt><b><tt>GM_Gamepad.chm</tt></b></dt><dd>�˰����ļ���</dd><br>
+<dt><b><tt>Constants.gex</tt></b></dt><dd>插件所需的常量扩展包，需要加载到工程内。</dd><br>
+<dt><b><tt>Constants.txt</tt></b></dt><dd>要编译成 <b><tt>Constants.gex</tt></b> 的源文件，使用插件的时候可不用管它。</dd>
+<dt><b><tt>GamepadDatabase.txt</tt></b></dt><dd>可包含在工程内，也可不包含。用途见<A href="GMGamepad_Main.html#title_mapping">手柄映射</A>章节。</dd><br>
+<dt><b><tt>GMGamepad.dll、SDL3.dll</tt></b></dt><dd>插件本体及其依赖项，需要包含在工程内。</dd><br>
+<dt><b><tt>GMGamepad.gmk、GMGamepad.gb1</tt></b></dt><dd>插件的演示工程。</dd><br>
+<dt><b><tt>GMGamepad.gml</tt></b></dt><dd>插件配套的函数，需要包含在工程内。</dd><br>
+<dt><b><tt>GM_Gamepad.chm</tt></b></dt><dd>此帮助文件。</dd><br>
 </dl>
-����˵�������ù��̼��ɡ�<br>
-������ɺ������ض���Ĵ����¼�����ָ�����ز���ĵط����� <A href="GMGamepad_����.html#gamepad_dll_init"><b><tt>gamepad_dll_init()</tt></b></A> ������ɳ�ʼ��������
+按照说明来配置工程即可。<br>
+配置完成后，在主控对象的创建事件或是指定加载插件的地方调用 <A href="GMGamepad_常规.html#gamepad_dll_init"><b><tt>gamepad_dll_init()</tt></b></A> 即可完成初始化操作。
 
-<h3>�����Ϸ�ֱ�</h3>
-����չ��Ҫ�����ض�����ÿ������ <A href="GMGamepad_����.html#gamepad_update"><b><tt>gamepad_update()</tt></b></A> �������ֱ�״̬������Ϸ�ֱ������豸�������Ƴ���ʱ��<A href="GMGamepad_����.html#gamepad_update"><b><tt>gamepad_update()</tt></b></A> �᷵�� <b><tt>true</tt></b>���Ӷ�������ʹ���ʵ��ĺ������������������<br>
-����Ϸ�ֱ�����ʱ�����ᱻ����һ������������ڲ������Ϸ�ֱ����������ı�ʱ�������Ĳ���������ܻ�ı䡣�����ϷҪʹ�ö���ֱ�ʱ���Ƽ�ʹ�� <A href="GMGamepad_��Ϣ������.html#gamepad_get_id"><b><tt>gamepad_get_id()</tt></b></A> ����ȡ�ֱ���Ψһʵ�� ID��<br>
-��ͬ�� GM8 �Դ��� joystick API ���ִ� GameMaker �� gamepad API������չ��������֧�����޶���ֱ���ʵ����ȡ������������Ϸ��ƽ̨��
+<h3>检测游戏手柄</h3>
+此扩展需要在主控对象中每步调用 <A href="GMGamepad_常规.html#gamepad_update"><b><tt>gamepad_update()</tt></b></A> 来更新手柄状态。当游戏手柄插入设备（或将其移除）时，<A href="GMGamepad_常规.html#gamepad_update"><b><tt>gamepad_update()</tt></b></A> 会返回 <b><tt>true</tt></b>，从而允许您使用适当的函数来处理这种情况。<br>
+当游戏手柄连接时，它会被分配一个插槽索引。在插入的游戏手柄数量发生改变时，其分配的插槽索引可能会改变。如果游戏要使用多个手柄时，推荐使用 <A href="GMGamepad_信息和配置.html#gamepad_get_id"><b><tt>gamepad_get_id()</tt></b></A> 来获取手柄的唯一实例 ID。<br>
+不同与 GM8 自带的 joystick API 和现代 GameMaker 的 gamepad API，此扩展理论上能支持无限多个手柄，实际上取决于您运行游戏的平台。
 
-<h3 id = "input">���볣��</h3>
-ʹ����֧����Ϸ�ֱ��Ĺ���ʱ�������������ҡ�ˡ���ť��ʮ�ּ�������չ�Ὣ���������³�����<p>
+<h3 id = "input">输入常量</h3>
+使用受支持游戏手柄的功能时，输入可能来自摇杆、按钮或十字键。此扩展会将其分配给以下常量：<p>
 
 <figure><table style="border:1px solid #BBBBBB;" id = "button">
 <tr>
     <th colspan="2" style="border:1px solid #BBBBBB;padding:2px 8px;">
-    <strong>��Ϸ�ֱ���ť����</strong></th>
+    <strong>游戏手柄按钮常量</strong></th>
 </tr><tr>
     <th style="border:1px solid #BBBBBB;padding:2px 8px;">
-    <strong>����</strong></th>
+    <strong>常量</strong></th>
     <th style="border:1px solid #BBBBBB;padding:2px 8px;">
-    <strong>����</strong></th>
+    <strong>描述</strong></th>
 </tr>
 <tbody>
 <tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_no_key</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    û�а�ť��ʵ���Ϻ����õ��˳���</td>
+    没有按钮。实际上很少用到此常量</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_face1</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ������ť 1��ӳ�䵽 Xbox �ֱ��ϵġ�A���� PS �ֱ��ϵ�ʮ�֣�</td>
+    顶部按钮 1（映射到 Xbox 手柄上的“A”和 PS 手柄上的十字）</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_face2</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ������ť 2��ӳ�䵽 Xbox �ֱ��ϵġ�B���� PS �ֱ��ϵ�ԲȦ��</td>
+    顶部按钮 2（映射到 Xbox 手柄上的“B”和 PS 手柄上的圆圈）</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_face3</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ������ť 3��ӳ�䵽 Xbox �ֱ��ϵġ�X���� PS �ֱ��ϵķ��飩</td>
+    顶部按钮 3（映射到 Xbox 手柄上的“X”和 PS 手柄上的方块）</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_face4</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ������ť 4��ӳ�䵽 Xbox �ֱ��ϵġ�Y���� PS �ֱ��ϵ����ǣ�</td>
+    顶部按钮 4（映射到 Xbox 手柄上的“Y”和 PS 手柄上的三角）</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_shoulderl</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ����</td>
+    左肩键</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_shoulderr</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    �Ҽ��</td>
+    右肩键</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_select</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ѡ��ť���� PS �ֱ��ϣ��������´�����ʱ������</td>
+    选择按钮（在 PS 手柄上，当您按下触摸板时触发）</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_home</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    Switch �ֱ��ϵġ���ҳ����ť���Լ�ĳЩ�ֱ��ϵ� PS/XBOX �ձ갴ť������ƽ̨�������δ˰�ť�¼���</td>
+    Switch 手柄上的“主页”按钮，以及某些手柄上的 PS/XBOX 徽标按钮（部分平台可能屏蔽此按钮事件）</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_start</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ��ʼ��ť������ PS �ֱ��ϵġ�ѡ���ť��</td>
+    开始按钮（这是 PS 手柄上的“选项”按钮）</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_stickl</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ������ҡ�ˣ���Ϊ��ť��</td>
+    按下左摇杆（作为按钮）</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_stickr</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ������ҡ�ˣ���Ϊ��ť��</td>
+    按下右摇杆（作为按钮）</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_padu</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ʮ�ּ��Ϸ����</td>
+    十字键上方向键</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_padd</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ʮ�ּ��·����</td>
+    十字键下方向键</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_padl</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ʮ�ּ������</td>
+    十字键左方向键</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_padr</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ʮ�ּ��ҷ����</td>
+    十字键右方向键</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_touchpadbutton</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    PS �������ϵĴ����尴ť</td>
+    PS 控制器上的触摸板按钮</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_paddler</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    Xbox Elite ���Ʋ�Ƭ P1</td>
+    Xbox Elite 控制拨片 P1</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_paddlel</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    Xbox Elite ���Ʋ�Ƭ P3</td>
+    Xbox Elite 控制拨片 P3</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_paddlerb</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    Xbox Elite ���Ʋ�Ƭ P2</td>
+    Xbox Elite 控制拨片 P2</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_paddlelb</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    Xbox Elite ���Ʋ�Ƭ P4</td>
+    Xbox Elite 控制拨片 P4</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_extra1</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ���ⰴť�����磺Xbox Series X ������ť��PS5 ��˷簴ť��Nintendo Switch Pro ��׽��ť��Amazon Luna ��˷簴ť��Google Stadia ��׽��ť��</td>
+    额外按钮（例如：Xbox Series X 分享按钮、PS5 麦克风按钮、Nintendo Switch Pro 捕捉按钮、Amazon Luna 麦克风按钮、Google Stadia 捕捉按钮）</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_extra2</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ����ӳ�䵽�κ����ݵĶ��ⰴť</td>
+    可以映射到任何内容的额外按钮</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_extra3</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ����ӳ�䵽�κ����ݵĶ��ⰴť</td>
+    可以映射到任何内容的额外按钮</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_extra4</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ����ӳ�䵽�κ����ݵĶ��ⰴť</td>
+    可以映射到任何内容的额外按钮</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_extra5</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ����ӳ�䵽�κ����ݵĶ��ⰴť</td>
+    可以映射到任何内容的额外按钮</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_extra6</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ����ӳ�䵽�κ����ݵĶ��ⰴť</td>
+    可以映射到任何内容的额外按钮</td>
 </tr>
 </tbody>
 </table></figure><p>
@@ -202,168 +202,168 @@
 <figure><table style="border:1px solid #BBBBBB;" id = "axis">
 <tr>
     <th colspan="2" style="border:1px solid #BBBBBB;padding:2px 8px;">
-    <strong>��Ϸ�ֱ�ҡ�˳���</strong></th>
+    <strong>游戏手柄摇杆常量</strong></th>
 </tr><tr>
     <th style="border:1px solid #BBBBBB;padding:2px 8px;">
-    <strong>����</strong></th>
+    <strong>常量</strong></th>
     <th style="border:1px solid #BBBBBB;padding:2px 8px;">
-    <strong>����</strong></th>
+    <strong>描述</strong></th>
 </tr>
 <tbody>
 <tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_axislh</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ��ҡ��ˮƽ�ᣨģ�⣩</td>
+    左摇杆水平轴（模拟）</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_axislv</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ��ҡ�˴�ֱ�ᣨģ�⣩</td>
+    左摇杆垂直轴（模拟）</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_axisrh</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ��ҡ��ˮƽ�ᣨģ�⣩</td>
+    右摇杆水平轴（模拟）</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_axisrv</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ��ҡ�˴�ֱ�ᣨģ�⣩</td>
+    右摇杆垂直轴（模拟）</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_shoulderlb</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ������</td>
+    左扳机键</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_shoulderrb</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    �Ұ����</td>
+    右扳机键</td>
 </tr>
 </tbody>
 </table></figure><p>
 
-���ʹ���˲���֧�ֵ��ֱ�ʱ�����ϳ���������ʹ�á�ֻ��ʹ��ԭʼ��ť������ԭʼ����ƫ�Ƴ���������ʹ�á�ԭʼ����ƫ�Ƴ��������ڰ���<A href="GMGamepad_Main.html#func_input">���뺯��</A>���ֲ���֧�ֵ��ֱ��İ�ť��ҡ�˺�ʮ�ּ�����Ƶģ�ͨ��ԭʼ����ƫ�Ƴ���������չ���֧�ֲ���֧�ֵ��ֱ��� 60 ����ť��20 ��ҡ�ˣ��� 5 ��ʮ�ּ���<p>
+如果使用了不受支持的手柄时，以上常量均不可使用。只能使用原始按钮索引和原始索引偏移常量来进行使用。原始索引偏移常量是用于帮助<A href="GMGamepad_Main.html#func_input">输入函数</A>区分不受支持的手柄的按钮、摇杆和十字键而设计的，通过原始索引偏移常量，此扩展最高支持不受支持的手柄的 60 个按钮，20 个摇杆，和 5 个十字键。<p>
 
 <figure><table style="border:1px solid #BBBBBB;" id = "original">
 <tr>
     <th colspan="2" style="border:1px solid #BBBBBB;padding:2px 8px;">
-    <strong>ԭʼ����ƫ�Ƴ���</strong></th>
+    <strong>原始索引偏移常量</strong></th>
 </tr><tr>
     <th style="border:1px solid #BBBBBB;padding:2px 8px;">
-    <strong>����</strong></th>
+    <strong>常量</strong></th>
     <th style="border:1px solid #BBBBBB;padding:2px 8px;">
-    <strong>����</strong></th>
+    <strong>描述</strong></th>
 </tr>
 <tbody>
 <tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_original_button</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ��ť����ƫ�Ƴ���</td>
+    按钮索引偏移常量</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_original_axis</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ҡ������ƫ�Ƴ���</td>
+    摇杆索引偏移常量</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_original_hat</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    ʮ�ּ�����ƫ�Ƴ���</td>
+    十字键索引偏移常量</td>
 </tr>
 </tbody>
 </table></figure><p>
 
-����һЩ�� GM8 �Դ��� <tt><b>vk_anykey</b></tt> ���Ƶĳ�����<p>
+还有一些与 GM8 自带的 <tt><b>vk_anykey</b></tt> 类似的常量：<p>
 
 <figure><table style="border:1px solid #BBBBBB;" id = "any">
 <tr>
     <th colspan="2" style="border:1px solid #BBBBBB;padding:2px 8px;">
-    <strong>���������</strong></th>
+    <strong>任意键常量</strong></th>
 </tr><tr>
     <th style="border:1px solid #BBBBBB;padding:2px 8px;">
-    <strong>����</strong></th>
+    <strong>常量</strong></th>
     <th style="border:1px solid #BBBBBB;padding:2px 8px;">
-    <strong>����</strong></th>
+    <strong>描述</strong></th>
 </tr>
 <tbody>
 <tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_anybutton</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    �ֱ��ϵ����ⰴť</td>
+    手柄上的任意按钮</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_anyaxis</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    �ֱ��ϵ�����ҡ��</td>
+    手柄上的任意摇杆</td>
 </tr><tr>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
     <tt><b>gp_any</b></tt></td>
     <td style="border:1px solid #BBBBBB;padding:2px 8px;">
-    �ֱ��ϵ��������������ť��ҡ�ˣ�</td>
+    手柄上的任意键（包括按钮和摇杆）</td>
 </tr>
 </tbody>
 </table></figure><p>
 
-ע������֧�ֵ��ֱ��У�������������ɰ���Ԥ��ʹ�ã��ڲ���֧�ֵ��ֱ��У����������ֻ�������ֱ��İ�ť������ʮ�ּ�����������ҡ�˺Ͱ�������� <b><tt>gp_anyaxis</tt></b> ʧЧ��<b><tt>gp_any</tt></b> ֻ�����ڰ�ť����<p>
+注：在受支持的手柄中，任意键常量均可按照预期使用；在不受支持的手柄中，任意键常量只能用于手柄的按钮（包括十字键，但不包括摇杆和扳机键，即 <b><tt>gp_anyaxis</tt></b> 失效，<b><tt>gp_any</tt></b> 只能用于按钮）。<p>
 
-��Ҫ���õ��˽�ÿ�������������������ĸ����֣����Բο���׼ XInput ��Ϸ�ֱ�����ͼ��<br>
+若要更好地了解每个常量代表控制器的哪个部分，可以参考标准 XInput 游戏手柄的下图：<br>
 <img src = "images/GamePad.png"><br>
 
-ֵ��ע����ǣ���������������ʵ�ʰ��°�ťʱ��Ӧ�İ�ť����ȫһ�£�������Ϊ�ֱ���������ʵ�� API ʱ������Ƭ���ͷǱ�׼�����⡣��ˣ���������Ϸ���ṩĳ���ֱ����ý��棬������Ҹ��������豸���������¶����ֱ���ť������ͨ����������ʵ�֣�Ҳ����ʹ�ý�����Ҫ���ġ��ֱ�ӳ�䡱��ʵ�֡�
+值得注意的是，上述常量可能与实际按下按钮时对应的按钮不完全一致，这是因为手柄制造商在实现 API 时存在碎片化和非标准化问题。因此，建议在游戏中提供某种手柄设置界面，允许玩家根据连接设备的输入重新定义手柄按钮。可以通过代码自行实现，也可以使用接下来要讲的“手柄映射”来实现。
 
-<h3 id = "title_mapping">�ֱ�ӳ��</h3>
-����չ������������� SDL ��Ϸ�ֱ����������ݿ�Ĳ�ͬ��Ϸ�ֱ���ӳ�䣬��Ӧ�����ڴ���չ���ļ��������ҵ� <b>GamepadDatabase.txt</b> �ļ���<br>
-��Щӳ�����ڽ����ó�������ӳ�䵽������Ϸ�ֱ���ֱ���������롣�������֧��������Ϸ�ֱ�������ͨ���޸� <b>GamepadDatabase.txt</b> ��ʹ�� <A href="GMGamepad_����.html#gamepad_dll_init"><b><tt>gamepad_dll_init()</tt></b></A> �������ش��ļ���������һ�㡣<p>
+<h3 id = "title_mapping">手柄映射</h3>
+此扩展附带了许多基于 SDL 游戏手柄控制器数据库的不同游戏手柄的映射，您应该能在此扩展的文件夹里面找到 <b>GamepadDatabase.txt</b> 文件。<br>
+这些映射用于将内置常量重新映射到给定游戏手柄的直接物理输入。如果您想支持其他游戏手柄，可以通过修改 <b>GamepadDatabase.txt</b> 并使用 <A href="GMGamepad_常规.html#gamepad_dll_init"><b><tt>gamepad_dll_init()</tt></b></A> 函数加载此文件来做到这一点。<p>
 
-ͬ������Ҳ����ʹ�� <A href="GMGamepad_�Զ���ӳ��.html#gamepad_test_mapping"><b><tt>gamepad_test_mapping()</tt></b></A> ����һ��ӳ�䣬ʹ�� <A href="GMGamepad_�Զ���ӳ��.html#gamepad_remove_mapping"><b><tt>gamepad_remove_mapping()</tt></b></A> ɾ��ӳ�䣬���������<A href="GMGamepad_Main.html#func_mapping">�Զ���ӳ�亯��</A>��
+同样，您也可以使用 <A href="GMGamepad_自定义映射.html#gamepad_test_mapping"><b><tt>gamepad_test_mapping()</tt></b></A> 设置一个映射，使用 <A href="GMGamepad_自定义映射.html#gamepad_remove_mapping"><b><tt>gamepad_remove_mapping()</tt></b></A> 删除映射，具体请参阅<A href="GMGamepad_Main.html#func_mapping">自定义映射函数</A>。
 
-<h3>����</h3>
-<h4 id = "func_general">����</h4>
+<h3>函数</h3>
+<h4 id = "func_general">常规</h4>
 <blockquote>
-    <A href="GMGamepad_����.html#gamepad_dll_init">gamepad_dll_init</A><br>
-    <A href="GMGamepad_����.html#gamepad_dll_free">gamepad_dll_free</A><br>
-    <A href="GMGamepad_����.html#gamepad_update">gamepad_update</A><br>
+    <A href="GMGamepad_常规.html#gamepad_dll_init">gamepad_dll_init</A><br>
+    <A href="GMGamepad_常规.html#gamepad_dll_free">gamepad_dll_free</A><br>
+    <A href="GMGamepad_常规.html#gamepad_update">gamepad_update</A><br>
 </blockquote><br><p>
 
-<h4 id = "func_info">��Ϣ������</h4>
+<h4 id = "func_info">信息和配置</h4>
 <blockquote>
-    <A href="GMGamepad_��Ϣ������.html#gamepad_is_supported">gamepad_is_supported</A><br>
-    <A href="GMGamepad_��Ϣ������.html#gamepad_get_device_count">gamepad_get_device_count</A><br>
-    <A href="GMGamepad_��Ϣ������.html#gamepad_get_description">gamepad_get_description</A><br>
-    <A href="GMGamepad_��Ϣ������.html#gamepad_get_type">gamepad_get_type</A><br>
-    <A href="GMGamepad_��Ϣ������.html#gamepad_get_guid">gamepad_get_guid</A><br>
-    <A href="GMGamepad_��Ϣ������.html#gamepad_get_id">gamepad_get_id</A><br>
-    <A href="GMGamepad_��Ϣ������.html#gamepad_get_axis_deadzone">gamepad_get_axis_deadzone</A><br>
-    <A href="GMGamepad_��Ϣ������.html#gamepad_get_inputs_index">gamepad_get_inputs_index</A><br>
-    <A href="GMGamepad_��Ϣ������.html#gamepad_set_vibration">gamepad_set_vibration</A><br>
-    <A href="GMGamepad_��Ϣ������.html#gamepad_set_color">gamepad_set_color</A><br>
-    <A href="GMGamepad_��Ϣ������.html#gamepad_set_axis_deadzone">gamepad_set_axis_deadzone</A><br>
-    <A href="GMGamepad_��Ϣ������.html#gamepad_axis_count">gamepad_axis_count</A><br>
-    <A href="GMGamepad_��Ϣ������.html#gamepad_button_count">gamepad_button_count</A><br>
-    <A href="GMGamepad_��Ϣ������.html#gamepad_hat_count">gamepad_hat_count</A><br>
+    <A href="GMGamepad_信息和配置.html#gamepad_is_supported">gamepad_is_supported</A><br>
+    <A href="GMGamepad_信息和配置.html#gamepad_get_device_count">gamepad_get_device_count</A><br>
+    <A href="GMGamepad_信息和配置.html#gamepad_get_description">gamepad_get_description</A><br>
+    <A href="GMGamepad_信息和配置.html#gamepad_get_type">gamepad_get_type</A><br>
+    <A href="GMGamepad_信息和配置.html#gamepad_get_guid">gamepad_get_guid</A><br>
+    <A href="GMGamepad_信息和配置.html#gamepad_get_id">gamepad_get_id</A><br>
+    <A href="GMGamepad_信息和配置.html#gamepad_get_axis_deadzone">gamepad_get_axis_deadzone</A><br>
+    <A href="GMGamepad_信息和配置.html#gamepad_get_inputs_index">gamepad_get_inputs_index</A><br>
+    <A href="GMGamepad_信息和配置.html#gamepad_set_vibration">gamepad_set_vibration</A><br>
+    <A href="GMGamepad_信息和配置.html#gamepad_set_color">gamepad_set_color</A><br>
+    <A href="GMGamepad_信息和配置.html#gamepad_set_axis_deadzone">gamepad_set_axis_deadzone</A><br>
+    <A href="GMGamepad_信息和配置.html#gamepad_axis_count">gamepad_axis_count</A><br>
+    <A href="GMGamepad_信息和配置.html#gamepad_button_count">gamepad_button_count</A><br>
+    <A href="GMGamepad_信息和配置.html#gamepad_hat_count">gamepad_hat_count</A><br>
 </blockquote><br><p>
 
-<h4 id = "func_input">����</h4>
+<h4 id = "func_input">输入</h4>
 <blockquote>
-    <A href="GMGamepad_����.html#gamepad_button_check">gamepad_button_check</A><br>
-    <A href="GMGamepad_����.html#gamepad_button_check_pressed">gamepad_button_check_pressed</A><br>
-    <A href="GMGamepad_����.html#gamepad_button_check_released">gamepad_button_check_released</A><br>
-    <A href="GMGamepad_����.html#gamepad_button_check_direct">gamepad_button_check_direct</A><br>
-    <A href="GMGamepad_����.html#gamepad_axis_value">gamepad_axis_value</A><br>
-    <A href="GMGamepad_����.html#gamepad_button_press">gamepad_button_press</A><br>
-    <A href="GMGamepad_����.html#gamepad_button_release">gamepad_button_release</A><br>
-    <A href="GMGamepad_����.html#gamepad_clear">gamepad_clear</A><br>
+    <A href="GMGamepad_输入.html#gamepad_button_check">gamepad_button_check</A><br>
+    <A href="GMGamepad_输入.html#gamepad_button_check_pressed">gamepad_button_check_pressed</A><br>
+    <A href="GMGamepad_输入.html#gamepad_button_check_released">gamepad_button_check_released</A><br>
+    <A href="GMGamepad_输入.html#gamepad_button_check_direct">gamepad_button_check_direct</A><br>
+    <A href="GMGamepad_输入.html#gamepad_axis_value">gamepad_axis_value</A><br>
+    <A href="GMGamepad_输入.html#gamepad_button_press">gamepad_button_press</A><br>
+    <A href="GMGamepad_输入.html#gamepad_button_release">gamepad_button_release</A><br>
+    <A href="GMGamepad_输入.html#gamepad_clear">gamepad_clear</A><br>
 </blockquote><br><p>
 
-<h4 id = "func_mapping">�Զ���ӳ��</h4>
+<h4 id = "func_mapping">自定义映射</h4>
 <blockquote>
-    <A href="GMGamepad_�Զ���ӳ��.html#gamepad_get_mapping">gamepad_get_mapping</A><br>
-    <A href="GMGamepad_�Զ���ӳ��.html#gamepad_test_mapping">gamepad_test_mapping</A><br>
-    <A href="GMGamepad_�Զ���ӳ��.html#gamepad_remove_mapping">gamepad_remove_mapping</A><br>
+    <A href="GMGamepad_自定义映射.html#gamepad_get_mapping">gamepad_get_mapping</A><br>
+    <A href="GMGamepad_自定义映射.html#gamepad_test_mapping">gamepad_test_mapping</A><br>
+    <A href="GMGamepad_自定义映射.html#gamepad_remove_mapping">gamepad_remove_mapping</A><br>
 </blockquote>
 
 <!--END-->
