@@ -1,62 +1,62 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 
-  <title>ӳ��</title>
+  <title>映射</title>
   <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
 
 
 <body background="images/back.gif"><!--START-->
-<h3 class="style1">ӳ��&nbsp; </h3>
+<h3 class="style1">映射&nbsp; </h3>
 <span class="style1"> 
  
  
- ���������������Ҫ����ɶ�Ӧ��ϵ�ļ���ֵ��������Ϸ���ǿ��������಻ͬ����Ʒ��ÿ����Ʒ���в�ͬ������������������¼�������Ʒ��ֵ������Ʒ������ӳ���ԳɶԵķ�ʽ���ڣ��Լ�����������Դ���ɶԵ����ݣ�Ҳ���԰������������ݡ���Ϊ�����Ѿ��ź���ģ����Կ��Բ���ǰһ�����һ��������Щ�������Ҫֻ��������Ҫֵ��ֻ��Ҫ��ֵ��Ϊ0��ʹ�þ����ˡ�������ӳ��ĺ��� : </span>
+ 在许多情况下你需要储存成对应关系的键和值，例如游戏主角可能有许多不同的物品，每种物品都有不同的数量，在这种情况下键就是物品，值就是物品数量。映射以成对的方式存在，以键来排序。你可以储存成对的数据，也可以按键来查找数据。因为键是已经排好序的，所以可以查找前一个或后一个键。有些情况下需要只键而不需要值，只需要将值设为0不使用就行了。以下是映射的函数 : </span>
 <p class="style1">
 </p>
 <blockquote><tt><b>ds_map_create()</b></tt> 
-  ����һ���µ�ӳ�䡣�����������һ������ֵ��Ϊid����������ʹ�����ӳ��ʱһ�����õ����id�����Խ������ӳ�䡣 <br 
+  建立一个新的映射。这个函数返回一个整数值作为id，其他函数使用这个映射时一定会用到这个id。可以建立多个映射。 <br 
   >
-  <tt><b>ds_map_destroy(id)</b></tt>&nbsp;����ָ��id��ӳ�䣬�ͷ��ڴ档���㲻����Ҫ���ӳ���ʱ�򣬲�Ҫ���ǵ������������ 
+  <tt><b>ds_map_destroy(id)</b></tt>&nbsp;销毁指定id的映射，释放内存。当你不再需要这个映射的时候，不要忘记调用这个函数。 
   <br>
-  <tt><b>ds_map_clear(id)</b></tt> ���ָ��id��ӳ�䣬ɾ�����е����ݣ�������������
+  <tt><b>ds_map_clear(id)</b></tt> 清空指定id的映射，删除所有的数据，但不销毁它。
 <br 
   ><!-- GM70 added -->
-  <tt><b>ds_map_copy(id,source)</b></tt> <FONT face="Courier New">��Դӳ�临�Ƶ�ָ��id��ӳ�䡣</FONT>
+  <tt><b>ds_map_copy(id,source)</b></tt> <FONT face="Courier New">将源映射复制到指定id的映射。</FONT>
 
 
 
 <br ><!-- GM70 end added --><tt><b>ds_map_size(id)</b></tt> 
-  ����ָ��id��ӳ�䴢���˶��ٸ����ݡ� <br 
+  返回指定id的映射储存了多少个数据。 <br 
   >
   <tt><b>ds_map_empty(id)</b></tt> 
-  ����ָ��id��ӳ���Ƿ�Ϊ�գ�������ӳ������������Ƿ�Ϊ0������ͬ��
+  返回指定id的映射是否为空，这与检查映射的数据总数是否为0作用相同。
 <br>
-  <tt><b>ds_map_add(id,key,val)</b></tt> &nbsp;����һ�Լ���ֵ��ָ��id��ӳ�� 
+  <tt><b>ds_map_add(id,key,val)</b></tt> &nbsp;添加一对键和值到指定id的映射 
   <br>
-  <tt><b>ds_map_replace(id,key,val)</b></tt> ����ֵȡ����Ӧ����ֵ�� 
+  <tt><b>ds_map_replace(id,key,val)</b></tt> 用新值取代对应键的值。 
   <br>
-  <tt><b>ds_map_delete(id,key)</b></tt>  ɾ�����Ͷ�Ӧֵ�������һ�����ж����Ӧֵ��ֻ��ɾ��һ��ֵ�� 
+  <tt><b>ds_map_delete(id,key)</b></tt>  删除键和对应值。（如果一个键有多个对应值，只会删除一个值） 
   <br>
-  <tt><b>ds_map_exists(id,key)</b></tt> ���ؼ��Ƿ���ڡ� 
+  <tt><b>ds_map_exists(id,key)</b></tt> 返回键是否存在。 
   <br>
-  <tt><b>ds_map_find_value(id,key)</b></tt> ���ؼ���Ӧ��ֵ�� 
+  <tt><b>ds_map_find_value(id,key)</b></tt> 返回键对应的值。 
   <br>
   <tt><b>ds_map_find_previous(id,key)</b></tt>  
-����ָ����key��ǰһ��������ֻ���ؼ��������ض�Ӧ��ֵ�� <br>
-  <tt><b>ds_map_find_next(id,key)</b></tt>  ����ָ����key�ĺ�һ������ 
+返回指定键key的前一个键。（只返回键，不返回对应的值） <br>
+  <tt><b>ds_map_find_next(id,key)</b></tt>  返回指定键key的后一个键。 
   <br>
-  <tt><b>ds_map_find_first(id)</b></tt> ���ص�һ������ 
+  <tt><b>ds_map_find_first(id)</b></tt> 返回第一个键。 
   <br>
-  <tt><b>ds_map_find_last(id)</b></tt> �������һ����<br><!-- GM70 added -->
-  <tt><b>ds_map_write(id)</b></tt>&nbsp;��ӳ��ת��Ϊһ���ַ���������������ַ������ַ������Ա����浽һ���ļ��У���Ϊ�������ݽṹ�ṩ��һ���򵥵Ļ��ơ�<br 
+  <tt><b>ds_map_find_last(id)</b></tt> 返回最后一个键<br><!-- GM70 added -->
+  <tt><b>ds_map_write(id)</b></tt>&nbsp;将映射转换为一个字符串，并返回这个字符串。字符串可以被保存到一个文件中，这为保存数据结构提供了一个简单的机制。<br 
   >
 
-  <tt><b>ds_map_read(id,str)</b></tt>&nbsp;��ȡָ���ַ�����ӳ�䣨������һ�����������ص��ַ����� 
+  <tt><b>ds_map_read(id,str)</b></tt>&nbsp;读取指定字符串的映射（调用上一个函数所返回的字符串） 
 </blockquote>
 </body>
 </html>

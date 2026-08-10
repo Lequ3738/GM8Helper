@@ -1,60 +1,60 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 
 
   
   
-  <title>����</title>
+  <title>队列</title>
   <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
 
 <body background="images/back.gif"><!--START-->
-<h3 class="style1">���� </h3>
+<h3 class="style1">队列 </h3>
 
 <span class="style1"> 
   
-�����е�������ջ��������FIFO(First-In First-Out)(�Ƚ��ȳ�)�����������ȼ�����е����ݻ����ȱ��Ƴ��������ȥ�̵��Ŷ������������Ŷӵ������ȱ����񡣶���ͨ�����ڴ���һЩ��Ҫ�ö�ε����ݡ������Ƕ����õ��ĺ����� </span>
+队列有点类似于栈，但它以FIFO(First-In First-Out)(先进先出)来运作。最先加入队列的数据会最先被移除。这就像去商店排队买东西，最先排队的人最先被服务。队列通常用于储存一些需要用多次的数据。以下是队列用到的函数： </span>
 <p class="style1">
 </p>
 
 <blockquote><tt><b>ds_queue_create()</b></tt> 
- ����һ���µĶ��С������������һ������ֵ��Ϊid����������ʹ���������ʱһ�����õ����id�����Խ���������С� 
+ 建立一个新的队列。这个函数返回一个整数值作为id，其他函数使用这个队列时一定会用到这个id。可以建立多个队列。 
   <br>
 
   <tt><b>ds_queue_destroy(id)</b></tt>  
-����ָ��id�Ķ��У��ͷ��ڴ档���㲻����Ҫ������е�ʱ�򣬲�Ҫ���ǵ������������ <br>
+销毁指定id的队列，释放内存。当你不再需要这个队列的时候，不要忘记调用这个函数。 <br>
 
   <tt><b>ds_queue_clear(id)</b></tt> 
-  ���ָ��id�Ķ��У�ɾ�����е����ݣ�������������
+  清空指定id的队列，删除所有的数据，但不销毁它。
 
 
 <br ><!-- GM70 added -->
   <tt><b>ds_queue_copy(id,source)</b></tt> 
-  <FONT face="Courier New">��Դ���и��Ƶ�ָ��id�Ķ��С�</FONT> <br><!-- GM70 end added --><tt><b>ds_queue_size(id)</b></tt> ����ָ��id�Ķ��д����˶��ٸ����ݡ� 
+  <FONT face="Courier New">将源队列复制到指定id的队列。</FONT> <br><!-- GM70 end added --><tt><b>ds_queue_size(id)</b></tt> 返回指定id的队列储存了多少个数据。 
   <br>
 
-  <tt><b>ds_queue_empty(id)</b></tt>  ����ָ��id�Ķ����Ƿ�Ϊ�գ���������е����������Ƿ�Ϊ0������ͬ�� 
+  <tt><b>ds_queue_empty(id)</b></tt>  返回指定id的队列是否为空，这与检查队列的数据总数是否为0作用相同。 
   <br>
 
-  <tt><b>ds_queue_enqueue(id,val)</b></tt> ������ֵ��ָ��id���еĶ�β�� 
+  <tt><b>ds_queue_enqueue(id,val)</b></tt> 加入数值到指定id队列的队尾。 
   <br>
 
-  <tt><b>ds_queue_dequeue(id)</b></tt> ����ָ��id�Ķ��ж��׵����ݣ����Ƴ�������ݡ� 
+  <tt><b>ds_queue_dequeue(id)</b></tt> 返回指定id的队列队首的数据，并移除这个数据。 
   <br>
 
-  <tt><b>ds_queue_head(id)</b></tt> ����ָ��id�Ķ��ж��׵����ݣ������Ƴ����� 
+  <tt><b>ds_queue_head(id)</b></tt> 返回指定id的队列队首的数据，但不移除它。 
   <br>
 
-  <tt><b>ds_queue_tail(id)</b></tt>  ����ָ��id�Ķ��ж��׵����ݣ�Ҳ�������¼�������ݣ������Ƴ�����<br><!-- GM70 added -->
+  <tt><b>ds_queue_tail(id)</b></tt>  返回指定id的队列队首的数据，也就是最新加入的数据，但不移除它。<br><!-- GM70 added -->
   <tt><b>ds_queue_write(id)</b></tt>   
-&nbsp;������ת��Ϊһ���ַ���������������ַ������ַ������Ա����浽һ���ļ��У���Ϊ�������ݽṹ�ṩ��һ���򵥵Ļ��ơ� <br>
+&nbsp;将队列转换为一个字符串，并返回这个字符串。字符串可以被保存到一个文件中，这为保存数据结构提供了一个简单的机制。 <br>
 
 
-  <tt><b>ds_queue_read(id,str)</b></tt>&nbsp;��ȡָ���ַ����Ķ��У�������һ�����������ص��ַ�����
+  <tt><b>ds_queue_read(id,str)</b></tt>&nbsp;读取指定字符串的队列（调用上一个函数所返回的字符串）
 </blockquote>
 </body>
 </html>
