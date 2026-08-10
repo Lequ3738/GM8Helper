@@ -2,17 +2,17 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>����ָ��</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>共发指令</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body background="images/back.gif"><!--START-->
 
-<h1>����ָ��</h1>
+<h1>共发指令</h1>
 
-<p>�����<strong>ֻ�� RGB ͨ��</strong>���в����������ͬʱִ��<strong>��һ�� Alpha ͨ����ָ��</strong>��
-��������ָ��<strong>ֻ�ᱻ����Ϊһ��</strong>����Ϊ����ָ����Ӷ�������ܡ�</p>
-<p><strong>ʾ����ʹ�� <code>+</code> ��ʾ����ָ���</strong></p>
+<p>如果你<strong>只对 RGB 通道</strong>进行操作，你可以同时执行<strong>另一条 Alpha 通道的指令</strong>，
+这样两条指令<strong>只会被计算为一条</strong>（称为共发指令），从而提高性能。</p>
+<p><strong>示例（使用 <code>+</code> 表示共发指令）：</strong></p>
 <pre>
 ps.1.4
 

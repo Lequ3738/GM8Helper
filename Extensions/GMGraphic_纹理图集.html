@@ -2,286 +2,286 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>����ͼ��</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>纹理图集</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body background="images/back.gif">
 
 <!--START-->
 
-<h1>����ͼ��</h1>
+<h1>纹理图集</h1>
 
-<p>����ͼ����Texture Atlas��������ͼƬ�����һ�Ŵ�����������ʱͨ����ͬ����������������Ӷ��Ѷ�λ��Ƶ��úϲ�Ϊһ�Σ�������� DrawCall ������<br>
-ͼ��֧��������Դ��ͼƬ��<strong>�ļ�</strong>����֧�� <b><tt>gmspr</tt></b> �� <b><tt>png</tt></b> ��ʽ����<strong>GM �� Sprite</strong> �� <strong>GM �� Background</strong>��<br>
-Ϊ�� GM8 �ڲ���Դ ID ���֣�ͼ���ڵ�ͼƬ��Image��ID �� 100,000 ��ʼ������������Texture��ID �� 1,000,000 ��ʼ������</p>
+<p>纹理图集（Texture Atlas）将多张图片打包进一张大纹理，绘制时通过不同的纹理坐标采样，从而把多次绘制调用合并为一次，大幅减少 DrawCall 开销。<br>
+图集支持三种来源的图片：<strong>文件</strong>（仅支持 <b><tt>gmspr</tt></b> 和 <b><tt>png</tt></b> 格式）、<strong>GM 的 Sprite</strong> 和 <strong>GM 的 Background</strong>。<br>
+为与 GM8 内部资源 ID 区分，图集内的图片（Image）ID 从 100,000 开始计数，纹理（Texture）ID 从 1,000,000 开始计数。</p>
 
-<h3>�ֶ�����ͼ��</h3>
+<h3>手动创建图集</h3>
 
 <blockquote>
     <tt id = "texture_atlas_create"><b>
     <font color="#0000FF">real </font>
     texture_atlas_create(<font color="#0000FF">real </font>size)
     </b></tt><br>
-    ����һ���µ�����ͼ�������� <b><tt>size</tt></b> ��ͼ���ı߳���ȡֵΪ <b><tt>256</tt></b>��<b><tt>512</tt></b>��<b><tt>1024</tt></b> �� <b><tt>2048</tt></b>��<br>
-    ������ͼ���� ID��ʧ��ʱ���� -1��<p>
+    创建一个新的纹理图集。参数 <b><tt>size</tt></b> 是图集的边长，取值为 <b><tt>256</tt></b>、<b><tt>512</tt></b>、<b><tt>1024</tt></b> 或 <b><tt>2048</tt></b>。<br>
+    返回新图集的 ID，失败时返回 -1。<p>
 
     <tt id = "texture_atlas_delete"><b>
     <font color="#0000FF">bool </font>
     texture_atlas_delete(<font color="#0000FF">real </font>id)
     </b></tt><br>
-    ɾ������������ͼ�����ͷ�����Դ��<br>
-    ����ɹ�ִ�в������򷵻� <b><tt>true</tt></b>�����򷵻� <b><tt>false</tt></b>��<p>
+    删除给定的纹理图集并释放其资源。<br>
+    如果成功执行操作，则返回 <b><tt>true</tt></b>，否则返回 <b><tt>false</tt></b>。<p>
 
     <tt id = "texture_atlas_add_file"><b>
     <font color="#0000FF">real </font>
     texture_atlas_add_file(<font color="#0000FF">real </font>id,
     <font color="#0000FF">string </font>file)
     </b></tt><br>
-    �������ͼ��������һ��ͼ���ļ�����֧�� <b><tt>gmspr</tt></b> �� <b><tt>png</tt></b> ��ʽ����<br>
-    ���ظ�ͼƬ��ͼ���е� Image ID��ʧ��ʱ���� -1��<p>
+    向给定的图集中添加一个图像文件（仅支持 <b><tt>gmspr</tt></b> 和 <b><tt>png</tt></b> 格式）。<br>
+    返回该图片在图集中的 Image ID，失败时返回 -1。<p>
 
     <tt id = "texture_atlas_add_sprite"><b>
     <font color="#0000FF">real </font>
     texture_atlas_add_sprite(<font color="#0000FF">real </font>id,
     <font color="#0000FF">real </font>spr)
     </b></tt><br>
-    �������ͼ��������һ���ѵ��� GM �� Sprite�����Ӻ󲻻��Զ�ɾ���� Sprite������ɾ������� GM �� <b><tt>sprite_delete()</tt></b>��<br>
-    ���ظ�ͼƬ��ͼ���е� Image ID��ʧ��ʱ���� -1��<p>
+    向给定的图集中添加一个已导入 GM 的 Sprite。添加后不会自动删除该 Sprite，如需删除请调用 GM 的 <b><tt>sprite_delete()</tt></b>。<br>
+    返回该图片在图集中的 Image ID，失败时返回 -1。<p>
 
     <tt id = "texture_atlas_add_background"><b>
     <font color="#0000FF">real </font>
     texture_atlas_add_background(<font color="#0000FF">real </font>id,
     <font color="#0000FF">real </font>back)
     </b></tt><br>
-    �������ͼ��������һ���ѵ��� GM �� Background�����Ӻ󲻻��Զ�ɾ���� Background������ɾ������� GM �� <b><tt>background_delete()</tt></b>��<br>
-    ���ظ�ͼƬ��ͼ���е� Image ID��ʧ��ʱ���� -1��<p>
+    向给定的图集中添加一个已导入 GM 的 Background。添加后不会自动删除该 Background，如需删除请调用 GM 的 <b><tt>background_delete()</tt></b>。<br>
+    返回该图片在图集中的 Image ID，失败时返回 -1。<p>
 
     <tt id = "texture_atlas_burn"><b>
     <font color="#0000FF">bool </font>
     texture_atlas_burn(<font color="#0000FF">real </font>id,
     <font color="#0000FF">real </font>del_memdata)
     </b></tt><br>
-    ��ͼ���е�ͼƬ������ϴ��� GPU���������յ�ͼ��������<br>
-    ���� <b><tt>del_memdata</tt></b> �� <b><tt>true</tt></b> ʱ���ϴ���ɾ���ڴ��е�ͼƬ���ݣ�ʹͼ����Ϊֻ�����˺�������ͼ������ͼƬ����<br>
-    ͼ���ڻ���֮ǰ�����ȵ��ô˺�����<p>
+    将图集中的图片打包并上传至 GPU，生成最终的图集纹理。<br>
+    参数 <b><tt>del_memdata</tt></b> 传 <b><tt>true</tt></b> 时，上传后删除内存中的图片数据，使图集变为只读（此后不能再向图集添加图片）。<br>
+    图集在绘制之前必须先调用此函数。<p>
 
     <tt id = "texture_atlas_save"><b>
     <font color="#0000FF">bool </font>
     texture_atlas_save(<font color="#0000FF">real </font>id,
     <font color="#0000FF">string </font>file_path)
     </b></tt><br>
-    ��ͼ�����浽�ļ������ȵ��� <b><tt>texture_atlas_burn()</tt></b>�������� <b><tt>file_path</tt></b> ������չ��������ʱ�����ɶ�Ӧ�� png ͼƬ�ļ���<br>
-    ������ļ������ <b><tt>texture_atlas_load()</tt></b> �ٴμ��ء�<p>
+    将图集保存到文件（需先调用 <b><tt>texture_atlas_burn()</tt></b>）。参数 <b><tt>file_path</tt></b> 不含扩展名，保存时会生成对应的 png 图片文件。<br>
+    保存的文件可配合 <b><tt>texture_atlas_load()</tt></b> 再次加载。<p>
 
     <tt id = "texture_atlas_load"><b>
     <font color="#0000FF">real </font>
     texture_atlas_load(<font color="#0000FF">string </font>file_path)
     </b></tt><br>
-    ���ļ�����֮ǰ���������ͼ�������غ�ͼ��Ϊֻ��ģʽ��<br>
-    ����һ�� GM ds_map�����м� <b><tt>/Result/</tt></b> ��Ӧͼ�� ID�������ΪͼƬ���ƣ���Ӧ��ͼƬ�� Image ID��ʧ��ʱ���� -1��<p>
+    从文件加载之前保存的纹理图集，加载后图集为只读模式。<br>
+    返回一个 GM ds_map，其中键 <b><tt>/Result/</tt></b> 对应图集 ID，其余键为图片名称，对应各图片的 Image ID。失败时返回 -1。<p>
 </blockquote>
 
-<h3>�Զ����ģʽ</h3>
-<p>�����ֶ�����ͼ�������� <b><tt>texture_atlas_auto_start()</tt></b> �����Զ�ģʽ��֮��ʹ�� <b><tt>texture_atlas_auto_add_*()</tt></b> ���ӵ�ͼƬ���Զ�����һ���߳�Ϊ 1024 ��ͼ���У������� <b><tt>texture_atlas_auto_finish()</tt></b> �������ͼ����</p>
+<h3>自动打包模式</h3>
+<p>无需手动创建图集。调用 <b><tt>texture_atlas_auto_start()</tt></b> 开启自动模式，之后使用 <b><tt>texture_atlas_auto_add_*()</tt></b> 添加的图片会自动放入一个边长为 1024 的图集中，最后调用 <b><tt>texture_atlas_auto_finish()</tt></b> 打包所有图集。</p>
 
 <blockquote>
     <tt id = "texture_atlas_auto_start"><b>
     <font color="#0000FF">bool </font>
     texture_atlas_auto_start()
     </b></tt><br>
-    �����Զ����ģʽ��<p>
+    开启自动打包模式。<p>
 
     <tt id = "texture_atlas_auto_add_file"><b>
     <font color="#0000FF">real </font>
     texture_atlas_auto_add_file(<font color="#0000FF">string </font>file)
     </b></tt><br>
-    ���Զ�ģʽ������һ��ͼ���ļ��������е�ͼ���ܷ��¸�ͼƬ��ֱ�ӷ��룬�����½�һ��ͼ����<br>
-    ���ظ�ͼƬ��ͼ���е� Image ID��ʧ��ʱ���� -1��<p>
+    在自动模式下添加一个图像文件。若现有的图集能放下该图片则直接放入，否则新建一个图集。<br>
+    返回该图片在图集中的 Image ID，失败时返回 -1。<p>
 
     <tt id = "texture_atlas_auto_add_sprite"><b>
     <font color="#0000FF">real </font>
     texture_atlas_auto_add_sprite(<font color="#0000FF">real </font>spr)
     </b></tt><br>
-    ���Զ�ģʽ������һ���ѵ��� GM �� Sprite��<br>
-    ���ظ�ͼƬ��ͼ���е� Image ID��ʧ��ʱ���� -1��<p>
+    在自动模式下添加一个已导入 GM 的 Sprite。<br>
+    返回该图片在图集中的 Image ID，失败时返回 -1。<p>
 
     <tt id = "texture_atlas_auto_add_background"><b>
     <font color="#0000FF">real </font>
     texture_atlas_auto_add_background(<font color="#0000FF">real </font>back)
     </b></tt><br>
-    ���Զ�ģʽ������һ���ѵ��� GM �� Background��<br>
-    ���ظ�ͼƬ��ͼ���е� Image ID��ʧ��ʱ���� -1��<p>
+    在自动模式下添加一个已导入 GM 的 Background。<br>
+    返回该图片在图集中的 Image ID，失败时返回 -1。<p>
 
     <tt id = "texture_atlas_auto_finish"><b>
     <font color="#0000FF">real </font>
     texture_atlas_auto_finish(<font color="#0000FF">real </font>dont_twice)
     </b></tt><br>
-    �����Զ����ģʽ��������ϴ����Զ�ģʽ�´�����ͼ����<br>
-    ���� <b><tt>dont_twice</tt></b> �� <b><tt>true</tt></b> ʱ�����ϴ�����ͼ�������ظ������<br>
-    ����ֵ������Զ�ģʽ���½���ͼ��������һ����������ͼ�� ID �� GM ds_list�����û���½�ͼ���򷵻� -2��<p>
+    结束自动打包模式，打包（上传）自动模式下创建的图集。<br>
+    参数 <b><tt>dont_twice</tt></b> 传 <b><tt>true</tt></b> 时，已上传过的图集不会重复打包。<br>
+    返回值：如果自动模式中新建了图集，返回一个包含所有图集 ID 的 GM ds_list；如果没有新建图集则返回 -2。<p>
 </blockquote>
 
-<h3>ͼ����ͼƬ��ѯ</h3>
+<h3>图集与图片查询</h3>
 
 <blockquote>
     <tt id = "texture_atlas_count"><b>
     <font color="#0000FF">real </font>
     texture_atlas_count()
     </b></tt><br>
-    ���ص�ǰͼ������������<p>
+    返回当前图集的总数量。<p>
 
     <tt id = "texture_atlas_exists"><b>
     <font color="#0000FF">bool </font>
     texture_atlas_exists(<font color="#0000FF">real </font>id)
     </b></tt><br>
-    ��������ͼ���Ƿ���ڡ�<p>
+    检测给定的图集是否存在。<p>
 
     <tt id = "texture_atlas_find_first"><b>
     <font color="#0000FF">real </font>
     texture_atlas_find_first()
     </b></tt><br>
-    ���ص�һ��ͼ���� ID������� <b><tt>texture_atlas_find_next()</tt></b> ��������ͼ����<p>
+    返回第一个图集的 ID。可配合 <b><tt>texture_atlas_find_next()</tt></b> 遍历所有图集。<p>
 
     <tt id = "texture_atlas_find_next"><b>
     <font color="#0000FF">real </font>
     texture_atlas_find_next(<font color="#0000FF">real </font>id)
     </b></tt><br>
-    ���ظ���ͼ��֮�����һ��ͼ�� ID��<p>
+    返回给定图集之后的下一个图集 ID。<p>
 
     <tt id = "texture_atlas_find_last"><b>
     <font color="#0000FF">real </font>
     texture_atlas_find_last()
     </b></tt><br>
-    �������һ��ͼ���� ID��<p>
+    返回最后一个图集的 ID。<p>
 
     <tt id = "texture_atlas_get_image_count"><b>
     <font color="#0000FF">real </font>
     texture_atlas_get_image_count(<font color="#0000FF">real </font>atlas_id)
     </b></tt><br>
-    ���ظ���ͼ����ͼƬ����������<p>
+    返回给定图集中图片的总数量。<p>
 
     <tt id = "image_get_texture_atlas"><b>
     <font color="#0000FF">real </font>
     image_get_texture_atlas(<font color="#0000FF">real </font>image_id)
     </b></tt><br>
-    ���ظ��� Image ID ���ڵ�ͼ�� ID��<p>
+    返回给定 Image ID 所在的图集 ID。<p>
 
     <tt id = "texture_atlas_get_image"><b>
     <font color="#0000FF">real </font>
     texture_atlas_get_image(<font color="#0000FF">real </font>atlas_id,
     <font color="#0000FF">real </font>pos)
     </b></tt><br>
-    ���ظ���ͼ����ָ��λ�ã�0 �𣩵�ͼƬ�� Image ID��<p>
+    返回给定图集中指定位置（0 起）的图片的 Image ID。<p>
 
     <tt id = "texture_get_image"><b>
     <font color="#0000FF">real </font>
     texture_get_image(<font color="#0000FF">real </font>texture_id)
     </b></tt><br>
-    ���ظ��� Texture ID ������ͼƬ�� Image ID��<p>
+    返回给定 Texture ID 所属的图片的 Image ID。<p>
 
     <tt id = "sprite_get_texture"><b>
     <font color="#0000FF">real </font>
     sprite_get_texture(<font color="#0000FF">real </font>spr,
     <font color="#0000FF">real </font>subimg)
     </b></tt><br>
-    ���ظ��� Sprite ��ָ����ͼ��� Texture ID��ͼ����չ�棬���� GM8 ����ͬ���������������Ѽ���ͼ���� Sprite ʱ����ͼ���ڵ� Texture ID��<p>
+    返回给定 Sprite 中指定子图像的 Texture ID（图集扩展版，覆盖 GM8 内置同名函数）。传入已加入图集的 Sprite 时返回图集内的 Texture ID。<p>
 
     <tt id = "background_get_texture"><b>
     <font color="#0000FF">real </font>
     background_get_texture(<font color="#0000FF">real </font>back)
     </b></tt><br>
-    ���ظ��� Background �� Texture ID��ͼ����չ�棬���� GM8 ����ͬ���������������Ѽ���ͼ���� Background ʱ����ͼ���ڵ� Texture ID��<p>
+    返回给定 Background 的 Texture ID（图集扩展版，覆盖 GM8 内置同名函数）。传入已加入图集的 Background 时返回图集内的 Texture ID。<p>
 
     <tt id = "sprite_get_width"><b>
     <font color="#0000FF">real </font>
     sprite_get_width(<font color="#0000FF">real </font>id)
     </b></tt><br>
-    ���ظ��� Sprite �Ŀ��ȣ�ͼ����չ�棬���� GM8 ����ͬ��������������ͼ�� Image ID ʱ����ͼ��ͼƬ�Ŀ��ȡ�<p>
+    返回给定 Sprite 的宽度（图集扩展版，覆盖 GM8 内置同名函数）。传入图集 Image ID 时返回图集图片的宽度。<p>
 
     <tt id = "sprite_get_height"><b>
     <font color="#0000FF">real </font>
     sprite_get_height(<font color="#0000FF">real </font>id)
     </b></tt><br>
-    ���ظ��� Sprite �ĸ߶ȣ�ͼ����չ�棬���� GM8 ����ͬ��������������ͼ�� Image ID ʱ����ͼ��ͼƬ�ĸ߶ȡ�<p>
+    返回给定 Sprite 的高度（图集扩展版，覆盖 GM8 内置同名函数）。传入图集 Image ID 时返回图集图片的高度。<p>
 
     <tt id = "background_get_width"><b>
     <font color="#0000FF">real </font>
     background_get_width(<font color="#0000FF">real </font>id)
     </b></tt><br>
-    ���ظ��� Background �Ŀ��ȣ�ͼ����չ�棬���� GM8 ����ͬ��������������ͼ�� Image ID ʱ����ͼ��ͼƬ�Ŀ��ȡ�<p>
+    返回给定 Background 的宽度（图集扩展版，覆盖 GM8 内置同名函数）。传入图集 Image ID 时返回图集图片的宽度。<p>
 
     <tt id = "background_get_height"><b>
     <font color="#0000FF">real </font>
     background_get_height(<font color="#0000FF">real </font>id)
     </b></tt><br>
-    ���ظ��� Background �ĸ߶ȣ�ͼ����չ�棬���� GM8 ����ͬ��������������ͼ�� Image ID ʱ����ͼ��ͼƬ�ĸ߶ȡ�<p>
+    返回给定 Background 的高度（图集扩展版，覆盖 GM8 内置同名函数）。传入图集 Image ID 时返回图集图片的高度。<p>
 
     <tt id = "texture_get_width"><b>
     <font color="#0000FF">real </font>
     texture_get_width(<font color="#0000FF">real </font>id)
     </b></tt><br>
-    ���ظ��� Texture ID �Ŀ��ȣ�ͼ����չ�棬���� GM8 ����ͬ����������<p>
+    返回给定 Texture ID 的宽度（图集扩展版，覆盖 GM8 内置同名函数）。<p>
 
     <tt id = "texture_get_height"><b>
     <font color="#0000FF">real </font>
     texture_get_height(<font color="#0000FF">real </font>id)
     </b></tt><br>
-    ���ظ��� Texture ID �ĸ߶ȣ�ͼ����չ�棬���� GM8 ����ͬ����������<p>
+    返回给定 Texture ID 的高度（图集扩展版，覆盖 GM8 内置同名函数）。<p>
 
     <tt id = "texture_get_atlas_x"><b>
     <font color="#0000FF">real </font>
     texture_get_atlas_x(<font color="#0000FF">real </font>id)
     </b></tt><br>
-    ���ظ��� Texture ID ����ͼ�������е� X ���ꡣ<p>
+    返回给定 Texture ID 在其图集纹理中的 X 坐标。<p>
 
     <tt id = "texture_get_atlas_y"><b>
     <font color="#0000FF">real </font>
     texture_get_atlas_y(<font color="#0000FF">real </font>id)
     </b></tt><br>
-    ���ظ��� Texture ID ����ͼ�������е� Y ���ꡣ<p>
+    返回给定 Texture ID 在其图集纹理中的 Y 坐标。<p>
 
     <tt id = "image_in_atlas"><b>
     <font color="#0000FF">bool </font>
     image_in_atlas(<font color="#0000FF">real </font>id)
     </b></tt><br>
-    �жϸ����� ID �Ƿ�Ϊͼ���ڵ� Image ID���� ID ���ڵ��� 100,000����<p>
+    判断给定的 ID 是否为图集内的 Image ID（即 ID 大于等于 100,000）。<p>
 
     <tt id = "texture_in_atlas"><b>
     <font color="#0000FF">bool </font>
     texture_in_atlas(<font color="#0000FF">real </font>id)
     </b></tt><br>
-    �жϸ����� ID �Ƿ�Ϊͼ���ڵ��������� ID���� ID ���ڵ��� 1,000,000����<p>
+    判断给定的 ID 是否为图集内的虚拟纹理 ID（即 ID 大于等于 1,000,000）。<p>
 </blockquote>
 
-<h3>ͼ������</h3>
+<h3>图集配置</h3>
 
 <blockquote>
     <tt id = "texture_atlas_set_crop"><b>
     <font color="#0000FF">bool </font>
     texture_atlas_set_crop(<font color="#0000FF">real </font>crop)
     </b></tt><br>
-    �����Ƿ�����ͼƬ���Զ��ü������ú󣬼���ͼ����ͼƬ���Զ��ü������ܵĿհ����أ�����ͼ��ռ�ÿռ䡣<br>
-    ������������ͼ������Ч��<p>
+    设置是否启用图片的自动裁剪。启用后，加入图集的图片会自动裁剪掉四周的空白像素，减少图集占用空间。<br>
+    该设置在所有图集上生效。<p>
 
     <tt id = "texture_atlas_get_crop"><b>
     <font color="#0000FF">bool </font>
     texture_atlas_get_crop()
     </b></tt><br>
-    ���ص�ǰ�Ƿ�������ͼƬ�Զ��ü���<p>
+    返回当前是否启用了图片自动裁剪。<p>
 
     <tt id = "texture_atlas_set_amplificate"><b>
     <font color="#0000FF">bool </font>
     texture_atlas_set_amplificate(<font color="#0000FF">real </font>ampl)
     </b></tt><br>
-    �����Ƿ��ա���Ե�����ظ����ķ�ʽ��ͼƬ����ͼ�������ú�ͼƬ����ͼ��ʱ����չһȦ��Ե���أ��������ʱ����������Ե����ɫ��bleeding����<br>
-    ������������ͼ������Ч��<p>
+    设置是否按照“边缘像素重复”的方式将图片加入图集。启用后，图片加入图集时会扩展一圈边缘像素，避免绘制时出现纹理边缘的渗色（bleeding）。<br>
+    该设置在所有图集上生效。<p>
 
     <tt id = "texture_atlas_get_amplificate"><b>
     <font color="#0000FF">bool </font>
     texture_atlas_get_amplificate()
     </b></tt><br>
-    ���ص�ǰ�Ƿ������˱�Ե�����ظ���<p>
+    返回当前是否启用了边缘像素重复。<p>
 </blockquote>
 
 <!--END-->

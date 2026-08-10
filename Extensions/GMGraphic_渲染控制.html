@@ -2,17 +2,17 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>��Ⱦ����</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>渲染控制</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body background="images/back.gif">
 
 <!--START-->
 
-<h1>��Ⱦ����</h1>
+<h1>渲染控制</h1>
 
-<h3>��Ч</h3>
+<h3>雾效</h3>
 
 <blockquote>
     <tt id = "gpu_set_fog"><b>
@@ -24,57 +24,57 @@
     [<font color="#0000FF">real </font>mode],
     [<font color="#0000FF">real </font>density])
     </b></tt><br>
-    ������Ч������ <b><tt>enable</tt></b> ������Ч���أ�<b><tt>colour</tt></b> ��������ɫ��GM ��ɫ����<b><tt>start</tt></b> �� <b><tt>end</tt></b> ��������ʼ�ͽ������롣<br>
-    ��ѡ���� <b><tt>mode</tt></b> ָ���������ͣ�<b><tt>0</tt></b> = ���ԣ�Ĭ�ϣ�ʹ�� start/end����<b><tt>1</tt></b> = ָ����<b><tt>2</tt></b> = ָ��ƽ����������ʹ�� density����<br>
-    ��ѡ���� <b><tt>density</tt></b> ��ָ�������ܶȣ�0 �� 1����ֻ�� 4 ������ʱ�Զ���������������<p>
+    设置雾效。参数 <b><tt>enable</tt></b> 控制雾效开关，<b><tt>colour</tt></b> 是雾的颜色（GM 颜色），<b><tt>start</tt></b> 和 <b><tt>end</tt></b> 是雾的起始和结束距离。<br>
+    可选参数 <b><tt>mode</tt></b> 指定雾的类型：<b><tt>0</tt></b> = 线性（默认，使用 start/end），<b><tt>1</tt></b> = 指数，<b><tt>2</tt></b> = 指数平方（后两者使用 density）。<br>
+    可选参数 <b><tt>density</tt></b> 是指数雾的密度（0 至 1）。只传 4 个参数时自动按线性雾处理。<p>
 </blockquote>
 
-<h3>Z ������д��</h3>
+<h3>Z 测试与写入</h3>
 
 <blockquote>
     <tt id = "gpu_set_zwriteenable"><b>
     <font color="#0000FF">bool </font>
     gpu_set_zwriteenable(<font color="#0000FF">real </font>enable)
     </b></tt><br>
-    �����Ƿ�д�� Z ��������<p>
+    设置是否写入 Z 缓冲区。<p>
 
     <tt id = "gpu_set_ztestenable"><b>
     <font color="#0000FF">bool </font>
     gpu_set_ztestenable(<font color="#0000FF">real </font>enable)
     </b></tt><br>
-    �����Ƿ����� Z ���ԡ�<p>
+    设置是否启用 Z 测试。<p>
 
     <tt id = "gpu_set_ztestfunc"><b>
     <font color="#0000FF">bool </font>
     gpu_set_ztestfunc(<font color="#0000FF">real </font>func)
     </b></tt><br>
-    ���� Z ����ʹ�õıȽϺ��������� <b><tt>func</tt></b> ʹ�� GM �ıȽϳ��������� <b><tt>cmp_lessequal</tt></b>����Ĭ��ʹ��С�ڵ��ڡ�<br>
-    �����ǰ�豸��֧�� Z ���ԣ��򷵻� <b><tt>false</tt></b>��<p>
+    设置 Z 测试使用的比较函数。参数 <b><tt>func</tt></b> 使用 GM 的比较常量（例如 <b><tt>cmp_lessequal</tt></b>）。默认使用小于等于。<br>
+    如果当前设备不支持 Z 测试，则返回 <b><tt>false</tt></b>。<p>
 </blockquote>
 
-<h3>Alpha ����</h3>
+<h3>Alpha 测试</h3>
 
 <blockquote>
     <tt id = "gpu_set_alphatestenable"><b>
     <font color="#0000FF">bool </font>
     gpu_set_alphatestenable(<font color="#0000FF">real </font>enable)
     </b></tt><br>
-    �����Ƿ����� Alpha ���ԡ�<p>
+    设置是否启用 Alpha 测试。<p>
 
     <tt id = "gpu_set_alphatestref"><b>
     <font color="#0000FF">bool </font>
     gpu_set_alphatestref(<font color="#0000FF">real </font>ref)
     </b></tt><br>
-    ���� Alpha ���ԵĲο�ֵ��0 �� 255����Alpha ֵ���ڴ�ֵ�����ز��ᱻ���ơ�<p>
+    设置 Alpha 测试的参考值（0 至 255）。Alpha 值低于此值的像素不会被绘制。<p>
 
     <tt id = "gpu_set_alphatestfunc"><b>
     <font color="#0000FF">bool </font>
     gpu_set_alphatestfunc(<font color="#0000FF">real </font>func)
     </b></tt><br>
-    ���� Alpha ����ʹ�õıȽϺ��������� <b><tt>func</tt></b> ʹ�� GM �ıȽϳ������˹���Ϊ D3D ��չ����<p>
+    设置 Alpha 测试使用的比较函数。参数 <b><tt>func</tt></b> 使用 GM 的比较常量（此功能为 D3D 扩展）。<p>
 </blockquote>
 
-<h3>��ɫд�������ƫ��</h3>
+<h3>颜色写入与深度偏移</h3>
 
 <blockquote>
     <tt id = "gpu_set_color_mask"><b>
@@ -85,56 +85,56 @@
     <font color="#0000FF">real </font>b,
     <font color="#0000FF">real </font>a)
     </b></tt><br>
-    ������ɫд���롣���� <b><tt>enable</tt></b> ���ܿ��أ������ĸ������ֱ���ƺ졢�̡����� Alpha ͨ���Ƿ��д�롣<br>
-    �� <b><tt>enable</tt></b> �ر�ʱ������ͨ������д�롣�����ǰ�豸��֧����ɫд���룬�򷵻� <b><tt>false</tt></b>��<p>
+    设置颜色写掩码。参数 <b><tt>enable</tt></b> 是总开关，其余四个参数分别控制红、绿、蓝和 Alpha 通道是否可写入。<br>
+    当 <b><tt>enable</tt></b> 关闭时，所有通道都不写入。如果当前设备不支持颜色写掩码，则返回 <b><tt>false</tt></b>。<p>
 
     <tt id = "gpu_set_depth"><b>
     <font color="#0000FF">bool </font>
     gpu_set_depth(<font color="#0000FF">real </font>depth)
     </b></tt><br>
-    �������ƫ�ƣ�Z-bias�������ڷ�ֹ������ͬ����ļ�����֮��� <strong>Z-fighting</strong>����������˸�ص����߿򣩡�<br>
-    ���� <b><tt>depth</tt></b> Ϊ���� 0 �� 16��Ĭ��ֵΪ 0��<p>
+    设置深度偏移（Z-bias），用于防止具有相同坐标的几何体之间的 <strong>Z-fighting</strong>（例如无闪烁地叠加线框）。<br>
+    参数 <b><tt>depth</tt></b> 为整数 0 至 16，默认值为 0。<p>
 
     <tt id = "gpu_set_fillmode"><b>
     <font color="#0000FF">bool </font>
     gpu_set_fillmode(<font color="#0000FF">real </font>mode)
     </b></tt><br>
-    ���ö���ε����ģʽ������ <b><tt>mode</tt></b> ʹ�� D3D ���ģʽ������<b><tt>1</tt></b> = ����䣬<b><tt>2</tt></b> = �߿�<b><tt>3</tt></b> = ʵ�壨Ĭ�ϣ���<br>
-    �����ģʽ����ѭ��ͼԪ���á�<p>
+    设置多边形的填充模式。参数 <b><tt>mode</tt></b> 使用 D3D 填充模式常量：<b><tt>1</tt></b> = 点填充，<b><tt>2</tt></b> = 线框，<b><tt>3</tt></b> = 实体（默认）。<br>
+    点填充模式会遵循点图元设置。<p>
 
     <tt id = "gpu_set_normal_auto"><b>
     <font color="#0000FF">bool </font>
     gpu_set_normal_auto(<font color="#0000FF">real </font>state)
     </b></tt><br>
-    �����Ƿ��Զ���һ�����ߡ����ú�����޸�ģ������ʱ�����Ĺ������⡣<p>
+    设置是否自动归一化法线。启用后可以修复模型缩放时产生的光照问题。<p>
 </blockquote>
 
-<h3>��ͼԪ��㾫��</h3>
+<h3>点图元与点精灵</h3>
 
 <blockquote>
     <tt id = "d3d_set_point_size"><b>
     <font color="#0000FF">bool </font>
     d3d_set_point_size(<font color="#0000FF">real </font>size)
     </b></tt><br>
-    ���õ�ͼԪ�Ĵ�С����ʹ�� <A href="GMGraphic_��ʼ��.html#d3d_dev_get_point_max_size"><b><tt>d3d_dev_get_point_max_size()</tt></b></A> ��ѯ�豸֧�ֵ����ֵ��<p>
+    设置点图元的大小。可使用 <A href="GMGraphic_初始化.html#d3d_dev_get_point_max_size"><b><tt>d3d_dev_get_point_max_size()</tt></b></A> 查询设备支持的最大值。<p>
 
     <tt id = "d3d_set_point_size_min"><b>
     <font color="#0000FF">bool </font>
     d3d_set_point_size_min(<font color="#0000FF">real </font>size)
     </b></tt><br>
-    ���õ�ͼԪ����С��С����Ͼ���˥��ʹ�ã���<p>
+    设置点图元的最小大小（配合距离衰减使用）。<p>
 
     <tt id = "d3d_set_point_size_max"><b>
     <font color="#0000FF">bool </font>
     d3d_set_point_size_max(<font color="#0000FF">real </font>size)
     </b></tt><br>
-    ���õ�ͼԪ������С����Ͼ���˥��ʹ�ã���<p>
+    设置点图元的最大大小（配合距离衰减使用）。<p>
 
     <tt id = "d3d_set_point_scale"><b>
     <font color="#0000FF">bool </font>
     d3d_set_point_scale(<font color="#0000FF">real </font>state)
     </b></tt><br>
-    �����Ƿ����õ�ͼԪ�ľ���˥�������ú��Ĵ�С���浽����ľ���仯����Ҫ�� <b><tt>d3d_set_point_scale_coef()</tt></b> ��ϡ�<p>
+    设置是否启用点图元的距离衰减。启用后点的大小会随到相机的距离变化，需要与 <b><tt>d3d_set_point_scale_coef()</tt></b> 配合。<p>
 
     <tt id = "d3d_set_point_scale_coef"><b>
     <font color="#0000FF">bool </font>
@@ -142,19 +142,19 @@
     <font color="#0000FF">real </font>coef2,
     <font color="#0000FF">real </font>coef3)
     </b></tt><br>
-    ���õ�ͼԪ����˥����ʽ��ϵ����Ĭ��ֵΪ��1, 0, 0����<br>
-    ���յ�Ĵ�С���չ�ʽ <b><tt>size * sqrt(1 / (coef1 + coef2 * ���� + coef3 * �����ƽ��))</tt></b> ���㡣<p>
+    设置点图元距离衰减公式的系数，默认值为（1, 0, 0）。<br>
+    最终点的大小按照公式 <b><tt>size * sqrt(1 / (coef1 + coef2 * 距离 + coef3 * 距离的平方))</tt></b> 计算。<p>
 
     <tt id = "d3d_set_point_sprite"><b>
     <font color="#0000FF">bool </font>
     d3d_set_point_sprite(<font color="#0000FF">real </font>state)
     </b></tt><br>
-    �����Ƿ����õ㾫�顣���ú����Ϊ��ͼԪӦ����������� <A href="GMGraphic_��ɫ��.html#texture_set_stage"><b><tt>texture_set_stage()</tt></b></A> ʹ�á�<p>
+    设置是否启用点精灵。启用后可以为点图元应用纹理，配合 <A href="GMGraphic_着色器.html#texture_set_stage"><b><tt>texture_set_stage()</tt></b></A> 使用。<p>
 </blockquote>
 
-<h3>��չͼԪ</h3>
-<p>��չͼԪ��������һ��ͼԪ�л��ƶ�� <strong>8192 ������</strong>��GM8 �Դ��������� 1024����ÿ������ɰ���λ�á����ߡ�������;��淴����ɫ/͸���ȣ��Լ���� 8 ���������꣬��϶�����ɫ���ɽ����𶥵���㡣<br>
-ʹ�� <b><tt>d3d_primitive_begin_ext()</tt></b> ��ʼ�����Ӷ������ <b><tt>d3d_primitive_end_ext()</tt></b> �������ƣ�<b><tt>draw_*</tt></b> �汾�ǹ�����ͬ�� 2D �򻯰档</p>
+<h3>扩展图元</h3>
+<p>扩展图元允许你在一个图元中绘制多达 <strong>8192 个顶点</strong>（GM8 自带的限制是 1024）。每个顶点可包含位置、法线、漫反射和镜面反射颜色/透明度，以及最多 8 个纹理坐标，配合顶点着色器可进行逐顶点计算。<br>
+使用 <b><tt>d3d_primitive_begin_ext()</tt></b> 开始，添加顶点后以 <b><tt>d3d_primitive_end_ext()</tt></b> 结束绘制；<b><tt>draw_*</tt></b> 版本是功能相同的 2D 简化版。</p>
 
 <blockquote>
     <tt id = "d3d_primitive_begin_ext"><b>
@@ -162,7 +162,7 @@
     d3d_primitive_begin_ext(<font color="#0000FF">real </font>primitive,
     <font color="#0000FF">real </font>textured)
     </b></tt><br>
-    ��ʼ����һ����չͼԪ������ <b><tt>primitive</tt></b> ʹ�� GM ��ͼԪ���ͳ��������� <b><tt>pr_trianglelist</tt></b>�������� <b><tt>textured</tt></b> �� <b><tt>true</tt></b> �����������ꡣ<p>
+    开始绘制一个扩展图元。参数 <b><tt>primitive</tt></b> 使用 GM 的图元类型常量（例如 <b><tt>pr_trianglelist</tt></b>），参数 <b><tt>textured</tt></b> 传 <b><tt>true</tt></b> 启用纹理坐标。<p>
 
     <tt id = "d3d_vertex_ext"><b>
     <font color="#0000FF">bool </font>
@@ -177,7 +177,7 @@
     <font color="#0000FF">real </font>speccol,
     <font color="#0000FF">real </font>specalpha)
     </b></tt><br>
-    ����չͼԪ����һ�����㡣��������Ϊ�������꣨x, y, z�������ߣ�nx, ny, nz������������ɫ��GM ��ɫ����͸���ȣ�0 �� 1�������淴����ɫ�;��淴��͸���ȡ�<p>
+    向扩展图元添加一个顶点。参数依次为顶点坐标（x, y, z）、法线（nx, ny, nz）、漫反射颜色（GM 颜色）、透明度（0 至 1）、镜面反射颜色和镜面反射透明度。<p>
 
     <tt id = "d3d_vertex_ext_tex"><b>
     <font color="#0000FF">bool </font>
@@ -185,27 +185,27 @@
     <font color="#0000FF">real </font>xtex,
     <font color="#0000FF">real </font>ytex)
     </b></tt><br>
-    Ϊ��һ�����ӵĶ���ָ���������ꡣ���� <b><tt>stage</tt></b> ���������꼯��ţ�0 �� 7����<b><tt>xtex</tt></b> �� <b><tt>ytex</tt></b> ���������꣨0 �� 1����<br>
-    ÿ����������ָ�� 8 ���������ꡣ<p>
+    为上一个添加的顶点指定纹理坐标。参数 <b><tt>stage</tt></b> 是纹理坐标集编号（0 至 7），<b><tt>xtex</tt></b> 和 <b><tt>ytex</tt></b> 是纹理坐标（0 至 1）。<br>
+    每个顶点最多可指定 8 组纹理坐标。<p>
 
     <tt id = "d3d_vertex_ext_next"><b>
     <font color="#0000FF">bool </font>
     d3d_vertex_ext_next()
     </b></tt><br>
-    ������ǰ����Ķ��岢������һ�����㡣<p>
+    结束当前顶点的定义并进入下一个顶点。<p>
 
     <tt id = "d3d_primitive_end_ext"><b>
     <font color="#0000FF">bool </font>
     d3d_primitive_end_ext()
     </b></tt><br>
-    ������չͼԪ�Ķ��岢�ύ���ơ�<p>
+    结束扩展图元的定义并提交绘制。<p>
 
     <tt id = "draw_primitive_begin_ext"><b>
     <font color="#0000FF">bool </font>
     draw_primitive_begin_ext(<font color="#0000FF">real </font>primitive,
     <font color="#0000FF">real </font>textured)
     </b></tt><br>
-    <b><tt>d3d_primitive_begin_ext()</tt></b> �� 2D �汾���÷���ͬ��<p>
+    <b><tt>d3d_primitive_begin_ext()</tt></b> 的 2D 版本，用法相同。<p>
 
     <tt id = "draw_vertex_ext"><b>
     <font color="#0000FF">bool </font>
@@ -216,7 +216,7 @@
     <font color="#0000FF">real </font>speccol,
     <font color="#0000FF">real </font>specalpha)
     </b></tt><br>
-    <b><tt>d3d_vertex_ext()</tt></b> �� 2D �汾��û�з��ߺ� Z ���꣬���������ͬ��<p>
+    <b><tt>d3d_vertex_ext()</tt></b> 的 2D 版本。没有法线和 Z 坐标，其余参数相同。<p>
 
     <tt id = "draw_vertex_ext_tex"><b>
     <font color="#0000FF">bool </font>
@@ -224,19 +224,19 @@
     <font color="#0000FF">real </font>xtex,
     <font color="#0000FF">real </font>ytex)
     </b></tt><br>
-    <b><tt>d3d_vertex_ext_tex()</tt></b> �� 2D �汾���÷���ͬ��<p>
+    <b><tt>d3d_vertex_ext_tex()</tt></b> 的 2D 版本，用法相同。<p>
 
     <tt id = "draw_vertex_ext_next"><b>
     <font color="#0000FF">bool </font>
     draw_vertex_ext_next()
     </b></tt><br>
-    ������ǰ����Ķ��岢������һ�����㣨2D �汾����<p>
+    结束当前顶点的定义并进入下一个顶点（2D 版本）。<p>
 
     <tt id = "draw_primitive_end_ext"><b>
     <font color="#0000FF">bool </font>
     draw_primitive_end_ext()
     </b></tt><br>
-    ������չͼԪ�Ķ��岢�ύ���ƣ�2D �汾����<p>
+    结束扩展图元的定义并提交绘制（2D 版本）。<p>
 </blockquote>
 
 <!--END-->

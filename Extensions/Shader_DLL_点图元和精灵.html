@@ -2,26 +2,26 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>��ͼԪ����</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>点图元控制</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body background="images/back.gif">
 
 <!--START-->
 
-<h1>��ͼԪ����</h1>
+<h1>点图元控制</h1>
 
-������<a href = "../files/405_06_advanced.html">�߼����ƺ���</a>����ʶ�����ֲ�ͬ��ͼԪ�����к����������� <b>pr_pointlist</b> ͼԪ��<p>
+我们在<a href = "../files/405_06_advanced.html">高级绘制函数</a>中认识了六种不同的图元。下列函数用来控制 <b>pr_pointlist</b> 图元。<p>
 
-ͨ����ͼԪ��<a href = "Shader_DLL_��չͼԪ.html">��չͼԪ</a>��<a href = "Shader_DLL_������ɫ��.html">������ɫ��</a>�������ܣ�����ʵ�ָ��ָ�����Ч�������� GPU ���ӣ�Ч�ʱ� GM �Դ�������ϵͳ�ߺࣩܶ�� 3D ��Ϸ����ʹ�õĵ㾫��ȡ�
+通过点图元，<a href = "Shader_DLL_扩展图元.html">扩展图元</a>和<a href = "Shader_DLL_顶点着色器.html">顶点着色器</a>三个功能，可以实现各种各样的效果。比如 GPU 粒子（效率比 GM 自带的粒子系统高很多）和 3D 游戏大量使用的点精灵等。
 
 <blockquote>
   <tt><b>
   <font color="#0000FF">bool </font>
   d3d_set_point_size(<font color="#0000FF">real </font>size)
   </b></tt><br>
-  ���� <b>pr_pointlist</b> ͼԪ�Ĵ�С����ʼ����������������ܱ�׼��ת/���ŷ���Ӱ�졣<p>
+  设置 <b>pr_pointlist</b> 图元的大小。点始终面向摄像机，不受标准旋转/缩放方法影响。<p>
   
   <tt><b>
   <font color="#0000FF">bool </font>
@@ -29,13 +29,13 @@
   <font color="#0000FF">bool </font>
   d3d_set_point_size_max(<font color="#0000FF">real </font>size)
   </b></tt><br>
-  ���õ��С�����ƣ������� 3D ģʽ�µ����ŵ㡣Ĭ��ֵΪ 1 �� 64��<p>
+  设置点大小的限制，适用于 3D 模式下的缩放点。默认值为 1 和 64。<p>
   
   <tt><b>
   <font color="#0000FF">bool </font>
   d3d_set_point_scale(<font color="#0000FF">bool </font>state)
   </b></tt><br>
-  ����/���õ����š����С��������������������š���ʹ�� <b>d3d_set_point_scale_coef()</b> �������Ų�����<p>
+  启用/禁用点缩放。点大小会根据摄像机距离进行缩放。需使用 <b>d3d_set_point_scale_coef()</b> 配置缩放参数。<p>
   
   <tt><b>
   <font color="#0000FF">bool </font>
@@ -43,17 +43,17 @@
   <font color="#0000FF">real </font>coef2, 
   <font color="#0000FF">real </font>coef3)
   </b></tt><br>
-  ���õ����Ź�ʽ��Ĭ��ֵ <b>(1,0,0)</b>�����㹫ʽ���£�<br>
+  配置点缩放公式。默认值 <b>(1,0,0)</b>，计算公式如下：<br>
   <div class = "image-container">
-  <img src = "images/��ʽ.png"><br>
-  <strong>distance</strong>����������ľ���<p>
+  <img src = "images/公式.png"><br>
+  <strong>distance</strong>：到摄像机的距离<p>
   
   <tt><b>
   <font color="#0000FF">bool </font>
   d3d_set_point_sprite(<font color="#0000FF">bool </font>state)
   </b></tt><br>
-  ����/���õ�ͼԪ������ӳ�䡣<br>
-  <strong>ע��</strong>������ʹ�� <b>draw_primitive_begin_texture</b> �ȷ���ΪͼԪ���������������������꣬����������Ϊ <b>(0,0) �� (1,1)</b>��<p>
+  启用/禁用点图元的纹理映射。<br>
+  <strong>注意</strong>：必须使用 <b>draw_primitive_begin_texture</b> 等方法为图元定义纹理。忽略纹理坐标，完整点区域为 <b>(0,0) → (1,1)</b>。<p>
 </blockquote>
 
 <!--END-->

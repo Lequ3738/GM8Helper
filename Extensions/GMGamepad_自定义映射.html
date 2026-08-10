@@ -2,28 +2,28 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>×Ô¶¨ÒåÓ³Éä</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>è‡ªå®šä¹‰æ˜ å°„</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body background="images/back.gif">
 
 <!--START-->
 
-<h1>×Ô¶¨ÒåÓ³Éä</h1>
+<h1>è‡ªå®šä¹‰æ˜ å°„</h1>
 
 <blockquote>
     <tt id = "gamepad_get_mapping"><b>
     <font color="#0000FF">string </font>
     gamepad_get_mapping(<font color="#0000FF">real </font>device)
     </b></tt><br>
-    ´Ëº¯Êı¿ÉÓÃÓÚ»ñÈ¡Ö¸¶¨²å²ÛÊÖ±úµÄÓ³Éä×Ö·û´®¡£·µ»ØµÄ×Ö·û´®ÓĞÈçÏÂ¿ÉÄÜ£º
+    æ­¤å‡½æ•°å¯ç”¨äºè·å–æŒ‡å®šæ’æ§½æ‰‹æŸ„çš„æ˜ å°„å­—ç¬¦ä¸²ã€‚è¿”å›çš„å­—ç¬¦ä¸²æœ‰å¦‚ä¸‹å¯èƒ½ï¼š
     <ul>
-        <li>ÓÎÏ·ÊÖ±úµÄµ±Ç°Ó³Éä×Ö·û´®£¬ÀıÈç£º<br>
+        <li>æ¸¸æˆæ‰‹æŸ„çš„å½“å‰æ˜ å°„å­—ç¬¦ä¸²ï¼Œä¾‹å¦‚ï¼š<br>
         <div class = "auto-warp">
         <pre>"050000005e040000fd020000ffff3f00,Xbox Wireless Controller,a:b0,b:b1,start:b4,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b6,leftshoulder:b9,leftstick:b7,lefttrigger:a4,leftx:a0,lefty:a1,rightshoulder:b10,rightstick:b8,righttrigger:a5,rightx:a2,righty:a3,x:b2,y:b3,platform:windows"</pre></li>
-        <li>Èç¹ûÃ»ÓĞ¿ÉÓÃµÄÓ³Éä£¬ÔòÎª¡°no mapping¡±×Ö·û´®¡£</li>
-        <li>Èç¹û²å²ÛË÷Òı²»ÊÇÓĞĞ§µÄÓÎÏ·ÊÖ±úË÷Òı£¬ÔòÎª¡°device index out of range¡±×Ö·û´®¡£</li>
+        <li>å¦‚æœæ²¡æœ‰å¯ç”¨çš„æ˜ å°„ï¼Œåˆ™ä¸ºâ€œno mappingâ€å­—ç¬¦ä¸²ã€‚</li>
+        <li>å¦‚æœæ’æ§½ç´¢å¼•ä¸æ˜¯æœ‰æ•ˆçš„æ¸¸æˆæ‰‹æŸ„ç´¢å¼•ï¼Œåˆ™ä¸ºâ€œdevice index out of rangeâ€å­—ç¬¦ä¸²ã€‚</li>
     </ul><p>
 
     <tt id = "gamepad_test_mapping"><b>
@@ -31,30 +31,30 @@
     gamepad_test_mapping(<font color="#0000FF">real </font>device,
     <font color="#0000FF">string </font>mapping)
     </b></tt><br>
-    ´Ëº¯ÊıÓÃÓÚÉèÖÃÓÎÏ·ÊÖ±úÓ³Éä¡£ÄúÌá¹©ÒªÉèÖÃµÄÓÎÏ·ÊÖ±úµÄ²å²ÛË÷Òı£¬È»ºóÌá¹©Ó³Éä×Ö·û´®£¬¸Ã×Ö·û´®Ó¦Ê¹ÓÃ SDL ¸ñÊ½´´½¨£¬ÆäÖĞ°üº¬ÒÔÏÂ×Ö¶Î£º<br>
+    æ­¤å‡½æ•°ç”¨äºè®¾ç½®æ¸¸æˆæ‰‹æŸ„æ˜ å°„ã€‚æ‚¨æä¾›è¦è®¾ç½®çš„æ¸¸æˆæ‰‹æŸ„çš„æ’æ§½ç´¢å¼•ï¼Œç„¶åæä¾›æ˜ å°„å­—ç¬¦ä¸²ï¼Œè¯¥å­—ç¬¦ä¸²åº”ä½¿ç”¨ SDL æ ¼å¼åˆ›å»ºï¼Œå…¶ä¸­åŒ…å«ä»¥ä¸‹å­—æ®µï¼š<br>
     <pre>&lt;guid&gt;,&lt;description&gt;,platform:&lt;platform-name&gt;,&lt;bindings&gt;</pre>
-    Ã¿¸ö×Ö¶ÎÖĞÓ¦°üº¬µÄÏêÏ¸ĞÅÏ¢°üÀ¨£º
+    æ¯ä¸ªå­—æ®µä¸­åº”åŒ…å«çš„è¯¦ç»†ä¿¡æ¯åŒ…æ‹¬ï¼š
     <ul>
-        <li><b><tt>guid</tt></b> - Î¨Ò»±êÊ¶Éè±¸ÀàĞÍµÄÊı×ÖºÍ×ÖÄ¸×Ö·û´®£¨¿ÉÒÔÊ¹ÓÃ <A href="GMGamepad_ĞÅÏ¢ºÍÅäÖÃ.html#gamepad_get_guid"><b><tt>gamepad_get_guid()</tt></b></A> º¯Êı»ñµÃ£©</li>
-        <li><b><tt>description</tt></b> - Éè±¸µÄ ASCII ÃèÊö£¨¿ÉÒÔÊ¹ÓÃ <A href="GMGamepad_ĞÅÏ¢ºÍÅäÖÃ.html#gamepad_get_description"><b><tt>gamepad_get_description()</tt></b></A> º¯Êı»ñµÃ£©</li>
-        <li><b><tt>platform-name</tt></b> - Îª¡°platform:windows¡±</li>
-        <li><b><tt>bindings</tt></b> - Ò»×éÒÔ ',' ·Ö¸ôµÄÌõÄ¿£¬ÓÃÓÚ½«Êµ¼ÊÊäÈë°ó¶¨µ½ÌØ¶¨µÄ<A href="GMGamepad_Main.html#input">ÊäÈë³£Á¿</A></li>
+        <li><b><tt>guid</tt></b> - å”¯ä¸€æ ‡è¯†è®¾å¤‡ç±»å‹çš„æ•°å­—å’Œå­—æ¯å­—ç¬¦ä¸²ï¼ˆå¯ä»¥ä½¿ç”¨ <A href="GMGamepad_ä¿¡æ¯å’Œé…ç½®.html#gamepad_get_guid"><b><tt>gamepad_get_guid()</tt></b></A> å‡½æ•°è·å¾—ï¼‰</li>
+        <li><b><tt>description</tt></b> - è®¾å¤‡çš„ ASCII æè¿°ï¼ˆå¯ä»¥ä½¿ç”¨ <A href="GMGamepad_ä¿¡æ¯å’Œé…ç½®.html#gamepad_get_description"><b><tt>gamepad_get_description()</tt></b></A> å‡½æ•°è·å¾—ï¼‰</li>
+        <li><b><tt>platform-name</tt></b> - ä¸ºâ€œplatform:windowsâ€</li>
+        <li><b><tt>bindings</tt></b> - ä¸€ç»„ä»¥ ',' åˆ†éš”çš„æ¡ç›®ï¼Œç”¨äºå°†å®é™…è¾“å…¥ç»‘å®šåˆ°ç‰¹å®šçš„<A href="GMGamepad_Main.html#input">è¾“å…¥å¸¸é‡</A></li>
     </ul>
-    ÒÔ¶ººÅ·Ö¸ôµÄÌõÄ¿ÁĞ±í×ñÑ­Ã¿¸öÌõÄ¿µÄÌØ¶¨¸ñÊ½£º
+    ä»¥é€—å·åˆ†éš”çš„æ¡ç›®åˆ—è¡¨éµå¾ªæ¯ä¸ªæ¡ç›®çš„ç‰¹å®šæ ¼å¼ï¼š
     <pre>&lt;abstract-gp-name&gt;:&lt;value-binding&gt;</pre>
-    ´Ë´¦ &lt;value-binding&gt;£¨¼´£ºÖ±½ÓÓÎÏ·ÊÖ±úÊäÈë£©¿ÉÒÔÊÇÒÔÏÂÈÎºÎÒ»Ïî£º
+    æ­¤å¤„ &lt;value-binding&gt;ï¼ˆå³ï¼šç›´æ¥æ¸¸æˆæ‰‹æŸ„è¾“å…¥ï¼‰å¯ä»¥æ˜¯ä»¥ä¸‹ä»»ä½•ä¸€é¡¹ï¼š
     <ul>
-        <li><b><tt>a&lt;N&gt;</tt></b> - Õâ±íÊ¾ÊÖ±úµÄÒ»¸ö´ÓË÷Òı 0 µ½ <A href="GMGamepad_ĞÅÏ¢ºÍÅäÖÃ.html#gamepad_axis_count"><b><tt>gamepad_axis_count()</tt></b></A> - 1 µÄÒ¡¸Ë</li>
-        <li><b><tt>b&lt;N&gt;</tt></b> - Õâ±íÊ¾ÊÖ±úµÄÒ»¸ö´ÓË÷Òı 0 µ½ <A href="GMGamepad_ĞÅÏ¢ºÍÅäÖÃ.html#gamepad_button_count"><b><tt>gamepad_button_count()</tt></b></A> - 1 µÄ°´Å¥</tt></b></li>
-        <li><b><tt>h&lt;N&gt;.&lt;mask&gt;</tt></b> - Õâ±íÊ¾ÊÖ±úµÄÒ»¸ö´ÓË÷Òı 0 µ½ <A href="GMGamepad_ĞÅÏ¢ºÍÅäÖÃ.html#gamepad_hat_count"><b><tt>gamepad_hat_count()</tt></b></A> - 1 µÄÊ®×Ö¼ü£¬&lt;mask&gt; Îª 1¡¢2¡¢4 »ò 8</tt></b></li>
+        <li><b><tt>a&lt;N&gt;</tt></b> - è¿™è¡¨ç¤ºæ‰‹æŸ„çš„ä¸€ä¸ªä»ç´¢å¼• 0 åˆ° <A href="GMGamepad_ä¿¡æ¯å’Œé…ç½®.html#gamepad_axis_count"><b><tt>gamepad_axis_count()</tt></b></A> - 1 çš„æ‘‡æ†</li>
+        <li><b><tt>b&lt;N&gt;</tt></b> - è¿™è¡¨ç¤ºæ‰‹æŸ„çš„ä¸€ä¸ªä»ç´¢å¼• 0 åˆ° <A href="GMGamepad_ä¿¡æ¯å’Œé…ç½®.html#gamepad_button_count"><b><tt>gamepad_button_count()</tt></b></A> - 1 çš„æŒ‰é’®</tt></b></li>
+        <li><b><tt>h&lt;N&gt;.&lt;mask&gt;</tt></b> - è¿™è¡¨ç¤ºæ‰‹æŸ„çš„ä¸€ä¸ªä»ç´¢å¼• 0 åˆ° <A href="GMGamepad_ä¿¡æ¯å’Œé…ç½®.html#gamepad_hat_count"><b><tt>gamepad_hat_count()</tt></b></A> - 1 çš„åå­—é”®ï¼Œ&lt;mask&gt; ä¸º 1ã€2ã€4 æˆ– 8</tt></b></li>
     </ul>
-    Ã¿¸öÊäÈëÖµ¶¼Ó¦°ó¶¨µ½Ò»¸ö SDL Ãû³Æ£¬¸ÃÃû³Æ±íÊ¾Îª &lt;abstract-gp-name&gt;£¬¶ø¸ÃÃû³ÆÓÖ°ó¶¨µ½Ò»¸ö<A href="GMGamepad_Main.html#input">ÊäÈë³£Á¿</A>¡£ÏÂ±íÏÔÊ¾ÁË SDL Ãû³ÆºÍÊäÈë³£Á¿Ö®¼äµÄµÈĞ§ĞÔ£º
+    æ¯ä¸ªè¾“å…¥å€¼éƒ½åº”ç»‘å®šåˆ°ä¸€ä¸ª SDL åç§°ï¼Œè¯¥åç§°è¡¨ç¤ºä¸º &lt;abstract-gp-name&gt;ï¼Œè€Œè¯¥åç§°åˆç»‘å®šåˆ°ä¸€ä¸ª<A href="GMGamepad_Main.html#input">è¾“å…¥å¸¸é‡</A>ã€‚ä¸‹è¡¨æ˜¾ç¤ºäº† SDL åç§°å’Œè¾“å…¥å¸¸é‡ä¹‹é—´çš„ç­‰æ•ˆæ€§ï¼š
     <figure><table style="border:1px solid #BBBBBB;">
     <tr>
         <th style="border:1px solid #BBBBBB;padding:2px 8px;">
-        <strong>SDL Ãû³Æ</strong></th>
+        <strong>SDL åç§°</strong></th>
         <th style="border:1px solid #BBBBBB;padding:2px 8px;">
-        <strong>ÊäÈë³£Á¿</strong></th>
+        <strong>è¾“å…¥å¸¸é‡</strong></th>
     </tr>
     <tbody>
     <tr>
@@ -160,18 +160,18 @@
     </tr>
     </tbody>
     </table></figure>
-    ¹¹½¨Ó³Éä×Ö·û´®ºó£¬ËüÓ¦¸ÃÀàËÆÓÚÈçÏÂ×Ö·û´®£º
+    æ„å»ºæ˜ å°„å­—ç¬¦ä¸²åï¼Œå®ƒåº”è¯¥ç±»ä¼¼äºå¦‚ä¸‹å­—ç¬¦ä¸²ï¼š
     <div class = "auto-warp">
     <pre>"050000005e040000fd020000ffff3f00,Xbox Wireless Controller,a:b0,b:b1,start:b4,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b6,leftshoulder:b9,leftstick:b7,lefttrigger:a4,leftx:a0,lefty:a1,rightshoulder:b10,rightstick:b8,righttrigger:a5,rightx:a2,righty:a3,x:b2,y:b3,platform:windows"</pre>
-    Èç¹û³É¹¦Ö´ĞĞ²Ù×÷£¬Ôò·µ»Ø <b><tt>true</tt></b>£¬·ñÔò·µ»Ø <b><tt>false</tt></b>¡£<p>
+    å¦‚æœæˆåŠŸæ‰§è¡Œæ“ä½œï¼Œåˆ™è¿”å› <b><tt>true</tt></b>ï¼Œå¦åˆ™è¿”å› <b><tt>false</tt></b>ã€‚<p>
     
     <tt id = "gamepad_remove_mapping"><b>
     <font color="#0000FF">bool </font>
     gamepad_remove_mapping(<font color="#0000FF">real </font>device)
     </b></tt><br>
-    ´Ëº¯Êı¿ÉÓÃÓÚ´Ó¸ø¶¨µÄÓÎÏ·ÊÖ±ú²å²ÛË÷ÒıÖĞÉ¾³ıµ±Ç°Éè±¸Ó³Éä¡£<br>
-    µ÷ÓÃºó£¬Èç¹ûÄúÏ£ÍûÄÜ¹»Ê¹ÓÃÓÎÏ·ÊÖ±ú³£Á¿ÕıÈ·¼ì²âÊäÈë£¬ÔòĞèÒªÊ¹ÓÃ <A href="GMGamepad_×Ô¶¨ÒåÓ³Éä.html#gamepad_test_mapping"><b><tt>gamepad_test_mapping()</tt></b></A> º¯ÊıÖØĞÂÓ³Éä²å²ÛË÷Òı¡£<br>
-    Èç¹û³É¹¦Ö´ĞĞ²Ù×÷£¬Ôò·µ»Ø <b><tt>true</tt></b>£¬·ñÔò·µ»Ø <b><tt>false</tt></b>¡£<p>
+    æ­¤å‡½æ•°å¯ç”¨äºä»ç»™å®šçš„æ¸¸æˆæ‰‹æŸ„æ’æ§½ç´¢å¼•ä¸­åˆ é™¤å½“å‰è®¾å¤‡æ˜ å°„ã€‚<br>
+    è°ƒç”¨åï¼Œå¦‚æœæ‚¨å¸Œæœ›èƒ½å¤Ÿä½¿ç”¨æ¸¸æˆæ‰‹æŸ„å¸¸é‡æ­£ç¡®æ£€æµ‹è¾“å…¥ï¼Œåˆ™éœ€è¦ä½¿ç”¨ <A href="GMGamepad_è‡ªå®šä¹‰æ˜ å°„.html#gamepad_test_mapping"><b><tt>gamepad_test_mapping()</tt></b></A> å‡½æ•°é‡æ–°æ˜ å°„æ’æ§½ç´¢å¼•ã€‚<br>
+    å¦‚æœæˆåŠŸæ‰§è¡Œæ“ä½œï¼Œåˆ™è¿”å› <b><tt>true</tt></b>ï¼Œå¦åˆ™è¿”å› <b><tt>false</tt></b>ã€‚<p>
 </blockquote>
 
 <!--END-->
